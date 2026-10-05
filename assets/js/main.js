@@ -542,11 +542,11 @@
       $("#st-az").innerHTML = areas.map(a => {
         const list = AZ.filter(b => b.area === a);
         return stGroup(`${a} (${list.filter(azDone).length} of ${list.length})`, list.map(b => stItem({
-          done: azDone(b), href: tripHref(b.expedition), svg: ICONS.mug,
+          done: azDone(b), href: tripHref(b.expedition) || "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt", svg: ICONS.mug,
           top: azDone(b) ? (b.date ? `Visited ${b.date}` : "Visited") : b.city, name: b.name, sub: azDone(b) ? b.city : (b.note || "")
         })));
       }).join("");
-      if ($("#st-az-synced") && typeof ARIZONA_SYNCED !== "undefined") $("#st-az-synced").textContent = `Updated ${ARIZONA_SYNCED}`;
+      if ($("#st-az-synced") && typeof ARIZONA_SYNCED !== "undefined") $("#st-az-synced").textContent = `Stamps are made on Gary's Brew Passport and copied here nightly · last updated ${ARIZONA_SYNCED}`;
     }
 
     // 14ers grouped by range (most peaks first)

@@ -36,7 +36,7 @@ const CATEGORIES = {
     cover: "assets/photos/mash-mechanix/img_3548.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
     regions: ["Colorado", "New Mexico", "Arizona", "California", "Florida", "Bahamas", "Germany", "Ireland"],
-    extraLinks: [["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"]]   // extra links shown in the Brews menu
+    extraLinks: [["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
   },
   ballparks: {
     label: "Ballparks",
