@@ -38,9 +38,9 @@ const BALLPARKS = [
   { abbr: "WSH", team: "Washington Nationals",  park: "Nationals Park",              city: "Washington, DC",      div: "NL East",    opened: 2008, visited: false, date: "", expedition: "" },
   // ---------- NL Central ----------
   { abbr: "CHC", team: "Chicago Cubs",          park: "Wrigley Field",               city: "Chicago, IL",         div: "NL Central", opened: 1914, visited: false, date: "", expedition: "" },
-  { abbr: "CIN", team: "Cincinnati Reds",       park: "Great American Ball Park",    city: "Cincinnati, OH",      div: "NL Central", opened: 2003, visited: false, date: "", expedition: "" },
+  { abbr: "CIN", team: "Cincinnati Reds",       park: "Great American Ball Park",    city: "Cincinnati, OH",      div: "NL Central", opened: 2003, visited: true , date: "", expedition: "" },
   { abbr: "MIL", team: "Milwaukee Brewers",     park: "American Family Field",       city: "Milwaukee, WI",       div: "NL Central", opened: 2001, visited: false, date: "", expedition: "" },
-  { abbr: "PIT", team: "Pittsburgh Pirates",    park: "PNC Park",                    city: "Pittsburgh, PA",      div: "NL Central", opened: 2001, visited: false, date: "", expedition: "" },
+  { abbr: "PIT", team: "Pittsburgh Pirates",    park: "PNC Park",                    city: "Pittsburgh, PA",      div: "NL Central", opened: 2001, visited: true , date: "", expedition: "" },
   { abbr: "STL", team: "St. Louis Cardinals",   park: "Busch Stadium",               city: "St. Louis, MO",       div: "NL Central", opened: 2006, visited: false, date: "", expedition: "" },
   // ---------- NL West ----------
   { abbr: "ARI", team: "Arizona Diamondbacks",  park: "Chase Field",                 city: "Phoenix, AZ",         div: "NL West",    opened: 1998, visited: true,  date: "", expedition: "chase-field" },

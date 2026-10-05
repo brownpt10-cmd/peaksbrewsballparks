@@ -499,3 +499,70 @@ table.peaks .text-link { font-size: 12px; white-space: nowrap; }
 .div-card .abbr { display: inline-block; width: 44px; font-family: var(--font-mono); font-size: 12px; color: var(--grey); font-weight: 400; }
 @media (max-width: 1080px) { .divs { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 680px)  { .divs { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   Status page — icon rings (grey = to do, green = done)
+   ========================================================================== */
+:root { --done: #2e8b57; --ring: #d4d4d4; --navy: #1d3557; }
+
+.status-head { padding: calc(var(--header-h) + 64px) 0 56px; background: var(--white); border-bottom: 1px solid var(--line); }
+.status-head h1 { font-size: clamp(36px, 5vw, 60px); margin: 6px 0 12px; }
+.status-head .lead { color: var(--grey); font-size: 19px; max-width: 640px; margin-bottom: 36px; }
+
+.st-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.st-tile { display: flex; align-items: center; gap: 18px; padding: 20px 22px; background: var(--paper); transition: transform .2s, box-shadow .2s; }
+.st-tile:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.08); }
+.st-tile > span:last-child { flex: 1; min-width: 0; }
+.st-tile strong { display: block; font-size: 34px; font-weight: 700; line-height: 1; }
+.st-tile strong small { font-size: 18px; color: var(--grey); font-weight: 400; }
+.st-tile .lbl { display: block; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--grey); margin: 6px 0 10px; }
+.st-tile .pbar { display: block; height: 6px; background: #ddd; }
+.st-tile .pbar span { display: block; height: 100%; background: var(--done); }
+
+.st-section .section-head { margin-bottom: 28px; }
+.st-group { margin-bottom: 44px; }
+.st-group:last-child { margin-bottom: 0; }
+.st-group h3 { font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: .01em; margin-bottom: 8px; }
+.st-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); column-gap: 48px; }
+
+.st-item { display: flex; align-items: center; gap: 20px; padding: 16px 0; border-bottom: 1px solid #dcdcdc; color: var(--ink); }
+a.st-item:hover .st-name { color: var(--orange-dark); }
+
+.st-icon {
+  position: relative; flex: 0 0 auto;
+  width: 76px; height: 76px; border-radius: 50%;
+  background: #e8e8e8; color: #1e1e1e;
+  display: grid; place-items: center;
+  box-shadow: 0 0 0 5px var(--paper), 0 0 0 7px var(--ring);   /* grey outline ring */
+  transition: box-shadow .2s;
+}
+.section--alt .st-icon { box-shadow: 0 0 0 5px var(--mist), 0 0 0 7px var(--ring); }
+.st-tile .st-icon { box-shadow: 0 0 0 5px var(--paper), 0 0 0 7px var(--ring); width: 64px; height: 64px; }
+.st-icon svg { width: 58px; height: 58px; }
+.st-tile .st-icon svg { width: 42px; height: 42px; }
+.st-item.done .st-icon,
+.st-icon.done { box-shadow: 0 0 0 5px var(--paper), 0 0 0 8px var(--done); }          /* green when done */
+.section--alt .st-item.done .st-icon { box-shadow: 0 0 0 5px var(--mist), 0 0 0 8px var(--done); }
+.st-tile .st-icon.done { box-shadow: 0 0 0 5px var(--paper), 0 0 0 8px var(--done); }
+.st-check {
+  position: absolute; right: -6px; bottom: -4px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--done); color: #fff; font-size: 13px; font-weight: 700;
+  display: grid; place-items: center; border: 2px solid var(--paper);
+}
+
+.st-text { display: flex; flex-direction: column; min-width: 0; }
+.st-top { color: var(--navy); font-weight: 600; font-size: 16px; }
+.st-name { font-size: 22px; font-weight: 700; line-height: 1.15; }
+.st-sub { font-size: 14px; color: var(--grey); margin-top: 2px; }
+.st-item.done .st-top { color: var(--done); }
+
+@media (max-width: 1080px) { .st-summary { grid-template-columns: 1fr; } }
+@media (max-width: 680px) {
+  .status-head { padding: calc(var(--header-h) + 36px) 0 36px; }
+  .st-grid { grid-template-columns: 1fr; }
+  .st-icon { width: 60px; height: 60px; }
+  .st-icon svg { width: 46px; height: 46px; }
+  .st-name { font-size: 19px; }
+  .st-group h3 { font-size: 18px; }
+}

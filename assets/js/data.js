@@ -346,19 +346,14 @@ const EXPEDITIONS = [
     cover: "", photos: []
   },
   /* ----------------------------- PLANNED ---------------------------- */
-  { id: "red-leg",    title: "Red Leg",    category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "goat-patch", title: "Goat Patch", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "105-west",   title: "105 West",   category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "prost",      title: "Prost",      category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "105-west",   title: "105 West Brewing Co.",   category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "In the old Trinity location.", cover: "", photos: [] },
+  { id: "prost",      title: "Prost Brewing",      category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "Opening November 2026 in the former Old Chicago on Powers.", cover: "", photos: [] },
   { id: "animas",     title: "Animas",     category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "ska",        title: "Ska",        category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "oak-creek",  title: "Oak Creek",  category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   /* From the notes folder (templates not filled in yet) */
   { id: "armillary", title: "Armillary", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "bristol", title: "Bristol Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "cerberus", title: "Cerberus Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "cogstone", title: "Cogstone Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "colorado-mountain", title: "Colorado Mountain Brewery", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "deuces-wild", title: "Deuces Wild", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "fossil-craft", title: "Fossil Craft Beer", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "gunslinger", title: "Gunslinger", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
@@ -367,14 +362,10 @@ const EXPEDITIONS = [
   { id: "lost-friend", title: "Lost Friend Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "nano-108", title: "Nano 108 Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "occ", title: "OCC Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "phantom-canyon", title: "Phantom Canyon Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "south-park", title: "South Park Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "storybook", title: "Storybook Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "urban-animal", title: "Urban Animal", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "voodoo", title: "VooDoo", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "wackadoo", title: "Wackadoo", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "westfax", title: "WestFax Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "whistle-pig", title: "Whistle Pig Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "pikes-peak", title: "Pikes Peak", category: "peaks", status: "planned", location: "Colorado Springs, CO", date: "", summary: "", cover: "assets/photos/pikes-peak/pikes-peak-01.jpg", photos: [] },
   { id: "sedona",     title: "Sedona",     category: "peaks", status: "planned", location: "Sedona, AZ", date: "", summary: "", cover: "", photos: [] }
 ];

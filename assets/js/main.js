@@ -22,7 +22,8 @@
 
   // 14ers helpers (fourteeners.js)
   const PEAKS14 = typeof FOURTEENERS !== "undefined" ? FOURTEENERS : [];
-  const summited = () => PEAKS14.filter(p => p.date).sort((a, b) => a.date.localeCompare(b.date));
+  const isSummited = p => !!(p.date || p.done);
+  const summited = () => PEAKS14.filter(isSummited).sort((a, b) => (a.date || "").localeCompare(b.date || ""));
   // expedition: "trip-id" → detail page; a full URL or .html path is used as-is
   const reportHref = p => !p.expedition ? "" : /[\/.]/.test(p.expedition) ? p.expedition : `expedition.html?id=${p.expedition}`;
 
@@ -144,6 +145,7 @@
     const cat = params.get("cat");
     const cur = (key) => {
       if (key === "about" && page === "about") return ' aria-current="page"';
+      if (key === "status" && page === "status") return ' aria-current="page"';
       if (key === "log" && page === "log" && !cat) return ' aria-current="page"';
       if (CATEGORIES[key] && page === "log" && cat === key) return ' aria-current="page"';
       if (key === "peaks" && page === "peaks") return ' aria-current="page"';
@@ -161,6 +163,7 @@
           <div class="nav-item"><button class="nav-link"${cur("about")} aria-expanded="false">About</button>${aboutMega()}</div>
           ${Object.keys(CATEGORIES).map(k => `
             <div class="nav-item"><button class="nav-link"${cur(k)} aria-expanded="false">${esc(CATEGORIES[k].label)}</button>${catMega(k)}</div>`).join("")}
+          <div class="nav-item"><a class="nav-link" href="status.html"${cur("status")}>Status</a></div>
           <div class="nav-item"><a class="nav-link" href="expeditions.html"${cur("log")}>Expedition Log</a></div>
           <a class="btn btn--orange nav-cta" href="index.html#up-next">Up Next</a>
         </nav>
@@ -220,6 +223,7 @@
             <a href="about.html#rules">The Rules</a>
             <a href="about.html#scorecard">The Scorecard</a>
             <a href="about.html#crew">The Crew</a>
+            <a href="status.html">Status</a>
           </div>
           <div><h4>Follow</h4>
             <a href="#">Instagram</a>
@@ -373,7 +377,7 @@
 
     const draw = () => {
       const rows = PEAKS14
-        .filter(p => (tier === "all" || (tier === "done" ? !!p.date : p.tier == tier)) && (range === "all" || p.range === range))
+        .filter(p => (tier === "all" || (tier === "done" ? isSummited(p) : p.tier == tier)) && (range === "all" || p.range === range))
         .sort((a, b) => {
           const x = a[sortKey], y = b[sortKey];
           const c = typeof x === "number" ? x - y : String(x).localeCompare(String(y));
@@ -382,13 +386,13 @@
       $("#peak-body").innerHTML = rows.map(p => {
         const href = reportHref(p);
         return `
-        <tr class="${p.date ? "done" : ""}">
+        <tr class="${isSummited(p) ? "done" : ""}">
           <td class="num">${p.rank}</td>
           <td><strong>${esc(p.name)}</strong>${p.unranked ? ' <span class="muted">(unranked)</span>' : ""}</td>
           <td class="num">${p.elev.toLocaleString()}</td>
           <td>${esc(p.range)}</td>
           <td><span class="badge badge--${p.tier}">${TIERS[p.tier].name} · Class ${esc(p.cls)}</span></td>
-          <td>${p.date ? `<span class="check">✓</span> ${fmtDate(p.date)}` : '<span class="muted">—</span>'}</td>
+          <td>${isSummited(p) ? `<span class="check">✓</span> ${p.date ? fmtDate(p.date) : "Summited"}` : '<span class="muted">—</span>'}</td>
           <td>${href ? `<a class="text-link" href="${esc(href)}">View hike &amp; photos →</a>` : '<span class="muted">Coming soon</span>'}</td>
         </tr>`;
       }).join("") || `<tr><td colspan="7" class="muted">No peaks match.</td></tr>`;
@@ -481,6 +485,75 @@
       `<div class="empty">No ballpark trip reports yet — play ball.</div>`;
   }
 
+  /* ------------------------------------------------------------------ */
+  /* Status page — Springs breweries, 14ers, ballparks                   */
+  /* ------------------------------------------------------------------ */
+  const ICONS = {
+    peak: [
+      '<path d="M8 44 L20 32 L25 35 L34 21 L44 31 L56 42"/><path d="M34 21 L31 30 L35 36"/><path d="M25 35 L23 40"/><path d="M44 31 L42 36"/>',
+      '<path d="M8 44 L18 35 L24 37 L30 26 L34 29 L38 24 L48 34 L56 41"/><path d="M30 26 L27 35 L30 40"/><path d="M38 24 L37 32 L41 37"/>',
+      '<path d="M9 44 L22 34 L32 22 L42 32 L55 43"/><path d="M32 22 L28 31 L31 38"/><path d="M32 22 L36 30"/><path d="M22 34 L20 39"/>'
+    ],
+    park: '<path d="M10 30 Q32 6 54 30"/><path d="M32 52 L10 30"/><path d="M32 52 L54 30"/><path d="M32 46 L24 38 L32 30 L40 38 Z"/><circle cx="32" cy="38" r="1.6"/>',
+    mug: '<path d="M18 24 H40 V46 a4 4 0 0 1 -4 4 H22 a4 4 0 0 1 -4 -4 Z"/><path d="M40 29 H45 a5 5 0 0 1 5 5 V38 a5 5 0 0 1 -5 5 H40"/><path d="M16 24 c1 -6 6 -7 9 -4 c2 -5 8 -5 10 -1 c4 -3 8 0 7 5"/><path d="M24 30 V44 M30 30 V44"/>'
+  };
+  const icon = paths => `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+
+  function stItem({ done, href, svg, top, name, sub }) {
+    const tag = href ? "a" : "div";
+    return `<${tag} class="st-item${done ? " done" : ""}"${href ? ` href="${esc(href)}"` : ""}>
+      <span class="st-icon">${icon(svg)}${done ? '<span class="st-check">✓</span>' : ""}</span>
+      <span class="st-text"><span class="st-top">${esc(top)}</span><span class="st-name">${esc(name)}</span>${sub ? `<span class="st-sub">${esc(sub)}</span>` : ""}</span>
+    </${tag}>`;
+  }
+  const stGroup = (title, items) => `<div class="st-group"><h3>${esc(title)}</h3><div class="st-grid">${items.join("")}</div></div>`;
+
+  function renderStatus() {
+    const loggedIds = new Set(logged.map(e => e.id));
+    const SB = typeof SPRINGS_BREWERIES !== "undefined" ? SPRINGS_BREWERIES : [];
+    const sbDone = b => b.visited || (b.expedition && loggedIds.has(b.expedition));
+    const tripHref = id => id && loggedIds.has(id) ? `expedition.html?id=${id}` : "";
+
+    // Summary tiles
+    const tiles = [
+      ["#springs", "Springs Breweries", SB.filter(sbDone).length, SB.length, "mug"],
+      ["#fourteeners", "Colorado 14ers", summited().length, PEAKS14.length, "peak"],
+      ["#ballparks", "MLB Ballparks", parksVisited().length, PARKS.length, "park"]
+    ];
+    $("#st-summary").innerHTML = tiles.map(([h, l, d, t, ic]) => `
+      <a class="st-tile" href="${h}">
+        <span class="st-icon${t && d === t ? " done" : ""}">${icon(ic === "peak" ? ICONS.peak[0] : ICONS[ic])}</span>
+        <span><strong>${d}<small> / ${t}</small></strong><span class="lbl">${l}</span>
+        <span class="pbar"><span style="width:${t ? d / t * 100 : 0}%"></span></span></span>
+      </a>`).join("");
+
+    // Springs breweries
+    $("#st-springs").innerHTML = stGroup(`Colorado Springs (${SB.length} breweries)`, SB.map(b => stItem({
+      done: sbDone(b), href: tripHref(b.expedition) || "SpringsBrewery.html", svg: ICONS.mug,
+      top: sbDone(b) ? "Visited" : "To visit", name: b.name, sub: b.note || ""
+    })));
+
+    // 14ers grouped by range (most peaks first)
+    const ranges = [...new Set(PEAKS14.map(p => p.range))]
+      .sort((a, b) => PEAKS14.filter(p => p.range === b).length - PEAKS14.filter(p => p.range === a).length || a.localeCompare(b));
+    $("#st-peaks").innerHTML = ranges.map(r => {
+      const list = PEAKS14.filter(p => p.range === r).sort((a, b) => b.elev - a.elev);
+      return stGroup(`${r} Range (${list.length} peak${list.length === 1 ? "" : "s"})`, list.map(p => stItem({
+        done: isSummited(p), href: reportHref(p) || `peaks.html?range=${encodeURIComponent(p.range)}#list`, svg: ICONS.peak[p.rank % 3],
+        top: `${p.elev.toLocaleString()} ft`, name: p.name
+      })));
+    }).join("");
+
+    // Ballparks grouped by division
+    $("#st-parks").innerHTML = DIVS.map(d => {
+      const list = PARKS.filter(p => p.div === d);
+      return stGroup(`${d} (${list.filter(p => p.visited).length} of ${list.length})`, list.map(p => stItem({
+        done: p.visited, href: reportHref(p) || `ballparks.html?div=${encodeURIComponent(d)}#list`, svg: ICONS.park,
+        top: p.city, name: p.park, sub: p.team
+      })));
+    }).join("");
+  }
+
   function lightbox(photos) {
     const lb = $("#lightbox"); if (!lb || !photos.length) return;
     const img = $("img", lb); let idx = 0;
@@ -507,6 +580,7 @@
     if (page === "log") renderLog();
     if (page === "peaks") renderPeaks();
     if (page === "ballparks") renderBallparks();
+    if (page === "status") renderStatus();
     if (page === "expedition") renderExpedition();
   });
 })();
