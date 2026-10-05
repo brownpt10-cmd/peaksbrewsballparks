@@ -1,0 +1,159 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Springs Brewery Passport</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a single passport column — tally header, filter chips, then one stamp row per brewery */
+:root{
+  --bg:#f6f8f5; --card:#ffffff; --ink:#1d2a22; --muted:#5d6b62; --line:#dde4de;
+  --hop:#2f6b3f; --hop-soft:#e3efe5; --amber:#c98a12; --amber-soft:#fbf1dc;
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Figtree",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131a15; --card:#1b241e; --ink:#e7eee8; --muted:#9fb0a4; --line:#2c3a30;
+  --hop:#6fbf83; --hop-soft:#22352a; --amber:#e8ac3a; --amber-soft:#3a2f17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131a15; --card:#1b241e; --ink:#e7eee8; --muted:#9fb0a4; --line:#2c3a30;
+  --hop:#6fbf83; --hop-soft:#22352a; --amber:#e8ac3a; --amber-soft:#3a2f17; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body)}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:28px 48px;display:grid;gap:20px}
+header{display:grid;gap:6px}
+.eyebrow{font:500 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hop)}
+h1{font:800 clamp(28px,6vw,40px)/1.05 var(--f-display);margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:0}
+.tally{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px}
+.tally-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.count{font:800 34px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.count small{font:500 15px var(--f-body);color:var(--muted)}
+.pct{font:500 13px var(--f-mono);color:var(--amber)}
+.bar{height:10px;background:var(--amber-soft);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--amber);border-radius:99px;transition:width .4s ease}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:600 13px var(--f-body);padding:7px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--hop);border-color:var(--hop);color:var(--card)}
+.chip:focus-visible,.stamp:focus-visible,input:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+ol{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:12px 16px;border-top:1px solid var(--line);align-items:center}
+li:first-child{border-top:0}
+li.done{background:var(--hop-soft)}
+.stamp{width:34px;height:34px;border-radius:50%;border:2px dashed var(--muted);background:transparent;cursor:pointer;display:grid;place-items:center;color:transparent;font-size:16px;grid-row:span 2;align-self:start}
+li.done .stamp{border:2px solid var(--hop);background:var(--hop);color:var(--card)}
+.name{font:600 16px/1.3 var(--f-body);min-width:0}
+li.done .name{color:var(--hop)}
+.meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;min-width:0}
+.meta input{font:14px var(--f-body);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:5px 8px;min-width:0}
+.meta input[type=date]{font-family:var(--f-mono);font-size:13px}
+.meta input[type=text]{flex:1 1 180px}
+.idx{font:500 12px var(--f-mono);color:var(--muted)}
+.empty{padding:20px 16px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted)}
+.note a{color:var(--hop)}
+.status{font-size:13px;color:var(--amber)}
+@media (max-width:480px){li{padding:12px}.count{font-size:28px}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Peaks to Brews to Ballparks · Brews</span>
+    <h1>Springs Brewery Passport</h1>
+    <p class="sub">Every Colorado Springs brewery. Tap the circle to stamp a visit.</p>
+  </header>
+
+  <section class="tally" aria-label="Progress">
+    <div class="tally-top">
+      <div class="count" id="count">0 <small>of 22 visited</small></div>
+      <div class="pct" id="pct">0%</div>
+    </div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="status" id="status" hidden></div>
+  </section>
+
+  <div class="chips" role="group" aria-label="Filter">
+    <button class="chip" data-f="all" aria-pressed="true">All</button>
+    <button class="chip" data-f="todo" aria-pressed="false">To visit</button>
+    <button class="chip" data-f="done" aria-pressed="false">Visited</button>
+  </div>
+
+  <ol id="list"></ol>
+
+  <p class="note">Source: <a href="https://www.coloradobrewerylist.com/brewery_city/colorado-springs/">coloradobrewerylist.com — Colorado Springs</a></p>
+</div>
+
+<script>
+const BREWERIES=["Brass Brewing Company","Bristol Brewing Company","Cerberus Brewing Company","Cogstone Brewing Company","Colorado Mountain Brewery","FH Beerworks","Fossil Craft Beer Company","Goat Patch Brewing Company","Local Relic Artisan Ales","Mash Mechanix Brewing Co.","Metric Brewing","Nano 108 Brewing","OCC Brewing","Peaks N Pines Brewery","Phantom Canyon Brewing Company","Pikes Peak Brewing Co.","Red Leg Brewing Company","Red Swing Brewhouse","Smiling Toad Brewing Co.","Storybook Brewing","Trinity Brewing Company","Whistle Pig Brewing Company"];
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const today=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+let visits={}; let filter="all"; let col=null; let readOnly=false;
+const LS="cos-brew-passport";
+const $=id=>document.getElementById(id);
+
+function showStatus(t){const s=$("status");s.textContent=t;s.hidden=!t}
+
+function render(){
+  const done=BREWERIES.filter(b=>visits[slug(b)]?.visited).length;
+  $("count").innerHTML=done+" <small>of "+BREWERIES.length+" visited</small>";
+  const p=Math.round(done/BREWERIES.length*100);
+  $("pct").textContent=p+"%"; $("bar").style.width=p+"%";
+  const list=$("list"); list.innerHTML="";
+  const rows=BREWERIES.map((b,i)=>({b,i,id:slug(b),v:visits[slug(b)]||{}}))
+    .filter(r=>filter==="all"||(filter==="done"?r.v.visited:!r.v.visited));
+  if(!rows.length){list.innerHTML='<li class="empty">'+(filter==="done"?"No stamps yet. Go grab a pint.":"All 22 stamped. Passport complete.")+'</li>';return}
+  for(const r of rows){
+    const li=document.createElement("li"); if(r.v.visited) li.className="done";
+    const btn=document.createElement("button"); btn.className="stamp"; btn.textContent="✓";
+    btn.setAttribute("aria-label",(r.v.visited?"Unmark ":"Mark visited: ")+r.b);
+    btn.setAttribute("aria-pressed",!!r.v.visited);
+    btn.disabled=readOnly;
+    btn.onclick=()=>save(r.id,r.v.visited?{visited:false}:{visited:true,date:r.v.date||today(),note:r.v.note||""});
+    const name=document.createElement("div"); name.className="name"; name.textContent=r.b;
+    const meta=document.createElement("div"); meta.className="meta";
+    if(r.v.visited){
+      const d=document.createElement("input"); d.type="date"; d.id="d-"+r.id; d.value=r.v.date||""; d.disabled=readOnly;
+      d.setAttribute("aria-label","Visit date for "+r.b);
+      d.onchange=()=>save(r.id,{...r.v,date:d.value});
+      const n=document.createElement("input"); n.type="text"; n.id="n-"+r.id; n.placeholder="Favorite pour / notes"; n.value=r.v.note||""; n.disabled=readOnly;
+      n.setAttribute("aria-label","Notes for "+r.b);
+      n.onchange=()=>save(r.id,{...r.v,note:n.value.trim()});
+      meta.append(d,n);
+    } else {
+      const s=document.createElement("span"); s.className="idx"; s.textContent="#"+String(r.i+1).padStart(2,"0"); meta.append(s);
+    }
+    li.append(btn,name,meta); list.append(li);
+  }
+}
+
+async function save(id,data){
+  const prev=visits[id]; visits={...visits,[id]:data}; render();
+  if(col){
+    try{ await col.doc(id).set(data); showStatus(""); }
+    catch(e){ visits={...visits,[id]:prev}; render(); showStatus("Couldn't save that change. Check your connection and try again."); }
+  } else {
+    try{ localStorage.setItem(LS,JSON.stringify(visits)); }catch(e){}
+  }
+}
+
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
+  filter=c.dataset.f; document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===c)); render();
+});
+
+try{ visits=JSON.parse(localStorage.getItem(LS)||"{}")||{}; }catch(e){ visits={}; }
+render();
+
+(async()=>{
+  const db=window.claude?await window.claude.use("db"):null;
+  if(!db){ showStatus("Saving on this device only."); return; }
+  col=db.collection("visits");
+  col.onSnapshot(snap=>{
+    const v={}; snap.docs.forEach(d=>{ if(d.exists) v[d.id]=d.data(); });
+    visits=v; render();
+  },e=>{
+    if(e&&e.code==="permission_denied"){ readOnly=true; render(); showStatus("View only."); }
+  });
+})();
+</script>
+
+</body></html>

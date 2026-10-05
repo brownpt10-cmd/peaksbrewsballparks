@@ -24,10 +24,10 @@ Challenge/
 
 ## Add an expedition
 
-1. Put original photos in `Images/<Brews|Peaks|Ballparks>/<Folder>/`.
+1. Put original photos in `Images/<Brews|Peaks|Ballparks>/<State>/<Folder>/`.
 2. Make web-sized copies:
    ```
-   python3 tools/resize_photos.py Images/Brews/Red_Leg red-leg
+   python3 tools/resize_photos.py Images/Brews/Colorado/Red_Leg red-leg
    ```
    → writes `assets/photos/red-leg/img_xxxx.jpg` and prints the `photos:` list to paste.
 3. In `assets/js/data.js`, add (or update) an entry with `id: "red-leg"`, set `status: "logged"`, fill in title, location, date, summary, story, cover and photos. Put newest at the top.
