@@ -9,7 +9,7 @@ export GIT_DIR="${PBB_GIT_DIR:-$HOME/pbb.git}" GIT_WORK_TREE="$SITE"
 T=$(python3 -c "import re;print(re.search(r'github_pat_[A-Za-z0-9_]+',open('$SITE/PAT.md').read()).group(0))")
 AUTH="Authorization: Basic $(printf 'x-access-token:%s' "$T" | base64 | tr -d '\n')"
 if [ ! -d "$GIT_DIR" ]; then
-  git init -q --bare "$GIT_DIR"; git config core.bare false; git symbolic-ref HEAD refs/heads/main
+  env -u GIT_DIR -u GIT_WORK_TREE git init -q --bare "$GIT_DIR"; git config core.bare false; git symbolic-ref HEAD refs/heads/main
 fi
 git config user.name "Pat Brown"
 git config user.email "289498565+brownpt10-cmd@users.noreply.github.com"
