@@ -13,7 +13,7 @@
 
 const BALLPARKS = [
   // ---------- AL East ----------
-  { abbr: "BAL", team: "Baltimore Orioles",     park: "Oriole Park at Camden Yards", city: "Baltimore, MD",       div: "AL East",    opened: 1992, visited: true,  date: "", expedition: "camden-yards" },
+  { abbr: "BAL", team: "Baltimore Orioles",     park: "Oriole Park at Camden Yards", city: "Baltimore, MD",       div: "AL East",    opened: 1992, visited: true,  date: "", expedition: "" },
   { abbr: "BOS", team: "Boston Red Sox",        park: "Fenway Park",                 city: "Boston, MA",          div: "AL East",    opened: 1912, visited: true,  date: "", expedition: "fenway-park" },
   { abbr: "NYY", team: "New York Yankees",      park: "Yankee Stadium",              city: "Bronx, NY",           div: "AL East",    opened: 2009, visited: false, date: "", expedition: "" },
   { abbr: "TB",  team: "Tampa Bay Rays",        park: "Tropicana Field",             city: "St. Petersburg, FL",  div: "AL East",    opened: 1990, visited: false, date: "", expedition: "" },
@@ -27,7 +27,7 @@ const BALLPARKS = [
   // ---------- AL West ----------
   { abbr: "ATH", team: "Athletics",             park: "Sutter Health Park",          city: "West Sacramento, CA", div: "AL West",    opened: 2000, visited: false, date: "", expedition: "" },
   { abbr: "HOU", team: "Houston Astros",        park: "Daikin Park",                 city: "Houston, TX",         div: "AL West",    opened: 2000, visited: false, date: "", expedition: "" },
-  { abbr: "LAA", team: "Los Angeles Angels",    park: "Angel Stadium",               city: "Anaheim, CA",         div: "AL West",    opened: 1966, visited: true,  date: "", expedition: "angel-stadium" },
+  { abbr: "LAA", team: "Los Angeles Angels",    park: "Angel Stadium",               city: "Anaheim, CA",         div: "AL West",    opened: 1966, visited: true,  date: "", expedition: "" },
   { abbr: "SEA", team: "Seattle Mariners",      park: "T-Mobile Park",               city: "Seattle, WA",         div: "AL West",    opened: 1999, visited: false, date: "", expedition: "" },
   { abbr: "TEX", team: "Texas Rangers",         park: "Globe Life Field",            city: "Arlington, TX",       div: "AL West",    opened: 2020, visited: false, date: "", expedition: "" },
   // ---------- NL East ----------

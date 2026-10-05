@@ -8,7 +8,8 @@
    Logged trips are sorted newest-first by date automatically (undated ones go last).
 
    category: "peaks" | "brews" | "ballparks"
-   date:     "YYYY-MM-DD"  (leave "" if unknown — shows "Date TBD")
+   date:     "YYYY-MM-DD", "YYYY-MM" or "YYYY"  (leave "" if unknown — shows "Date TBD")
+   dateText: optional display text instead of the date, e.g. "Multiple visits"
    rating:   1–5 or null
    crew:     who went (optional — shows in the facts bar)
    facts:    any label/value pairs you want in the dark facts bar on the detail page
@@ -25,7 +26,7 @@ const CATEGORIES = {
   peaks: {
     label: "Peaks",
     blurb: "All 58 Colorado 14ers — plus any summit worth the climb.",
-    cover: "",                       // add a photo path once you have one
+    cover: "assets/photos/pikes-peak/pikes-peak-01.jpg",
     page: "peaks.html",              // Peaks has its own page (the 14ers tracker)
     regions: ["Sawatch", "Front", "San Juan", "Sangre de Cristo", "Elk", "Mosquito"]   // 14er ranges in the menu
   },
@@ -34,13 +35,15 @@ const CATEGORIES = {
     blurb: "Breweries, beer halls and pubs — logged one pint at a time.",
     cover: "assets/photos/mash-mechanix/img_3548.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
-    regions: ["Colorado", "Arizona", "California", "Germany", "Ireland"]
+    regions: ["Colorado", "New Mexico", "Arizona", "California", "Florida", "Bahamas", "Germany", "Ireland"],
+    extraLinks: [["Springs Brewery Passport", "SpringsBrewery.html"]]   // extra links shown in the Brews menu
   },
   ballparks: {
     label: "Ballparks",
-    blurb: "Every park, every seat, every hot dog — scored.",
-    cover: "",
-    regions: ["MLB", "Minor League", "Spring Training"]
+    blurb: "All 30 MLB ballparks — every seat, every hot dog, scored.",
+    cover: "assets/photos/fenway-park/fenway-park-02.jpg",
+    page: "ballparks.html",          // Ballparks has its own page (the 30-park tracker)
+    regions: ["AL East", "AL Central", "AL West", "NL East", "NL Central", "NL West"]   // divisions in the menu
   }
 };
 
@@ -191,8 +194,158 @@ const EXPEDITIONS = [
     photos: ["img_2344","img_2349","img_2685","img_2686","img_2688","img_2689","img_3418"]
   },
 
+  /* ---- Added from Images/Brews (Arizona, Florida, Bahamas, New Mexico) — notes to come ---- */
+  {
+    id: "barrio", title: "Barrio Brewing Co.", category: "brews", status: "logged",
+    location: "Tucson, AZ", region: "Arizona", date: "", rating: null,
+    summary: "A Tucson favorite — the big B silo out front and a long chalkboard of house beers.",
+    story: [], facts: {},
+    cover: "assets/photos/barrio/barrio-02.jpg",
+    photos: ["barrio-01","barrio-02","barrio-03","barrio-04","barrio-05","barrio-06"]
+  },
+  {
+    id: "wren-sudhalle", title: "Wren Südhalle", category: "brews", status: "logged",
+    location: "Phoenix, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Wren House's south-side beer hall in Ahwatukee.",
+    story: [], facts: {},
+    cover: "assets/photos/wren-sudhalle/wren-sudhalle-02.jpg",
+    photos: ["wren-sudhalle-01","wren-sudhalle-02","wren-sudhalle-03","wren-sudhalle-04"]
+  },
+  {
+    id: "hell-n-blazes", title: "Hell 'n Blazes Brewing Co.", category: "brews", status: "logged",
+    location: "Melbourne, FL", region: "Florida", date: "", rating: null,
+    summary: "A historic brick building in downtown Melbourne with a big board of house beers.",
+    story: [], facts: {},
+    cover: "assets/photos/hell-n-blazes/hell-n-blazes-03.jpg",
+    photos: ["hell-n-blazes-01","hell-n-blazes-02","hell-n-blazes-03","hell-n-blazes-04","hell-n-blazes-05","hell-n-blazes-06"]
+  },
+  {
+    id: "intracoastal", title: "Intracoastal Brewing Co.", category: "brews", status: "logged",
+    location: "Melbourne, FL", region: "Florida", date: "", rating: null,
+    summary: "Murals, flights on the patio and the brewhouse right behind the bar.",
+    story: [], facts: {},
+    cover: "assets/photos/intracoastal/intracoastal-01.jpg",
+    photos: ["intracoastal-01","intracoastal-02","intracoastal-03","intracoastal-04","intracoastal-05","intracoastal-06","intracoastal-07"]
+  },
+  {
+    id: "rockpit", title: "RockPit Brewing", category: "brews", status: "logged",
+    location: "Orlando, FL", region: "Florida", date: "", rating: null,
+    summary: "Brewery and distillery in Orlando's SoDo district.",
+    story: [], facts: {},
+    cover: "assets/photos/rockpit/rockpit-03.jpg",
+    photos: ["rockpit-01","rockpit-02","rockpit-03","rockpit-04","rockpit-05","rockpit-06","rockpit-07","rockpit-08"]
+  },
+  {
+    id: "pirate-republic", title: "Pirate Republic Brewing Co.", category: "brews", status: "logged",
+    location: "Nassau, Bahamas", region: "Bahamas", date: "", rating: null,
+    summary: "The Bahamas' craft brewery — taproom and restaurant in downtown Nassau.",
+    story: [], facts: {},
+    cover: "assets/photos/pirate-republic/pirate-republic-03.jpg",
+    photos: ["pirate-republic-01","pirate-republic-02","pirate-republic-03","pirate-republic-04","pirate-republic-05","pirate-republic-06","pirate-republic-07"]
+  },
+  {
+    id: "alien-brewpub", title: "Alien Brewpub", category: "brews", status: "logged",
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Little green men on the walls and a chalkboard of out-of-this-world names.",
+    story: [], facts: {},
+    cover: "assets/photos/alien-brewpub/alien-brewpub-01.jpg",
+    photos: ["alien-brewpub-01","alien-brewpub-02","alien-brewpub-03","alien-brewpub-04","alien-brewpub-05"]
+  },
+  {
+    id: "bow-and-arrow", title: "Bow & Arrow Brewing Co.", category: "brews", status: "logged",
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Barrel room, copper tanks and a big open taproom.",
+    story: [], facts: {},
+    cover: "assets/photos/bow-and-arrow/bow-and-arrow-06.jpg",
+    photos: ["bow-and-arrow-01","bow-and-arrow-02","bow-and-arrow-03","bow-and-arrow-04","bow-and-arrow-05","bow-and-arrow-06","bow-and-arrow-07"]
+  },
+  {
+    id: "la-cumbre", title: "La Cumbre Brewing Co.", category: "brews", status: "logged",
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Albuquerque institution with murals inside and out.",
+    story: [], facts: {},
+    cover: "assets/photos/la-cumbre/la-cumbre-01.jpg",
+    photos: ["la-cumbre-01","la-cumbre-02","la-cumbre-03","la-cumbre-04","la-cumbre-05","la-cumbre-06","la-cumbre-07","la-cumbre-08","la-cumbre-09","la-cumbre-10"]
+  },
+  {
+    id: "lizard-tail", title: "Lizard Tail Brewing", category: "brews", status: "logged",
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Neighborhood taproom with live music and colorful art.",
+    story: [], facts: {},
+    cover: "assets/photos/lizard-tail/lizard-tail-02.jpg",
+    photos: ["lizard-tail-01","lizard-tail-02","lizard-tail-03","lizard-tail-04","lizard-tail-05","lizard-tail-06","lizard-tail-07"]
+  },
+  {
+    id: "marble", title: "Marble Brewery", category: "brews", status: "logged",
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Downtown Albuquerque's flagship brewery and patio.",
+    story: [], facts: {},
+    cover: "assets/photos/marble/marble-01.jpg",
+    photos: ["marble-01","marble-02","marble-03","marble-04","marble-05","marble-06","marble-07"]
+  },
+  {
+    id: "nexus", title: "Nexus Brewery", category: "brews", status: "logged",
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Brewery, restaurant and smokehouse.",
+    story: [], facts: {},
+    cover: "assets/photos/nexus/nexus-07.jpg",
+    photos: ["nexus-01","nexus-02","nexus-03","nexus-04","nexus-05","nexus-06","nexus-07","nexus-08"]
+  },
+  {
+    id: "red-door", title: "Red Door Brewing Co.", category: "brews", status: "logged",
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Red doors, red stools and a long tap list.",
+    story: [], facts: {},
+    cover: "assets/photos/red-door/red-door-02.jpg",
+    photos: ["red-door-01","red-door-02","red-door-03","red-door-04","red-door-05"]
+  },
+  /* ---- Ballparks (from notes) ---- */
+  {
+    id: "fenway-park", title: "Fenway Park", category: "ballparks", status: "logged",
+    location: "Boston, MA", region: "AL East", date: "2014", dateText: "1976 · 2011 · 2013–14", rating: null,
+    crew: "Pat and Terri",
+    summary: "My team, my park — multiple trips to Fenway.",
+    story: [
+      "The Red Sox are my team and have been for as long as I can remember. While in London, I played for a baseball team called the Red Sox at West Ruislip Air Base.",
+      "Sometime in 1976, when my Dad and I came back to Boston, I went to a game against the Royals. I don't remember much, but I do recall the large brick wall outside and sitting in the right field stands on a low-cloud, foggy night.",
+      "In 2011 we went back for the first time, with a tour and then a game. In 2013 I was assigned to the Naval War College in Newport, RI, and we went to games in that World Series–winning year as much as we could. We went a few times in 2014 as well.",
+      "Time to get back to the pahk!"
+    ],
+    facts: { "Team": "Boston Red Sox" },
+    cover: "assets/photos/fenway-park/fenway-park-01.jpg",
+    photos: ["fenway-park-01","fenway-park-02"]
+  },
+  {
+    id: "coors-field", title: "Coors Field", category: "ballparks", status: "logged",
+    location: "Denver, CO", region: "NL West", date: "", dateText: "Multiple visits", rating: null,
+    summary: "Coors Field is a great place to catch a game.",
+    story: [],
+    facts: { "Team": "Colorado Rockies", "Matchup": "vs. Dodgers", "Seats": "Upper tiers" },
+    cover: "", photos: []
+  },
+  {
+    id: "chase-field", title: "Chase Field", category: "ballparks", status: "logged",
+    location: "Phoenix, AZ", region: "NL West", date: "2023", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "A Diamondbacks game under the roof.",
+    story: [
+      "I don't remember the details now, but we went to a game at the ballpark. Roof closed. Good stadium, if a bit cavernous."
+    ],
+    facts: { "Team": "Arizona Diamondbacks", "Seats": "First base line toward right field" },
+    cover: "", photos: []
+  },
+  {
+    id: "petco-park", title: "Petco Park", category: "ballparks", status: "logged",
+    location: "San Diego, CA", region: "NL West", date: "2016-05", rating: null,
+    crew: "Pat and Terri",
+    summary: "San Diego trip with a tour of Petco Park.",
+    story: [
+      "While we didn't attend a game, we got a tour of the ballpark."
+    ],
+    facts: { "Team": "San Diego Padres", "Visit": "Ballpark tour (no game)" },
+    cover: "", photos: []
+  },
   /* ----------------------------- PLANNED ---------------------------- */
-  /* Photo folders already exist in Images/ for these — fill in when done. */
   { id: "red-leg",    title: "Red Leg",    category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "goat-patch", title: "Goat Patch", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "105-west",   title: "105 West",   category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
@@ -200,5 +353,28 @@ const EXPEDITIONS = [
   { id: "animas",     title: "Animas",     category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "ska",        title: "Ska",        category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "oak-creek",  title: "Oak Creek",  category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  /* From the notes folder (templates not filled in yet) */
+  { id: "armillary", title: "Armillary", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "bristol", title: "Bristol Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "cerberus", title: "Cerberus Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "cogstone", title: "Cogstone Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "colorado-mountain", title: "Colorado Mountain Brewery", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "deuces-wild", title: "Deuces Wild", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "fossil-craft", title: "Fossil Craft Beer", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "gunslinger", title: "Gunslinger", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "jaks", title: "Jak's Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "local-relic", title: "Local Relic Artisan Ales", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "lost-friend", title: "Lost Friend Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "nano-108", title: "Nano 108 Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "occ", title: "OCC Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "phantom-canyon", title: "Phantom Canyon Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "south-park", title: "South Park Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "storybook", title: "Storybook Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "urban-animal", title: "Urban Animal", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "voodoo", title: "VooDoo", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "wackadoo", title: "Wackadoo", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "westfax", title: "WestFax Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "whistle-pig", title: "Whistle Pig Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
+  { id: "pikes-peak", title: "Pikes Peak", category: "peaks", status: "planned", location: "Colorado Springs, CO", date: "", summary: "", cover: "assets/photos/pikes-peak/pikes-peak-01.jpg", photos: [] },
   { id: "sedona",     title: "Sedona",     category: "peaks", status: "planned", location: "Sedona, AZ", date: "", summary: "", cover: "", photos: [] }
 ];

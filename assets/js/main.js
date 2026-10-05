@@ -26,11 +26,20 @@
   // expedition: "trip-id" → detail page; a full URL or .html path is used as-is
   const reportHref = p => !p.expedition ? "" : /[\/.]/.test(p.expedition) ? p.expedition : `expedition.html?id=${p.expedition}`;
 
+  // Accepts "YYYY-MM-DD", "YYYY-MM" or "YYYY"
   const fmtDate = d => {
     if (!d) return "Date TBD";
-    const dt = new Date(d + "T12:00:00");
-    return dt.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    const [y, m, day] = d.split("-").map(Number);
+    if (!m) return String(y);
+    const dt = new Date(y, m - 1, day || 1, 12);
+    return dt.toLocaleDateString("en-US", day ? { month: "short", day: "numeric", year: "numeric" } : { month: "short", year: "numeric" });
   };
+  const when = e => e.dateText || fmtDate(e.date);
+
+  // MLB ballparks helpers (ballparks.js)
+  const PARKS = typeof BALLPARKS !== "undefined" ? BALLPARKS : [];
+  const DIVS  = typeof DIVISIONS !== "undefined" ? DIVISIONS : [];
+  const parksVisited = () => PARKS.filter(p => p.visited);
   const photoPath = (e, p) => `assets/photos/${e.id}/${p}.jpg`;
   const media = (src, cat, alt) => src
     ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`
@@ -75,14 +84,35 @@
     return [...new Set([...(c.regions || []), ...byCat(cat).map(e => e.region).filter(Boolean)])];
   }
 
+  function ballparksMega() {
+    const done = parksVisited();
+    return `
+      <div class="mega"><div class="mega-inner">
+        <div class="mega-col">
+          <a class="hl" href="ballparks.html">30 MLB Ballparks</a>
+          ${DIVS.map(d => `<a href="ballparks.html?div=${encodeURIComponent(d)}#list">${esc(d)}</a>`).join("")}
+          <a class="all" href="ballparks.html#list">All 30 Ballparks</a>
+        </div>
+        <div class="mega-col mega-col--sub">
+          <a href="ballparks.html#progress">${done.length} of ${PARKS.length} visited</a>
+          <a href="ballparks.html#divisions">By Division</a>
+          ${done.slice(0, 5).map(p => `<a href="${reportHref(p) || "ballparks.html#list"}">✓ ${esc(p.park)}</a>`).join("")}
+          <a href="expeditions.html?cat=ballparks">Ballpark trip reports</a>
+        </div>
+        <div class="mega-features">${featureCards(byCat("ballparks"))}</div>
+      </div></div>`;
+  }
+
   function catMega(cat) {
     if (cat === "peaks") return peaksMega();
+    if (cat === "ballparks") return ballparksMega();
     const c = CATEGORIES[cat];
     const items = byCat(cat);
     return `
       <div class="mega"><div class="mega-inner">
         <div class="mega-col">
           ${regionsFor(cat).map(r => `<a href="expeditions.html?cat=${cat}&region=${encodeURIComponent(r)}">${esc(r)}</a>`).join("")}
+          ${(c.extraLinks || []).map(([l, h]) => `<a class="hl" href="${esc(h)}">${esc(l)}</a>`).join("")}
           <a class="all" href="expeditions.html?cat=${cat}">All ${esc(c.label)}</a>
         </div>
         <div class="mega-col mega-col--sub">
@@ -117,6 +147,7 @@
       if (key === "log" && page === "log" && !cat) return ' aria-current="page"';
       if (CATEGORIES[key] && page === "log" && cat === key) return ' aria-current="page"';
       if (key === "peaks" && page === "peaks") return ' aria-current="page"';
+      if (key === "ballparks" && page === "ballparks") return ' aria-current="page"';
       return "";
     };
     const header = document.createElement("header");
@@ -213,7 +244,7 @@
       <a class="card${isPlanned ? " card--planned" : ""}" href="${href}">
         <div class="card-media">${media(e.cover, e.category, e.title)}<span class="tag tag--${e.category}">${esc(catLabel(e.category))}</span></div>
         <div class="card-body">
-          <div class="card-meta">${esc(e.location || "Location TBD")} · ${isPlanned ? "Up next" : fmtDate(e.date)}</div>
+          <div class="card-meta">${esc(e.location || "Location TBD")} · ${isPlanned ? "Up next" : esc(when(e))}</div>
           <h3>${esc(e.title)}</h3>
           <p>${esc(e.summary || "")}</p>
           ${isPlanned ? "" : `<span class="text-link">Read the log →</span>`}
@@ -233,14 +264,14 @@
     const set = (id, v) => { const el = $(id); if (el) el.textContent = v; };
     set("#stat-peaks", summited().length);
     set("#stat-brews", byCat("brews").length);
-    set("#stat-ballparks", byCat("ballparks").length);
+    set("#stat-ballparks", parksVisited().length);
     set("#stat-places", new Set(logged.map(e => e.location).filter(Boolean)).size);
     // Pillars
     const pillars = $("#pillars");
     if (pillars) pillars.innerHTML = Object.entries(CATEGORIES).map(([k, c]) => `
       <a class="pillar" href="${catHref(k)}">
         ${media(c.cover, k, c.label)}
-        <div class="pillar-body"><span class="tag tag--${k}">${k === "peaks" ? `${summited().length} / ${PEAKS14.length} 14ers` : `${byCat(k).length} logged`}</span><h3>${esc(c.label)}</h3><p>${esc(c.blurb)}</p></div>
+        <div class="pillar-body"><span class="tag tag--${k}">${k === "peaks" ? `${summited().length} / ${PEAKS14.length} 14ers` : k === "ballparks" ? `${parksVisited().length} / ${PARKS.length} MLB parks` : `${byCat(k).length} logged`}</span><h3>${esc(c.label)}</h3><p>${esc(c.blurb)}</p></div>
       </a>`).join("");
     // Latest
     const grid = $("#latest");
@@ -287,9 +318,11 @@
     $("#exp-title").textContent = e.title;
     $("#exp-summary").textContent = e.summary || "";
 
-    const facts = { "Category": catLabel(e.category), "Location": e.location || "TBD", "Date": fmtDate(e.date),
+    const facts = { "Category": catLabel(e.category), "Location": e.location || "TBD", "Date": when(e),
       "Rating": e.rating ? "★".repeat(e.rating) + "☆".repeat(5 - e.rating) : "TBD",
       ...(e.crew ? { "Crew": e.crew } : {}), ...(e.facts || {}) };
+    const park = PARKS.find(p => p.expedition === e.id);
+    if (park) Object.assign(facts, { "Ballpark": park.park, "Division": park.div, "Opened": String(park.opened) });
     const fourteener = PEAKS14.find(p => p.expedition === e.id);
     if (fourteener) Object.assign(facts, {
       "Elevation": `${fourteener.elev.toLocaleString()} ft`,
@@ -298,7 +331,9 @@
       "14er #": `${fourteener.rank} of ${PEAKS14.length}`
     });
     $("#exp-facts").innerHTML = Object.entries(facts).map(([k, v]) => `<div class="fact"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join("");
-    $("#exp-story").innerHTML = (e.story || []).map(p => `<p>${esc(p)}</p>`).join("");
+    $("#exp-story").innerHTML = (e.story || []).length
+      ? e.story.map(p => `<p>${esc(p)}</p>`).join("")
+      : `<p class="muted">Field notes coming soon.</p>`;
 
     const photos = (e.photos || []).map(p => photoPath(e, p));
     $("#exp-gallery").innerHTML = photos.map((src, i) => `<button data-i="${i}" aria-label="Open photo ${i + 1}"><img src="${src}" alt="${esc(e.title)} photo ${i + 1}" loading="lazy"></button>`).join("");
@@ -378,6 +413,74 @@
       `<div class="empty">No peak trip reports yet — the first summit is out there.</div>`;
   }
 
+  /* ------------------------------------------------------------------ */
+  /* Ballparks page — 30 MLB parks tracker                               */
+  /* ------------------------------------------------------------------ */
+  function renderBallparks() {
+    const done = parksVisited().length, total = PARKS.length;
+    $("#progress-count").textContent = done;
+    $("#progress-total").textContent = total;
+    $("#progress-left").textContent = total - done;
+    $("#progress-pct").textContent = Math.round(done / total * 100) + "%";
+    requestAnimationFrame(() => { $("#progress-bar").style.width = (done / total * 100) + "%"; });
+
+    $("#divisions-grid").innerHTML = DIVS.map(d => {
+      const parks = PARKS.filter(p => p.div === d);
+      return `<div class="div-card"><h3>${esc(d)} <span>${parks.filter(p => p.visited).length}/${parks.length}</span></h3>
+        <ul>${parks.map(p => `<li class="${p.visited ? "done" : ""}"><span class="abbr">${esc(p.abbr)}</span>${esc(p.park)}${p.visited ? ' <span class="check">✓</span>' : ""}</li>`).join("")}</ul></div>`;
+    }).join("");
+
+    let filter = "all", div = params.get("div") || "all", sortKey = "div", asc = true;
+    const sel = $("#div-filter");
+    DIVS.forEach(d => sel.add(new Option(d, d)));
+    if (!DIVS.includes(div)) div = "all";
+    sel.value = div;
+
+    const chips = $("#park-filters");
+    chips.innerHTML = [["all", "All"], ["visited", "Visited"], ["todo", "To visit"]]
+      .map(([k, l]) => `<button class="chip" data-f="${k}">${l}</button>`).join("");
+
+    const draw = () => {
+      const rows = PARKS
+        .filter(p => (filter === "all" || (filter === "visited" ? p.visited : !p.visited)) && (div === "all" || p.div === div))
+        .sort((a, b) => {
+          const x = sortKey === "div" ? DIVS.indexOf(a.div) : a[sortKey], y = sortKey === "div" ? DIVS.indexOf(b.div) : b[sortKey];
+          const c = typeof x === "number" || typeof x === "boolean" ? Number(x) - Number(y) : String(x).localeCompare(String(y));
+          return (asc ? c : -c) || a.park.localeCompare(b.park);
+        });
+      $("#park-body").innerHTML = rows.map(p => {
+        const href = reportHref(p);
+        return `
+        <tr class="${p.visited ? "done" : ""}">
+          <td><strong>${esc(p.park)}</strong></td>
+          <td>${esc(p.team)}</td>
+          <td>${esc(p.city)}</td>
+          <td>${esc(p.div)}</td>
+          <td class="num">${p.opened}</td>
+          <td>${p.visited ? `<span class="check">✓</span> ${p.date ? fmtDate(p.date) : "Visited"}` : '<span class="muted">—</span>'}</td>
+          <td>${href ? `<a class="text-link" href="${esc(href)}">View game &amp; photos →</a>` : '<span class="muted">Coming soon</span>'}</td>
+        </tr>`;
+      }).join("") || `<tr><td colspan="7" class="muted">No ballparks match.</td></tr>`;
+      $("#park-count").textContent = `${rows.length} ballpark${rows.length === 1 ? "" : "s"}`;
+      $$(".chip", chips).forEach(c => c.classList.toggle("active", c.dataset.f === filter));
+      $$("th[data-sort]").forEach(th => th.dataset.dir = th.dataset.sort === sortKey ? (asc ? "asc" : "desc") : "");
+    };
+    chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { filter = b.dataset.f; draw(); } });
+    sel.addEventListener("change", () => {
+      div = sel.value;
+      history.replaceState(null, "", div === "all" ? "ballparks.html#list" : `ballparks.html?div=${encodeURIComponent(div)}#list`);
+      draw();
+    });
+    $$("th[data-sort]").forEach(th => th.addEventListener("click", () => {
+      const k = th.dataset.sort; asc = sortKey === k ? !asc : true; sortKey = k; draw();
+    }));
+    draw();
+
+    const trips = byCat("ballparks");
+    $("#park-trips").innerHTML = trips.map(card).join("") ||
+      `<div class="empty">No ballpark trip reports yet — play ball.</div>`;
+  }
+
   function lightbox(photos) {
     const lb = $("#lightbox"); if (!lb || !photos.length) return;
     const img = $("img", lb); let idx = 0;
@@ -403,6 +506,7 @@
     if (page === "home") renderHome();
     if (page === "log") renderLog();
     if (page === "peaks") renderPeaks();
+    if (page === "ballparks") renderBallparks();
     if (page === "expedition") renderExpedition();
   });
 })();
