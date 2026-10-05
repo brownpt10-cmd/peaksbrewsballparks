@@ -11,10 +11,14 @@ Challenge/
 ├── expedition.html       One template for every trip (?id=<id>)
 ├── about.html            The Challenge, Rules, Scorecard, Crew
 ├── peaks.html            Peaks: Colorado 14ers tracker (progress, facts, difficulty, sortable list of 58)
+├── ballparks.html        Ballparks: 30 MLB parks tracker
+├── status.html           Status: Springs breweries, 14ers and ballparks as icon checklists (grey → green)
 ├── assets/
 │   ├── css/style.css     All styles (palette tokens at the top)
 │   ├── js/data.js        ← EDIT THIS to add expeditions
 │   ├── js/fourteeners.js ← EDIT THIS when you summit a 14er
+│   ├── js/ballparks.js   ← EDIT THIS when you visit a ballpark
+│   ├── js/springs.js     ← EDIT THIS when you visit a Colorado Springs brewery
 │   ├── js/main.js        Header/mega-menu, footer, rendering
 │   ├── img/              Logo + favicon (SVG placeholders — swap in the real logo)
 │   └── photos/<id>/      Web-sized photos (≈1800px, used by the site)
