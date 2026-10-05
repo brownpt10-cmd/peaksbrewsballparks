@@ -25,3 +25,6 @@ colorado-14ers.html
 
 # Generated/scratch outputs (not part of the site)
 outputs/
+
+# Trip notes stay local (any format)
+notes/

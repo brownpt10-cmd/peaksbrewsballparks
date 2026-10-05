@@ -65,7 +65,7 @@ li.done .name{color:var(--hop)}
 
   <section class="tally" aria-label="Progress">
     <div class="tally-top">
-      <div class="count" id="count">0 <small>of 22 visited</small></div>
+      <div class="count" id="count">0 <small>of 23 visited</small></div>
       <div class="pct" id="pct">0%</div>
     </div>
     <div class="bar"><i id="bar"></i></div>
@@ -84,7 +84,7 @@ li.done .name{color:var(--hop)}
 </div>
 
 <script>
-const BREWERIES=["Brass Brewing Company","Bristol Brewing Company","Cerberus Brewing Company","Cogstone Brewing Company","Colorado Mountain Brewery","FH Beerworks","Fossil Craft Beer Company","Goat Patch Brewing Company","Local Relic Artisan Ales","Mash Mechanix Brewing Co.","Metric Brewing","Nano 108 Brewing","OCC Brewing","Peaks N Pines Brewery","Phantom Canyon Brewing Company","Pikes Peak Brewing Co.","Red Leg Brewing Company","Red Swing Brewhouse","Smiling Toad Brewing Co.","Storybook Brewing","Trinity Brewing Company","Whistle Pig Brewing Company"];
+const BREWERIES=["Bristol Brewing Company","Cerberus Brewing Company","Cogstone Brewing Company","Colorado Mountain Brewery","FH Beerworks","Fossil Craft Beer Company","Goat Patch Brewing Company","Gunslinger Brewing Company","Local Relic Artisan Ales","Mash Mechanix Brewing Co.","Metric Brewing","Nano 108 Brewing","OCC Brewing","Peaks N Pines Brewery","Phantom Canyon Brewing Company","Pikes Peak Brewing Co.","Prost Brewing (opening Nov 2026)","Red Leg Brewing Company","Red Swing Brewhouse","Smiling Toad Brewing Co.","Storybook Brewing","Trinity Brewing Company","Whistle Pig Brewing Company"];
 const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const today=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
 let visits={}; let filter="all"; let col=null; let readOnly=false;
@@ -101,7 +101,7 @@ function render(){
   const list=$("list"); list.innerHTML="";
   const rows=BREWERIES.map((b,i)=>({b,i,id:slug(b),v:visits[slug(b)]||{}}))
     .filter(r=>filter==="all"||(filter==="done"?r.v.visited:!r.v.visited));
-  if(!rows.length){list.innerHTML='<li class="empty">'+(filter==="done"?"No stamps yet. Go grab a pint.":"All 22 stamped. Passport complete.")+'</li>';return}
+  if(!rows.length){list.innerHTML='<li class="empty">'+(filter==="done"?"No stamps yet. Go grab a pint.":"All "+BREWERIES.length+" stamped. Passport complete.")+'</li>';return}
   for(const r of rows){
     const li=document.createElement("li"); if(r.v.visited) li.className="done";
     const btn=document.createElement("button"); btn.className="stamp"; btn.textContent="✓";

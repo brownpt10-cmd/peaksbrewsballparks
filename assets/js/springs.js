@@ -1,6 +1,6 @@
 /* ==========================================================================
    COLORADO SPRINGS BREWERIES — for the Status page (status.html)
-   Source list: coloradobrewerylist.com (same 22 as the Springs Brewery Passport)
+   Source list: coloradobrewerylist.com (same list as the Springs Brewery Passport)
 
    When you visit one, set:
      visited:    true
@@ -10,7 +10,6 @@
    ========================================================================== */
 
 const SPRINGS_BREWERIES = [
-  { name: "Brass Brewing Company",          visited: false, expedition: "" },
   { name: "Bristol Brewing Company",        visited: true , expedition: "bristol" },
   { name: "Cerberus Brewing Company",       visited: true , expedition: "cerberus" },
   { name: "Cogstone Brewing Company",       visited: false, expedition: "cogstone" },
@@ -18,6 +17,7 @@ const SPRINGS_BREWERIES = [
   { name: "FH Beerworks",                   visited: true , expedition: "" },
   { name: "Fossil Craft Beer Company",      visited: false, expedition: "fossil-craft" },
   { name: "Goat Patch Brewing Company",     visited: true , expedition: "goat-patch" },
+  { name: "Gunslinger Brewing Company",     visited: false, expedition: "" },
   { name: "Local Relic Artisan Ales",       visited: false, expedition: "local-relic" },
   { name: "Mash Mechanix Brewing Co.",      visited: true,  expedition: "mash-mechanix" },
   { name: "Metric Brewing",                 visited: false, expedition: "" },
