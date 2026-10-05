@@ -91,13 +91,17 @@ const EXPEDITIONS = [
     status: "logged",
     location: "Munich, Germany",
     region: "Germany",
-    date: "",
-    rating: null,
-    summary: "A craft-beer break from the beer halls.",
-    story: ["Add your notes here."],
-    facts: { "Beer of record": "TBD" },
-    cover: "assets/photos/taphouse-munich/img_3502.jpg",
-    photos: ["img_3502"]
+    date: "2026-09-23",
+    rating: 5,
+    crew: "Pat, Gary and Anna",
+    summary: "A taphouse with 100+ beers on tap.",
+    story: [
+      "A 10-minute walk from the hotel down Rosenheimer Straße. Clean, open feel to the taphouse with a clearly marked tap list.",
+      "Tried several hazy IPAs, which were straight down the middle of the plate — but perfect."
+    ],
+    facts: { "Beer of record": "Hazy IPA", "Food": "Homemade beer-cheese dip & two pretzels", "Vibe": "Friendly — feels local, a good meeting place", "Address": "Rosenheimer Str. 108, Munich" },
+    cover: "assets/photos/taphouse-munich/taphouse-munich-01.jpg",
+    photos: ["img_3502","taphouse-munich-01","taphouse-munich-02"]
   },
   {
     id: "heavy-metal",
@@ -304,16 +308,17 @@ const EXPEDITIONS = [
     id: "fenway-park", title: "Fenway Park", category: "ballparks", status: "logged",
     location: "Boston, MA", region: "AL East", date: "2014", dateText: "1976 · 2011 · 2013–14", rating: null,
     crew: "Pat and Terri",
-    summary: "My team, my park — multiple trips to Fenway.",
+    summary: "My team, my park — multiple trips to Fenway Park.",
     story: [
       "The Red Sox are my team and have been for as long as I can remember. While in London, I played for a baseball team called the Red Sox at West Ruislip Air Base.",
       "Sometime in 1976, when my Dad and I came back to Boston, I went to a game against the Royals. I don't remember much, but I do recall the large brick wall outside and sitting in the right field stands on a low-cloud, foggy night.",
+      "In the 1970s we spent several summers on Cape Cod, and I watched Red Sox games every day. The Red Sox stayed my team despite living in Texas, Germany and Maryland before moving back to Texas.",
       "In 2011 we went back for the first time, with a tour and then a game. In 2013 I was assigned to the Naval War College in Newport, RI, and we went to games in that World Series–winning year as much as we could. We went a few times in 2014 as well.",
       "Time to get back to the pahk!"
     ],
     facts: { "Team": "Boston Red Sox" },
-    cover: "assets/photos/fenway-park/fenway-park-01.jpg",
-    photos: ["fenway-park-01","fenway-park-02"]
+    cover: "assets/photos/fenway-park/fenway-park-20.jpg",
+    photos: ["fenway-park-03","fenway-park-04","fenway-park-05","fenway-park-06","fenway-park-07","fenway-park-01","fenway-park-08","fenway-park-09","fenway-park-10","fenway-park-11","fenway-park-12","fenway-park-13","fenway-park-14","fenway-park-15","fenway-park-16","fenway-park-17","fenway-park-18","fenway-park-19","fenway-park-20","fenway-park-02","fenway-park-21"]
   },
   {
     id: "coors-field", title: "Coors Field", category: "ballparks", status: "logged",
@@ -345,8 +350,73 @@ const EXPEDITIONS = [
     facts: { "Team": "San Diego Padres", "Visit": "Ballpark tour (no game)" },
     cover: "", photos: []
   },
+  /* ---- Added from notes 2026-10-05 ---- */
+  {
+    id: "pikes-peak", title: "Pikes Peak", category: "peaks", status: "logged",
+    location: "Manitou Springs, CO", region: "Front", date: "2007-08", rating: null,
+    crew: "Pat, Rhino and David",
+    summary: "A long hike, but very accessible.",
+    story: [
+      "Pikes Peak on the Barr Trail from Manitou Springs — 24+ miles up and back. Started at 0500: eight hours up and five back down, with great weather the whole way.",
+      "I've climbed Pikes Peak three times: once up and down, twice just the ascent — the last time in the Ascent Race, in about 4 hours."
+    ],
+    facts: { "Trail": "Barr Trail", "Trailhead": "Manitou Springs", "Distance": "24+ mi round trip", "Time": "0500 start · 8 hrs up · 5 hrs down", "Weather": "Great weather" },
+    cover: "assets/photos/pikes-peak/pikes-peak-01.jpg",
+    photos: ["pikes-peak-01"]
+  },
+  {
+    id: "105-west", title: "105 West Brewing Co.", category: "brews", status: "logged",
+    location: "Colorado Springs, CO", region: "Colorado", date: "2026", dateText: "Summer 2026", rating: 3,
+    crew: "Pat and Terri",
+    summary: "Trinity's replacement — worth another shot for the beer.",
+    story: [
+      "105 West replaced Trinity at the same location. I'll have to go back someday — nothing remarkable about the beer, and the food wasn't good at all.",
+      "The food operation seems to be separate from the beer, so I'll try the beer again."
+    ],
+    facts: { "Formerly": "Trinity Brewing Co." },
+    cover: "", photos: []
+  },
+  {
+    id: "bristol", title: "Bristol Brewing Co.", category: "brews", status: "logged",
+    location: "Colorado Springs, CO", region: "Colorado", date: "", dateText: "Many visits", rating: null,
+    summary: "A long-time favorite in the Springs.",
+    story: [
+      "Bristol is another local Colorado Springs favorite. The current location is in the old Ivywild School."
+    ],
+    facts: { "Beer of record": "Winter Warlock on nitro", "Food": "BBQ and the other kitchens at Ivywild" },
+    cover: "", photos: []
+  },
+  {
+    id: "goat-patch", title: "Goat Patch Brewing Co.", category: "brews", status: "logged",
+    location: "Colorado Springs, CO", region: "Colorado", date: "", dateText: "Many visits", rating: 5,
+    summary: "Local brewery that's grown to three locations.",
+    story: [
+      "Goat Patch is one of our go-to places in Colorado Springs. They opened a second location off Voyager in 2025, then bought out Pikes Peak Brewing and kept the Hwy 105 location open."
+    ],
+    facts: { "Beer of record": "Hazy IPA", "Food": "Rotating food trucks after 3 p.m.", "Vibe": "Local but inviting" },
+    cover: "", photos: []
+  },
+  {
+    id: "red-leg", title: "Red Leg Brewing Co.", category: "brews", status: "logged",
+    location: "Colorado Springs, CO", region: "Colorado", date: "", dateText: "Many visits", rating: 5,
+    summary: "Veteran-owned brewery on the west side of town.",
+    story: [
+      "Red Leg is a veteran-owned brewery on the west side of town. Visited many times for beers and food.",
+      "Great place to hang out, with good beer and a rotating variety in addition to their flagships."
+    ],
+    facts: { "Beer of record": "All the beers are good", "Food": "Variety of choices outside", "Vibe": "Indoor or outdoor seating — great hangout" },
+    cover: "", photos: []
+  },
+  {
+    id: "camden-yards", title: "Oriole Park at Camden Yards", category: "ballparks", status: "logged",
+    location: "Baltimore, MD", region: "AL East", date: "", rating: null,
+    summary: "The retro ballpark that started it all — the B&O Warehouse beyond right field.",
+    story: [],
+    facts: { "Team": "Baltimore Orioles" },
+    cover: "assets/photos/camden-yards/camden-yards-02.jpg",
+    photos: ["camden-yards-01","camden-yards-02","camden-yards-03"]
+  },
   /* ----------------------------- PLANNED ---------------------------- */
-  { id: "105-west",   title: "105 West Brewing Co.",   category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "In the old Trinity location.", cover: "", photos: [] },
   { id: "prost",      title: "Prost Brewing",      category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "Opening November 2026 in the former Old Chicago on Powers.", cover: "", photos: [] },
   { id: "animas",     title: "Animas",     category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "ska",        title: "Ska",        category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },

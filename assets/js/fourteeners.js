@@ -42,7 +42,7 @@ const FOURTEENERS = [
   { rank: 29, name: "Mount Sneffels",        elev: 14150, range: "San Juan",        cls: "2+", tier: 3, date: "", expedition: "" },
   { rank: 30, name: "Mount Democrat",        elev: 14148, range: "Mosquito",        cls: "2",  tier: 2, date: "", expedition: "" },
   { rank: 31, name: "Capitol Peak",          elev: 14130, range: "Elk",             cls: "4",  tier: 4, date: "", expedition: "" },
-  { rank: 32, name: "Pikes Peak",            elev: 14115, range: "Front",           cls: "1",  tier: 1, date: "", done: true, expedition: "" },
+  { rank: 32, name: "Pikes Peak",            elev: 14115, range: "Front",           cls: "1",  tier: 1, date: "2007-08", done: true, expedition: "pikes-peak" },
   { rank: 33, name: "Snowmass Mountain",     elev: 14092, range: "Elk",             cls: "3",  tier: 3, date: "", expedition: "" },
   { rank: 34, name: "Windom Peak",           elev: 14087, range: "San Juan",        cls: "2+", tier: 3, date: "", expedition: "" },
   { rank: 35, name: "Mount Eolus",           elev: 14083, range: "San Juan",        cls: "3",  tier: 3, date: "", expedition: "" },

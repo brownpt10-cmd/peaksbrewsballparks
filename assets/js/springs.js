@@ -33,6 +33,6 @@ const SPRINGS_BREWERIES = [
   { name: "Trinity Brewing Company",        visited: true , note: "Closed — now 105 West Brewing", expedition: "" },
   { name: "Whistle Pig Brewing Company",    visited: false, expedition: "whistle-pig" },
   { name: "Prost Brewing",                  visited: false, expedition: "prost",      note: "Opening November 2026 · former Old Chicago on Powers" },
-  { name: "105 West Brewing Co.",           visited: false, expedition: "105-west",   note: "In the old Trinity location" },
+  { name: "105 West Brewing Co.",           visited: true,  expedition: "105-west",   note: "In the old Trinity location" },
   { name: "South Park Brewing",             visited: true,  expedition: "south-park" }
 ];
