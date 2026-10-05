@@ -513,10 +513,13 @@
     const SB = typeof SPRINGS_BREWERIES !== "undefined" ? SPRINGS_BREWERIES : [];
     const sbDone = b => b.visited || (b.expedition && loggedIds.has(b.expedition));
     const tripHref = id => id && loggedIds.has(id) ? `expedition.html?id=${id}` : "";
+    const AZ = typeof ARIZONA_BREWERIES !== "undefined" ? ARIZONA_BREWERIES : [];
+    const azDone = b => b.visited || (b.expedition && loggedIds.has(b.expedition));
 
     // Summary tiles
     const tiles = [
       ["#springs", "Springs Breweries", SB.filter(sbDone).length, SB.length, "mug"],
+      ...(AZ.length ? [["#arizona", "Gary's Arizona Brews", AZ.filter(azDone).length, AZ.length, "mug"]] : []),
       ["#fourteeners", "Colorado 14ers", summited().length, PEAKS14.length, "peak"],
       ["#ballparks", "MLB Ballparks", parksVisited().length, PARKS.length, "park"]
     ];
@@ -532,6 +535,19 @@
       done: sbDone(b), href: tripHref(b.expedition) || "SpringsBrewery.html", svg: ICONS.mug,
       top: sbDone(b) ? "Visited" : "To visit", name: b.name, sub: b.note || ""
     })));
+
+    // Gary's Arizona breweries grouped by area (synced from the claude.ai brew board)
+    if (AZ.length && $("#st-az")) {
+      const areas = [...new Set(AZ.map(b => b.area))];
+      $("#st-az").innerHTML = areas.map(a => {
+        const list = AZ.filter(b => b.area === a);
+        return stGroup(`${a} (${list.filter(azDone).length} of ${list.length})`, list.map(b => stItem({
+          done: azDone(b), href: tripHref(b.expedition), svg: ICONS.mug,
+          top: azDone(b) ? (b.date ? `Visited ${b.date}` : "Visited") : b.city, name: b.name, sub: azDone(b) ? b.city : (b.note || "")
+        })));
+      }).join("");
+      if ($("#st-az-synced") && typeof ARIZONA_SYNCED !== "undefined") $("#st-az-synced").textContent = `Updated ${ARIZONA_SYNCED}`;
+    }
 
     // 14ers grouped by range (most peaks first)
     const ranges = [...new Set(PEAKS14.map(p => p.range))]

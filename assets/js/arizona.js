@@ -1,0 +1,70 @@
+/* ==========================================================================
+   GARY'S ARIZONA BREWERIES — for the Status page (status.html#arizona)
+   Live stamping happens on the claude.ai "Gary's Arizona Brew Board" page.
+   Claude syncs those stamps into this file (visited/date) and publishes.
+   `id` must match the board's document id — don't rename it.
+   Manual edits are fine too: set visited: true and date: "YYYY-MM-DD".
+   ========================================================================== */
+
+const ARIZONA_SYNCED = "2026-10-05";   // last time stamps were pulled from the board
+
+const ARIZONA_BREWERIES = [
+  { id: "oak-creek-brewery-grill", name: "Oak Creek Brewery & Grill", city: "Sedona", area: "Sedona & Village of Oak Creek", visited: false, date: "", note: "Tlaquepaque, Hwy 179", expedition: "" },
+  { id: "oak-creek-brewing-co", name: "Oak Creek Brewing Co.", city: "West Sedona", area: "Sedona & Village of Oak Creek", visited: false, date: "", note: "", expedition: "" },
+  { id: "sedona-beer-company", name: "Sedona Beer Company", city: "Uptown Sedona", area: "Sedona & Village of Oak Creek", visited: false, date: "", note: "", expedition: "" },
+  { id: "belfry-brewery", name: "Belfry Brewery", city: "Cottonwood", area: "Verde Valley", visited: false, date: "", note: "In a 1920s church", expedition: "" },
+  { id: "that-brewery", name: "THAT Brewery", city: "Cottonwood", area: "Verde Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "smelter-town-brewery", name: "Smelter Town Brewery", city: "Clarkdale", area: "Verde Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "verde-brewing-company", name: "Verde Brewing Company", city: "Camp Verde", area: "Verde Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "prescott-brewing-company", name: "Prescott Brewing Company", city: "Prescott", area: "Prescott Area", visited: false, date: "", note: "", expedition: "" },
+  { id: "lazyg-brewhouse", name: "LazyG Brewhouse", city: "Prescott", area: "Prescott Area", visited: false, date: "", note: "", expedition: "" },
+  { id: "wren-house-prairie-patio", name: "Wren House Prairie Patio", city: "Prescott", area: "Prescott Area", visited: false, date: "", note: "", expedition: "" },
+  { id: "barnstar-brewing", name: "Barnstar Brewing", city: "Skull Valley", area: "Prescott Area", visited: false, date: "", note: "Limited hours", expedition: "" },
+  { id: "vulture-peak-brewing", name: "Vulture Peak Brewing", city: "Wickenburg", area: "Prescott Area", visited: false, date: "", note: "", expedition: "" },
+  { id: "wren-house-brewing", name: "Wren House Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "2026 AZ Brewery of the Year", expedition: "" },
+  { id: "greenwood-brewing", name: "Greenwood Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "roses-by-the-stairs", name: "Roses by the Stairs", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "formation-brewing", name: "Formation Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "sana-sana-cervecer-a", name: "Sana Sana Cervecería", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "grand-avenue-brewing", name: "Grand Avenue Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "ohso-brewery-distillery", name: "OHSO Brewery + Distillery", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "Several Valley locations", expedition: "" },
+  { id: "tombstone-brewing-north", name: "Tombstone Brewing North", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "north-mountain-brewing", name: "North Mountain Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "kitsune-brewing", name: "Kitsune Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "front-pourch-brewing", name: "Front Pourch Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "simple-machine-brewing", name: "Simple Machine Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "lake-pleasant-brewing", name: "Lake Pleasant Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "", expedition: "" },
+  { id: "barrio-brewing", name: "Barrio Brewing", city: "Phoenix", area: "Phoenix", visited: false, date: "", note: "Also Mesa", expedition: "" },
+  { id: "goldwater-brewing", name: "Goldwater Brewing", city: "Scottsdale", area: "Scottsdale & North", visited: false, date: "", note: "Also Mesa, Tempe", expedition: "" },
+  { id: "fate-brewing", name: "Fate Brewing", city: "Scottsdale", area: "Scottsdale & North", visited: false, date: "", note: "Also Phoenix, Tempe", expedition: "" },
+  { id: "pinnacle-brewing", name: "Pinnacle Brewing", city: "Scottsdale", area: "Scottsdale & North", visited: false, date: "", note: "", expedition: "" },
+  { id: "bone-haus-brewing", name: "Bone Haus Brewing", city: "Fountain Hills", area: "Scottsdale & North", visited: false, date: "", note: "", expedition: "" },
+  { id: "dynamite-beer-co", name: "Dynamite Beer Co.", city: "Cave Creek", area: "Scottsdale & North", visited: false, date: "", note: "", expedition: "" },
+  { id: "four-peaks-brewing", name: "Four Peaks Brewing", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
+  { id: "huss-brewing", name: "Huss Brewing", city: "Tempe", area: "Tempe", visited: false, date: "", note: "Also downtown Phoenix", expedition: "" },
+  { id: "pedal-haus-brewery", name: "Pedal Haus Brewery", city: "Tempe", area: "Tempe", visited: false, date: "", note: "Also Chandler, Mesa, Phoenix", expedition: "" },
+  { id: "the-shop-beer-co", name: "The Shop Beer Co.", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
+  { id: "hundred-mile-brewing", name: "Hundred Mile Brewing", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
+  { id: "catalyst-crafted-ales", name: "Catalyst Crafted Ales", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
+  { id: "starfire-rooftop-brewery", name: "Starfire Rooftop Brewery", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
+  { id: "oro-brewing", name: "Oro Brewing", city: "Mesa", area: "East Valley", visited: false, date: "", note: "May become Mesa Brewing Co.", expedition: "" },
+  { id: "phantom-fox-beer-co", name: "Phantom Fox Beer Co.", city: "Mesa", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "lochiel-brewing", name: "Lochiel Brewing", city: "Mesa", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "12-west-brewing", name: "12 West Brewing", city: "Gilbert", area: "East Valley", visited: false, date: "", note: "Also downtown Mesa", expedition: "" },
+  { id: "arizona-wilderness-brewing", name: "Arizona Wilderness Brewing", city: "Gilbert", area: "East Valley", visited: false, date: "", note: "Also downtown Phoenix", expedition: "" },
+  { id: "desert-monks-brewing", name: "Desert Monks Brewing", city: "Gilbert", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "four-silos-brewery", name: "Four Silos Brewery", city: "Gilbert", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "santan-brewing", name: "SanTan Brewing", city: "Chandler", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "the-perch-brewery", name: "The Perch Brewery", city: "Chandler", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "helluva-brewing", name: "HELLUVA Brewing", city: "Chandler", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "patent-139-brewing", name: "Patent 139 Brewing", city: "Chandler", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "old-ellsworth-brewing", name: "Old Ellsworth Brewing", city: "Queen Creek", area: "East Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "throne-brewing", name: "Throne Brewing", city: "Glendale", area: "West Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "peoria-artisan-brewery", name: "Peoria Artisan Brewery", city: "Peoria", area: "West Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "richter-aleworks", name: "Richter Aleworks", city: "Peoria", area: "West Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "state-48-brewery", name: "State 48 Brewery", city: "Surprise", area: "West Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "head-right-brewing", name: "Head Right Brewing", city: "Surprise", area: "West Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "saddle-mountain-brewing", name: "Saddle Mountain Brewing", city: "Goodyear", area: "West Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "8-bit-aleworks", name: "8-Bit Aleworks", city: "Avondale", area: "West Valley", visited: false, date: "", note: "", expedition: "" },
+  { id: "the-brewery-at-tirrito-farm", name: "The Brewery at Tirrito Farm", city: "Buckeye", area: "West Valley", visited: false, date: "", note: "Check hours", expedition: "" }
+];
