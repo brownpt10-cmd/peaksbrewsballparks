@@ -17,7 +17,7 @@ const SPRINGS_BREWERIES = [
   { name: "FH Beerworks",                   visited: true , expedition: "" },
   { name: "Fossil Craft Beer Company",      visited: false, expedition: "fossil-craft" },
   { name: "Goat Patch Brewing Company",     visited: true , expedition: "goat-patch" },
-  { name: "Gunslinger Brewing Company",     visited: false, expedition: "" },
+  { name: "Gunslinger Brewing Company",     visited: true,  expedition: "gunslinger" },
   { name: "Local Relic Artisan Ales",       visited: false, expedition: "local-relic" },
   { name: "Mash Mechanix Brewing Co.",      visited: true,  expedition: "mash-mechanix" },
   { name: "Metric Brewing",                 visited: false, expedition: "" },

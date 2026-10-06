@@ -164,6 +164,25 @@ const EXPEDITIONS = [
     photos: ["img_1707","img_1708","img_1709","img_1710","img_1711","img_1712","img_1716","img_1717"]
   },
   {
+    id: "gunslinger",
+    title: "Gunslinger Brewing Co.",
+    category: "brews",
+    status: "logged",
+    location: "Colorado Springs, CO",
+    region: "Colorado",
+    date: "2026-10-06",
+    rating: null,
+    crew: "Pat",
+    summary: "First time at Gunslinger — friendly staff, good beers.",
+    story: [
+      "Visited Gunslinger for lunch. Went with a flight of four and a ham and cheese panini.",
+      "The place is themed as a western outlaw saloon, but it's not overdone."
+    ],
+    facts: { "Flight": "Märzen, Stout, Mild Bill (English Mild), NZ IPA", "Food": "Ham & cheese panini", "Vibe": "Western outlaw theme, not overdone" },
+    cover: "assets/photos/gunslinger/img_3575.jpg",
+    photos: ["img_3575","img_3576","img_3565","img_3566","img_3574","img_3570","img_3571","img_3572","img_3567","img_3568","img_3573","img_3577"]
+  },
+  {
     id: "mash-mechanix",
     title: "Mash Mechanix",
     category: "brews",
@@ -426,7 +445,6 @@ const EXPEDITIONS = [
   { id: "cogstone", title: "Cogstone Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "deuces-wild", title: "Deuces Wild", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "fossil-craft", title: "Fossil Craft Beer", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "gunslinger", title: "Gunslinger", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "jaks", title: "Jak's Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "local-relic", title: "Local Relic Artisan Ales", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "lost-friend", title: "Lost Friend Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
