@@ -37,7 +37,7 @@ const CATEGORIES = {
     blurb: "Breweries, beer halls and pubs — logged one pint at a time.",
     cover: "assets/photos/gunslinger/img_3572.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
-    regions: ["Colorado", "New Mexico", "Arizona", "California", "Florida", "Virginia", "Bahamas", "Germany", "Ireland"],
+    regions: ["Colorado", "New Mexico", "Arizona", "California", "Washington", "Florida", "Virginia", "Connecticut", "Massachusetts", "Bahamas", "Germany", "Ireland"],
     extraLinks: [["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
   },
   ballparks: {
@@ -418,7 +418,7 @@ const EXPEDITIONS = [
       "The food operation seems to be separate from the beer, so I'll try the beer again."
     ],
     facts: { "Formerly": "Trinity Brewing Co." },
-    cover: "", photos: []
+    cover: "assets/photos/105-west/105-west-01.jpg", photos: ["105-west-01"]
   },
   {
     id: "bristol", title: "Bristol Brewing Co.", category: "brews", status: "logged",
@@ -428,7 +428,7 @@ const EXPEDITIONS = [
       "Bristol is another local Colorado Springs favorite. The current location is in the old Ivywild School."
     ],
     facts: { "Beer of record": "Winter Warlock on nitro", "Food": "BBQ and the other kitchens at Ivywild" },
-    cover: "", photos: []
+    cover: "assets/photos/bristol/bristol-01.jpg", photos: ["bristol-01"]
   },
   {
     id: "goat-patch", title: "Goat Patch Brewing Co.", category: "brews", status: "logged",
@@ -438,7 +438,7 @@ const EXPEDITIONS = [
       "Goat Patch is one of our go-to places in Colorado Springs. They opened a second location off Voyager in 2025, then bought out Pikes Peak Brewing and kept the Hwy 105 location open."
     ],
     facts: { "Beer of record": "Hazy IPA", "Food": "Rotating food trucks after 3 p.m.", "Vibe": "Local but inviting" },
-    cover: "", photos: []
+    cover: "assets/photos/goat-patch/goat-patch-01.jpg", photos: ["goat-patch-01"]
   },
   {
     id: "red-leg", title: "Red Leg Brewing Co.", category: "brews", status: "logged",
@@ -449,7 +449,7 @@ const EXPEDITIONS = [
       "Great place to hang out, with good beer and a rotating variety in addition to their flagships."
     ],
     facts: { "Beer of record": "All the beers are good", "Food": "Variety of choices outside", "Vibe": "Indoor or outdoor seating — great hangout" },
-    cover: "", photos: []
+    cover: "assets/photos/red-leg/red-leg-01.jpg", photos: ["red-leg-01"]
   },
   {
     id: "camden-yards", title: "Oriole Park at Camden Yards", category: "ballparks", status: "logged",
@@ -466,7 +466,7 @@ const EXPEDITIONS = [
     crew: "Pat, Terri, Gary and Anna",
     summary: "Local brewery on the Animas River.",
     story: ["Laid-back place for a few beers and eats."], facts: {},
-    cover: "", photos: []
+    cover: "assets/photos/animas/animas-01.jpg", photos: ["animas-01","animas-02"]
   },
   {
     id: "colorado-mountain", title: "Colorado Mountain Brewery", category: "brews", status: "logged",
@@ -474,7 +474,7 @@ const EXPEDITIONS = [
     summary: "Local brews and a full restaurant menu.",
     story: ["Colorado Mountain Brewery is technically a brewery since they brew their own beers, but I'd put them in the full-service category like Rock Bottom was — only much better. Locally founded and owned by former Air Force Academy classmates."],
     facts: { "Food": "Full restaurant menu" },
-    cover: "", photos: []
+    cover: "assets/photos/colorado-mountain/colorado-mountain-01.jpg", photos: ["colorado-mountain-01"]
   },
   {
     id: "jaks", title: "Jak's Brewing", category: "brews", status: "logged",
@@ -483,7 +483,7 @@ const EXPEDITIONS = [
     summary: "Met up with Chris for a beer and lunch.",
     story: ["Met up with Chris after retiring to catch up with him. Jak's has a new location here in town I need to visit — I've been to the small location on the east side of town."],
     facts: { "Food": "Cheesesteak", "Vibe": "Sat outside" },
-    cover: "", photos: []
+    cover: "assets/photos/jaks/jaks-01.jpg", photos: ["jaks-01"]
   },
   {
     id: "12-west", title: "12 West Brewing Co.", category: "brews", status: "logged",
@@ -581,9 +581,161 @@ const EXPEDITIONS = [
     cover: "assets/photos/burly/burly-07.jpg",
     photos: ["burly-01","burly-02","burly-03","burly-04","burly-05","burly-06","burly-07","burly-08"]
   },
+  /* ---- Added 2026-10-07 from Images/Brews — notes to follow ---- */
+  {
+    id: "ballpark-brewing", title: "Ballpark Brewing Co.", category: "brews", status: "logged",
+    location: "Bisbee, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Small-batch brewery in Bisbee's Warren neighborhood — chalkboard menu and the brewhouse right off the bar.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/ballpark-brewing/ballpark-brewing-01.jpg",
+    photos: ["ballpark-brewing-01","ballpark-brewing-02","ballpark-brewing-03","ballpark-brewing-04","ballpark-brewing-05","ballpark-brewing-06"]
+  },
+  {
+    id: "electric-brewing", title: "Electric Brewing Co.", category: "brews", status: "logged",
+    location: "Bisbee, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Bisbee's Electric Beer — lightning-bolt logo and a chalkboard of house beers.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/electric-brewing/electric-brewing-03.jpg",
+    photos: ["electric-brewing-01","electric-brewing-02","electric-brewing-03","electric-brewing-04","electric-brewing-05","electric-brewing-06","electric-brewing-07","electric-brewing-08"]
+  },
+  {
+    id: "lazyg", title: "LazyG Brewhouse", category: "brews", status: "logged",
+    location: "Prescott, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Corrugated-steel brewhouse with a vintage-trailer patio out back.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/lazyg/lazyg-01.jpg",
+    photos: ["lazyg-01","lazyg-02","lazyg-03","lazyg-04","lazyg-05","lazyg-06","lazyg-07","lazyg-08"]
+  },
+  {
+    id: "patent-139", title: "Patent 139 Brewing Co.", category: "brews", status: "logged",
+    location: "Chandler, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Lakeside taproom with a wall of windows on the water.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/patent-139/patent-139-04.jpg",
+    photos: ["patent-139-01","patent-139-02","patent-139-03","patent-139-04","patent-139-05","patent-139-06"]
+  },
+  {
+    id: "throne", title: "Throne Brewing Co.", category: "brews", status: "logged",
+    location: "Glendale, AZ", region: "Arizona", date: "", rating: null,
+    summary: "West Valley brewery with a crowned-king logo and a full flight board.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/throne/throne-07.jpg",
+    photos: ["throne-01","throne-02","throne-03","throne-04","throne-05","throne-06","throne-07"]
+  },
+  {
+    id: "tombstone", title: "Tombstone Brewing Co.", category: "brews", status: "logged",
+    location: "Tombstone, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Old West storefront brewery — stagecoaches still roll by outside.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/tombstone/tombstone-03.jpg",
+    photos: ["tombstone-01","tombstone-02","tombstone-03","tombstone-04","tombstone-05","tombstone-06","tombstone-07","tombstone-08","tombstone-09"]
+  },
+  {
+    id: "black-market", title: "Black Market Brewing Co.", category: "brews", status: "logged",
+    location: "Temecula, CA", region: "California", date: "", rating: null,
+    summary: "Big Temecula taproom with a trolley-car bar and shuffleboard.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/black-market/black-market-05.jpg",
+    photos: ["black-market-01","black-market-02","black-market-03","black-market-04","black-market-05","black-market-06"]
+  },
+  {
+    id: "coronado", title: "Coronado Brewing Co.", category: "brews", status: "logged",
+    location: "Coronado, CA", region: "California", date: "", rating: null,
+    summary: "Red-brick brewpub on Coronado Island — Stay Coastal.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/coronado/coronado-07.jpg",
+    photos: ["coronado-01","coronado-02","coronado-03","coronado-04","coronado-05","coronado-06","coronado-07","coronado-08"]
+  },
+  {
+    id: "downey", title: "Downey Brewing Co.", category: "brews", status: "logged",
+    location: "Downey, CA", region: "California", date: "", rating: null,
+    summary: "Brewpub with a long tap wall and an exotic game sausage menu.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/downey/downey-01.jpg",
+    photos: ["downey-01","downey-02","downey-03","downey-04"]
+  },
+  {
+    id: "rescue", title: "Rescue Brewing Co.", category: "brews", status: "logged",
+    location: "Upland, CA", region: "California", date: "", rating: null,
+    summary: "Downtown Upland brewery and gastropub that salutes first responders and vets.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/rescue/rescue-07.jpg",
+    photos: ["rescue-01","rescue-02","rescue-03","rescue-04","rescue-05","rescue-06","rescue-07","rescue-08"]
+  },
+  {
+    id: "smog-city", title: "Smog City Brewing Co.", category: "brews", status: "logged",
+    location: "Southern California", region: "California", date: "", rating: null,
+    summary: "Smog City pouring from a shipping-container food hall.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/smog-city/smog-city-06.jpg",
+    photos: ["smog-city-01","smog-city-02","smog-city-03","smog-city-04","smog-city-05","smog-city-06"]
+  },
+  {
+    id: "red-mountain", title: "Red Mountain Brewing", category: "brews", status: "logged",
+    location: "Ouray, CO", region: "Colorado", date: "", rating: null,
+    summary: "Main Street brewery in Ouray, ringed by the San Juans.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/red-mountain/red-mountain-03.jpg",
+    photos: ["red-mountain-01","red-mountain-02","red-mountain-03","red-mountain-04","red-mountain-05"]
+  },
+  {
+    id: "south-park", title: "South Park Brewing", category: "brews", status: "logged",
+    location: "Fairplay, CO", region: "Colorado", date: "", rating: null,
+    summary: "Craft brewing at 9,953 feet — photos from the old location.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/south-park/south-park-01.jpg",
+    photos: ["south-park-01","south-park-02","south-park-03","south-park-04","south-park-05"]
+  },
+  {
+    id: "steamworks", title: "Steamworks Brewing Co.", category: "brews", status: "logged",
+    location: "Durango, CO", region: "Colorado", date: "", rating: null,
+    summary: "Downtown Durango brewpub with a chalkboard of gravities and brew dates.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/steamworks/steamworks-06.jpg",
+    photos: ["steamworks-01","steamworks-02","steamworks-03","steamworks-04","steamworks-05","steamworks-06"]
+  },
+  {
+    id: "black-pond", title: "Black Pond Brews", category: "brews", status: "logged",
+    location: "Danielson, CT", region: "Connecticut", date: "", rating: null,
+    summary: "Brick-walled taproom with a chalkboard tap wall and monster-label art.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/black-pond/black-pond-01.jpg",
+    photos: ["black-pond-01","black-pond-02","black-pond-03","black-pond-04","black-pond-05","black-pond-06","black-pond-07","black-pond-08","black-pond-09"]
+  },
+  {
+    id: "hog-island", title: "Hog Island Beer Co.", category: "brews", status: "logged",
+    location: "Cape Cod, MA", region: "Massachusetts", date: "", rating: null,
+    summary: "Cape Cod brewery sharing a brewhouse with Outermost Brewery.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/hog-island/hog-island-05.jpg",
+    photos: ["hog-island-01","hog-island-02","hog-island-03","hog-island-04","hog-island-05","hog-island-06","hog-island-07"]
+  },
+  {
+    id: "belltown", title: "Belltown Brewing", category: "brews", status: "logged",
+    location: "Seattle, WA", region: "Washington", date: "", rating: null,
+    summary: "Seattle brewhouse with a long chalkboard tap wall.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/belltown/belltown-01.jpg",
+    photos: ["belltown-01","belltown-02","belltown-03","belltown-04","belltown-05"]
+  },
+  {
+    id: "pike-brewing", title: "The Pike Brewing Co.", category: "brews", status: "logged",
+    location: "Seattle, WA", region: "Washington", date: "", rating: null,
+    summary: "Family-owned brewery at Pike Place Market, packed with beer memorabilia.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/pike-brewing/pike-brewing-04.jpg",
+    photos: ["pike-brewing-01","pike-brewing-02","pike-brewing-03","pike-brewing-04","pike-brewing-05","pike-brewing-06","pike-brewing-07"]
+  },
+  {
+    id: "ska", title: "Ska Brewing", category: "brews", status: "logged",
+    location: "Durango, CO", region: "Colorado", date: "", rating: null,
+    summary: "Durango's checkerboard brewery — a big tap wall and a busy taproom.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/ska/ska-02.jpg",
+    photos: ["ska-01","ska-02","ska-03","ska-04","ska-05"]
+  },
   /* ----------------------------- PLANNED ---------------------------- */
   { id: "prost",      title: "Prost Brewing",      category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "Opening November 2026 in the former Old Chicago on Powers.", cover: "", photos: [] },
-  { id: "ska",        title: "Ska",        category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "oak-creek",  title: "Oak Creek",  category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   /* From the notes folder (templates not filled in yet) */
   { id: "armillary", title: "Armillary", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
