@@ -179,7 +179,7 @@ const EXPEDITIONS = [
       "The place is themed as a western outlaw saloon, but it's not overdone."
     ],
     facts: { "Flight": "Märzen, Stout, Mild Bill (English Mild), NZ IPA", "Food": "Ham & cheese panini", "Vibe": "Western outlaw theme, not overdone" },
-    cover: "assets/photos/gunslinger/img_3566.jpg",
+    cover: "assets/photos/gunslinger/poster.jpg",
     photos: ["img_3566","img_3575","img_3576","img_3565","img_3574","img_3570","img_3571","img_3572","img_3567","img_3568","img_3573","img_3577"]
   },
   {
