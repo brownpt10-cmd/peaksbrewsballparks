@@ -35,7 +35,7 @@ const CATEGORIES = {
     blurb: "Breweries, beer halls and pubs — logged one pint at a time.",
     cover: "assets/photos/mash-mechanix/img_3548.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
-    regions: ["Colorado", "New Mexico", "Arizona", "California", "Florida", "Bahamas", "Germany", "Ireland"],
+    regions: ["Colorado", "New Mexico", "Arizona", "California", "Florida", "Virginia", "Bahamas", "Germany", "Ireland"],
     extraLinks: [["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
   },
   ballparks: {
@@ -268,17 +268,20 @@ const EXPEDITIONS = [
   },
   {
     id: "alien-brewpub", title: "Alien Brewpub", category: "brews", status: "logged",
-    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
-    summary: "Little green men on the walls and a chalkboard of out-of-this-world names.",
-    story: [], facts: {},
+    location: "Albuquerque, NM", region: "New Mexico", date: "2023", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "They do exist!",
+    story: ["Visited while on one of our meetups with Gary and Anna in Albuquerque."], facts: {},
     cover: "assets/photos/alien-brewpub/alien-brewpub-01.jpg",
     photos: ["alien-brewpub-01","alien-brewpub-02","alien-brewpub-03","alien-brewpub-04","alien-brewpub-05"]
   },
   {
     id: "bow-and-arrow", title: "Bow & Arrow Brewing Co.", category: "brews", status: "logged",
-    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
-    summary: "Barrel room, copper tanks and a big open taproom.",
-    story: [], facts: {},
+    location: "Albuquerque, NM", region: "New Mexico", date: "2023", dateText: "Summer 2023", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "Large open space with great vibes.",
+    story: ["On our round robin of breweries in Albuquerque we stumbled upon Bow & Arrow. Cool place, good beers. The large room gives an open feeling without feeling unwelcoming."],
+    facts: { "Vibe": "Big, open room that still feels welcoming" },
     cover: "assets/photos/bow-and-arrow/bow-and-arrow-06.jpg",
     photos: ["bow-and-arrow-01","bow-and-arrow-02","bow-and-arrow-03","bow-and-arrow-04","bow-and-arrow-05","bow-and-arrow-06","bow-and-arrow-07"]
   },
@@ -435,9 +438,129 @@ const EXPEDITIONS = [
     cover: "assets/photos/camden-yards/camden-yards-02.jpg",
     photos: ["camden-yards-01","camden-yards-02","camden-yards-03"]
   },
+  {
+    id: "animas", title: "Animas Brewing Co.", category: "brews", status: "logged",
+    location: "Durango, CO", region: "Colorado", date: "2026", dateText: "Summer 2026", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "Local brewery on the Animas River.",
+    story: ["Laid-back place for a few beers and eats."], facts: {},
+    cover: "", photos: []
+  },
+  {
+    id: "colorado-mountain", title: "Colorado Mountain Brewery", category: "brews", status: "logged",
+    location: "Colorado Springs, CO", region: "Colorado", date: "", rating: null,
+    summary: "Local brews and a full restaurant menu.",
+    story: ["Colorado Mountain Brewery is technically a brewery since they brew their own beers, but I'd put them in the full-service category like Rock Bottom was — only much better. Locally founded and owned by former Air Force Academy classmates."],
+    facts: { "Food": "Full restaurant menu" },
+    cover: "", photos: []
+  },
+  {
+    id: "jaks", title: "Jak's Brewing", category: "brews", status: "logged",
+    location: "Peyton, CO", region: "Colorado", date: "2025-08", rating: null,
+    crew: "Pat and Chris",
+    summary: "Met up with Chris for a beer and lunch.",
+    story: ["Met up with Chris after retiring to catch up with him. Jak's has a new location here in town I need to visit — I've been to the small location on the east side of town."],
+    facts: { "Food": "Cheesesteak", "Vibe": "Sat outside" },
+    cover: "", photos: []
+  },
+  {
+    id: "12-west", title: "12 West Brewing Co.", category: "brews", status: "logged",
+    location: "Phoenix East Valley, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Big two-story brewpub in the East Valley — Crafted for the Community.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/12-west/12-west-05.jpg",
+    photos: ["12-west-01","12-west-02","12-west-03","12-west-04","12-west-05","12-west-06"]
+  },
+  {
+    id: "four-peaks", title: "Four Peaks Brewing Co.", category: "brews", status: "logged",
+    location: "Tempe, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Tempe's classic brick brewpub, home of Kilt Lifter.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/four-peaks/four-peaks-02.jpg",
+    photos: ["four-peaks-01","four-peaks-02","four-peaks-03","four-peaks-04","four-peaks-05","four-peaks-06"]
+  },
+  {
+    id: "old-ellsworth", title: "Old Ellsworth Brewing Co.", category: "brews", status: "logged",
+    location: "Queen Creek, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Neighborhood brewery in Queen Creek with brewhouse views from the bar.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/old-ellsworth/old-ellsworth-03.jpg",
+    photos: ["old-ellsworth-01","old-ellsworth-02","old-ellsworth-03","old-ellsworth-04","old-ellsworth-05","old-ellsworth-06"]
+  },
+  {
+    id: "state-48", title: "State 48 Brewery", category: "brews", status: "logged",
+    location: "Surprise, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Big murals, a bright yellow tap tower and a full kitchen.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/state-48/state-48-10.jpg",
+    photos: ["state-48-01","state-48-02","state-48-03","state-48-04","state-48-05","state-48-06","state-48-07","state-48-08","state-48-09","state-48-10","state-48-11"]
+  },
+  {
+    id: "craft-64", title: "Craft 64", category: "brews", status: "logged",
+    location: "Scottsdale, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Old Town Scottsdale spot pouring its own Craft 64 beers.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/craft-64/craft-64-03.jpg",
+    photos: ["craft-64-01","craft-64-02","craft-64-03","craft-64-04","craft-64-05"]
+  },
+  {
+    id: "duck-foot", title: "Duck Foot Brewing Co.", category: "brews", status: "logged",
+    location: "San Diego, CA", region: "California", date: "", rating: null,
+    summary: "San Diego brewery with a long chalkboard tap list and flights.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/duck-foot/duck-foot-02.jpg",
+    photos: ["duck-foot-01","duck-foot-02","duck-foot-03","duck-foot-04","duck-foot-05","duck-foot-06"]
+  },
+  {
+    id: "ballast-point", title: "Ballast Point Brewing", category: "brews", status: "logged",
+    location: "San Diego, CA", region: "California", date: "", rating: null,
+    summary: "The big Miramar brewery and tasting room — copper kettles and a long bar.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/ballast-point/ballast-point-06.jpg",
+    photos: ["ballast-point-01","ballast-point-02","ballast-point-03","ballast-point-04","ballast-point-05","ballast-point-06"]
+  },
+  {
+    id: "little-miss", title: "Little Miss Brewing", category: "brews", status: "logged",
+    location: "San Diego, CA", region: "California", date: "", rating: null,
+    summary: "WWII-themed taproom — propaganda posters, bomb tap handles and flags.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/little-miss/little-miss-07.jpg",
+    photos: ["little-miss-01","little-miss-02","little-miss-03","little-miss-04","little-miss-05","little-miss-06","little-miss-07","little-miss-08","little-miss-09"]
+  },
+  {
+    id: "novo-brazil", title: "Novo Brazil Brewing Co.", category: "brews", status: "logged",
+    location: "Imperial Beach, CA", region: "California", date: "", rating: null,
+    summary: "Bayside taproom with a long wall of taps and views toward San Diego.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/novo-brazil/novo-brazil-06.jpg",
+    photos: ["novo-brazil-01","novo-brazil-02","novo-brazil-03","novo-brazil-04","novo-brazil-05","novo-brazil-06","novo-brazil-07"]
+  },
+  {
+    id: "florida-keys", title: "Florida Keys Brewing Co.", category: "brews", status: "logged",
+    location: "Islamorada, FL", region: "Florida", date: "", rating: null,
+    summary: "Island-life beer garden with tacos, live music and a gator to pose with.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/florida-keys/florida-keys-04.jpg",
+    photos: ["florida-keys-01","florida-keys-02","florida-keys-03","florida-keys-04","florida-keys-05","florida-keys-06","florida-keys-07","florida-keys-08","florida-keys-09"]
+  },
+  {
+    id: "three-notchd", title: "Three Notch'd Brewing Co.", category: "brews", status: "logged",
+    location: "Roanoke, VA", region: "Virginia", date: "", rating: null,
+    summary: "Virginia craft brewery in downtown Roanoke — Leave Your Mark.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/three-notchd/three-notchd-06.jpg",
+    photos: ["three-notchd-01","three-notchd-02","three-notchd-03","three-notchd-04","three-notchd-05","three-notchd-06"]
+  },
+  {
+    id: "burly", title: "Burly Brewing Co.", category: "brews", status: "logged",
+    location: "Castle Rock, CO", region: "Colorado", date: "", rating: null,
+    summary: "Bearded-mascot taproom in Castle Rock (since closed).",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/burly/burly-07.jpg",
+    photos: ["burly-01","burly-02","burly-03","burly-04","burly-05","burly-06","burly-07","burly-08"]
+  },
   /* ----------------------------- PLANNED ---------------------------- */
   { id: "prost",      title: "Prost Brewing",      category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "Opening November 2026 in the former Old Chicago on Powers.", cover: "", photos: [] },
-  { id: "animas",     title: "Animas",     category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "ska",        title: "Ska",        category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "oak-creek",  title: "Oak Creek",  category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   /* From the notes folder (templates not filled in yet) */
@@ -445,7 +568,6 @@ const EXPEDITIONS = [
   { id: "cogstone", title: "Cogstone Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "deuces-wild", title: "Deuces Wild", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "fossil-craft", title: "Fossil Craft Beer", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
-  { id: "jaks", title: "Jak's Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "local-relic", title: "Local Relic Artisan Ales", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "lost-friend", title: "Lost Friend Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
   { id: "nano-108", title: "Nano 108 Brewing", category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },

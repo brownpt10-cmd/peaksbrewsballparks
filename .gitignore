@@ -28,3 +28,6 @@ outputs/
 
 # Trip notes stay local (any format)
 notes/
+
+# Claude instructions (local only)
+CLAUDE.md
