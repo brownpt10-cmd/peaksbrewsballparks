@@ -67,6 +67,9 @@
           <a class="hl" href="peaks.html">Colorado 14ers</a>
           ${c.regions.map(r => `<a href="peaks.html?range=${encodeURIComponent(r)}#list">${esc(r)} Range</a>`).join("")}
           <a class="all" href="peaks.html#list">All 58 Peaks</a>
+          <a class="hl" href="peaks.html#trails" style="margin-top:14px">${esc(c.trails.label)}</a>
+          ${trails().slice(0, 4).map(e => `<a href="expedition.html?id=${e.id}">${esc(e.title)}</a>`).join("")}
+          <a class="all" href="expeditions.html?cat=peaks&region=${encodeURIComponent(c.trails.region)}">All Trails</a>
         </div>
         <div class="mega-col mega-col--sub">
           <a href="peaks.html#progress">${done.length} of ${PEAKS14.length} summited</a>
@@ -78,6 +81,10 @@
         <div class="mega-features">${featureCards(byCat("peaks"))}</div>
       </div></div>`;
   }
+
+  // Trails = non-14er hikes (category "peaks", region "Trails")
+  const isTrail = e => e.region === ((CATEGORIES.peaks.trails || {}).region || "Trails");
+  const trails = () => byCat("peaks").filter(isTrail);
 
   // Menu regions = configured order in data.js + any new region found on logged entries
   function regionsFor(cat) {
@@ -317,12 +324,12 @@
     if (!e) return;
     document.title = `${e.title} · ${SITE.name}`;
     $("#exp-hero").innerHTML = media(e.cover, e.category, e.title);
-    $("#exp-tag").textContent = catLabel(e.category);
+    $("#exp-tag").textContent = e.category === "peaks" && isTrail(e) ? "Trails" : catLabel(e.category);
     $("#exp-tag").className = `tag tag--${e.category}`;
     $("#exp-title").textContent = e.title;
     $("#exp-summary").textContent = e.summary || "";
 
-    const facts = { "Category": catLabel(e.category), "Location": e.location || "TBD", "Date": when(e),
+    const facts = { "Category": catLabel(e.category) + (e.category === "peaks" && isTrail(e) ? " · Trails" : ""), "Location": e.location || "TBD", "Date": when(e),
       "Rating": e.rating ? "★".repeat(e.rating) + "☆".repeat(5 - e.rating) : "TBD",
       ...(e.crew ? { "Crew": e.crew } : {}), ...(e.facts || {}) };
     const park = PARKS.find(p => p.expedition === e.id);
@@ -338,6 +345,8 @@
     $("#exp-story").innerHTML = (e.story || []).length
       ? e.story.map(p => `<p>${esc(p)}</p>`).join("")
       : `<p class="muted">Field notes coming soon.</p>`;
+    if ((e.links || []).length) $("#exp-story").innerHTML += `<p>${e.links.map(([l, h]) =>
+      `<a class="text-link" href="${esc(h)}" target="_blank" rel="noopener">${esc(l)} →</a>`).join(" &nbsp; ")}</p>`;
 
     const photos = (e.photos || []).map(p => photoPath(e, p));
     $("#exp-gallery").innerHTML = photos.map((src, i) => `<button data-i="${i}" aria-label="Open photo ${i + 1}"><img src="${src}" alt="${esc(e.title)} photo ${i + 1}" loading="lazy"></button>`).join("");
@@ -412,7 +421,10 @@
     draw();
 
     // Peak trip reports (logged expeditions in the Peaks category)
-    const trips = byCat("peaks");
+    const trailList = trails();
+    if ($("#peak-trails")) $("#peak-trails").innerHTML = trailList.map(card).join("") ||
+      `<div class="empty">No trails logged yet.</div>`;
+    const trips = byCat("peaks").filter(e => !isTrail(e));
     $("#peak-trips").innerHTML = trips.map(card).join("") ||
       `<div class="empty">No peak trip reports yet — the first summit is out there.</div>`;
   }

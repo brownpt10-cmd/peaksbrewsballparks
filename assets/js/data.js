@@ -28,7 +28,9 @@ const CATEGORIES = {
     blurb: "All 58 Colorado 14ers — plus any summit worth the climb.",
     cover: "assets/photos/pikes-peak/pikes-peak-01.jpg",
     page: "peaks.html",              // Peaks has its own page (the 14ers tracker)
-    regions: ["Sawatch", "Front", "San Juan", "Sangre de Cristo", "Elk", "Mosquito"]   // 14er ranges in the menu
+    regions: ["Sawatch", "Front", "San Juan", "Sangre de Cristo", "Elk", "Mosquito"],   // 14er ranges in the menu
+    // TRAILS = everyday hikes that aren't 14ers. Log them as category "peaks" with region "Trails".
+    trails: { label: "Trails", blurb: "Local hikes and loops that aren't 14ers — time on the dirt between summits.", region: "Trails" }
   },
   brews: {
     label: "Brews",
@@ -49,6 +51,26 @@ const CATEGORIES = {
 
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
+  {
+    id: "palmer-park-cheyenne-grandview",
+    title: "Cheyenne & Grandview Trail Loop",
+    category: "peaks",
+    region: "Trails",
+    status: "logged",
+    location: "Palmer Park, Colorado Springs, CO",
+    date: "2026-10-07",
+    rating: null,
+    crew: "Pat",
+    summary: "Easy hike in Palmer Park — great views of Pikes Peak and Garden of the Gods.",
+    story: [
+      "First time hiking with the new ankle in Palmer Park. Easy hike with some elevation change. Heart rate was up and a good sweat going.",
+      "Definitely do this one again."
+    ],
+    facts: { "Trail": "Cheyenne & Grandview Trail Loop", "Park": "Palmer Park", "Route": "Loop · Grandview → Cheyenne → South Cañon → Grandview", "Distance": "1.95 mi", "Elevation gain": "302 ft", "Elevation": "6,363–6,559 ft", "Time": "48:18", "Avg pace": "24'40\"/mi", "Weather": "Sunny, warm", "Dogs": "On leash" },
+    links: [["AllTrails route", "https://www.alltrails.com/trail/us/colorado/cheyenne-and-grandview-trail-loop"]],
+    cover: "assets/photos/palmer-park-cheyenne-grandview/img_3586.jpg",
+    photos: ["img_3586","img_3587","img_3588","img_3589","img_3590","img_3591","img_3592","img_3593","img_3594","img_3595","img_3596","img_3597","img_3598","img_3599","img_3600","img_3601"]
+  },
   {
     id: "oktoberfest",
     title: "Oktoberfest",
