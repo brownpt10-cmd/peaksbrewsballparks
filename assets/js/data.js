@@ -428,7 +428,8 @@ const EXPEDITIONS = [
       "Bristol is another local Colorado Springs favorite. The current location is in the old Ivywild School."
     ],
     facts: { "Beer of record": "Winter Warlock on nitro", "Food": "BBQ and the other kitchens at Ivywild" },
-    cover: "assets/photos/bristol/bristol-01.jpg", photos: ["bristol-01"]
+    cover: "assets/photos/bristol/img_3616.jpg",
+    photos: ["img_3616","img_3608","img_3609","img_3610","img_3611","img_3612","img_3613","img_3615","img_3617","img_3618","img_3619","img_3620","bristol-01"]
   },
   {
     id: "goat-patch", title: "Goat Patch Brewing Co.", category: "brews", status: "logged",
