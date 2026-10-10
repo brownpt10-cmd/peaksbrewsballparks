@@ -31,3 +31,6 @@ notes/
 
 # Claude instructions (local only)
 CLAUDE.md
+
+# Reference PDFs (local only)
+*.pdf

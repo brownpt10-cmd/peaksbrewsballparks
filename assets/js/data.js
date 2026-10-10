@@ -61,6 +61,31 @@ const JOURNAL = {
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    id: "training-for-the-14ers",
+    title: "Training for the 14ers",
+    category: "journal",
+    status: "logged",
+    location: "",
+    date: "2026-10-10",
+    rating: null,
+    crew: "Pat",
+    summary: "A four-month build — foundation, strength & endurance, taper — adapted from a 6,500 m peak-climbing plan and pointed at the Colorado 14ers.",
+    story: [
+      "I came across a four-month training plan from Namas Adventure built for peaks up to 6,500 meters. The 14ers top out around 14,400 feet (about 4,400 m), so it's more mountain than I need, and that's fine. Here it is, structured for me and the 14ers, so it's on the record.",
+      "**The split:** 60% endurance, 40% strength. Strength work twice a week, one rest day every week.",
+      "> **Month 1 — Foundation.** Legs: squats 2×10, lunges 2×10 each leg, glute bridges 2×15, all with ~10 lb. Core: chin-ups, scissors, bicycles and leg raises 2×10; planks 45 sec front / 30 sec side, 2 sets. Upper: push-ups 2×10, pull-ups 10/8/6. Endurance: a 3-mile run and a 6-mile long run, each twice a week.",
+      "> **Months 2–3 — Strength & Endurance.** Load goes up to 20–30 lb. Legs: squats 3×20, lunges 3×10 each leg, glute bridges 2×20. Core: 3×15; planks 1 min front / 45 sec side, 3 sets. Upper: push-ups 3×15, pull-ups 10/10/8. Endurance: 6-mile run twice a week, plus once a week a 10-mile run **or** a 6-mile hike carrying a ~45 lb pack.",
+      "> **Month 4 — Taper.** Back off to ~20 lb. Legs: squats 2×20, lunges 2×10 each leg, glute bridges 2×20. Core: 2×20; planks 1 min front / 45 sec side, 3 sets. Upper: push-ups 2×15, pull-ups 10/8. Endurance: keep the 6-mile runs twice a week and the weekly long run or pack hike.",
+      "**For the 14ers:** the weekly pack hike is the one that counts. Where I can, trade flat miles for vertical gain on local trails, and train with the pack I'll actually carry on summit day.",
+      "**Cross-training:** cycling, rock climbing, bouldering, swimming, uphill skiing. Extra gym sessions for strength and muscular endurance fit in anywhere.",
+      "**Rest & recovery:** 8 hours of sleep a night. Stretch before and after every session. Foam roll once a week. Cold showers. Yoga.",
+      "*Focus. Discipline. Don't give up. Believe you can and you're halfway there.*"
+    ],
+    facts: { "Type": "Journal note — training plan", "Length": "4 months", "Split": "60% endurance / 40% strength", "Source": "Namas Adventure, peak climbing up to 6,500 m", "Photo": "Pikes Peak from Palmer Park" },
+    cover: "assets/photos/training-for-the-14ers/pikes-peak-view.jpg",
+    photos: []
+  },
+  {
     id: "its-not-about-the-plan",
     title: "It's Not About the Plan",
     category: "journal",
