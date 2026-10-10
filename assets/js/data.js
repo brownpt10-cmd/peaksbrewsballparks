@@ -766,9 +766,11 @@ const EXPEDITIONS = [
   },
   {
     id: "ska", title: "Ska Brewing", category: "brews", status: "logged",
-    location: "Durango, CO", region: "Colorado", date: "", rating: null,
-    summary: "Durango's checkerboard brewery — a big tap wall and a busy taproom.",
-    story: ["Add your notes here."], facts: {},
+    location: "Durango, CO", region: "Colorado", date: "", dateText: "Multiple visits", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "Always the first stop in Durango.",
+    story: ["Durango is halfway between Sedona and Colorado Springs and has become a good meeting spot with Gary and Anna. Every time we visit, we pick Ska as the meeting spot. Ska always has good beer and an easy, laid-back vibe, which makes it a fantastic jumping-off point for a weekend in Durango."],
+    facts: { "Beer of record": "Buster Brown, of course!" },
     cover: "assets/photos/ska/ska-02.jpg",
     photos: ["ska-01","ska-02","ska-03","ska-04","ska-05"]
   },
