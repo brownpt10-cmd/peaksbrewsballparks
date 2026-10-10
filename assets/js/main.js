@@ -17,7 +17,13 @@
     .map(([e]) => e);
   const planned = EXPEDITIONS.filter(e => e.status === "planned");
   const byCat   = cat => logged.filter(e => e.category === cat);
-  const catLabel = c => (CATEGORIES[c] || {}).label || c;
+  const JOURNAL_CAT = typeof JOURNAL !== "undefined" ? JOURNAL : { label: "Journal", blurb: "" };
+  const catLabel = c => c === "journal" ? JOURNAL_CAT.label : (CATEGORIES[c] || {}).label || c;
+  const isJournal = e => e.category === "journal";
+  // Story text: escape, then allow **bold**, *italic*; a leading "> " makes a callout
+  const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
+  const storyHtml = paras => paras.map(p => /^>\s?/.test(p)
+    ? `<blockquote><p>${inline(p.replace(/^>\s?/, ""))}</p></blockquote>` : `<p>${inline(p)}</p>`).join("").replace(/<\/blockquote><blockquote>/g, "");
   const catHref  = c => (CATEGORIES[c] || {}).page || `expeditions.html?cat=${c}`;
 
   // 14ers helpers (fourteeners.js)
@@ -141,6 +147,7 @@
         </div>
         <div class="mega-col mega-col--sub">
           <a href="expeditions.html">Full Expedition Log</a>
+          <a href="expeditions.html?cat=journal">Journal</a>
           <a href="index.html#up-next">Up Next</a>
         </div>
         <div class="mega-features">${featureCards(logged)}</div>
@@ -223,6 +230,7 @@
           </div>
           <div><h4>Expeditions</h4>
             ${Object.keys(CATEGORIES).map(k => `<a href="${catHref(k)}">${esc(CATEGORIES[k].label)}</a>`).join("")}
+            <a href="expeditions.html?cat=journal">Journal</a>
             <a href="expeditions.html">Full Log</a>
           </div>
           <div><h4>About</h4>
@@ -255,7 +263,7 @@
       <a class="card${isPlanned ? " card--planned" : ""}" href="${href}">
         <div class="card-media">${media(e.cover, e.category, e.title)}<span class="tag tag--${e.category}">${esc(catLabel(e.category))}</span></div>
         <div class="card-body">
-          <div class="card-meta">${esc(e.location || "Location TBD")} · ${isPlanned ? "Up next" : esc(when(e))}</div>
+          <div class="card-meta">${esc(e.location || (isJournal(e) ? "Journal" : "Location TBD"))} · ${isPlanned ? "Up next" : esc(when(e))}</div>
           <h3>${esc(e.title)}</h3>
           <p>${esc(e.summary || "")}</p>
           ${isPlanned ? "" : `<span class="text-link">Read the log →</span>`}
@@ -298,7 +306,7 @@
     const region = params.get("region");
     const title = $("#log-title"), sub = $("#log-sub");
 
-    chips.innerHTML = [["all", "All"], ...Object.entries(CATEGORIES).map(([k, c]) => [k, c.label]), ["planned", "Up Next"]]
+    chips.innerHTML = [["all", "All"], ...Object.entries(CATEGORIES).map(([k, c]) => [k, c.label]), ["journal", JOURNAL_CAT.label], ["planned", "Up Next"]]
       .map(([k, l]) => `<button class="chip" data-cat="${k}">${esc(l)}</button>`).join("");
 
     const draw = () => {
@@ -306,7 +314,7 @@
       if (region && cat !== "all" && cat !== "planned") list = list.filter(e => e.region === region);
       grid.innerHTML = list.map(card).join("") || `<div class="empty">Nothing here yet — the next expedition is out there.</div>`;
       $$(".chip", chips).forEach(c => c.classList.toggle("active", c.dataset.cat === cat));
-      const c = CATEGORIES[cat];
+      const c = cat === "journal" ? JOURNAL_CAT : CATEGORIES[cat];
       title.textContent = c ? c.label : cat === "planned" ? "Up Next" : "Expedition Log";
       sub.textContent = c ? (region ? `${region} · ${c.blurb}` : c.blurb) : cat === "planned" ? "On the list, not yet conquered." : "Every peak, pint and ballpark — newest first.";
     };
@@ -329,9 +337,10 @@
     $("#exp-title").textContent = e.title;
     $("#exp-summary").textContent = e.summary || "";
 
-    const facts = { "Category": catLabel(e.category) + (e.category === "peaks" && isTrail(e) ? " · Trails" : ""), "Location": e.location || "TBD", "Date": when(e),
-      "Rating": e.rating ? "★".repeat(e.rating) + "☆".repeat(5 - e.rating) : "TBD",
-      ...(e.crew ? { "Crew": e.crew } : {}), ...(e.facts || {}) };
+    const facts = isJournal(e) ? { "Category": catLabel(e.category), "Date": when(e) } : { "Category": catLabel(e.category) + (e.category === "peaks" && isTrail(e) ? " · Trails" : ""), "Location": e.location || "TBD", "Date": when(e),
+      "Rating": e.rating ? "★".repeat(e.rating) + "☆".repeat(5 - e.rating) : "TBD" };
+    Object.assign(facts, {
+      ...(e.crew ? { "Crew": e.crew } : {}), ...(e.facts || {}) });
     const park = PARKS.find(p => p.expedition === e.id);
     if (park) Object.assign(facts, { "Ballpark": park.park, "Division": park.div, "Opened": String(park.opened) });
     const fourteener = PEAKS14.find(p => p.expedition === e.id);
@@ -343,7 +352,7 @@
     });
     $("#exp-facts").innerHTML = Object.entries(facts).map(([k, v]) => `<div class="fact"><span>${esc(k)}</span><strong>${esc(v)}</strong></div>`).join("");
     $("#exp-story").innerHTML = (e.story || []).length
-      ? e.story.map(p => `<p>${esc(p)}</p>`).join("")
+      ? storyHtml(e.story)
       : `<p class="muted">Field notes coming soon.</p>`;
     if ((e.links || []).length) $("#exp-story").innerHTML += `<p>${e.links.map(([l, h]) =>
       `<a class="text-link" href="${esc(h)}" target="_blank" rel="noopener">${esc(l)} →</a>`).join(" &nbsp; ")}</p>`;

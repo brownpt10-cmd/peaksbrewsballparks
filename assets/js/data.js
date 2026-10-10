@@ -7,7 +7,7 @@
      3. Set status: "logged" (done) or "planned" (shows in "Up Next").
    Logged trips are sorted newest-first by date automatically (undated ones go last).
 
-   category: "peaks" | "brews" | "ballparks"
+   category: "peaks" | "brews" | "ballparks" | "journal"
    date:     "YYYY-MM-DD", "YYYY-MM" or "YYYY"  (leave "" if unknown — shows "Date TBD")
    dateText: optional display text instead of the date, e.g. "Multiple visits"
    rating:   1–5 or null
@@ -49,8 +49,45 @@ const CATEGORIES = {
   }
 };
 
+// JOURNAL = standalone notes that don't belong to Peaks, Brews or Ballparks.
+// Log them as category "journal". They appear in the Expedition Log (Journal filter)
+// but don't get their own menu pillar. Story paragraphs support **bold**, *italic*,
+// and a leading "> " for a callout/blockquote.
+const JOURNAL = {
+  label: "Journal",
+  blurb: "Notes from between expeditions — planning, mindset and lessons learned."
+};
+
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
+  {
+    id: "its-not-about-the-plan",
+    title: "It's Not About the Plan",
+    category: "journal",
+    status: "logged",
+    location: "",
+    date: "2026-10-10",
+    rating: null,
+    crew: "Pat",
+    summary: "It's not about the plan — it's about the planning. Notes to myself on preparing for the physical, the mental, and a different outcome.",
+    story: [
+      "My military training taught me one important lesson about planning: it's not about the plan, it's about the planning. Planning is where we uncover every facet of the mission. It also reveals what knowledge and skills the goal or objective will demand of us.",
+      "I've carried this approach into retirement, applying it to travel planning and to the personal challenges I set for myself. It would be too easy to become passive in retirement. I recently pulled a line from the documentary *14 Peaks* by the late Nirmal Purja which captures my mindset well: \"I always have to compete against myself to be better than I was yesterday.\"",
+      "Sadly, Nims was killed in an avalanche on Broad Peak in late July 2026. His death is both an inspiration and a caution. There is the planning, there is the plan, and then there is the human assessment of the situation in real time. A freak event like an avalanche is predictably unpredictable. Climbers know there is permanent uncertainty on the mountain, and a good plan accounts for that uncertainty, both physical and mental, up to a point. Yet, as Mike Tyson put it, everyone has a plan until they get punched in the face. This isn't a critique of the team that died on Broad Peak. They calculated the risks, then knew the danger, and they made their collective decision. It didn't pan out.",
+      "Lately I've been fascinated by extreme alpine climbing, high-altitude trekking, and the adventurers who document their journeys on YouTube. These are people pushing themselves to their limits, usually in stories of growth, redemption, or failure. There are plenty of examples to examine of climbers turning back before the summit because they either were failing physically or they reached a pre-determined risk limit (like time, poor weather, or amount of O2 left). Others pushed the limits and paid the ultimate price.",
+      "One thing is clear: no matter how well thought out your plans are, something will force you to adapt. The planning is what gives you the skills and knowledge to deviate and adjust. At the very least, a plan provides a jumping-off point, a way to be spontaneous within a structure. It establishes the boundaries of risk when you're clear headed. On a recent trip to Munich, for example, I had studied the public transportation system and researched a few select cafés. That preparation led to an unplanned stop at a second-floor table overlooking Marienplatz. We never planned to be at that table, with that view (or that apple strudel), but there we were, because I had done the research and understood the city.",
+      "I recently watched a video of a trekker circling one of the Himalaya's 8,000-meter peaks on a route that crosses a pass above 5,000 meters. Her carefully planned schedule of trekking days was disrupted by weather at the pass. Her group first slowed the schedule to wait it out; then a weather window opened that required them to speed up again. Nearing the top of the pass, she had a panic attack as she reached her physical and mental limits. In that moment she learned she had to adapt, and on the far side of the pass she found an experience better than she had imagined.",
+      "Another adventurer, this one in Patagonia, had the same epiphany. Her planning didn't account for injury, and her disappointment at missing several hikes with her group was obvious. Her words were eerily similar to the Himalayan trekker's. But she got back in the fight, and overcoming the injury heightened the whole experience. Her mental preparation hadn't accounted for a setback, and her physical preparation failed her the moment she laced up new, untested boots, almost certainly the cause of the injury.",
+      "So here is my note to myself.",
+      "> **Prepare for the physical.** Test myself. Get better every day.",
+      "> **Prepare for the mental.** The task will be harder than expected, especially when I'm tired, injured, or facing bad weather. There are ways to simulate those conditions, but until I'm actually punched in the face, it won't be the same. Be ready for it.",
+      "> **Prepare for a different outcome.** Expect an outcome different from the one I envisioned, and let that become the experience, rather than a disappointment over not accomplishing it exactly as planned.",
+      "*The plan will change. The planning is what lets me change with it.*"
+    ],
+    facts: { "Type": "Journal note", "Photo": "Café table over Marienplatz, Munich" },
+    cover: "assets/photos/its-not-about-the-plan/marienplatz-cafe.jpg",
+    photos: []
+  },
   {
     id: "palmer-park-cheyenne-grandview",
     title: "Cheyenne & Grandview Trail Loop",
