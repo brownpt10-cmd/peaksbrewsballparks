@@ -37,7 +37,7 @@ const CATEGORIES = {
     blurb: "Breweries, beer halls and pubs — logged one pint at a time.",
     cover: "assets/photos/gunslinger/img_3572.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
-    regions: ["Colorado", "New Mexico", "Arizona", "California", "Washington", "Florida", "Virginia", "Connecticut", "Massachusetts", "Bahamas", "Germany", "Ireland"],
+    regions: ["Colorado", "New Mexico", "Arizona", "California", "Nevada", "Washington", "Florida", "Virginia", "Connecticut", "Massachusetts", "Bahamas", "Germany", "Ireland"],
     extraLinks: [["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
   },
   ballparks: {
@@ -504,7 +504,7 @@ const EXPEDITIONS = [
     crew: "Pat, Terri, Gary and Anna",
     summary: "Local brewery on the Animas River.",
     story: ["Laid-back place for a few beers and eats."], facts: {},
-    cover: "assets/photos/animas/animas-01.jpg", photos: ["animas-01","animas-02"]
+    cover: "assets/photos/animas/animas-01.jpg", photos: ["animas-01","animas-02","animas-03","animas-04","animas-05","animas-06","animas-07","animas-08","animas-09"]
   },
   {
     id: "colorado-mountain", title: "Colorado Mountain Brewery", category: "brews", status: "logged",
@@ -773,6 +773,118 @@ const EXPEDITIONS = [
     facts: { "Beer of record": "Buster Brown, of course!" },
     cover: "assets/photos/ska/ska-02.jpg",
     photos: ["ska-01","ska-02","ska-03","ska-04","ska-05"]
+  },
+  {
+    id: "desert-dogs", title: "Desert Dogs Brewery & Cidery", category: "brews", status: "logged",
+    location: "Santa Fe, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Upstairs taproom off the Santa Fe Plaza — beer, cider and a pool table.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/desert-dogs/desert-dogs-01.jpg",
+    photos: ["desert-dogs-01","desert-dogs-02","desert-dogs-03","desert-dogs-04"]
+  },
+  {
+    id: "grand-canyon-brewing", title: "Grand Canyon Brewing + Distillery", category: "brews", status: "logged",
+    location: "Williams, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Log-cabin brewery on Route 66 in the gateway town to the Grand Canyon.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/grand-canyon-brewing/grand-canyon-brewing-02.jpg",
+    photos: ["grand-canyon-brewing-01","grand-canyon-brewing-02","grand-canyon-brewing-03","grand-canyon-brewing-04","grand-canyon-brewing-05","grand-canyon-brewing-06"]
+  },
+  {
+    id: "lonesome-valley", title: "Lonesome Valley Brewing", category: "brews", status: "logged",
+    location: "Prescott Valley, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Neighborhood brewpub in Prescott Valley with a charcuterie board worth ordering.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/lonesome-valley/lonesome-valley-05.jpg",
+    photos: ["lonesome-valley-01","lonesome-valley-02","lonesome-valley-03","lonesome-valley-04","lonesome-valley-05"]
+  },
+  {
+    id: "phx-beer", title: "PHX Beer Co.", category: "brews", status: "logged",
+    location: "Phoenix metro, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Arizona-themed beers, a big patio and flights served on a PHX paddle.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/phx-beer/phx-beer-06.jpg",
+    photos: ["phx-beer-01","phx-beer-02","phx-beer-03","phx-beer-04","phx-beer-05","phx-beer-06","phx-beer-07","phx-beer-08","phx-beer-09"]
+  },
+  {
+    id: "pedal-haus", title: "Pedal Haus Brewery", category: "brews", status: "logged",
+    location: "Tempe, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Big beer garden and brewhouse on Mill Avenue in downtown Tempe.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/pedal-haus/pedal-haus-02.jpg",
+    photos: ["pedal-haus-01","pedal-haus-02","pedal-haus-03","pedal-haus-04","pedal-haus-05","pedal-haus-06","pedal-haus-07"]
+  },
+  {
+    id: "pinetop-brewing", title: "Pinetop Brewing Co.", category: "brews", status: "logged",
+    location: "Pinetop-Lakeside, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Belgian-style beers brewed at 7,000 feet in the White Mountains.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/pinetop-brewing/pinetop-brewing-01.jpg",
+    photos: ["pinetop-brewing-01","pinetop-brewing-02","pinetop-brewing-03","pinetop-brewing-04","pinetop-brewing-05"]
+  },
+  {
+    id: "walter-station", title: "Walter Station Brewery", category: "brews", status: "logged",
+    location: "Phoenix, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Converted fire station with a 16-tap chalkboard and a big patio.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/walter-station/walter-station-03.jpg",
+    photos: ["walter-station-01","walter-station-02","walter-station-03","walter-station-04","walter-station-05","walter-station-06","walter-station-07"]
+  },
+  {
+    id: "wanderlust", title: "Wanderlust Brewing Co.", category: "brews", status: "logged",
+    location: "Flagstaff, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Small Flagstaff taproom with a patio and a rotating hazy and sour lineup.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/wanderlust/wanderlust-05.jpg",
+    photos: ["wanderlust-01","wanderlust-02","wanderlust-03","wanderlust-04","wanderlust-05","wanderlust-06","wanderlust-07"]
+  },
+  {
+    id: "angel-city", title: "Angel City Brewery", category: "brews", status: "logged",
+    location: "Los Angeles, CA", region: "California", date: "", rating: null,
+    summary: "Arts District brewery in an old wire-rope factory — murals, barrels and a 100-year-old slide.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/angel-city/angel-city-14.jpg",
+    photos: ["angel-city-01","angel-city-02","angel-city-03","angel-city-04","angel-city-05","angel-city-06","angel-city-07","angel-city-08","angel-city-09","angel-city-10","angel-city-11","angel-city-12","angel-city-13","angel-city-14","angel-city-15","angel-city-16","angel-city-17"]
+  },
+  {
+    id: "bns-brewing", title: "BNS Brewing & Distilling Co.", category: "brews", status: "logged",
+    location: "Santee, CA", region: "California", date: "", rating: null,
+    summary: "Old West-themed brewery and distillery in East County San Diego.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/bns-brewing/bns-brewing-06.jpg",
+    photos: ["bns-brewing-01","bns-brewing-02","bns-brewing-03","bns-brewing-04","bns-brewing-05","bns-brewing-06"]
+  },
+  {
+    id: "hamilton-family", title: "Hamilton Family Brewery", category: "brews", status: "logged",
+    location: "Rancho Cucamonga, CA", region: "California", date: "", rating: null,
+    summary: "Family brewery with a long poster-board tap list and snowy San Gabriel views.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/hamilton-family/hamilton-family-03.jpg",
+    photos: ["hamilton-family-01","hamilton-family-02","hamilton-family-03","hamilton-family-04","hamilton-family-05","hamilton-family-06","hamilton-family-07"]
+  },
+  {
+    id: "pacific-islander", title: "Pacific Islander Beer Co.", category: "brews", status: "logged",
+    location: "San Diego, CA", region: "California", date: "", rating: null,
+    summary: "Tiki-themed brewery with island-inspired beers and a sunny patio.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/pacific-islander/pacific-islander-05.jpg",
+    photos: ["pacific-islander-01","pacific-islander-02","pacific-islander-03","pacific-islander-04","pacific-islander-05","pacific-islander-06"]
+  },
+  {
+    id: "golden-block", title: "Golden Block Brewery", category: "brews", status: "logged",
+    location: "Silverton, CO", region: "Colorado", date: "", rating: null,
+    summary: "Brewery and pizza on Silverton's historic main street, high in the San Juans.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/golden-block/golden-block-02.jpg",
+    photos: ["golden-block-01","golden-block-02","golden-block-03","golden-block-04","golden-block-05","golden-block-06","golden-block-07"]
+  },
+  {
+    id: "las-vegas-brewing", title: "Las Vegas Brewing Company", category: "brews", status: "logged",
+    location: "Las Vegas, NV", region: "Nevada", date: "", rating: null,
+    summary: "Twenty taps, a full menu and gaming at the bar.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/las-vegas-brewing/las-vegas-brewing-01.jpg",
+    photos: ["las-vegas-brewing-01","las-vegas-brewing-02","las-vegas-brewing-03","las-vegas-brewing-04","las-vegas-brewing-05","las-vegas-brewing-06","las-vegas-brewing-07","las-vegas-brewing-08"]
   },
   /* ----------------------------- PLANNED ---------------------------- */
   { id: "prost",      title: "Prost Brewing",      category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "Opening November 2026 in the former Old Chicago on Powers.", cover: "", photos: [] },

@@ -42,7 +42,7 @@ const ARIZONA_BREWERIES = [
   { id: "dynamite-beer-co", name: "Dynamite Beer Co.", city: "Cave Creek", area: "Scottsdale & North", visited: false, date: "", note: "", expedition: "" },
   { id: "four-peaks-brewing", name: "Four Peaks Brewing", city: "Tempe", area: "Tempe", visited: true, date: "", note: "", expedition: "four-peaks" },
   { id: "huss-brewing", name: "Huss Brewing", city: "Tempe", area: "Tempe", visited: false, date: "", note: "Also downtown Phoenix", expedition: "" },
-  { id: "pedal-haus-brewery", name: "Pedal Haus Brewery", city: "Tempe", area: "Tempe", visited: false, date: "", note: "Also Chandler, Mesa, Phoenix", expedition: "" },
+  { id: "pedal-haus-brewery", name: "Pedal Haus Brewery", city: "Tempe", area: "Tempe", visited: true, date: "", note: "Also Chandler, Mesa, Phoenix", expedition: "pedal-haus" },
   { id: "the-shop-beer-co", name: "The Shop Beer Co.", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
   { id: "hundred-mile-brewing", name: "Hundred Mile Brewing", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
   { id: "catalyst-crafted-ales", name: "Catalyst Crafted Ales", city: "Tempe", area: "Tempe", visited: false, date: "", note: "", expedition: "" },
