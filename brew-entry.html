@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brew Entry · Peaks to Brews to Ballparks</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#1e1e1e;--orange:#f77f3c;--orange-dark:#dd6a2a;--paper:#f5f5f5;--white:#fff;--grey:#5a5a5a;--line:rgba(30,30,30,.14);--ok:#2f6b45;--bad:#b3261e;
+      --body:'Barlow',-apple-system,system-ui,sans-serif;--mono:'Space Mono',ui-monospace,monospace}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--body)}
+    header{background:var(--ink);color:#fff;padding:22px 16px}
+    header .wrap,main{max-width:760px;margin:0 auto}
+    header a{color:#bdbdbd;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+    header h1{margin:6px 0 2px;font-size:30px;font-weight:600}
+    header p{margin:0;color:#cfcfcf}
+    main{padding:20px 16px 120px}
+    .card{background:var(--white);border:1px solid var(--line);padding:20px;margin-bottom:16px}
+    .sec{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-dark);margin:0 0 4px}
+    .hint{color:var(--grey);font-size:14px;margin:0 0 14px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .full{grid-column:1/-1}
+    label{display:block;font-weight:600;font-size:14px;margin-bottom:4px}
+    label small{font-weight:400;color:var(--grey)}
+    input,textarea,select{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid #c9c9c9;padding:10px 12px;border-radius:0}
+    input:focus,textarea:focus,select:focus{outline:2px solid var(--orange);outline-offset:-1px;border-color:var(--orange)}
+    textarea{min-height:90px;resize:vertical}
+    textarea.story{min-height:200px}
+    .stars{display:flex;gap:6px;flex-wrap:wrap}
+    .stars input{position:absolute;opacity:0;width:1px;height:1px}
+    .stars label{margin:0;width:46px;height:42px;display:grid;place-items:center;border:1px solid #c9c9c9;background:#fff;cursor:pointer;font-family:var(--mono);font-weight:700}
+    .stars input:checked+label{background:var(--orange);border-color:var(--orange);color:#fff}
+    .stars input:focus-visible+label{outline:2px solid var(--ink)}
+    .score{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .bar{position:fixed;left:0;right:0;bottom:0;background:var(--white);border-top:1px solid var(--line);padding:12px 16px}
+    .bar .wrap{max-width:760px;margin:0 auto;display:flex;gap:12px;align-items:center}
+    button{font:600 16px var(--body);border:0;padding:12px 22px;cursor:pointer}
+    .save{background:var(--orange);color:#fff;min-width:140px}
+    .save:hover{background:var(--orange-dark)}
+    .save:disabled{opacity:.6;cursor:wait}
+    .clear{background:transparent;color:var(--grey);text-decoration:underline;padding:12px 6px}
+    #msg{flex:1;font-size:14px}
+    #msg.ok{color:var(--ok)} #msg.bad{color:var(--bad)}
+    .notice{background:#fff4ec;border:1px solid #f3c3a3;padding:10px 12px;margin-bottom:16px;font-size:14px}
+    #log{margin:0;padding-left:18px;font-size:14px;color:var(--grey)}
+    @media (max-width:480px){.grid{grid-template-columns:1fr}.score{grid-template-columns:1fr 1fr}.card{padding:16px}header h1{font-size:26px}.save{min-width:110px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap">
+  <a href="index.html">← Peaks to Brews to Ballparks</a>
+  <h1>Brew Entry</h1>
+  <p>One brewery per entry. Fill in what applies, skip the rest, hit Save.</p>
+</div></header>
+
+<main>
+  <div class="notice" id="notConnected" hidden>Form isn't connected to the sheet yet — entries can't be saved.</div>
+
+  <form id="f" autocomplete="off" novalidate>
+    <!-- 01 TRIP BASICS -->
+    <section class="card">
+      <p class="sec">01 · Trip basics</p>
+      <p class="hint">Shows on the trip card and the facts bar.</p>
+      <div class="grid">
+        <div class="full"><label for="trip">Trip name (brewery) *</label><input id="trip" name="trip" required placeholder="e.g. Red Leg Brewing"></div>
+        <div><label for="location">Location</label><input id="location" name="location" placeholder="City"></div>
+        <div><label for="region">State / Country</label><input id="region" name="region" list="regions" placeholder="e.g. Colorado"></div>
+        <div><label for="date">Date(s)</label><input id="date" name="date" placeholder="2026-10-12 or a range"></div>
+        <div><label for="crew">Crew</label><input id="crew" name="crew" placeholder="Who was there"></div>
+        <div class="full"><label>Rating <small>(stars)</small></label>
+          <div class="stars">
+            <input type="radio" name="rating" id="r1" value="1"><label for="r1">1</label>
+            <input type="radio" name="rating" id="r2" value="2"><label for="r2">2</label>
+            <input type="radio" name="rating" id="r3" value="3"><label for="r3">3</label>
+            <input type="radio" name="rating" id="r4" value="4"><label for="r4">4</label>
+            <input type="radio" name="rating" id="r5" value="5"><label for="r5">5</label>
+          </div></div>
+        <div class="full"><label for="summary">One-line summary</label><input id="summary" name="summary"></div>
+      </div>
+    </section>
+
+    <!-- 02 BREWS -->
+    <section class="card">
+      <p class="sec">02 · Brews</p>
+      <div class="grid">
+        <div class="full"><label for="beer">Beer of record <small>— the one that defined the visit</small></label><input id="beer" name="beer"></div>
+        <div class="full"><label for="others">Other beers tried <small>— names / styles</small></label><textarea id="others" name="others"></textarea></div>
+        <div class="full"><label for="food">Food <small>— what you ate, how it was</small></label><textarea id="food" name="food"></textarea></div>
+        <div class="full"><label for="vibe">Vibe <small>— crowd, music, decor, patio</small></label><textarea id="vibe" name="vibe"></textarea></div>
+      </div>
+    </section>
+
+    <!-- 03 FIELD NOTES -->
+    <section class="card">
+      <p class="sec">03 · Field notes</p>
+      <p class="hint">The story — becomes the main write-up. Tell it like you're at the bar. A blank line starts a new paragraph.</p>
+      <textarea class="story" id="notes" name="notes" aria-label="Field notes"></textarea>
+    </section>
+
+    <!-- 04 SCORECARD -->
+    <section class="card">
+      <p class="sec">04 · Scorecard</p>
+      <p class="hint">Optional — 1 to 5.</p>
+      <div class="score">
+        <div><label for="sBeer">Beer</label><select id="sBeer" name="sBeer"></select></div>
+        <div><label for="sAtmos">Atmosphere</label><select id="sAtmos" name="sAtmos"></select></div>
+        <div><label for="sFood">Food</label><select id="sFood" name="sFood"></select></div>
+        <div><label for="sService">Service</label><select id="sService" name="sService"></select></div>
+      </div>
+    </section>
+
+    <!-- 05 PHOTOS -->
+    <section class="card">
+      <p class="sec">05 · Photos</p>
+      <div class="grid">
+        <div><label for="folder">Photo folder</label><input id="folder" name="folder" placeholder="e.g. Images/Brews/Colorado/Red_Leg"></div>
+        <div><label for="cover">Cover photo</label><input id="cover" name="cover" placeholder="Which shot should lead"></div>
+        <div class="full"><label for="leaveout">Leave out</label><input id="leaveout" name="leaveout" placeholder="Any photos to skip"></div>
+        <div class="full"><label for="captions">Captions <small>(optional)</small></label><textarea id="captions" name="captions" placeholder='e.g. "Kölsch on the patio"'></textarea></div>
+      </div>
+    </section>
+
+    <!-- 06 ANYTHING ELSE -->
+    <section class="card">
+      <p class="sec">06 · Anything else</p>
+      <textarea id="extra" name="extra" aria-label="Anything else" placeholder="Links, corrections, things to add to Up Next…"></textarea>
+    </section>
+
+    <section class="card">
+      <label for="passcode">Access code</label>
+      <input id="passcode" name="passcode" type="password" autocomplete="current-password" style="max-width:240px">
+      <p class="hint" style="margin:6px 0 0">Remembered on this device.</p>
+    </section>
+
+    <section class="card" id="logCard" hidden>
+      <p class="sec">Saved this session</p>
+      <ol id="log"></ol>
+    </section>
+  </form>
+</main>
+
+<div class="bar"><div class="wrap">
+  <button class="save" id="save" form="f" type="submit">Save</button>
+  <span id="msg" role="status"></span>
+  <button class="clear" id="clear" type="button">Clear</button>
+</div></div>
+
+<datalist id="regions">
+  <option>Colorado</option><option>New Mexico</option><option>Arizona</option><option>California</option><option>Nevada</option>
+  <option>Washington</option><option>Florida</option><option>Virginia</option><option>Connecticut</option><option>Massachusetts</option>
+  <option>Bahamas</option><option>Germany</option><option>Ireland</option>
+</datalist>
+
+<script>
+// Apps Script web app URL (Deploy → Web app → /exec URL)
+const SCRIPT_URL = "";
+
+const f = document.getElementById('f'), msg = document.getElementById('msg'), saveBtn = document.getElementById('save');
+const DRAFT = 'pbb-brew-draft', STICKY = ['crew', 'location', 'region', 'passcode'];
+const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+                set(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
+                del(k){ try { localStorage.removeItem(k); } catch(e){} } };
+
+if (!SCRIPT_URL) document.getElementById('notConnected').hidden = false;
+['sBeer','sAtmos','sFood','sService'].forEach(id => {
+  document.getElementById(id).innerHTML = '<option value="">—</option>' + [1,2,3,4,5].map(n => `<option>${n}</option>`).join('');
+});
+
+function read(){ const d = {}; new FormData(f).forEach((v,k) => d[k] = String(v).trim()); return d; }
+function fill(d){ for (const [k,v] of Object.entries(d || {})) {
+  if (k === 'rating') { const r = document.getElementById('r' + v); if (r) r.checked = true; }
+  else if (f.elements[k]) f.elements[k].value = v; } }
+function say(t, cls){ msg.textContent = t; msg.className = cls || ''; }
+
+// restore draft + sticky fields
+try { fill(JSON.parse(store.get(DRAFT) || '{}')); } catch(e){}
+f.addEventListener('input', () => store.set(DRAFT, JSON.stringify(read())));
+
+function resetForm(keepSticky){
+  const keep = {}; if (keepSticky) { const d = read(); STICKY.forEach(k => keep[k] = d[k] || ''); }
+  f.reset(); fill(keep); store.set(DRAFT, JSON.stringify(keep));
+}
+document.getElementById('clear').onclick = () => { if (confirmClear()) { resetForm(true); say(''); } };
+function confirmClear(){ const d = read(); return !(d.trip || d.notes) || window.confirm('Clear this entry?'); }
+
+f.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const d = read();
+  if (!d.trip) { say('Trip name is required.', 'bad'); f.trip.focus(); return; }
+  if (!SCRIPT_URL) { say('Not connected to the sheet yet.', 'bad'); return; }
+  saveBtn.disabled = true; say('Saving…');
+  try {
+    const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(d) });
+    const out = await res.json();
+    if (!out.ok) throw new Error(out.error || 'Save failed');
+    const li = document.createElement('li'); li.textContent = d.trip + (d.location ? ' — ' + d.location : '');
+    document.getElementById('log').prepend(li); document.getElementById('logCard').hidden = false;
+    resetForm(true); say('Saved “' + d.trip + '” (row ' + out.row + ').', 'ok');
+    window.scrollTo({ top: 0, behavior: 'smooth' }); setTimeout(() => f.trip.focus(), 300);
+  } catch (err) {
+    say('Not saved: ' + err.message + ' — your entry is still here.', 'bad');
+  } finally { saveBtn.disabled = false; }
+});
+</script>
+</body>
+</html>
