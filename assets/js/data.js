@@ -61,6 +61,27 @@ const JOURNAL = {
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    id: "google-gemini-and-google-keep",
+    title: "Google Gemini and Google Keep",
+    category: "journal",
+    status: "logged",
+    location: "",
+    date: "2026-10-12",
+    rating: null,
+    crew: "Pat",
+    summary: "A quick note on using the Gemini app to build Google Keep lists, like a packing list for a trip to Europe.",
+    story: [
+      "A quick note this morning about using Gemini to create Google Keep lists.",
+      "Picking the right tool for the job is wise advice. In this case, the Gemini app on your phone is well suited to creating lists in Google Keep on your phone.",
+      "Either start with a prompt directly in Gemini or provide a list you've already created, for example a packing list for a trip to Europe. Gemini immediately creates the bulleted list and imports it into Google Keep. Done.",
+      "The great thing about Google Keep is that the list is now available on all your platforms, in the app or on the web. Checking off an item clears it from the list while keeping it in the \"Checked items\" section below, struck through.",
+      "> **Right tool for the job.** Gemini to build the list, Keep to carry it everywhere."
+    ],
+    facts: { "Type": "Journal note — tech tip", "Tools": "Google Gemini app · Google Keep", "Example": "Europe trip packing list" },
+    cover: "assets/photos/google-gemini-and-google-keep/gemini-keep-log.jpg",
+    photos: ["keep-packing-list", "gemini-keep-log"]
+  },
+  {
     id: "limitations",
     title: "Limitations",
     category: "journal",
