@@ -95,8 +95,8 @@ const EXPEDITIONS = [
       "I've used a travel example, and I don't want to shortchange the real struggles people face, like a family member's serious health problem. It would be glib to say \"just plan for it.\" You can't.",
       "What you can do is learn about resilience and apply its lessons in real time. That's easier said than done, and every day will bring its own challenge. What I do know is that you can't plan for every detail, but you can control the here and now. The same goes for getting spun up about a future that hasn't happened yet. It's out there, and it might look ugly. But what you control is today, and how you prepare for what comes next."
     ],
-    facts: { "Type": "Journal note", "Companion to": "It's Not About the Plan" },
-    cover: "",
+    facts: { "Type": "Journal note", "Companion to": "It's Not About the Plan", "Photo": "Lobuche East Peak (6,119m)" },
+    cover: "assets/photos/overcoming-adversity/lobuche-east-peak.jpg",
     photos: []
   },
   {
