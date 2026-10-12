@@ -97,6 +97,12 @@ const EXPEDITIONS = [
       "**Taking It Seriously, Without Taking Myself Seriously**",
       "These days, the paddling goes into goals, interests I can really dig into, taking care of family, and the challenges I set for myself, like this site. I take all of it seriously.",
       "What I'm learning is to not take myself so seriously while I do it. The guy who once braced for every promotion board now watches Hallmark movies and doesn't apologize for it. That may be the clearest sign the engine has changed.",
+      "So here is my note to myself.",
+      "> **Know my engine.** Paddle to get better, not just to keep from falling short.",
+      "> **Reconcile, don't pretend.** I'll fall short of some things. Work through it and make peace with it. \"No regrets\" was never quite true; \"reconciled\" is.",
+      "> **Go back to the drawing board.** When reality has another idea, return to intent and replan. The planning is why I'm never starting from zero.",
+      "> **Lean forward inside my boundaries.** Push new limits without pretending the limits aren't there.",
+      "> **Take it seriously, not myself.** Work hard at what matters, and enjoy the Hallmark movie anyway.",
       "*Still a duck. The water is calmer. I'm still paddling, but now I'm paddling for myself.*"
     ],
     facts: { "Type": "Journal note", "Companion to": "It's Not About the Plan · Overcoming Adversity", "Photo": "Mallard" },
@@ -136,7 +142,14 @@ const EXPEDITIONS = [
       "Plan for that, too. Think through what comes next when you return to reality, whether that's a job or simply becoming retired again. When the high wears off, you need a new intent.",
       "**When You Can't Plan for It**",
       "I've used a travel example, and I don't want to shortchange the real struggles people face, like a family member's serious health problem. It would be glib to say \"just plan for it.\" You can't.",
-      "What you can do is learn about resilience and apply its lessons in real time. That's easier said than done, and every day will bring its own challenge. What I do know is that you can't plan for every detail, but you can control the here and now. The same goes for getting spun up about a future that hasn't happened yet. It's out there, and it might look ugly. But what you control is today, and how you prepare for what comes next."
+      "What you can do is learn about resilience and apply its lessons in real time. That's easier said than done, and every day will bring its own challenge. What I do know is that you can't plan for every detail, but you can control the here and now. The same goes for getting spun up about a future that hasn't happened yet. It's out there, and it might look ugly. But what you control is today, and how you prepare for what comes next.",
+      "So here is my note to myself.",
+      "> **Start with intent.** Know the purpose, the method, and the endstate. Define success as my best effort, not just the summit.",
+      "> **Plan the branches and sequels.** Work out what I'll do if things go wrong, and if they go right. It's realism, not pessimism.",
+      "> **Embrace the suck.** The hard days are guaranteed. Get ahead of what I can, pack for the rest, and expect the final third.",
+      "> **Plan past the endstate.** When the high wears off, find a new intent.",
+      "> **Control what I can.** I can't plan for every detail, but I can control today and how I prepare for what comes next.",
+      "*The plan is what gets me there. The planning is how I handle the adversity along the way.*"
     ],
     facts: { "Type": "Journal note", "Companion to": "It's Not About the Plan", "Photo": "Lobuche East Peak (6,119m)" },
     cover: "assets/photos/overcoming-adversity/lobuche-east-peak.jpg",
