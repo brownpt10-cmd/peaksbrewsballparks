@@ -61,6 +61,35 @@ const JOURNAL = {
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    id: "travel-workflow",
+    title: "The Travel Workflow",
+    category: "journal",
+    status: "logged",
+    location: "",
+    date: "2026-10-12",
+    rating: null,
+    crew: "Pat",
+    summary: "From \u201csomeday, maybe\u201d to a guide in your pocket: five Claude skills that take a trip from bucket list to an offline HTML guide.",
+    story: [
+      "[brownpt10-cmd.github.io/travel](https://brownpt10-cmd.github.io/travel/)",
+      "**From \u201csomeday, maybe\u201d to a guide in your pocket**",
+      "I created five skills in Claude with a paid subscription for travel planning.",
+      "Five skills, run in order. Each one takes the output of the last and makes it more real: an idea becomes a draft, a draft becomes reservations, reservations become a document, and the document becomes something you can use standing on a train platform.",
+      "![Bucket List \u2192 Rough Plan \u2192 Booking \u2192 Itinerary Doc \u2192 HTML Guide](assets/photos/travel-workflow/workflow-steps.png)",
+      "**Download the Skills**",
+      "You don't need to memorize any of this. You just need to know what the five stages are, what each one gives you, and the sentence that starts it. I've also included the skills to download at the [travel workflow page](https://brownpt10-cmd.github.io/travel/). Once downloaded, tell Claude to install them or install them yourself. Either way, Claude will figure it out, but you need the .md files to replicate what I have here.",
+      "I've tested the skills multiple times, from developing a bucket list to initial itinerary builds to mobile HTML guides. The guides are slick, and I've tested full multi-day itineraries, daily options, and single-day plans.",
+      "**Put the Time into Planning**",
+      "In another journal note, I discussed how the process of planning is more important than the plan. These skills get you to the plan. They aid in exhaustive research but don't replace research. Once you narrow in on a plan, watch videos, explore websites, and build your knowledge. Use AI along the way again to aid the process.",
+      "Putting in the time to read, challenge what you read, watch videos, and refine is still required. AI simply aids in the process.",
+      "*Go Explore!*"
+    ],
+    facts: { "Type": "Journal note — travel planning", "Tools": "Five Claude skills", "Stages": "Bucket List · Rough Plan · Booking · Itinerary Doc · HTML Guide", "Companion to": "It's Not About the Plan" },
+    links: [["Travel workflow & skill downloads", "https://brownpt10-cmd.github.io/travel/"]],
+    cover: "assets/photos/travel-workflow/travelprocess.jpg",
+    photos: []
+  },
+  {
     id: "google-gemini-and-google-keep",
     title: "Google Gemini and Google Keep",
     category: "journal",

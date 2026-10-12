@@ -21,9 +21,15 @@
   const catLabel = c => c === "journal" ? JOURNAL_CAT.label : (CATEGORIES[c] || {}).label || c;
   const isJournal = e => e.category === "journal";
   // Story text: escape, then allow **bold**, *italic*; a leading "> " makes a callout
-  const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
-  const storyHtml = paras => paras.map(p => /^>\s?/.test(p)
-    ? `<blockquote><p>${inline(p.replace(/^>\s?/, ""))}</p></blockquote>` : `<p>${inline(p)}</p>`).join("").replace(/<\/blockquote><blockquote>/g, "");
+  // [text](https://url) makes a link; a paragraph that is only ![alt](path) shows an inline image
+  const inline = s => esc(s).replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a class="text-link" href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/(^|[^\w/])\*(.+?)\*/g, "$1<em>$2</em>");
+  const storyHtml = paras => paras.map(p => {
+    const img = p.match(/^!\[(.*?)\]\(([^)\s]+)\)$/);
+    if (img) return `<figure class="story-img"><img src="${esc(img[2])}" alt="${esc(img[1])}" loading="lazy"></figure>`;
+    return /^>\s?/.test(p)
+      ? `<blockquote><p>${inline(p.replace(/^>\s?/, ""))}</p></blockquote>` : `<p>${inline(p)}</p>`;
+  }).join("").replace(/<\/blockquote><blockquote>/g, "");
   const catHref  = c => (CATEGORIES[c] || {}).page || `expeditions.html?cat=${c}`;
 
   // 14ers helpers (fourteeners.js)

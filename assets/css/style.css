@@ -308,6 +308,8 @@ body.no-hero .site-header { background: var(--ink); }
 .story blockquote { margin: 28px 0; padding: 18px 24px; border-left: 4px solid var(--orange); background: var(--white); }
 .story blockquote p { margin: 0 0 12px; }
 .story blockquote p:last-child { margin-bottom: 0; }
+.story .story-img { margin: 28px 0; }
+.story .story-img img { display: block; max-width: 100%; height: auto; border-radius: 10px; }
 
 .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .gallery button { padding: 0; border: 0; cursor: zoom-in; aspect-ratio: 1; overflow: hidden; background: #ccc; }
