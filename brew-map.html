@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brew Map · Peaks to Brews to Ballparks</title>
+  <meta name="description" content="Every brewery Buster & Crew have logged, on one map.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610131626">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css">
+  <style>
+    .bm-stats { display: flex; flex-wrap: wrap; gap: 28px; }
+    .bm-stat b { display: block; font: 700 30px var(--font-mono); font-variant-numeric: tabular-nums; }
+    .bm-stat span { font: 400 12px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--grey); }
+    .bm-wrap { display: grid; grid-template-columns: 330px minmax(0, 1fr); height: 74vh; min-height: 540px; border: 1px solid var(--line); background: var(--white); }
+    #bm-map { height: 100%; background: #dfe7ec; }
+    .bm-side { overflow-y: auto; border-right: 1px solid var(--line); min-width: 0; }
+    .bm-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--white); z-index: 2; }
+    .bm-chip { font: 700 11px var(--font-mono); text-transform: uppercase; letter-spacing: .05em; padding: 6px 9px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; border-radius: 2px; }
+    .bm-chip:hover { border-color: var(--orange); }
+    .bm-chip.on { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .bm-group h3 { font: 700 11px var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--grey); padding: 14px 12px 4px; margin: 0; display: flex; justify-content: space-between; }
+    .bm-item { display: flex; gap: 10px; align-items: center; padding: 7px 12px; cursor: pointer; border: 0; border-left: 3px solid transparent; width: 100%; background: none; text-align: left; font: inherit; color: inherit; }
+    .bm-item:hover { background: var(--paper); border-left-color: var(--orange); }
+    .bm-item img { width: 44px; height: 44px; object-fit: cover; border-radius: 2px; flex: none; background: var(--mist); }
+    .bm-item b { display: block; font-size: 15px; font-weight: 600; line-height: 1.2; }
+    .bm-item span { font-size: 13px; color: var(--grey); }
+    .bm-chip:focus-visible, .bm-item:focus-visible { outline: 2px solid var(--orange-dark); outline-offset: 1px; }
+    .bm-pin { background: var(--orange); border: 2px solid #fff; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,.45); }
+    .marker-cluster-small, .marker-cluster-medium, .marker-cluster-large { background: rgba(247,127,60,.35); }
+    .marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div { background: var(--orange); color: #fff; font: 700 13px var(--font-mono); }
+    .bm-pop { width: 220px; font-family: var(--font-body); }
+    .bm-pop img { width: 100%; height: 130px; object-fit: cover; display: block; margin-bottom: 8px; border-radius: 2px; }
+    .bm-pop b { font-size: 16px; display: block; color: var(--ink); }
+    .bm-pop span { color: var(--grey); font-size: 13px; display: block; margin: 2px 0 8px; }
+    .bm-pop a { color: var(--orange-dark); font-weight: 700; text-decoration: none; }
+    .leaflet-popup-content { margin: 10px; }
+    .leaflet-control-layers { font-family: var(--font-body); font-size: 14px; }
+    @media (max-width: 860px) {
+      .bm-wrap { grid-template-columns: 1fr; height: auto; min-height: 0; }
+      #bm-map { height: 58vh; order: -1; }
+      .bm-side { border-right: 0; border-top: 1px solid var(--line); max-height: 60vh; }
+    }
+  </style>
+</head>
+<!-- Brew Map: every logged brews entry in data.js that has lat/lng.
+     New brewery → add  lat: <number>, lng: <number>,  to its data.js entry and it appears here. -->
+<body data-page="brewmap" class="no-hero">
+
+  <section class="status-head">
+    <div class="container">
+      <span class="eyebrow">Brews</span>
+      <h1>The Brew Map</h1>
+      <p class="lead">Every taproom Buster &amp; Crew have logged. Tap a pin or a name for the photo and the story.</p>
+      <div class="bm-stats" id="bm-stats"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="bm-wrap">
+        <aside class="bm-side">
+          <div class="bm-chips" id="bm-chips"></div>
+          <div id="bm-list"></div>
+        </aside>
+        <div id="bm-map" tabindex="0" aria-label="Map of breweries visited"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="assets/js/data.js?v=202610131626"></script>
+  <script src="assets/js/fourteeners.js?v=202610131626"></script>
+  <script src="assets/js/ballparks.js?v=202610131626"></script>
+  <script src="assets/js/main.js?v=202610131626"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+  <script>
+  (function () {
+    const ABROAD = ["Germany", "Ireland", "Bahamas"];   // non-US regions (for the Countries count) — add new ones here
+    const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const brews = EXPEDITIONS
+      .filter(e => e.category === "brews" && e.status === "logged" && typeof e.lat === "number")
+      .map(e => ({ ...e, region: e.region || "Other", ll: [e.lat, e.lng] }));
+    const count = r => brews.filter(e => e.region === r).length;
+    const regions = [...new Set(brews.map(e => e.region))].sort((a, b) => count(b) - count(a) || a.localeCompare(b));
+
+    const states = new Set(brews.filter(e => !ABROAD.includes(e.region)).map(e => e.region));
+    const abroad = new Set(brews.filter(e => ABROAD.includes(e.region)).map(e => e.region));
+    document.getElementById("bm-stats").innerHTML = [
+      [brews.length, "Breweries"], [states.size, "States"], [abroad.size + (states.size ? 1 : 0), "Countries"]
+    ].map(([n, l]) => `<div class="bm-stat"><b>${n}</b><span>${l}</span></div>`).join("");
+
+    // Map styles (pins are city-level, so zoom stops at neighbourhood scale)
+    const MAXZ = 13;
+    const carto = id => L.tileLayer(`https://{s}.basemaps.cartocdn.com/${id}/{z}/{x}/{y}{r}.png`, {
+      subdomains: "abcd", maxZoom: MAXZ,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    });
+    const esri = path => L.tileLayer(`https://server.arcgisonline.com/ArcGIS/rest/services/${path}/MapServer/tile/{z}/{y}/{x}`, {
+      maxZoom: MAXZ, attribution: "Imagery &copy; Esri, Maxar, Earthstar Geographics"
+    });
+    const STYLES = {
+      "Voyager (street)": carto("rastertiles/voyager"),
+      "Positron (light)": carto("light_all"),
+      "Satellite": L.layerGroup([esri("World_Imagery"), esri("Reference/World_Boundaries_and_Places")])
+    };
+    let styleName = "Voyager (street)";
+    try { const s = localStorage.getItem("bm-style"); if (STYLES[s]) styleName = s; } catch (_) {}
+
+    const map = L.map("bm-map", { minZoom: 2, maxZoom: MAXZ, scrollWheelZoom: false, zoomSnap: 0.5, layers: [STYLES[styleName]] });
+    map.attributionControl.setPrefix(false);
+    L.control.layers(STYLES, null, { position: "topright", collapsed: window.innerWidth <= 860 }).addTo(map);
+    map.on("baselayerchange", ev => { try { localStorage.setItem("bm-style", ev.name); } catch (_) {} });
+    map.on("focus click", () => map.scrollWheelZoom.enable());
+
+    const pin = L.divIcon({ className: "bm-pin", iconSize: [16, 16] });
+    const cluster = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 45 });
+    const markers = {};
+    brews.forEach(e => {
+      markers[e.id] = L.marker(e.ll, { icon: pin, title: e.title }).bindPopup(
+        `<div class="bm-pop">${e.cover ? `<img src="${esc(e.cover)}" alt="">` : ""}<b>${esc(e.title)}</b>
+         <span>${esc(e.location)}${e.date ? " · " + esc(e.date) : ""}</span>
+         <a href="expedition.html?id=${encodeURIComponent(e.id)}">Read the log →</a></div>`);
+    });
+    map.addLayer(cluster);
+
+    let active = "All";
+    function render() {
+      const shown = brews.filter(e => active === "All" || e.region === active);
+      cluster.clearLayers(); cluster.addLayers(shown.map(e => markers[e.id]));
+      // "All" opens on the Americas; Europe is a scroll away
+      const focus = active === "All" ? shown.filter(e => e.lng < -50) : shown;
+      if (focus.length) map.fitBounds(L.latLngBounds(focus.map(e => e.ll)), { padding: [30, 30], maxZoom: 11 });
+      document.getElementById("bm-chips").innerHTML = ["All", ...regions].map(r =>
+        `<button class="bm-chip${r === active ? " on" : ""}" data-r="${esc(r)}">${esc(r)} ${r === "All" ? brews.length : count(r)}</button>`).join("");
+      document.getElementById("bm-list").innerHTML = regions.filter(r => active === "All" || r === active).map(r =>
+        `<div class="bm-group"><h3><span>${esc(r)}</span><span>${count(r)}</span></h3>${
+          brews.filter(e => e.region === r).sort((a, b) => a.title.localeCompare(b.title)).map(e =>
+            `<button class="bm-item" data-id="${esc(e.id)}">${e.cover ? `<img src="${esc(e.cover)}" alt="" loading="lazy">` : `<img alt="">`}<div><b>${esc(e.title)}</b><span>${esc(e.location)}</span></div></button>`).join("")
+        }</div>`).join("");
+    }
+    document.getElementById("bm-chips").addEventListener("click", ev => {
+      const b = ev.target.closest(".bm-chip"); if (b) { active = b.dataset.r; render(); }
+    });
+    document.getElementById("bm-list").addEventListener("click", ev => {
+      const it = ev.target.closest(".bm-item"); if (!it) return;
+      const m = markers[it.dataset.id];
+      if (window.innerWidth <= 860) document.getElementById("bm-map").scrollIntoView({ behavior: "smooth", block: "center" });
+      cluster.zoomToShowLayer(m, () => m.openPopup());
+    });
+    render();
+  })();
+  </script>
+</body>
+</html>

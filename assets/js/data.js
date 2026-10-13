@@ -38,7 +38,7 @@ const CATEGORIES = {
     cover: "assets/photos/gunslinger/img_3572.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
     regions: ["Colorado", "New Mexico", "Arizona", "California", "Nevada", "Washington", "Florida", "Virginia", "Connecticut", "Massachusetts", "Bahamas", "Germany", "Ireland"],
-    extraLinks: [["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
+    extraLinks: [["Brew Map", "brew-map.html"], ["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
   },
   ballparks: {
     label: "Ballparks",
@@ -321,6 +321,7 @@ const EXPEDITIONS = [
   },
   {
     id: "oktoberfest",
+    lat: 48.1316, lng: 11.5497,
     title: "Oktoberfest",
     category: "brews",
     status: "logged",
@@ -341,6 +342,7 @@ const EXPEDITIONS = [
   },
   {
     id: "hofbrauhaus",
+    lat: 48.1376, lng: 11.5799,
     title: "Hofbräuhaus",
     category: "brews",
     status: "logged",
@@ -356,6 +358,7 @@ const EXPEDITIONS = [
   },
   {
     id: "taphouse-munich",
+    lat: 48.1235, lng: 11.548,
     title: "Taphouse Munich",
     category: "brews",
     status: "logged",
@@ -375,6 +378,7 @@ const EXPEDITIONS = [
   },
   {
     id: "heavy-metal",
+    lat: 35.1478, lng: -114.5683,
     title: "The Heavy Metal Brewing Co.",
     category: "brews",
     status: "logged",
@@ -390,6 +394,7 @@ const EXPEDITIONS = [
   },
   {
     id: "two-coast",
+    lat: 33.8883, lng: -118.309,
     title: "Two Coast Brewing Co.",
     category: "brews",
     status: "logged",
@@ -405,6 +410,7 @@ const EXPEDITIONS = [
   },
   {
     id: "socal-vibes",
+    lat: 33.8317, lng: -118.282,
     title: "SoCal Vibes Co.",
     category: "brews",
     status: "logged",
@@ -420,6 +426,7 @@ const EXPEDITIONS = [
   },
   {
     id: "palace-bar",
+    lat: 53.3459, lng: -6.2589,
     title: "The Palace Bar",
     category: "brews",
     status: "logged",
@@ -435,6 +442,7 @@ const EXPEDITIONS = [
   },
   {
     id: "gunslinger",
+    lat: 38.9286, lng: -104.7976,
     title: "Gunslinger Brewing Co.",
     category: "brews",
     status: "logged",
@@ -454,6 +462,7 @@ const EXPEDITIONS = [
   },
   {
     id: "mash-mechanix",
+    lat: 38.873, lng: -104.719,
     title: "Mash Mechanix",
     category: "brews",
     status: "logged",
@@ -473,6 +482,7 @@ const EXPEDITIONS = [
   },
   {
     id: "peaks-n-pines",
+    lat: 38.92, lng: -104.793,
     title: "Peaks N Pines",
     category: "brews",
     status: "logged",
@@ -489,7 +499,7 @@ const EXPEDITIONS = [
 
   /* ---- Added from Images/Brews (Arizona, Florida, Bahamas, New Mexico) — notes to come ---- */
   {
-    id: "barrio", title: "Barrio Brewing Co.", category: "brews", status: "logged",
+    id: "barrio", title: "Barrio Brewing Co.", category: "brews", status: "logged", lat: 32.219, lng: -110.958,
     location: "Tucson, AZ", region: "Arizona", date: "", rating: null,
     summary: "A Tucson favorite — the big B silo out front and a long chalkboard of house beers.",
     story: [], facts: {},
@@ -497,7 +507,7 @@ const EXPEDITIONS = [
     photos: ["barrio-01","barrio-02","barrio-03","barrio-04","barrio-05","barrio-06"]
   },
   {
-    id: "wren-sudhalle", title: "Wren Südhalle", category: "brews", status: "logged",
+    id: "wren-sudhalle", title: "Wren Südhalle", category: "brews", status: "logged", lat: 33.45, lng: -112.07,
     location: "Phoenix, AZ", region: "Arizona", date: "", rating: null,
     summary: "Wren House's south-side beer hall in Ahwatukee.",
     story: [], facts: {},
@@ -505,7 +515,7 @@ const EXPEDITIONS = [
     photos: ["wren-sudhalle-01","wren-sudhalle-02","wren-sudhalle-03","wren-sudhalle-04"]
   },
   {
-    id: "hell-n-blazes", title: "Hell 'n Blazes Brewing Co.", category: "brews", status: "logged",
+    id: "hell-n-blazes", title: "Hell 'n Blazes Brewing Co.", category: "brews", status: "logged", lat: 28.079, lng: -80.605,
     location: "Melbourne, FL", region: "Florida", date: "", rating: null,
     summary: "A historic brick building in downtown Melbourne with a big board of house beers.",
     story: [], facts: {},
@@ -513,7 +523,7 @@ const EXPEDITIONS = [
     photos: ["hell-n-blazes-01","hell-n-blazes-02","hell-n-blazes-03","hell-n-blazes-04","hell-n-blazes-05","hell-n-blazes-06"]
   },
   {
-    id: "intracoastal", title: "Intracoastal Brewing Co.", category: "brews", status: "logged",
+    id: "intracoastal", title: "Intracoastal Brewing Co.", category: "brews", status: "logged", lat: 28.108, lng: -80.642,
     location: "Melbourne, FL", region: "Florida", date: "", rating: null,
     summary: "Murals, flights on the patio and the brewhouse right behind the bar.",
     story: [], facts: {},
@@ -521,7 +531,7 @@ const EXPEDITIONS = [
     photos: ["intracoastal-01","intracoastal-02","intracoastal-03","intracoastal-04","intracoastal-05","intracoastal-06","intracoastal-07"]
   },
   {
-    id: "rockpit", title: "RockPit Brewing", category: "brews", status: "logged",
+    id: "rockpit", title: "RockPit Brewing", category: "brews", status: "logged", lat: 28.539, lng: -81.379,
     location: "Orlando, FL", region: "Florida", date: "", rating: null,
     summary: "Brewery and distillery in Orlando's SoDo district.",
     story: [], facts: {},
@@ -529,7 +539,7 @@ const EXPEDITIONS = [
     photos: ["rockpit-01","rockpit-02","rockpit-03","rockpit-04","rockpit-05","rockpit-06","rockpit-07","rockpit-08"]
   },
   {
-    id: "pirate-republic", title: "Pirate Republic Brewing Co.", category: "brews", status: "logged",
+    id: "pirate-republic", title: "Pirate Republic Brewing Co.", category: "brews", status: "logged", lat: 25.078, lng: -77.343,
     location: "Nassau, Bahamas", region: "Bahamas", date: "", rating: null,
     summary: "The Bahamas' craft brewery — taproom and restaurant in downtown Nassau.",
     story: [], facts: {},
@@ -537,7 +547,7 @@ const EXPEDITIONS = [
     photos: ["pirate-republic-01","pirate-republic-02","pirate-republic-03","pirate-republic-04","pirate-republic-05","pirate-republic-06","pirate-republic-07"]
   },
   {
-    id: "alien-brewpub", title: "Alien Brewpub", category: "brews", status: "logged",
+    id: "alien-brewpub", title: "Alien Brewpub", category: "brews", status: "logged", lat: 35.11, lng: -106.55,
     location: "Albuquerque, NM", region: "New Mexico", date: "2023", rating: null,
     crew: "Pat, Terri, Gary and Anna",
     summary: "They do exist!",
@@ -546,7 +556,7 @@ const EXPEDITIONS = [
     photos: ["alien-brewpub-01","alien-brewpub-02","alien-brewpub-03","alien-brewpub-04","alien-brewpub-05"]
   },
   {
-    id: "bow-and-arrow", title: "Bow & Arrow Brewing Co.", category: "brews", status: "logged",
+    id: "bow-and-arrow", title: "Bow & Arrow Brewing Co.", category: "brews", status: "logged", lat: 35.109, lng: -106.623,
     location: "Albuquerque, NM", region: "New Mexico", date: "2023", dateText: "Summer 2023", rating: null,
     crew: "Pat, Terri, Gary and Anna",
     summary: "Large open space with great vibes.",
@@ -556,7 +566,7 @@ const EXPEDITIONS = [
     photos: ["bow-and-arrow-01","bow-and-arrow-02","bow-and-arrow-03","bow-and-arrow-04","bow-and-arrow-05","bow-and-arrow-06","bow-and-arrow-07"]
   },
   {
-    id: "la-cumbre", title: "La Cumbre Brewing Co.", category: "brews", status: "logged",
+    id: "la-cumbre", title: "La Cumbre Brewing Co.", category: "brews", status: "logged", lat: 35.119, lng: -106.626,
     location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
     summary: "Albuquerque institution with murals inside and out.",
     story: [], facts: {},
@@ -564,7 +574,7 @@ const EXPEDITIONS = [
     photos: ["la-cumbre-01","la-cumbre-02","la-cumbre-03","la-cumbre-04","la-cumbre-05","la-cumbre-06","la-cumbre-07","la-cumbre-08","la-cumbre-09","la-cumbre-10"]
   },
   {
-    id: "lizard-tail", title: "Lizard Tail Brewing", category: "brews", status: "logged",
+    id: "lizard-tail", title: "Lizard Tail Brewing", category: "brews", status: "logged", lat: 35.135, lng: -106.53,
     location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
     summary: "Neighborhood taproom with live music and colorful art.",
     story: [], facts: {},
@@ -572,7 +582,7 @@ const EXPEDITIONS = [
     photos: ["lizard-tail-01","lizard-tail-02","lizard-tail-03","lizard-tail-04","lizard-tail-05","lizard-tail-06","lizard-tail-07"]
   },
   {
-    id: "marble", title: "Marble Brewery", category: "brews", status: "logged",
+    id: "marble", title: "Marble Brewery", category: "brews", status: "logged", lat: 35.087, lng: -106.647,
     location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
     summary: "Downtown Albuquerque's flagship brewery and patio.",
     story: [], facts: {},
@@ -580,7 +590,7 @@ const EXPEDITIONS = [
     photos: ["marble-01","marble-02","marble-03","marble-04","marble-05","marble-06","marble-07"]
   },
   {
-    id: "nexus", title: "Nexus Brewery", category: "brews", status: "logged",
+    id: "nexus", title: "Nexus Brewery", category: "brews", status: "logged", lat: 35.125, lng: -106.582,
     location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
     summary: "Brewery, restaurant and smokehouse.",
     story: [], facts: {},
@@ -588,7 +598,7 @@ const EXPEDITIONS = [
     photos: ["nexus-01","nexus-02","nexus-03","nexus-04","nexus-05","nexus-06","nexus-07","nexus-08"]
   },
   {
-    id: "red-door", title: "Red Door Brewing Co.", category: "brews", status: "logged",
+    id: "red-door", title: "Red Door Brewing Co.", category: "brews", status: "logged", lat: 35.101, lng: -106.637,
     location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
     summary: "Red doors, red stools and a long tap list.",
     story: [], facts: {},
@@ -657,7 +667,7 @@ const EXPEDITIONS = [
     photos: ["pikes-peak-01"]
   },
   {
-    id: "105-west", title: "105 West Brewing Co.", category: "brews", status: "logged",
+    id: "105-west", title: "105 West Brewing Co.", category: "brews", status: "logged", lat: 38.84, lng: -104.82,
     location: "Colorado Springs, CO", region: "Colorado", date: "2026", dateText: "Summer 2026", rating: 3,
     crew: "Pat and Terri",
     summary: "Trinity's replacement — worth another shot for the beer.",
@@ -669,7 +679,7 @@ const EXPEDITIONS = [
     cover: "assets/photos/105-west/105-west-01.jpg", photos: ["105-west-01"]
   },
   {
-    id: "bristol", title: "Bristol Brewing Co.", category: "brews", status: "logged",
+    id: "bristol", title: "Bristol Brewing Co.", category: "brews", status: "logged", lat: 38.817, lng: -104.827,
     location: "Colorado Springs, CO", region: "Colorado", date: "", dateText: "Many visits", rating: null,
     summary: "A long-time favorite in the Springs.",
     story: [
@@ -680,7 +690,7 @@ const EXPEDITIONS = [
     photos: ["img_3616","img_3608","img_3609","img_3610","img_3611","img_3612","img_3613","img_3615","img_3617","img_3618","img_3619","img_3620","bristol-01"]
   },
   {
-    id: "goat-patch", title: "Goat Patch Brewing Co.", category: "brews", status: "logged",
+    id: "goat-patch", title: "Goat Patch Brewing Co.", category: "brews", status: "logged", lat: 38.8711, lng: -104.83,
     location: "Colorado Springs, CO", region: "Colorado", date: "", dateText: "Many visits", rating: 5,
     summary: "Local brewery that's grown to three locations.",
     story: [
@@ -690,7 +700,7 @@ const EXPEDITIONS = [
     cover: "assets/photos/goat-patch/goat-patch-01.jpg", photos: ["goat-patch-01"]
   },
   {
-    id: "red-leg", title: "Red Leg Brewing Co.", category: "brews", status: "logged",
+    id: "red-leg", title: "Red Leg Brewing Co.", category: "brews", status: "logged", lat: 38.896, lng: -104.841,
     location: "Colorado Springs, CO", region: "Colorado", date: "", dateText: "Many visits", rating: 5,
     summary: "Veteran-owned brewery on the west side of town.",
     story: [
@@ -710,7 +720,7 @@ const EXPEDITIONS = [
     photos: ["camden-yards-01","camden-yards-02","camden-yards-03"]
   },
   {
-    id: "animas", title: "Animas Brewing Co.", category: "brews", status: "logged",
+    id: "animas", title: "Animas Brewing Co.", category: "brews", status: "logged", lat: 37.2753, lng: -107.8801,
     location: "Durango, CO", region: "Colorado", date: "2026", dateText: "Summer 2026", rating: null,
     crew: "Pat, Terri, Gary and Anna",
     summary: "Local brewery on the Animas River.",
@@ -718,7 +728,7 @@ const EXPEDITIONS = [
     cover: "assets/photos/animas/animas-01.jpg", photos: ["animas-01","animas-02","animas-03","animas-04","animas-05","animas-06","animas-07","animas-08","animas-09"]
   },
   {
-    id: "colorado-mountain", title: "Colorado Mountain Brewery", category: "brews", status: "logged",
+    id: "colorado-mountain", title: "Colorado Mountain Brewery", category: "brews", status: "logged", lat: 38.988, lng: -104.806,
     location: "Colorado Springs, CO", region: "Colorado", date: "", rating: null,
     summary: "Local brews and a full restaurant menu.",
     story: ["Colorado Mountain Brewery is technically a brewery since they brew their own beers, but I'd put them in the full-service category like Rock Bottom was — only much better. Locally founded and owned by former Air Force Academy classmates."],
@@ -726,7 +736,7 @@ const EXPEDITIONS = [
     cover: "assets/photos/colorado-mountain/colorado-mountain-01.jpg", photos: ["colorado-mountain-01"]
   },
   {
-    id: "jaks", title: "Jak's Brewing", category: "brews", status: "logged",
+    id: "jaks", title: "Jak's Brewing", category: "brews", status: "logged", lat: 38.94, lng: -104.61,
     location: "Peyton, CO", region: "Colorado", date: "2025-08", rating: null,
     crew: "Pat and Chris",
     summary: "Met up with Chris for a beer and lunch.",
@@ -735,7 +745,7 @@ const EXPEDITIONS = [
     cover: "assets/photos/jaks/jaks-01.jpg", photos: ["jaks-01"]
   },
   {
-    id: "12-west", title: "12 West Brewing Co.", category: "brews", status: "logged",
+    id: "12-west", title: "12 West Brewing Co.", category: "brews", status: "logged", lat: 33.35, lng: -111.789,
     location: "Phoenix East Valley, AZ", region: "Arizona", date: "", rating: null,
     summary: "Big two-story brewpub in the East Valley — Crafted for the Community.",
     story: ["Add your notes here."], facts: {},
@@ -743,7 +753,7 @@ const EXPEDITIONS = [
     photos: ["12-west-01","12-west-02","12-west-03","12-west-04","12-west-05","12-west-06"]
   },
   {
-    id: "four-peaks", title: "Four Peaks Brewing Co.", category: "brews", status: "logged",
+    id: "four-peaks", title: "Four Peaks Brewing Co.", category: "brews", status: "logged", lat: 33.422, lng: -111.933,
     location: "Tempe, AZ", region: "Arizona", date: "", rating: null,
     summary: "Tempe's classic brick brewpub, home of Kilt Lifter.",
     story: ["Add your notes here."], facts: {},
@@ -751,7 +761,7 @@ const EXPEDITIONS = [
     photos: ["four-peaks-01","four-peaks-02","four-peaks-03","four-peaks-04","four-peaks-05","four-peaks-06"]
   },
   {
-    id: "old-ellsworth", title: "Old Ellsworth Brewing Co.", category: "brews", status: "logged",
+    id: "old-ellsworth", title: "Old Ellsworth Brewing Co.", category: "brews", status: "logged", lat: 33.249, lng: -111.634,
     location: "Queen Creek, AZ", region: "Arizona", date: "", rating: null,
     summary: "Neighborhood brewery in Queen Creek with brewhouse views from the bar.",
     story: ["Add your notes here."], facts: {},
@@ -759,7 +769,7 @@ const EXPEDITIONS = [
     photos: ["old-ellsworth-01","old-ellsworth-02","old-ellsworth-03","old-ellsworth-04","old-ellsworth-05","old-ellsworth-06"]
   },
   {
-    id: "state-48", title: "State 48 Brewery", category: "brews", status: "logged",
+    id: "state-48", title: "State 48 Brewery", category: "brews", status: "logged", lat: 33.629, lng: -112.368,
     location: "Surprise, AZ", region: "Arizona", date: "", rating: null,
     summary: "Big murals, a bright yellow tap tower and a full kitchen.",
     story: ["Add your notes here."], facts: {},
@@ -767,7 +777,7 @@ const EXPEDITIONS = [
     photos: ["state-48-01","state-48-02","state-48-03","state-48-04","state-48-05","state-48-06","state-48-07","state-48-08","state-48-09","state-48-10","state-48-11"]
   },
   {
-    id: "craft-64", title: "Craft 64", category: "brews", status: "logged",
+    id: "craft-64", title: "Craft 64", category: "brews", status: "logged", lat: 33.494, lng: -111.926,
     location: "Scottsdale, AZ", region: "Arizona", date: "", rating: null,
     summary: "Old Town Scottsdale spot pouring its own Craft 64 beers.",
     story: ["Add your notes here."], facts: {},
@@ -775,7 +785,7 @@ const EXPEDITIONS = [
     photos: ["craft-64-01","craft-64-02","craft-64-03","craft-64-04","craft-64-05"]
   },
   {
-    id: "duck-foot", title: "Duck Foot Brewing Co.", category: "brews", status: "logged",
+    id: "duck-foot", title: "Duck Foot Brewing Co.", category: "brews", status: "logged", lat: 32.889, lng: -117.157,
     location: "San Diego, CA", region: "California", date: "", rating: null,
     summary: "San Diego brewery with a long chalkboard tap list and flights.",
     story: ["Add your notes here."], facts: {},
@@ -783,7 +793,7 @@ const EXPEDITIONS = [
     photos: ["duck-foot-01","duck-foot-02","duck-foot-03","duck-foot-04","duck-foot-05","duck-foot-06"]
   },
   {
-    id: "ballast-point", title: "Ballast Point Brewing", category: "brews", status: "logged",
+    id: "ballast-point", title: "Ballast Point Brewing", category: "brews", status: "logged", lat: 32.727, lng: -117.17,
     location: "San Diego, CA", region: "California", date: "", rating: null,
     summary: "The big Miramar brewery and tasting room — copper kettles and a long bar.",
     story: ["Add your notes here."], facts: {},
@@ -791,7 +801,7 @@ const EXPEDITIONS = [
     photos: ["ballast-point-01","ballast-point-02","ballast-point-03","ballast-point-04","ballast-point-05","ballast-point-06"]
   },
   {
-    id: "little-miss", title: "Little Miss Brewing", category: "brews", status: "logged",
+    id: "little-miss", title: "Little Miss Brewing", category: "brews", status: "logged", lat: 32.76, lng: -117.13,
     location: "San Diego, CA", region: "California", date: "", rating: null,
     summary: "WWII-themed taproom — propaganda posters, bomb tap handles and flags.",
     story: ["Add your notes here."], facts: {},
@@ -799,7 +809,7 @@ const EXPEDITIONS = [
     photos: ["little-miss-01","little-miss-02","little-miss-03","little-miss-04","little-miss-05","little-miss-06","little-miss-07","little-miss-08","little-miss-09"]
   },
   {
-    id: "novo-brazil", title: "Novo Brazil Brewing Co.", category: "brews", status: "logged",
+    id: "novo-brazil", title: "Novo Brazil Brewing Co.", category: "brews", status: "logged", lat: 32.584, lng: -117.113,
     location: "Imperial Beach, CA", region: "California", date: "", rating: null,
     summary: "Bayside taproom with a long wall of taps and views toward San Diego.",
     story: ["Add your notes here."], facts: {},
@@ -807,7 +817,7 @@ const EXPEDITIONS = [
     photos: ["novo-brazil-01","novo-brazil-02","novo-brazil-03","novo-brazil-04","novo-brazil-05","novo-brazil-06","novo-brazil-07"]
   },
   {
-    id: "florida-keys", title: "Florida Keys Brewing Co.", category: "brews", status: "logged",
+    id: "florida-keys", title: "Florida Keys Brewing Co.", category: "brews", status: "logged", lat: 24.924, lng: -80.628,
     location: "Islamorada, FL", region: "Florida", date: "", rating: null,
     summary: "Island-life beer garden with tacos, live music and a gator to pose with.",
     story: ["Add your notes here."], facts: {},
@@ -815,7 +825,7 @@ const EXPEDITIONS = [
     photos: ["florida-keys-01","florida-keys-02","florida-keys-03","florida-keys-04","florida-keys-05","florida-keys-06","florida-keys-07","florida-keys-08","florida-keys-09"]
   },
   {
-    id: "three-notchd", title: "Three Notch'd Brewing Co.", category: "brews", status: "logged",
+    id: "three-notchd", title: "Three Notch'd Brewing Co.", category: "brews", status: "logged", lat: 37.271, lng: -79.941,
     location: "Roanoke, VA", region: "Virginia", date: "", rating: null,
     summary: "Virginia craft brewery in downtown Roanoke — Leave Your Mark.",
     story: ["Add your notes here."], facts: {},
@@ -823,7 +833,7 @@ const EXPEDITIONS = [
     photos: ["three-notchd-01","three-notchd-02","three-notchd-03","three-notchd-04","three-notchd-05","three-notchd-06"]
   },
   {
-    id: "burly", title: "Burly Brewing Co.", category: "brews", status: "logged",
+    id: "burly", title: "Burly Brewing Co.", category: "brews", status: "logged", lat: 39.372, lng: -104.856,
     location: "Castle Rock, CO", region: "Colorado", date: "", rating: null,
     summary: "Bearded-mascot taproom in Castle Rock (since closed).",
     story: ["Add your notes here."], facts: {},
@@ -832,7 +842,7 @@ const EXPEDITIONS = [
   },
   /* ---- Added 2026-10-07 from Images/Brews — notes to follow ---- */
   {
-    id: "ballpark-brewing", title: "Ballpark Brewing Co.", category: "brews", status: "logged",
+    id: "ballpark-brewing", title: "Ballpark Brewing Co.", category: "brews", status: "logged", lat: 31.442, lng: -109.918,
     location: "Bisbee, AZ", region: "Arizona", date: "", rating: null,
     summary: "Small-batch brewery in Bisbee's Warren neighborhood — chalkboard menu and the brewhouse right off the bar.",
     story: ["Add your notes here."], facts: {},
@@ -840,7 +850,7 @@ const EXPEDITIONS = [
     photos: ["ballpark-brewing-01","ballpark-brewing-02","ballpark-brewing-03","ballpark-brewing-04","ballpark-brewing-05","ballpark-brewing-06"]
   },
   {
-    id: "electric-brewing", title: "Electric Brewing Co.", category: "brews", status: "logged",
+    id: "electric-brewing", title: "Electric Brewing Co.", category: "brews", status: "logged", lat: 31.446, lng: -109.917,
     location: "Bisbee, AZ", region: "Arizona", date: "", rating: null,
     summary: "Bisbee's Electric Beer — lightning-bolt logo and a chalkboard of house beers.",
     story: ["Add your notes here."], facts: {},
@@ -848,7 +858,7 @@ const EXPEDITIONS = [
     photos: ["electric-brewing-01","electric-brewing-02","electric-brewing-03","electric-brewing-04","electric-brewing-05","electric-brewing-06","electric-brewing-07","electric-brewing-08"]
   },
   {
-    id: "lazyg", title: "LazyG Brewhouse", category: "brews", status: "logged",
+    id: "lazyg", title: "LazyG Brewhouse", category: "brews", status: "logged", lat: 34.54, lng: -112.469,
     location: "Prescott, AZ", region: "Arizona", date: "", rating: null,
     summary: "Corrugated-steel brewhouse with a vintage-trailer patio out back.",
     story: ["Add your notes here."], facts: {},
@@ -856,7 +866,7 @@ const EXPEDITIONS = [
     photos: ["lazyg-01","lazyg-02","lazyg-03","lazyg-04","lazyg-05","lazyg-06","lazyg-07","lazyg-08"]
   },
   {
-    id: "patent-139", title: "Patent 139 Brewing Co.", category: "brews", status: "logged",
+    id: "patent-139", title: "Patent 139 Brewing Co.", category: "brews", status: "logged", lat: 33.303, lng: -111.841,
     location: "Chandler, AZ", region: "Arizona", date: "", rating: null,
     summary: "Lakeside taproom with a wall of windows on the water.",
     story: ["Add your notes here."], facts: {},
@@ -864,7 +874,7 @@ const EXPEDITIONS = [
     photos: ["patent-139-01","patent-139-02","patent-139-03","patent-139-04","patent-139-05","patent-139-06"]
   },
   {
-    id: "throne", title: "Throne Brewing Co.", category: "brews", status: "logged",
+    id: "throne", title: "Throne Brewing Co.", category: "brews", status: "logged", lat: 33.539, lng: -112.186,
     location: "Glendale, AZ", region: "Arizona", date: "", rating: null,
     summary: "West Valley brewery with a crowned-king logo and a full flight board.",
     story: ["Add your notes here."], facts: {},
@@ -872,7 +882,7 @@ const EXPEDITIONS = [
     photos: ["throne-01","throne-02","throne-03","throne-04","throne-05","throne-06","throne-07"]
   },
   {
-    id: "tombstone", title: "Tombstone Brewing Co.", category: "brews", status: "logged",
+    id: "tombstone", title: "Tombstone Brewing Co.", category: "brews", status: "logged", lat: 31.713, lng: -110.068,
     location: "Tombstone, AZ", region: "Arizona", date: "", rating: null,
     summary: "Old West storefront brewery — stagecoaches still roll by outside.",
     story: ["Add your notes here."], facts: {},
@@ -880,7 +890,7 @@ const EXPEDITIONS = [
     photos: ["tombstone-01","tombstone-02","tombstone-03","tombstone-04","tombstone-05","tombstone-06","tombstone-07","tombstone-08","tombstone-09"]
   },
   {
-    id: "black-market", title: "Black Market Brewing Co.", category: "brews", status: "logged",
+    id: "black-market", title: "Black Market Brewing Co.", category: "brews", status: "logged", lat: 33.504, lng: -117.14,
     location: "Temecula, CA", region: "California", date: "", rating: null,
     summary: "Big Temecula taproom with a trolley-car bar and shuffleboard.",
     story: ["Add your notes here."], facts: {},
@@ -888,7 +898,7 @@ const EXPEDITIONS = [
     photos: ["black-market-01","black-market-02","black-market-03","black-market-04","black-market-05","black-market-06"]
   },
   {
-    id: "coronado", title: "Coronado Brewing Co.", category: "brews", status: "logged",
+    id: "coronado", title: "Coronado Brewing Co.", category: "brews", status: "logged", lat: 32.687, lng: -117.18,
     location: "Coronado, CA", region: "California", date: "", rating: null,
     summary: "Red-brick brewpub on Coronado Island — Stay Coastal.",
     story: ["Add your notes here."], facts: {},
@@ -896,7 +906,7 @@ const EXPEDITIONS = [
     photos: ["coronado-01","coronado-02","coronado-03","coronado-04","coronado-05","coronado-06","coronado-07","coronado-08"]
   },
   {
-    id: "downey", title: "Downey Brewing Co.", category: "brews", status: "logged",
+    id: "downey", title: "Downey Brewing Co.", category: "brews", status: "logged", lat: 33.94, lng: -118.133,
     location: "Downey, CA", region: "California", date: "", rating: null,
     summary: "Brewpub with a long tap wall and an exotic game sausage menu.",
     story: ["Add your notes here."], facts: {},
@@ -904,7 +914,7 @@ const EXPEDITIONS = [
     photos: ["downey-01","downey-02","downey-03","downey-04"]
   },
   {
-    id: "rescue", title: "Rescue Brewing Co.", category: "brews", status: "logged",
+    id: "rescue", title: "Rescue Brewing Co.", category: "brews", status: "logged", lat: 34.0975, lng: -117.6484,
     location: "Upland, CA", region: "California", date: "", rating: null,
     summary: "Downtown Upland brewery and gastropub that salutes first responders and vets.",
     story: ["Add your notes here."], facts: {},
@@ -912,7 +922,7 @@ const EXPEDITIONS = [
     photos: ["rescue-01","rescue-02","rescue-03","rescue-04","rescue-05","rescue-06","rescue-07","rescue-08"]
   },
   {
-    id: "smog-city", title: "Smog City Brewing Co.", category: "brews", status: "logged",
+    id: "smog-city", title: "Smog City Brewing Co.", category: "brews", status: "logged", lat: 33.8358, lng: -118.3406,
     location: "Southern California", region: "California", date: "", rating: null,
     summary: "Smog City pouring from a shipping-container food hall.",
     story: ["Add your notes here."], facts: {},
@@ -920,7 +930,7 @@ const EXPEDITIONS = [
     photos: ["smog-city-01","smog-city-02","smog-city-03","smog-city-04","smog-city-05","smog-city-06"]
   },
   {
-    id: "red-mountain", title: "Red Mountain Brewing", category: "brews", status: "logged",
+    id: "red-mountain", title: "Red Mountain Brewing", category: "brews", status: "logged", lat: 38.023, lng: -107.671,
     location: "Ouray, CO", region: "Colorado", date: "", rating: null,
     summary: "Main Street brewery in Ouray, ringed by the San Juans.",
     story: ["Add your notes here."], facts: {},
@@ -928,7 +938,7 @@ const EXPEDITIONS = [
     photos: ["red-mountain-01","red-mountain-02","red-mountain-03","red-mountain-04","red-mountain-05"]
   },
   {
-    id: "south-park", title: "South Park Brewing", category: "brews", status: "logged",
+    id: "south-park", title: "South Park Brewing", category: "brews", status: "logged", lat: 39.225, lng: -106.002,
     location: "Fairplay, CO", region: "Colorado", date: "", rating: null,
     summary: "Craft brewing at 9,953 feet — photos from the old location.",
     story: ["Add your notes here."], facts: {},
@@ -936,7 +946,7 @@ const EXPEDITIONS = [
     photos: ["south-park-01","south-park-02","south-park-03","south-park-04","south-park-05"]
   },
   {
-    id: "steamworks", title: "Steamworks Brewing Co.", category: "brews", status: "logged",
+    id: "steamworks", title: "Steamworks Brewing Co.", category: "brews", status: "logged", lat: 37.2735, lng: -107.881,
     location: "Durango, CO", region: "Colorado", date: "", rating: null,
     summary: "Downtown Durango brewpub with a chalkboard of gravities and brew dates.",
     story: ["Add your notes here."], facts: {},
@@ -944,7 +954,7 @@ const EXPEDITIONS = [
     photos: ["steamworks-01","steamworks-02","steamworks-03","steamworks-04","steamworks-05","steamworks-06"]
   },
   {
-    id: "black-pond", title: "Black Pond Brews", category: "brews", status: "logged",
+    id: "black-pond", title: "Black Pond Brews", category: "brews", status: "logged", lat: 41.802, lng: -71.886,
     location: "Danielson, CT", region: "Connecticut", date: "", rating: null,
     summary: "Brick-walled taproom with a chalkboard tap wall and monster-label art.",
     story: ["Add your notes here."], facts: {},
@@ -952,7 +962,7 @@ const EXPEDITIONS = [
     photos: ["black-pond-01","black-pond-02","black-pond-03","black-pond-04","black-pond-05","black-pond-06","black-pond-07","black-pond-08","black-pond-09"]
   },
   {
-    id: "hog-island", title: "Hog Island Beer Co.", category: "brews", status: "logged",
+    id: "hog-island", title: "Hog Island Beer Co.", category: "brews", status: "logged", lat: 41.79, lng: -69.99,
     location: "Cape Cod, MA", region: "Massachusetts", date: "", rating: null,
     summary: "Cape Cod brewery sharing a brewhouse with Outermost Brewery.",
     story: ["Add your notes here."], facts: {},
@@ -960,7 +970,7 @@ const EXPEDITIONS = [
     photos: ["hog-island-01","hog-island-02","hog-island-03","hog-island-04","hog-island-05","hog-island-06","hog-island-07"]
   },
   {
-    id: "belltown", title: "Belltown Brewing", category: "brews", status: "logged",
+    id: "belltown", title: "Belltown Brewing", category: "brews", status: "logged", lat: 47.615, lng: -122.345,
     location: "Seattle, WA", region: "Washington", date: "", rating: null,
     summary: "Seattle brewhouse with a long chalkboard tap wall.",
     story: ["Add your notes here."], facts: {},
@@ -968,7 +978,7 @@ const EXPEDITIONS = [
     photos: ["belltown-01","belltown-02","belltown-03","belltown-04","belltown-05"]
   },
   {
-    id: "pike-brewing", title: "The Pike Brewing Co.", category: "brews", status: "logged",
+    id: "pike-brewing", title: "The Pike Brewing Co.", category: "brews", status: "logged", lat: 47.608, lng: -122.34,
     location: "Seattle, WA", region: "Washington", date: "", rating: null,
     summary: "Family-owned brewery at Pike Place Market, packed with beer memorabilia.",
     story: ["Add your notes here."], facts: {},
@@ -976,7 +986,7 @@ const EXPEDITIONS = [
     photos: ["pike-brewing-01","pike-brewing-02","pike-brewing-03","pike-brewing-04","pike-brewing-05","pike-brewing-06","pike-brewing-07"]
   },
   {
-    id: "ska", title: "Ska Brewing", category: "brews", status: "logged",
+    id: "ska", title: "Ska Brewing", category: "brews", status: "logged", lat: 37.255, lng: -107.874,
     location: "Durango, CO", region: "Colorado", date: "", dateText: "Multiple visits", rating: null,
     crew: "Pat, Terri, Gary and Anna",
     summary: "Always the first stop in Durango.",
@@ -986,7 +996,7 @@ const EXPEDITIONS = [
     photos: ["ska-01","ska-02","ska-03","ska-04","ska-05"]
   },
   {
-    id: "desert-dogs", title: "Desert Dogs Brewery & Cidery", category: "brews", status: "logged",
+    id: "desert-dogs", title: "Desert Dogs Brewery & Cidery", category: "brews", status: "logged", lat: 35.687, lng: -105.9378,
     location: "Santa Fe, NM", region: "New Mexico", date: "", rating: null,
     summary: "Upstairs taproom off the Santa Fe Plaza — beer, cider and a pool table.",
     story: ["Add your notes here."], facts: {},
@@ -994,7 +1004,7 @@ const EXPEDITIONS = [
     photos: ["desert-dogs-01","desert-dogs-02","desert-dogs-03","desert-dogs-04"]
   },
   {
-    id: "grand-canyon-brewing", title: "Grand Canyon Brewing + Distillery", category: "brews", status: "logged",
+    id: "grand-canyon-brewing", title: "Grand Canyon Brewing + Distillery", category: "brews", status: "logged", lat: 35.249, lng: -112.191,
     location: "Williams, AZ", region: "Arizona", date: "", rating: null,
     summary: "Log-cabin brewery on Route 66 in the gateway town to the Grand Canyon.",
     story: ["Add your notes here."], facts: {},
@@ -1002,7 +1012,7 @@ const EXPEDITIONS = [
     photos: ["grand-canyon-brewing-01","grand-canyon-brewing-02","grand-canyon-brewing-03","grand-canyon-brewing-04","grand-canyon-brewing-05","grand-canyon-brewing-06"]
   },
   {
-    id: "lonesome-valley", title: "Lonesome Valley Brewing", category: "brews", status: "logged",
+    id: "lonesome-valley", title: "Lonesome Valley Brewing", category: "brews", status: "logged", lat: 34.584, lng: -112.33,
     location: "Prescott Valley, AZ", region: "Arizona", date: "", rating: null,
     summary: "Neighborhood brewpub in Prescott Valley with a charcuterie board worth ordering.",
     story: ["Add your notes here."], facts: {},
@@ -1010,7 +1020,7 @@ const EXPEDITIONS = [
     photos: ["lonesome-valley-01","lonesome-valley-02","lonesome-valley-03","lonesome-valley-04","lonesome-valley-05"]
   },
   {
-    id: "phx-beer", title: "PHX Beer Co.", category: "brews", status: "logged",
+    id: "phx-beer", title: "PHX Beer Co.", category: "brews", status: "logged", lat: 33.46, lng: -111.99,
     location: "Phoenix metro, AZ", region: "Arizona", date: "", rating: null,
     summary: "Arizona-themed beers, a big patio and flights served on a PHX paddle.",
     story: ["Add your notes here."], facts: {},
@@ -1018,7 +1028,7 @@ const EXPEDITIONS = [
     photos: ["phx-beer-01","phx-beer-02","phx-beer-03","phx-beer-04","phx-beer-05","phx-beer-06","phx-beer-07","phx-beer-08","phx-beer-09"]
   },
   {
-    id: "pedal-haus", title: "Pedal Haus Brewery", category: "brews", status: "logged",
+    id: "pedal-haus", title: "Pedal Haus Brewery", category: "brews", status: "logged", lat: 33.425, lng: -111.94,
     location: "Tempe, AZ", region: "Arizona", date: "", rating: null,
     summary: "Big beer garden and brewhouse on Mill Avenue in downtown Tempe.",
     story: ["Add your notes here."], facts: {},
@@ -1026,7 +1036,7 @@ const EXPEDITIONS = [
     photos: ["pedal-haus-01","pedal-haus-02","pedal-haus-03","pedal-haus-04","pedal-haus-05","pedal-haus-06","pedal-haus-07"]
   },
   {
-    id: "pinetop-brewing", title: "Pinetop Brewing Co.", category: "brews", status: "logged",
+    id: "pinetop-brewing", title: "Pinetop Brewing Co.", category: "brews", status: "logged", lat: 34.143, lng: -109.96,
     location: "Pinetop-Lakeside, AZ", region: "Arizona", date: "", rating: null,
     summary: "Belgian-style beers brewed at 7,000 feet in the White Mountains.",
     story: ["Add your notes here."], facts: {},
@@ -1034,7 +1044,7 @@ const EXPEDITIONS = [
     photos: ["pinetop-brewing-01","pinetop-brewing-02","pinetop-brewing-03","pinetop-brewing-04","pinetop-brewing-05"]
   },
   {
-    id: "walter-station", title: "Walter Station Brewery", category: "brews", status: "logged",
+    id: "walter-station", title: "Walter Station Brewery", category: "brews", status: "logged", lat: 33.458, lng: -111.945,
     location: "Phoenix, AZ", region: "Arizona", date: "", rating: null,
     summary: "Converted fire station with a 16-tap chalkboard and a big patio.",
     story: ["Add your notes here."], facts: {},
@@ -1042,7 +1052,7 @@ const EXPEDITIONS = [
     photos: ["walter-station-01","walter-station-02","walter-station-03","walter-station-04","walter-station-05","walter-station-06","walter-station-07"]
   },
   {
-    id: "wanderlust", title: "Wanderlust Brewing Co.", category: "brews", status: "logged",
+    id: "wanderlust", title: "Wanderlust Brewing Co.", category: "brews", status: "logged", lat: 35.19, lng: -111.64,
     location: "Flagstaff, AZ", region: "Arizona", date: "", rating: null,
     summary: "Small Flagstaff taproom with a patio and a rotating hazy and sour lineup.",
     story: ["Add your notes here."], facts: {},
@@ -1050,7 +1060,7 @@ const EXPEDITIONS = [
     photos: ["wanderlust-01","wanderlust-02","wanderlust-03","wanderlust-04","wanderlust-05","wanderlust-06","wanderlust-07"]
   },
   {
-    id: "angel-city", title: "Angel City Brewery", category: "brews", status: "logged",
+    id: "angel-city", title: "Angel City Brewery", category: "brews", status: "logged", lat: 34.046, lng: -118.236,
     location: "Los Angeles, CA", region: "California", date: "", rating: null,
     summary: "Arts District brewery in an old wire-rope factory — murals, barrels and a 100-year-old slide.",
     story: ["Add your notes here."], facts: {},
@@ -1058,7 +1068,7 @@ const EXPEDITIONS = [
     photos: ["angel-city-01","angel-city-02","angel-city-03","angel-city-04","angel-city-05","angel-city-06","angel-city-07","angel-city-08","angel-city-09","angel-city-10","angel-city-11","angel-city-12","angel-city-13","angel-city-14","angel-city-15","angel-city-16","angel-city-17"]
   },
   {
-    id: "bns-brewing", title: "BNS Brewing & Distilling Co.", category: "brews", status: "logged",
+    id: "bns-brewing", title: "BNS Brewing & Distilling Co.", category: "brews", status: "logged", lat: 32.838, lng: -116.974,
     location: "Santee, CA", region: "California", date: "", rating: null,
     summary: "Old West-themed brewery and distillery in East County San Diego.",
     story: ["Add your notes here."], facts: {},
@@ -1066,7 +1076,7 @@ const EXPEDITIONS = [
     photos: ["bns-brewing-01","bns-brewing-02","bns-brewing-03","bns-brewing-04","bns-brewing-05","bns-brewing-06"]
   },
   {
-    id: "hamilton-family", title: "Hamilton Family Brewery", category: "brews", status: "logged",
+    id: "hamilton-family", title: "Hamilton Family Brewery", category: "brews", status: "logged", lat: 34.106, lng: -117.593,
     location: "Rancho Cucamonga, CA", region: "California", date: "", rating: null,
     summary: "Family brewery with a long poster-board tap list and snowy San Gabriel views.",
     story: ["Add your notes here."], facts: {},
@@ -1074,7 +1084,7 @@ const EXPEDITIONS = [
     photos: ["hamilton-family-01","hamilton-family-02","hamilton-family-03","hamilton-family-04","hamilton-family-05","hamilton-family-06","hamilton-family-07"]
   },
   {
-    id: "pacific-islander", title: "Pacific Islander Beer Co.", category: "brews", status: "logged",
+    id: "pacific-islander", title: "Pacific Islander Beer Co.", category: "brews", status: "logged", lat: 32.82, lng: -117.15,
     location: "San Diego, CA", region: "California", date: "", rating: null,
     summary: "Tiki-themed brewery with island-inspired beers and a sunny patio.",
     story: ["Add your notes here."], facts: {},
@@ -1082,7 +1092,7 @@ const EXPEDITIONS = [
     photos: ["pacific-islander-01","pacific-islander-02","pacific-islander-03","pacific-islander-04","pacific-islander-05","pacific-islander-06"]
   },
   {
-    id: "golden-block", title: "Golden Block Brewery", category: "brews", status: "logged",
+    id: "golden-block", title: "Golden Block Brewery", category: "brews", status: "logged", lat: 37.812, lng: -107.664,
     location: "Silverton, CO", region: "Colorado", date: "", rating: null,
     summary: "Brewery and pizza on Silverton's historic main street, high in the San Juans.",
     story: ["Add your notes here."], facts: {},
@@ -1090,7 +1100,7 @@ const EXPEDITIONS = [
     photos: ["golden-block-01","golden-block-02","golden-block-03","golden-block-04","golden-block-05","golden-block-06","golden-block-07"]
   },
   {
-    id: "las-vegas-brewing", title: "Las Vegas Brewing Company", category: "brews", status: "logged",
+    id: "las-vegas-brewing", title: "Las Vegas Brewing Company", category: "brews", status: "logged", lat: 36.17, lng: -115.14,
     location: "Las Vegas, NV", region: "Nevada", date: "", rating: null,
     summary: "Twenty taps, a full menu and gaming at the bar.",
     story: ["Add your notes here."], facts: {},
