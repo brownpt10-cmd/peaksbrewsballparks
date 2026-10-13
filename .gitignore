@@ -34,3 +34,6 @@ CLAUDE.md
 
 # Reference PDFs (local only)
 *.pdf
+
+# CARTO basemap key file (key itself lives in brew-map.html)
+CARTO_API.txt

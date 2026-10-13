@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=202610131628">
+  <link rel="stylesheet" href="assets/css/style.css?v=202610131635">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css">
@@ -73,10 +73,10 @@
     </div>
   </section>
 
-  <script src="assets/js/data.js?v=202610131628"></script>
-  <script src="assets/js/fourteeners.js?v=202610131628"></script>
-  <script src="assets/js/ballparks.js?v=202610131628"></script>
-  <script src="assets/js/main.js?v=202610131628"></script>
+  <script src="assets/js/data.js?v=202610131635"></script>
+  <script src="assets/js/fourteeners.js?v=202610131635"></script>
+  <script src="assets/js/ballparks.js?v=202610131635"></script>
+  <script src="assets/js/main.js?v=202610131635"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
   <script>
@@ -97,8 +97,8 @@
 
     // Map styles (pins are city-level, so zoom stops at neighbourhood scale)
     const MAXZ = 13;
-    // CARTO needs a free key (carto.com/basemaps/apikey). Paste it here; until then the map opens on Satellite.
-    const CARTO_KEY = "";
+    // CARTO basemap key (free, non-commercial; also saved in CARTO_API.txt). Map keys are meant to be public in page code.
+    const CARTO_KEY = "cb1_4jg6_1_740f3d9ae909b963fc57092e";
     const carto = id => L.tileLayer(`https://{s}.basemaps.cartocdn.com/${id}/{z}/{x}/{y}{r}.png${CARTO_KEY ? "?key=" + CARTO_KEY : ""}`, {
       subdomains: "abcd", maxZoom: MAXZ,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
