@@ -132,7 +132,7 @@
       <div class="mega"><div class="mega-inner">
         <div class="mega-col">
           ${regionsFor(cat).map(r => `<a href="expeditions.html?cat=${cat}&region=${encodeURIComponent(r)}">${esc(r)}</a>`).join("")}
-          ${(c.extraLinks || []).map(([l, h]) => `<a class="hl" href="${esc(h)}">${esc(l)}</a>`).join("")}
+          ${(c.extraLinks || []).map(([l, h]) => `<a class="hl" href="${esc(h)}"${/^https?:/.test(h) ? ' target="_blank" rel="noopener"' : ""}>${esc(l)}</a>`).join("")}
           <a class="all" href="expeditions.html?cat=${cat}">All ${esc(c.label)}</a>
         </div>
         <div class="mega-col mega-col--sub">

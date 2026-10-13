@@ -37,3 +37,8 @@ CLAUDE.md
 
 # CARTO basemap key file (key itself lives in brew-map.html)
 CARTO_API.txt
+
+# Local video/audio source files (video is hosted on YouTube)
+Video/
+*.mp4
+*.mp3

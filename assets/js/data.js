@@ -38,7 +38,7 @@ const CATEGORIES = {
     cover: "assets/photos/gunslinger/img_3572.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
     regions: ["Colorado", "New Mexico", "Arizona", "California", "Nevada", "Washington", "Florida", "Virginia", "Connecticut", "Massachusetts", "Bahamas", "Germany", "Ireland"],
-    extraLinks: [["Brew Map", "brew-map.html"], ["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
+    extraLinks: [["Brew Map", "brew-map.html"], ["Brews Across America (video)", "https://www.youtube.com/watch?v=lPBl2rRe4k8"], ["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
   },
   ballparks: {
     label: "Ballparks",
