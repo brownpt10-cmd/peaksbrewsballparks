@@ -37,7 +37,7 @@ const CATEGORIES = {
     blurb: "Breweries, beer halls and pubs — logged one pint at a time.",
     cover: "assets/photos/gunslinger/img_3572.jpg",
     // Menu order for states/countries. Any new `region` used on a brew is added to the menu automatically.
-    regions: ["Colorado", "New Mexico", "Arizona", "California", "Nevada", "Washington", "Florida", "Virginia", "Connecticut", "Massachusetts", "Bahamas", "Germany", "Ireland"],
+    regions: ["Colorado", "New Mexico", "Arizona", "California", "Nevada", "Washington", "Florida", "Virginia", "Connecticut", "Massachusetts", "North Carolina", "Tennessee", "Kansas", "Bahamas", "Germany", "Ireland"],
     extraLinks: [["Brew Map", "brew-map.html"], ["Brews Across America (video)", "https://www.youtube.com/watch?v=lPBl2rRe4k8"], ["Springs Brewery Passport", "SpringsBrewery.html"], ["Gary's Arizona Brews", "status.html#arizona"], ["Gary's Brew Passport (stamp)", "https://claude.ai/artifact/NWatG7JEB5gGWhZ6NBFdYt"]]   // extra links shown in the Brews menu
   },
   ballparks: {
@@ -721,10 +721,10 @@ const EXPEDITIONS = [
   },
   {
     id: "animas", title: "Animas Brewing Co.", category: "brews", status: "logged", lat: 37.2753, lng: -107.8801,
-    location: "Durango, CO", region: "Colorado", date: "2026", dateText: "Summer 2026", rating: null,
+    location: "Durango, CO", region: "Colorado", date: "2026", dateText: "Dec 2018 · Summer 2026", rating: null,
     crew: "Pat, Terri, Gary and Anna",
     summary: "Local brewery on the Animas River.",
-    story: ["Laid-back place for a few beers and eats."], facts: {},
+    story: ["Laid-back place for a few beers and eats.", "**December 2018** — This must have been our first trip to Animas. Plenty of snow on the ground, but we walked the town to the brewery, not sure why. Beer was tasty."], facts: {},
     cover: "assets/photos/animas/animas-01.jpg", photos: ["animas-01","animas-02","animas-03","animas-04","animas-05","animas-06","animas-07","animas-08","animas-09"]
   },
   {
@@ -834,9 +834,11 @@ const EXPEDITIONS = [
   },
   {
     id: "burly", title: "Burly Brewing Co.", category: "brews", status: "logged", lat: 39.372, lng: -104.856,
-    location: "Castle Rock, CO", region: "Colorado", date: "", rating: null,
-    summary: "Bearded-mascot taproom in Castle Rock (since closed).",
-    story: ["Add your notes here."], facts: {},
+    location: "Castle Rock, CO", region: "Colorado", date: "2019", rating: null,
+    crew: "Pat and Terri",
+    dateText: "Circa 2019",
+    summary: "Good pop-up brewery, but closed now.",
+    story: ["I don't remember their story, but they had a cool logo and the beers were respectable. Not sure why they closed, but a lot of places in the Denver area didn't make it out of COVID."], facts: {},
     cover: "assets/photos/burly/burly-07.jpg",
     photos: ["burly-01","burly-02","burly-03","burly-04","burly-05","burly-06","burly-07","burly-08"]
   },
@@ -931,17 +933,19 @@ const EXPEDITIONS = [
   },
   {
     id: "red-mountain", title: "Red Mountain Brewing", category: "brews", status: "logged", lat: 38.023, lng: -107.671,
-    location: "Ouray, CO", region: "Colorado", date: "", rating: null,
-    summary: "Main Street brewery in Ouray, ringed by the San Juans.",
-    story: ["Add your notes here."], facts: {},
+    location: "Ouray, CO", region: "Colorado", date: "2023", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "One of the couple of breweries in Ouray — drink after driving the Million Dollar Highway, not before!",
+    story: ["Visited the brewery during a meetup with Gary and Anna in Ouray. Good times. Gary and I rented a Wrangler and did some of the passes. Nope, I wasn't scared. :/"], facts: {},
     cover: "assets/photos/red-mountain/red-mountain-03.jpg",
     photos: ["red-mountain-01","red-mountain-02","red-mountain-03","red-mountain-04","red-mountain-05"]
   },
   {
     id: "south-park", title: "South Park Brewing", category: "brews", status: "logged", lat: 39.225, lng: -106.002,
-    location: "Fairplay, CO", region: "Colorado", date: "", rating: null,
-    summary: "Craft brewing at 9,953 feet — photos from the old location.",
-    story: ["Add your notes here."], facts: {},
+    location: "Fairplay, CO", region: "Colorado", date: "2018-07-27", rating: null,
+    crew: "Pat and Terri",
+    summary: "South Park in Fairplay!",
+    story: ["This was the original location of South Park Brewing. They have since relocated to Colorado Springs. Terri and I visited once for beers and a burger."], facts: {},
     cover: "assets/photos/south-park/south-park-01.jpg",
     photos: ["south-park-01","south-park-02","south-park-03","south-park-04","south-park-05"]
   },
@@ -997,8 +1001,9 @@ const EXPEDITIONS = [
   },
   {
     id: "desert-dogs", title: "Desert Dogs Brewery & Cidery", category: "brews", status: "logged", lat: 35.687, lng: -105.9378,
-    location: "Santa Fe, NM", region: "New Mexico", date: "", rating: null,
-    summary: "Upstairs taproom off the Santa Fe Plaza — beer, cider and a pool table.",
+    location: "Santa Fe, NM", region: "New Mexico", date: "2018-07-25", rating: null,
+    crew: "Gary and Anna",
+    summary: "Another day, another brewery!",
     story: ["Add your notes here."], facts: {},
     cover: "assets/photos/desert-dogs/desert-dogs-01.jpg",
     photos: ["desert-dogs-01","desert-dogs-02","desert-dogs-03","desert-dogs-04"]
@@ -1021,33 +1026,37 @@ const EXPEDITIONS = [
   },
   {
     id: "phx-beer", title: "PHX Beer Co.", category: "brews", status: "logged", lat: 33.46, lng: -111.99,
-    location: "Phoenix metro, AZ", region: "Arizona", date: "", rating: null,
-    summary: "Arizona-themed beers, a big patio and flights served on a PHX paddle.",
-    story: ["Add your notes here."], facts: {},
+    location: "Scottsdale, AZ", region: "Arizona", date: "2022-10-14", rating: null,
+    crew: "Gary and Anna",
+    summary: "Another brewery in Scottsdale.",
+    story: ["No dark beers like stouts or porters… Anna was happy with the number of IPAs."], facts: {},
     cover: "assets/photos/phx-beer/phx-beer-06.jpg",
     photos: ["phx-beer-01","phx-beer-02","phx-beer-03","phx-beer-04","phx-beer-05","phx-beer-06","phx-beer-07","phx-beer-08","phx-beer-09"]
   },
   {
     id: "pedal-haus", title: "Pedal Haus Brewery", category: "brews", status: "logged", lat: 33.425, lng: -111.94,
-    location: "Tempe, AZ", region: "Arizona", date: "", rating: null,
-    summary: "Big beer garden and brewhouse on Mill Avenue in downtown Tempe.",
-    story: ["Add your notes here."], facts: {},
+    location: "Chandler, AZ", region: "Arizona", date: "2021-12-08", rating: null,
+    crew: "Gary and Anna",
+    summary: "A couple of days down in Tempe, AZ.",
+    story: ["A couple of days down in Tempe, AZ… just enough time for a new brewery. Not the best beer, but a good little bar within walking distance of our hotel."], facts: {},
     cover: "assets/photos/pedal-haus/pedal-haus-02.jpg",
     photos: ["pedal-haus-01","pedal-haus-02","pedal-haus-03","pedal-haus-04","pedal-haus-05","pedal-haus-06","pedal-haus-07"]
   },
   {
     id: "pinetop-brewing", title: "Pinetop Brewing Co.", category: "brews", status: "logged", lat: 34.143, lng: -109.96,
-    location: "Pinetop-Lakeside, AZ", region: "Arizona", date: "", rating: null,
-    summary: "Belgian-style beers brewed at 7,000 feet in the White Mountains.",
-    story: ["Add your notes here."], facts: {},
+    location: "Pinetop-Lakeside, AZ", region: "Arizona", date: "2020-10-14", rating: null,
+    crew: "Gary and Anna",
+    summary: "New (for us) brewery in Pinetop, AZ.",
+    story: ["Decent beer, but not going to rush back."], facts: {},
     cover: "assets/photos/pinetop-brewing/pinetop-brewing-01.jpg",
     photos: ["pinetop-brewing-01","pinetop-brewing-02","pinetop-brewing-03","pinetop-brewing-04","pinetop-brewing-05"]
   },
   {
     id: "walter-station", title: "Walter Station Brewery", category: "brews", status: "logged", lat: 33.458, lng: -111.945,
-    location: "Phoenix, AZ", region: "Arizona", date: "", rating: null,
-    summary: "Converted fire station with a 16-tap chalkboard and a big patio.",
-    story: ["Add your notes here."], facts: {},
+    location: "Phoenix, AZ", region: "Arizona", date: "2022-02-15", rating: null,
+    crew: "Gary and Anna",
+    summary: "Another new brewery in Phoenix.",
+    story: ["Add your notes here."], facts: {"Beer of record": "Great Coffee and Cream nitro cream ale"},
     cover: "assets/photos/walter-station/walter-station-03.jpg",
     photos: ["walter-station-01","walter-station-02","walter-station-03","walter-station-04","walter-station-05","walter-station-06","walter-station-07"]
   },
@@ -1061,41 +1070,46 @@ const EXPEDITIONS = [
   },
   {
     id: "angel-city", title: "Angel City Brewery", category: "brews", status: "logged", lat: 34.046, lng: -118.236,
-    location: "Los Angeles, CA", region: "California", date: "", rating: null,
-    summary: "Arts District brewery in an old wire-rope factory — murals, barrels and a 100-year-old slide.",
-    story: ["Add your notes here."], facts: {},
+    location: "Los Angeles, CA", region: "California", date: "2018-09-05", rating: null,
+    crew: "Gary and Anna",
+    summary: "Angel City Brewery. In the city of angels… downtown Los Angeles.",
+    story: ["Add your notes here."], facts: {"Beer of record": "A Little Bit of Heaven"},
     cover: "assets/photos/angel-city/angel-city-14.jpg",
     photos: ["angel-city-01","angel-city-02","angel-city-03","angel-city-04","angel-city-05","angel-city-06","angel-city-07","angel-city-08","angel-city-09","angel-city-10","angel-city-11","angel-city-12","angel-city-13","angel-city-14","angel-city-15","angel-city-16","angel-city-17"]
   },
   {
     id: "bns-brewing", title: "BNS Brewing & Distilling Co.", category: "brews", status: "logged", lat: 32.838, lng: -116.974,
-    location: "Santee, CA", region: "California", date: "", rating: null,
-    summary: "Old West-themed brewery and distillery in East County San Diego.",
+    location: "Santee, CA", region: "California", date: "2018-09-16", rating: 5,
+    crew: "Gary and Anna",
+    summary: "Another hour — another brewery!",
     story: ["Add your notes here."], facts: {},
     cover: "assets/photos/bns-brewing/bns-brewing-06.jpg",
     photos: ["bns-brewing-01","bns-brewing-02","bns-brewing-03","bns-brewing-04","bns-brewing-05","bns-brewing-06"]
   },
   {
     id: "hamilton-family", title: "Hamilton Family Brewery", category: "brews", status: "logged", lat: 34.106, lng: -117.593,
-    location: "Rancho Cucamonga, CA", region: "California", date: "", rating: null,
-    summary: "Family brewery with a long poster-board tap list and snowy San Gabriel views.",
-    story: ["Add your notes here."], facts: {},
+    location: "Rancho Cucamonga, CA", region: "California", date: "2019-12-29", rating: null,
+    crew: "Gary and Anna",
+    summary: "Good little brewery near the Ontario airport.",
+    story: ["Good little brewery near the Ontario airport. We got a couple of samplers to try several different beers."], facts: {},
     cover: "assets/photos/hamilton-family/hamilton-family-03.jpg",
     photos: ["hamilton-family-01","hamilton-family-02","hamilton-family-03","hamilton-family-04","hamilton-family-05","hamilton-family-06","hamilton-family-07"]
   },
   {
     id: "pacific-islander", title: "Pacific Islander Beer Co.", category: "brews", status: "logged", lat: 32.82, lng: -117.15,
-    location: "San Diego, CA", region: "California", date: "", rating: null,
-    summary: "Tiki-themed brewery with island-inspired beers and a sunny patio.",
+    location: "San Diego, CA", region: "California", date: "2018-09-16", rating: null,
+    crew: "Gary and Anna",
+    summary: "Another day — another brewery!",
     story: ["Add your notes here."], facts: {},
     cover: "assets/photos/pacific-islander/pacific-islander-05.jpg",
     photos: ["pacific-islander-01","pacific-islander-02","pacific-islander-03","pacific-islander-04","pacific-islander-05","pacific-islander-06"]
   },
   {
     id: "golden-block", title: "Golden Block Brewery", category: "brews", status: "logged", lat: 37.812, lng: -107.664,
-    location: "Silverton, CO", region: "Colorado", date: "", rating: null,
-    summary: "Brewery and pizza on Silverton's historic main street, high in the San Juans.",
-    story: ["Add your notes here."], facts: {},
+    location: "Silverton, CO", region: "Colorado", date: "2022-07-21", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "Camping in Colorado.",
+    story: ["Camping in Colorado. Had to try a new brewery in Silverton. Great nut brown — a Pledge of 'Ale'giance.", "We were camping just outside Ouray, Colorado. Drive south on the Million Dollar Highway and stop at Silverton."], facts: {"Beer of record": "Pledge of 'Ale'giance (nut brown)"},
     cover: "assets/photos/golden-block/golden-block-02.jpg",
     photos: ["golden-block-01","golden-block-02","golden-block-03","golden-block-04","golden-block-05","golden-block-06","golden-block-07"]
   },
@@ -1107,6 +1121,230 @@ const EXPEDITIONS = [
     cover: "assets/photos/las-vegas-brewing/las-vegas-brewing-01.jpg",
     photos: ["las-vegas-brewing-01","las-vegas-brewing-02","las-vegas-brewing-03","las-vegas-brewing-04","las-vegas-brewing-05","las-vegas-brewing-06","las-vegas-brewing-07","las-vegas-brewing-08"]
   },
+  /* ---- Added 2026-10-16 from Brews Entries sheet + Images/Brews ---- */
+  {
+    id: "dark-sky", title: "Dark Sky Brewing Co.", category: "brews", status: "logged", lat: 35.1983, lng: -111.6513,
+    location: "Flagstaff, AZ", region: "Arizona", date: "", dateText: "Multiple visits", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "A local favorite for Gary and Anna and a regular visit when we're in town.",
+    story: ["Dark Sky is a favorite stop in Flag. The pizza is fantastic too."], facts: {},
+    cover: "assets/photos/dark-sky/dark-sky-03.jpg",
+    photos: ["dark-sky-01","dark-sky-02","dark-sky-03","dark-sky-04","dark-sky-05","dark-sky-06","dark-sky-07","dark-sky-08","dark-sky-09"]
+  },
+  {
+    id: "smelter-town", title: "Smelter Town Brewery", category: "brews", status: "logged", lat: 34.7711, lng: -112.0577,
+    location: "Clarkdale, AZ", region: "Arizona", date: "", dateText: "Multiple visits", rating: null,
+    crew: "Pat, Terri, Gary and Anna",
+    summary: "Just outside of Cottonwood and down the road from Sedona, Smelter Town has a good line of beer.",
+    story: ["We usually visit Smelter Town with Gary and Anna when we're in town. They have a good lineup of beers."], facts: {},
+    cover: "assets/photos/smelter-town/smelter-town-01.jpg",
+    photos: ["smelter-town-01","smelter-town-02","smelter-town-03","smelter-town-04","smelter-town-05"]
+  },
+  {
+    id: "belfry", title: "Belfry Brewery", category: "brews", status: "logged", lat: 34.739, lng: -112.009,
+    location: "Cottonwood, AZ", region: "Arizona", date: "", dateText: "Multiple visits", rating: null,
+    crew: "Gary and Pat",
+    summary: "Cool place to drink a beer and eat a burger with a friend.",
+    story: ["Gary and I have been here a few times during our outings. This is one of Gary's go-to places when he's out to Cottonwood for big-city shopping. Sitting at the old bar, decent beer and a tasty burger makes for a fantastic day."], facts: {"Food": "Burger"},
+    cover: "assets/photos/belfry/belfry-07.jpg",
+    photos: ["belfry-01","belfry-02","belfry-03","belfry-04","belfry-05","belfry-06","belfry-07","belfry-08"]
+  },
+  {
+    id: "helix", title: "Helix Brewing Co.", category: "brews", status: "logged", lat: 32.767, lng: -117.02,
+    location: "San Diego, CA", region: "California", date: "2019-03-10", rating: null,
+    crew: "Gary and Anna",
+    summary: "New brewery in San Diego.",
+    story: ["A couple of days in San Diego before heading to Mexico."], facts: {"Beers tried": "Stoner Mountain IPA, King Rufus Porter, Puff Puff Pale"},
+    cover: "assets/photos/helix/helix-07.jpg",
+    photos: ["helix-01","helix-02","helix-03","helix-04","helix-05","helix-06","helix-07","helix-08","helix-09"]
+  },
+  {
+    id: "devils-purse", title: "Devil's Purse Brewing Co.", category: "brews", status: "logged", lat: 41.69, lng: -70.15,
+    location: "South Dennis, MA", region: "Massachusetts", date: "2019-10-12", rating: null,
+    crew: "Gary and Anna",
+    summary: "Last day on the Cape.",
+    story: ["Last day on the Cape… one last brewery for a blackberry porter!"], facts: {"Beer of record": "Blackberry Porter"},
+    cover: "assets/photos/devils-purse/devils-purse-07.jpg",
+    photos: ["devils-purse-01","devils-purse-02","devils-purse-03","devils-purse-04","devils-purse-05","devils-purse-06","devils-purse-07"]
+  },
+  {
+    id: "crafthaus", title: "CraftHaus Brewery", category: "brews", status: "logged", lat: 36.03, lng: -115.04,
+    location: "Henderson, NV", region: "Nevada", date: "2021-11-08", rating: null,
+    crew: "Gary and Anna",
+    summary: "In Vegas hitting a new brewery.",
+    story: ["Small place, but really good beers."], facts: {},
+    cover: "assets/photos/crafthaus/crafthaus-05.jpg",
+    photos: ["crafthaus-01","crafthaus-02","crafthaus-03","crafthaus-04","crafthaus-05","crafthaus-06","crafthaus-07","crafthaus-08"]
+  },
+  {
+    id: "hundred-mile", title: "Hundred Mile Brewing Co.", category: "brews", status: "logged", lat: 33.414, lng: -111.926,
+    location: "Tempe, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Woman-owned Tempe brewery with a big patio, lawn games and an ASU-gold taproom.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/hundred-mile/hundred-mile-01.jpg",
+    photos: ["hundred-mile-01","hundred-mile-02","hundred-mile-03","hundred-mile-04","hundred-mile-05","hundred-mile-06","hundred-mile-07","hundred-mile-08"]
+  },
+  {
+    id: "beaver-street", title: "Beaver Street Brewery", category: "brews", status: "logged", lat: 35.1956, lng: -111.6497,
+    location: "Flagstaff, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Flagstaff brewpub with a hanging sign out front and a chalkboard tap list.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/beaver-street/beaver-street-01.jpg",
+    photos: ["beaver-street-01","beaver-street-02","beaver-street-03","beaver-street-04","beaver-street-05"]
+  },
+  {
+    id: "helluva", title: "HELLUVA Brewing Co.", category: "brews", status: "logged", lat: 33.32, lng: -111.87,
+    location: "Chandler, AZ", region: "Arizona", date: "", rating: null,
+    summary: "East Valley brewery with a wall of taps and a chalkboard beer list.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/helluva/helluva-03.jpg",
+    photos: ["helluva-01","helluva-02","helluva-03","helluva-04","helluva-05"]
+  },
+  {
+    id: "sedona-beer-co", title: "Sedona Beer Co.", category: "brews", status: "logged", lat: 34.869, lng: -111.761,
+    location: "Sedona, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Small-batch brewery with a patio view of the red rocks.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/sedona-beer-co/sedona-beer-co-03.jpg",
+    photos: ["sedona-beer-co-01","sedona-beer-co-02","sedona-beer-co-03","sedona-beer-co-04","sedona-beer-co-05","sedona-beer-co-06"]
+  },
+  {
+    id: "that-brewery", title: "THAT Brewery", category: "brews", status: "logged", lat: 34.7203, lng: -111.9993,
+    location: "Cottonwood, AZ", region: "Arizona", date: "", rating: null,
+    summary: "Verde Valley production brewery with a taproom bar and a wall of cans.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/that-brewery/that-brewery-01.jpg",
+    photos: ["that-brewery-01","that-brewery-02","that-brewery-03","that-brewery-04","that-brewery-05"]
+  },
+  {
+    id: "boxing-bear", title: "Boxing Bear Brewing Co.", category: "brews", status: "logged", lat: 35.175, lng: -106.65,
+    location: "Albuquerque, NM", region: "New Mexico", date: "", rating: null,
+    summary: "Albuquerque brewery with a chalkboard tap list and a bear in boxing gloves.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/boxing-bear/boxing-bear-05.jpg",
+    photos: ["boxing-bear-01","boxing-bear-02","boxing-bear-03","boxing-bear-04","boxing-bear-05","boxing-bear-06","boxing-bear-07","boxing-bear-08"]
+  },
+  {
+    id: "good-bad-ugly", title: "Good Bad Ugly Brewing Co.", category: "brews", status: "logged",
+    location: "", region: "Arizona", date: "", rating: null,
+    summary: "Brewery and bowling alley with a skull-and-crown sign out front.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/good-bad-ugly/good-bad-ugly-08.jpg",
+    photos: ["good-bad-ugly-01","good-bad-ugly-02","good-bad-ugly-03","good-bad-ugly-04","good-bad-ugly-05","good-bad-ugly-06","good-bad-ugly-07","good-bad-ugly-08"]
+  },
+  {
+    id: "ten-barrel-san-diego", title: "10 Barrel Brewing Co.", category: "brews", status: "logged", lat: 32.7105, lng: -117.1515,
+    location: "San Diego, CA", region: "California", date: "", rating: null,
+    summary: "East Village brewpub with a big tasting-flight table and a Pub Beer vending machine.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/ten-barrel-san-diego/ten-barrel-san-diego-10.jpg",
+    photos: ["ten-barrel-san-diego-01","ten-barrel-san-diego-02","ten-barrel-san-diego-03","ten-barrel-san-diego-04","ten-barrel-san-diego-05","ten-barrel-san-diego-06","ten-barrel-san-diego-07","ten-barrel-san-diego-08","ten-barrel-san-diego-09","ten-barrel-san-diego-10"]
+  },
+  {
+    id: "breakwater", title: "Breakwater Brewing Co.", category: "brews", status: "logged", lat: 33.195, lng: -117.379,
+    location: "Oceanside, CA", region: "California", date: "", rating: null,
+    summary: "Surf-decor brewpub a block from the beach — pizza and a long house-beer board.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/breakwater/breakwater-08.jpg",
+    photos: ["breakwater-01","breakwater-02","breakwater-03","breakwater-04","breakwater-05","breakwater-06","breakwater-07","breakwater-08"]
+  },
+  {
+    id: "central-coast", title: "Central Coast Brewing", category: "brews", status: "logged", lat: 35.283, lng: -120.66,
+    location: "San Luis Obispo, CA", region: "California", date: "", rating: null,
+    summary: "Small SLO brewery — follow the Enter arrow.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/central-coast/central-coast-02.jpg",
+    photos: ["central-coast-01","central-coast-02"]
+  },
+  {
+    id: "catawba", title: "Catawba Brewing Co.", category: "brews", status: "logged", lat: 35.585, lng: -82.555,
+    location: "Asheville, NC", region: "North Carolina", date: "", rating: null,
+    summary: "Barrel-lined taproom with a long tap wall in Beer City.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/catawba/catawba-01.jpg",
+    photos: ["catawba-01","catawba-02","catawba-03","catawba-04"]
+  },
+  {
+    id: "asheville-brewing", title: "Asheville Brewing Co.", category: "brews", status: "logged", lat: 35.592, lng: -82.552,
+    location: "Asheville, NC", region: "North Carolina", date: "", rating: null,
+    summary: "Sunburst-logo brewpub — all llamas must be on a leash.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/asheville-brewing/asheville-brewing-04.jpg",
+    photos: ["asheville-brewing-01","asheville-brewing-02","asheville-brewing-03","asheville-brewing-04"]
+  },
+  {
+    id: "orange-hat", title: "Orange Hat Brewing Co.", category: "brews", status: "logged", lat: 35.96, lng: -83.92,
+    location: "Knoxville, TN", region: "Tennessee", date: "", rating: null,
+    summary: "Big open taproom with a wood-wall tap list, next to Dead End BBQ.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/orange-hat/orange-hat-05.jpg",
+    photos: ["orange-hat-01","orange-hat-02","orange-hat-03","orange-hat-04","orange-hat-05","orange-hat-06","orange-hat-07","orange-hat-08","orange-hat-09"]
+  },
+  {
+    id: "blue-skye", title: "Blue Skye Brewery & Eats", category: "brews", status: "logged", lat: 38.8403, lng: -97.6114,
+    location: "Salina, KS", region: "Kansas", date: "", rating: null,
+    summary: "Downtown Salina brewpub — house taps and pizza.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/blue-skye/blue-skye-02.jpg",
+    photos: ["blue-skye-01","blue-skye-02","blue-skye-03","blue-skye-04","blue-skye-05"]
+  },
+  {
+    id: "boulder-dam", title: "Boulder Dam Brewing Co.", category: "brews", status: "logged", lat: 35.977, lng: -114.834,
+    location: "Boulder City, NV", region: "Nevada", date: "", rating: null,
+    summary: "Brewpub near Hoover Dam with a mural over the bar and a shady patio.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/boulder-dam/boulder-dam-06.jpg",
+    photos: ["boulder-dam-01","boulder-dam-02","boulder-dam-03","boulder-dam-04","boulder-dam-05","boulder-dam-06"]
+  },
+  {
+    id: "danico", title: "Danico", category: "brews", status: "logged",
+    location: "", region: "Colorado", date: "2024-11-09", rating: null,
+    summary: "Bright, modern taproom — a flight on a snowy November day.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/danico/danico-03.jpg",
+    photos: ["danico-01","danico-02","danico-03","danico-04","danico-05"]
+  },
+  {
+    id: "guinness-storehouse", title: "Guinness Storehouse", category: "brews", status: "logged", lat: 53.3419, lng: -6.2867,
+    location: "Dublin, Ireland", region: "Ireland", date: "2026-05-05", rating: null,
+    summary: "St. James's Gate — seven floors of Guinness, ending with a pint up top.",
+    story: ["Add your notes here."], facts: {"Beer of record": "Guinness"},
+    cover: "assets/photos/guinness-storehouse/guinness-storehouse-01.jpg",
+    photos: ["guinness-storehouse-01","guinness-storehouse-02","guinness-storehouse-03","guinness-storehouse-04","guinness-storehouse-05","guinness-storehouse-06","guinness-storehouse-07","guinness-storehouse-08","guinness-storehouse-09","guinness-storehouse-10","guinness-storehouse-11","guinness-storehouse-12"]
+  },
+  {
+    id: "jameson-bow-st", title: "Jameson Distillery Bow St.", category: "brews", status: "logged", lat: 53.3483, lng: -6.2772,
+    location: "Dublin, Ireland", region: "Ireland", date: "2026-05-05", rating: null,
+    summary: "The original Jameson distillery in Smithfield, open since 1780.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/jameson-bow-st/jameson-bow-st-01.jpg",
+    photos: ["jameson-bow-st-01","jameson-bow-st-02","jameson-bow-st-03","jameson-bow-st-04","jameson-bow-st-05","jameson-bow-st-06","jameson-bow-st-07"]
+  },
+  {
+    id: "brazen-head", title: "The Brazen Head", category: "brews", status: "logged", lat: 53.3446, lng: -6.2763,
+    location: "Dublin, Ireland", region: "Ireland", date: "2026-05-05", rating: null,
+    summary: "Ireland's oldest pub — and a bowl of beef stew.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/brazen-head/brazen-head-01.jpg",
+    photos: ["brazen-head-01","brazen-head-02","brazen-head-03"]
+  },
+  {
+    id: "mulligans", title: "Mulligan's", category: "brews", status: "logged", lat: 53.3468, lng: -6.2556,
+    location: "Dublin, Ireland", region: "Ireland", date: "2026-05-04", rating: null,
+    summary: "Classic Dublin pub, established 1782 — a proper pint of Guinness.",
+    story: ["Add your notes here."], facts: {"Beer of record": "Guinness"},
+    cover: "assets/photos/mulligans/mulligans-01.jpg",
+    photos: ["mulligans-01","mulligans-02","mulligans-03"]
+  },
+  {
+    id: "splendid-pig", title: "The Splendid Pig", category: "brews", status: "logged",
+    location: "", region: "Ireland", date: "2026-05-07", rating: null,
+    summary: "Down the back alley for a cocktail.",
+    story: ["Add your notes here."], facts: {},
+    cover: "assets/photos/splendid-pig/splendid-pig-03.jpg",
+    photos: ["splendid-pig-01","splendid-pig-02","splendid-pig-03","splendid-pig-04"]
+  },
+
   /* ----------------------------- PLANNED ---------------------------- */
   { id: "prost",      title: "Prost Brewing",      category: "brews", status: "planned", location: "Colorado Springs, CO", date: "", summary: "Opening November 2026 in the former Old Chicago on Powers.", cover: "", photos: [] },
   { id: "oak-creek",  title: "Oak Creek",  category: "brews", status: "planned", location: "", date: "", summary: "", cover: "", photos: [] },
