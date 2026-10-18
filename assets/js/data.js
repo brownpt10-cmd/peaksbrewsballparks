@@ -72,7 +72,7 @@ const EXPEDITIONS = [
     summary: "Tension that wants to resolve: dissonance in songs, the third-act breakup in movies, why Hallmark's safe version keeps me watching, and how cognitive dissonance is a different animal.",
     story: [
       "*The Ultimate Hallmark Movie Drinking Game. Guzzle when the couple breaks it off only to get back together two scenes later. That's the third-act breakup in one line.*",
-      "In this note I want to tackle the idea of dissonance, or tension, to create emotion in music and movies. I’ll also touch on cognitive dissonance, which I mostly thought of in a negative context, but I think my thinking on it is evolving.",
+      "In this note I want to tackle the idea of dissonance, or tension, to create emotion in music and movies. I’ll also touch on cognitive dissonance, which I mostly thought of in a negative context, but my thinking on it is evolving.",
       "Two prime examples come to mind: the use of dissonance in songs, and dissonance or tension in movie scripts, especially Hallmark movies. Get your shot glasses out and let’s resolve the first. See what I did there?",
       "**Dissonance in Music**",
       "First, let me explain what dissonance is doing in a song and how one might get there.",
