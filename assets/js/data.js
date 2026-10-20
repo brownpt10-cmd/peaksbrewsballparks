@@ -61,6 +61,176 @@ const JOURNAL = {
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    id: "mountains",
+    title: "Mountains",
+    category: "journal",
+    status: "logged",
+    location: "",
+    date: "2026-10-20",
+    rating: null,
+    crew: "Pat",
+    summary: "The psychology of the summit: Shishapangma, Nims, Everest's queues and a pilot's root-cause lens, then my own turnaround rules for the 14ers and Lobuche East.",
+    story: [
+      "*Lobuche East (6,119 m) in the Khumbu, Nepal. The 6,000 m peak on my list, and the backdrop for a question about risk.*",
+      "**Prologue**",
+      "Himalayan treks are very accessible. Even summiting an “easy” 6,000 m mountain can be done with very little alpine mountaineering experience. Moderate fitness and the ability to carry at least 15 pounds for 15 days, with 5- to 8-hour days, probably matter more. A typical trek and summit starts in Kathmandu. An 11-hour flight from Denver to Istanbul with a connection to Kathmandu will get you there. Meet up with the expedition company, do a gear check, and rent what you don’t have or buy it from the plentiful shops. Then a helicopter or plane to Lukla to start the trek.",
+      "From there it’s 5- to 7-hour days of trekking, with a day at Namche Bazaar for a 3-hour acclimatization climb to 3,880 m, then more 5- to 7-hour days. Nights are in tea houses, sometimes with a hot shower. Rest days and skills training follow, and by day 10 you’re at the precipice of summit day. Summit Lobuche Peak at 6,118 m (20,072 feet), descend to the helicopter meeting point, and fly back to Lukla or Kathmandu. One more day in Kathmandu before the trip home. ([Namas Adventures](https://www.namasadventure.com/climb-lobuche-peak))",
+      "Would you do this? I’m interested. It depends on other factors, some out of my control, but it’s on my list.",
+      "Looking at this itinerary, and the plenty of videos that mirror it, what is the risk involved? In this journal I’ll work through that question against the backdrop of the far more dangerous 8,000 m peaks. Let’s go!",
+      "![Climbers on the summit ridge of Lobuche East](assets/photos/mountains/lobuche-climbers.jpg)",
+      "*Climbers on the final ridge of Lobuche East (6,119 m). The trekking peak that started this question.*",
+      "**Losing Sight of the Goal**",
+      "In October 2023, Anna Gutu and Gina Rzucidlo were each racing to become the first American woman to summit all 14 peaks over 8,000 meters. Neither summited, and neither came home. High on Shishapangma, on separate summit pushes along different lines of the same approach, two avalanches swept each woman and her guide down the mountain. Gutu and Mingmar Sherpa were found dead. Rzucidlo and Tenjen “Lama” Sherpa remain somewhere on the mountain to this day, most likely in a deep crevasse.",
+      "No one plans to die on a mountain, or at least they shouldn’t. Yet, inconceivably, many have done precisely that. The goal of summiting must include the goal of coming home alive.",
+      "What follows is my interest in the psychology of conquering big things like mountains: why people do it, and why some do it to their death. Conquering great challenges is nothing new to human endeavor. Neither are challenges where the risk of death runs much higher, whether it’s free soloing a 914 m (3,000-foot) rock face or climbing an 8,000 m peak.",
+      "So where does this need for conquest come from? How much of it is competition, and how much is personal curiosity or satisfaction? And why does summiting a 2,700 m (9,000-foot) peak on a day hike carry the same fascination with conquest as an 8,000 m peak, when one is far more dangerous than the other?",
+      "**How I Got Here**",
+      "I’m fascinated by a wide variety of topics, some of them pure curiosities to be studied for their human interest. Mount Everest has always been one of those, no different than the Titanic before it was found. But Everest is an interest with human consequence, and studying something is quite different from wanting to climb it, conquer it, notch it on my belt.",
+      "We grow up being taught that Everest is the highest mountain. My first real awareness of its dangers, the immensity of it, came with Jon Krakauer’s Into Thin Air, first an Outside magazine article and then the book, chronicling the 1996 disaster. What struck me most wasn’t the deaths; it was the decisions that led to them. Very experienced guides and climbers pressed for the summit with clients who had no business on the mountain. There was absolutely no reason for Rob Hall and Scott Fischer to die.",
+      "Since then I’ve followed the news every climbing season: the April 2014 ice avalanche that killed 16 Sherpas in the Khumbu Icefall; the 2015 earthquake-triggered avalanche that killed 15 to 21 people at Base Camp and injured more than 70. Every season seems to bring another death, and another story about the growing commercialization of the mountain.",
+      "Recently I watched The Dark Wizard, the HBO documentary series about Dean Potter. I’d seen Alex Honnold in Free Solo but had never heard of Dean. A few searches, a rewatch of Free Solo, some YouTube, and before I knew it the algorithm was feeding me extreme mountaineering. One of those feeds was The Outdoor Pirate, Paul Clarke, and his climbs over the last two years. I watched 14 Peaks: Nothing Is Impossible, which led me to Jimmy Chin, the videographer and co-director of Free Solo, then Meru, which featured Chin, and The Last First: Winter K2, and I kept diving deeper into the spectacle of the high-altitude peaks.",
+      "I’ve always known about the Seven Summits, the highest peak on each continent. But now there were the 14 peaks over 8,000 m, the Volcanic Seven Summits, the Seven Second Summits, the Explorers Grand Slam, Pakistan’s five 8,000ers (the Karakoram Giants), the Snow Leopard Award, the Alpine 4,000ers, and the Great North Faces of the Alps (the Trilogy). I’ve also watched countless videos of treks through the Himalayas, far more accessible to normal people, and of 6,000 m peaks like Lobuche East near Everest, which I’m now considering someday.",
+      "**A Familiar Face**",
+      "Through YouTube I discovered that Paul Clarke is attempting all 14 of the 8,000 m peaks, and something was scratching at the back of my mind: I know this guy. At first I thought it was someone with the same last name spelled differently. Eventually it clicked. It’s Captain Paul from his former YouTube channel chronicling the crew aboard the motor yacht Loon, before he allegedly ran the brand-new, million-dollar tender into the rocks after a night of drinking, injuring several crew members ([Boat International](https://www.boatinternational.com/yachts/news/superyacht-tender-crash-six-injured-captain-paul-clarke-court-filing-loon); [FULR](https://www.fulr.org/post/beneath-the-waves-yacht-negligence-and-liability-in-florida-s-courts)).",
+      "I’m not going to comment on the accident, the potential lawsuits, or the fallout. What I will say is that Paul is engaging, and his content is emotionally honest. You also have to give the man credit for saving a Sherpa on Everest when he didn’t have to. Unconscionable as it seems, it isn’t common for clients above 8,000 m in the death zone to render aid. He did it anyway. I’ll come back to Paul and his approach to mountaineering below.",
+      "**The Question**",
+      "So here’s my question: what drives men and women to these risky behaviors? Most people find accomplishment in less dangerous pursuits: hiking a trail, climbing a very doable 14er like Pikes Peak, even conquering a new recipe in the kitchen. Others go to the high alpine and extreme sports.",
+      "Dean Potter was killed in 2015, wingsuit flying in Yosemite while attempting a very risky notch pass — completely unnecessary. Alex Honnold free soloed El Capitan and many other walls. At what point is the risk too much? Why the need to do extreme things when there’s a safer way to conquer them?",
+      "Is there a difference between risk driven by personal accomplishment (Potter, Honnold) and risk driven by recognition (the influencer, the “first American woman”)? First, the mountain doesn’t care which one you are, and it doesn’t care if you don’t respect it. And the human dynamics of summit fever are likely the same either way: the pinnacle is the goal, and it must be accomplished.",
+      "As The Dark Wizard describes, Dean had other demons he was outrunning. He seemed most at peace on the climb, and his ego and competitiveness drove him to ever more dangerous stunts. Some would attribute that to dopamine seeking. Alex is also incredibly competitive but seems to have a better handle on risk. Then again, Alex allowed the documentary cameras in to film the climb, which suggests he wants recognition too, just differently than the Instagram follower-seeker. And recognition-seeking isn’t limited to mountains. People fall off cliffs every year chasing the perfect selfie, or get attacked by wild animals trying for a close-up of a bison or an elk. Ultimately it comes down to the person, and to the guides.",
+      "**How a Pilot Looks at It**",
+      "Like many military officers I know, and others in high-risk professions like aviation, root cause analysis and lessons learned were skills taught to us early. In simplified form, you keep asking “why did this happen?” until you reach, as I always comically say, “because I’m stupid.” Then you back up one or two levels to find the real root cause, or causes, for why something didn’t go as planned or failed horribly.",
+      "In Air Force aviation, we train hard so we make our mistakes in training, where they don’t cost lives, and the pilot is ready for combat, which is more dangerous because the enemy is shooting back and gets a vote. That makes honesty in root cause analysis and the lessons-learned debrief critical.",
+      "Equally critical in Air Force culture is safety: understanding every factor that leads to a mishap. Safety professionals would show the Swiss cheese model. When all the holes line up through the block of cheese, that’s when the mishap occurs. Through awareness, prevention and good practices, you break the chain before it happens. You can do all of that and still have a mishap, but almost always, it has an origin somewhere.",
+      "Aviation even has a name for pressing on toward a goal against the evidence: get-there-itis, or plan continuation bias. Mountaineers call it summit fever. It’s the same phenomenon. I’ve felt a lesser version of it myself, driving longer than we should have on long cross-country trips.",
+      "**Knowing When to Turn Around**",
+      "The antidote is the turnaround time. On the 8,000 m peaks, the rule is to summit by 2 PM. Some push to 3 PM, some to 4 PM at the latest, and you can see where those stories go. Climbers push for the summit knowing they’ll be late, then descend during the most dangerous part of the climb. They’re running out of oxygen and more fatigued than they would have been at 2 PM. Then come nightfall and falling temperatures in the death zone, where the body is essentially dying to begin with.",
+      "I’m reminded of the [U.S. Air Force 7 Summits Challenge](https://www.af.mil/News/Article-Display/Article/109038/skies-to-conquer-langley-airman-scales-mount-everest/) team in 2013. Captain Colin Merrin and Staff Sergeant Nick Gibson turned back short of the Everest summit when illness and frostbite made the push unfeasible. Their training, the team’s culture, and the boundaries they had set in advance made that decision possible. It had to have been heartbreaking, especially when other members of the team summited. But they came home to talk about it and share the lessons. That’s courage, too.",
+      "Paul Clarke’s journey captures the same hard decisions. His goal is all 14, but his approach, while not without risk, includes living to tell the story and climbing another day. His most recent example was Khan Tengri, just over 7,000 m and the highest peak in Kazakhstan, where he turned around at Camp 2 after a heavy night of snow. Between the avalanche risk and the energy it would take to dig out the fixed ropes and break trail, he made the call to attempt her another time.",
+      "He has a few more videos of “failed” attempts and turnarounds. The only thing that gives me pause is the word FAILED on one thumbnail. His decision-making in the video, though, was solid, and turning around isn’t failing. He also has a climb in South America where the guide turned them around even though Paul disagreed. The next day he got permission to summit unguided and did so without issue. Just stating the facts there. The guide may have been absolutely right based on that day’s conditions and his confidence in a safe summit.",
+      "What I like about what Paul is doing is that he documents each step: his discussions with the guides, the planning, and the decisions, even the disappointing ones. Only time will tell if he becomes another statistic on a big mountain. I hope not.",
+      "As I’ve said in other entries, it’s not about the destination; it’s about the journey. Those who lose sight of that, because the peak is the only goal, sometimes pay the ultimate price for their decisions.",
+      "**The Case Studies**",
+      "**Shishapangma**",
+      "The catalyst for this entry was Gloria Liu’s Outside article, [“Death on Shishapangma.”](https://www.outsideonline.com/outdoor-adventure/exploration-survival/death-on-shishapangma/) It’s well written, detailing the lives of Gutu and Rzucidlo and of the Sherpas who make these summits possible, and it makes a strong case against the commercialized expedition world, particularly for climbers with little alpine experience.",
+      "The race to be the first American woman likely killed both women and two Nepali Sherpas. It was a preventable tragedy. Through arrogance, stubbornness and competition, the two women didn’t combine their parties to climb as one. That may not have caused the avalanches, but teaming up certainly would have reduced the risk.",
+      "Run the “five whys” and the holes in the Swiss cheese line up quickly:",
+      "> **Competition** — the race to record the first American woman on all 14.",
+      "> **Money** — guide companies paid, and pressured, to deliver summits.",
+      "> **Prestige and transcendence** — the summit as identity.",
+      "> **Skill** — clients with limited alpine experience, towed up by highly capable Sherpas.",
+      "> **No rules in place** — no turnaround criteria agreed on before the push.",
+      "> **Inability to work together** — two parties, one mountain, no shared plan.",
+      "> **No third-party decision maker** — no one with the authority to say “not today.”",
+      "> **Conditions** — recent snow on a wind-loaded, exposed north face prone to avalanche.",
+      "Gutu was climbing with Elite Exped, the company founded by Nirmal “Nims” Purja, and Nims was at high camp for this summit attempt, as the article details. Some argue that the pressure to guarantee summits leads directly to disasters like this one. We could keep digging, but in the end, the women and their guides chose to climb a mountain that was inherently dangerous and, at that moment, primed to avalanche.",
+      "**The Guides’ View**",
+      "Liu interviews two American guides, Adrian Ballinger and Chris Warner. Both describe how guiding has shifted from American-run expeditions to mostly Nepali-owned companies, and how summit pressure and summit guarantees have created a different culture (my words) in climbing and adventurism. People with very little mountaineering experience can now be essentially towed up the mountain. The result is mixed decision-making: Ballinger and Warner would turn their parties around when a mountain looked unsafe or they’d hit their limits, while other parties summited the same day.",
+      "Their point: yes, those parties made it, but they increased their risk, and eventually something bad happens. Liu writes, “But mountaineering wisdom holds that getting away with a risky decision once or twice misleads climbers into believing that they’d made good decisions.” Then she quotes Warner: “It’s the third mistake that kills you.”",
+      "That’s risk avoidance: breaking the chain before the mishap. If you know a slope is prone to avalanche after snowfall, crossing it is a bet that it won’t release while you’re on it, knowing full well the risk is there. It’s the same lesson Into Thin Air taught me, and likely the one Ballinger and Warner are applying.",
+      "**Kilimanjaro**",
+      "Another story I came across on YouTube was about Scott Dinsmore, a successful entrepreneur and TED speaker, charismatic, with a promising career as an inspirational speaker and coach. He and his wife went to climb Kilimanjaro in 2015 and, whether through arrogance or the need for publicity, chose the Western Breach, a route more prone to rockfall, with a guide willing to take them. Sure enough, he was killed by a falling boulder with his young wife by his side. He sought his followers’ admiration by taking the unconventional route, and he paid the price.",
+      "The same could be said of Gutu, who, as Rzucidlo complained, was attempting the 14 more as an Instagram influencer than as a serious climber. We can only speculate about her real intentions. But it was one of the factors that led to the mishap. What fraction, we’ll never know.",
+      "**Nims**",
+      "Nims himself was killed on July 21, 2026, in an avalanche on Broad Peak (8,051 m) in Pakistan, along with nine other climbers. He was working through the 14 peaks a second time, and the team took extraordinary risk on a mountain prone to avalanche. Apparently, they had debated whether to go. Whether through ego, an outsized belief in their abilities, or a calculated risk they were willing to accept, they went and paid the price.",
+      "It’s the same pattern: a drive to conquer these mountains when the risk of avalanche, or rockfall on other mountains, is high. The guides who know these mountains best are fully aware of the dangers, yet continue to expose themselves to them, and the more you’re exposed, the higher the odds. You’re cheating fate, cheating circumstance, cheating death. That isn’t a reason to stop. It’s a reason to understand the risk and take only calculated ones.",
+      "**Judgment from 6,000 Feet**",
+      "Those choices were theirs to make, and I can’t sit here at 6,000 feet and judge them. But I can judge the overall situation: the commercialization of mountains, feeding them people who don’t understand the risks or lack the skills to do proper root cause analysis before a mishap occurs.",
+      "The expedition carries the responsibility of protecting its client. The client signs a liability waiver, but a business won’t stay in business long if its practices kill clients. Then again, who will really know what happened in the death zone?",
+      "The time to make those decisions is in the planning, setting boundaries, as I wrote in my first entry, It’s Not About the Plan. Not at 7,000 m about to push for the summit, when your thinking is fogged, it takes five minutes to zip your jacket, your hands are cold, your feet are frozen, you’re starved of nutrition, and your body is shutting down. I can only partly relate. I’ve hiked Pikes Peak a few times and ran the Ascent once. Above tree line, eating and even drinking got harder. The body just doesn’t have the energy to process fuel.",
+      "**The Commercial Mountain**",
+      "What surprised me, the more I studied this over the last several weeks, is that I’ve come to dislike what’s happening on Everest. My imagination used to soar over the conquest of this beautiful mountain and all the intricate steps to get there: mysterious Everest Base Camp; the Khumbu Icefall, its shifting ice, and knowing when it can be crossed; Camp 1 and back down to acclimatize, then up again to Camps 2, 3 and 4; the summit. The names we’ve all heard: the Balcony, and the Hillary Step, whose collapse was confirmed in 2017 and was likely caused by the 2015 earthquake.",
+      "And the understanding that there are still humans on the mountain, dead humans known by their nicknames: Green Boots, Sleeping Beauty, “The German” at the Second Step, “The Saluting Man,” and Rainbow Valley, a concentration of unrecovered bodies in brightly colored modern gear. Disturbing stuff. There’s even a YouTube channel dedicated to it, [Fatally Curious](https://www.youtube.com/@fatallycurious).",
+      "Meanwhile, the number of people trying to summit in a short window each May has soared. Hundreds of climbers once queued at the Hillary Step; today the choke points are the South Summit ridge and the fixed-rope bottlenecks, where climbers wait for hours in the death zone ([video](https://www.facebook.com/watch/?v=1161631609104154)). That’s the commercialization of a mountain in a single picture.",
+      "It has become a spectacle of people paying their way up a mountain for the ability to say they summited Everest. My fascination with Everest has waned.",
+      "**Perspective**",
+      "How many people do hippos kill each year? If you can believe the internet, an estimated 500 in Africa, with historical estimates ranging from 500 to 3,000. More critical research suggests the real number may be closer to 38 to 50 a year, based on local data.",
+      "Again, if you can believe the internet: more than 1,113 deaths have been recorded across the 14 peaks over 8,000 m, and more than 347 people have died on Everest. It’s getting safer with better forecasting and equipment; the fatality rate above Base Camp dropped to about 0.7% for 2007–2024. In the Alps, Mont Blanc (France/Italy) sees an estimated 100 deaths a year from heavy traffic, rockfall and avalanches. Globally, avalanches alone kill more than 150 people a year, including roughly 100 in Europe and 27 in the United States.",
+      "It’s important to guard against false equivalence here. There’s inherent risk in everything we do. Getting in a car means hurling a 4,000-pound metal object on four rubber wheels down the highway, and an estimated 36,000 people died on American roads in 2025. Even one death is too many, yet we accept the risk of driving and keep making cars safer with airbags, seatbelts, crumple zones and the like. And there are days we don’t drive because snow or poor visibility makes the risk too high. That’s a risk calculation.",
+      "In that sense, climbing a high mountain isn’t so different from driving. The difference is the fatality rate. Likewise, if hippos kill as few as 38 people a year, should no one go on safari, with the chance of meeting a Cape buffalo, a lion, a black mamba or a mosquito? The sheer number of people on safari each year makes the fatality rate for a vacationer so low that we don’t consider it risky, much like flying commercially.",
+      "What is clear is that most people don’t run a risk calculation before going on safari or jumping in the car to run to the grocery store. We simply do it. A climber at least has the chance, and the obligation, to do the math before going.",
+      "**The Mirror**",
+      "Yet, trying not to display my own cognitive dissonance, I do want to conquer new things, particularly with this new ankle: trails, Colorado’s 14ers, even the smaller peaks around Colorado Springs. I want to challenge myself and say I’ve done it, to myself or to my friends. I can see the allure if I had a big following on Instagram or Facebook, neither of which I participate in directly.",
+      "I’ve been watching people trek: the human element of their journeys to Everest Base Camp, the Manaslu and Annapurna circuits, the challenge of a multi-day trek, and very accessible 6,000 m peaks like Lobuche East or Island Peak. Not to contradict myself, but I’d seriously consider one of those peaks, assuming I can handle Colorado’s easier and moderate 14ers first — not the hard ones.",
+      "In general, I’m fairly risk-averse. I spent 25 years in the Air Force, and other than the convenience of commercial travel, I’m not going to spend a lot of time in an airplane. I’m certainly not going to jump out of one.",
+      "**The Math on Lobuche East**",
+      "So back to the question from the prologue: what is the risk on a trip like that? Lobuche East is not an 8,000 m peak. There’s no death zone, no supplemental oxygen, and no multi-week siege. The real risks are altitude illness, from a pounding headache up to the rare but dangerous fluid on the lungs or brain; cold; weather; and the steep, fixed-rope section near the summit. Almost all of them are managed the same way: a slow itinerary with acclimatization days built in, a guide with authority to say “not today,” and the willingness to go back down. The risk is real but small, and most of it is in my control. Which brings me to my own rules.",
+      "**My Own Turnaround Rules**",
+      "So I’ll practice what I’m preaching and write my boundaries down now. On Colorado 14ers, the turnaround time depends on the mountain, but generally it’s 11:00 or noon. Most are climbed in summer, when storms roll in every afternoon. Things that could push the plan later: weather, a late start, fatigue, or a closed trailhead that adds miles to the front end.",
+      "For Lobuche East, it comes down to the decision points with lodging along the way: Namche Bazaar, Dingboche and Lobuche village, before the climb itself starts from base camp. At each one, I check how I’m feeling: coughing, energy, whether the ankle swelling is under control, oxygen saturation, heart rate and blood pressure. And if I thought I was slowing others down or endangering the guides, that’s a turnaround, too. Those villages have tea houses and food, so most likely I’d wait for the guides and porters to return before heading back to Lukla or the helicopter.",
+      "**Purpose**",
+      "I can see the intoxicating need to conquer something, but I want to put my own realism on it. If I never make it to Nepal for a Himalayan trek, I’ll be OK. I’ll find other things to keep me interested: other goals, travel to Europe or Asia — hell, lying on a warm beach in a foreign country — and my life will be just as fulfilled.",
+      "C.W. “Mover” Lemoine said in a YouTube video posted on October 19, 2026, about quitting the airlines, that part of why he went to the airlines after his fighter career was to find purpose. He’s finally realized he can create his own purpose with what he’s doing today, without being miserable flying for a major airline. That’s what I’m doing.",
+      "So what’s my point? It is an adventure. If my ankle can’t do the peak, maybe I just do the trek: experience it with others and for myself, come away with a deeper understanding of that part of the world and its culture, and meet new people. If the risk or my physical ability isn’t there, I won’t climb a 6,000 m peak. I may not even climb a 14er here in Colorado, and that’s OK.",
+      "**So What?**",
+      "Throughout my career I asked the “so what?” question and almost always demanded action as a result. That’s what we do at work, right? Sometimes it was a foreign concept that you would actually derive action from an event, or keep improving on the work we do.",
+      "So what’s the so-what of all this? Is my call to action to trek, hike a peak, maybe someday climb a 6,000 m peak? Is it to write about it and think about it? Where does my dopamine actually come from on these topics? Or am I after a higher purpose, like regulating the commercialization of these peaks? To be clear, I’m not advocating taking away people’s freedom, but some controls — a stop sign, a traffic signal — would reduce the risk for people otherwise too dumb to realize that swimming with a hippo is a really bad idea. Some people need that control.",
+      "For me, the action is the one I’ve already taken: writing my turnaround rules down before I ever lace up my boots. That’s the debrief done before the mission, not after the mishap.",
+      "**Conclusion**",
+      "So what is the psychology of the summit? The reasons people go up vary: curiosity, competition, recognition, purpose, even demons. The psychology that kills them is the same every time: summit fever overriding the plan.",
+      "The mountain doesn’t care whether you came for the view, the challenge or the followers. It only answers the decisions you made before you got there. Set the turnaround time in the planning, heed the forecast and conditions, and keep it. It’s not about the destination; it’s about coming home to tell the story of the journey.",
+      "**Epilogue**",
+      "Boarding in Kathmandu for the long flight home. I have all ten fingers and toes. No frostbite. The ankle is sore, but with the right gear, lots of Aleve and daily care, I made it. If you feel bad for me in economy, please donate to my first-class ticket! See you on the summit."
+],
+    facts: {
+      "Type": "Journal note",
+      "Companion to": "It's Not About the Plan · Overcoming Adversity · Enough",
+      "Photo": "Lobuche East Peak (6,119 m)"
+},
+    cover: "assets/photos/mountains/lobuche-east-peak.jpg",
+    photos: [],
+    links: [
+      [
+            "The Dark Wizard (HBO Max)",
+            "https://www.hbomax.com/show/76e78c26-21c9-45b4-b84b-4c3e1f8ff763"
+    ],
+      [
+            "IMDb listing",
+            "https://www.imdb.com/title/tt39656291/"
+    ],
+      [
+            "Netflix title page",
+            "https://www.netflix.com/title/81464765"
+    ],
+      [
+            "14 Peaks: Nothing Is Impossible",
+            "https://www.nimsdai.com/14-peaks-film"
+    ],
+      [
+            "The Outdoor Pirate — Paul Clarke",
+            "https://www.theoutdoorpirate.com/"
+    ],
+      [
+            "Gloria Liu, “Death on Shishapangma,” Outside",
+            "https://www.outsideonline.com/outdoor-adventure/exploration-survival/death-on-shishapangma/"
+    ],
+      [
+            "“Skies to conquer: Langley Airman scales Mount Everest,” af.mil",
+            "https://www.af.mil/News/Article-Display/Article/109038/skies-to-conquer-langley-airman-scales-mount-everest/"
+    ],
+      [
+            "Boat International — superyacht tender crash, Loon",
+            "https://www.boatinternational.com/yachts/news/superyacht-tender-crash-six-injured-captain-paul-clarke-court-filing-loon"
+    ],
+      [
+            "Namas Adventures — Climb Lobuche Peak",
+            "https://www.namasadventure.com/climb-lobuche-peak"
+    ],
+      [
+            "WBUR Only A Game — Mount Everest traffic (2013)",
+            "https://www.wbur.org/onlyagame/2013/06/01/mount-everest-traffic"
+    ],
+      [
+            "Fatally Curious (YouTube)",
+            "https://www.youtube.com/@fatallycurious"
+    ],
+      [
+            "Everest queue video (Facebook)",
+            "https://www.facebook.com/watch/?v=1161631609104154"
+    ]
+]
+  },
+  {
     id: "dissonance",
     title: "Dissonance",
     category: "journal",
