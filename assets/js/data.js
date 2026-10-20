@@ -71,14 +71,12 @@ const EXPEDITIONS = [
     crew: "Pat",
     summary: "The psychology of the summit: Shishapangma, Nims, Everest's queues and a pilot's root-cause lens, then my own turnaround rules for the 14ers and Lobuche East.",
     story: [
-      "*Lobuche East (6,119 m) in the Khumbu, Nepal. The 6,000 m peak on my list, and the backdrop for a question about risk.*",
+      "*Lobuche East*",
       "**Prologue**",
       "Himalayan treks are very accessible. Even summiting an “easy” 6,000 m mountain can be done with very little alpine mountaineering experience. Moderate fitness and the ability to carry at least 15 pounds for 15 days, with 5- to 8-hour days, probably matter more. A typical trek and summit starts in Kathmandu. An 11-hour flight from Denver to Istanbul with a connection to Kathmandu will get you there. Meet up with the expedition company, do a gear check, and rent what you don’t have or buy it from the plentiful shops. Then a helicopter or plane to Lukla to start the trek.",
       "From there it’s 5- to 7-hour days of trekking, with a day at Namche Bazaar for a 3-hour acclimatization climb to 3,880 m, then more 5- to 7-hour days. Nights are in tea houses, sometimes with a hot shower. Rest days and skills training follow, and by day 10 you’re at the precipice of summit day. Summit Lobuche Peak at 6,118 m (20,072 feet), descend to the helicopter meeting point, and fly back to Lukla or Kathmandu. One more day in Kathmandu before the trip home. ([Namas Adventures](https://www.namasadventure.com/climb-lobuche-peak))",
       "Would you do this? I’m interested. It depends on other factors, some out of my control, but it’s on my list.",
       "Looking at this itinerary, and the plenty of videos that mirror it, what is the risk involved? In this journal I’ll work through that question against the backdrop of the far more dangerous 8,000 m peaks. Let’s go!",
-      "![Climbers on the summit ridge of Lobuche East](assets/photos/mountains/lobuche-climbers.jpg)",
-      "*Climbers on the final ridge of Lobuche East (6,119 m). The trekking peak that started this question.*",
       "**Losing Sight of the Goal**",
       "In October 2023, Anna Gutu and Gina Rzucidlo were each racing to become the first American woman to summit all 14 peaks over 8,000 meters. Neither summited, and neither came home. High on Shishapangma, on separate summit pushes along different lines of the same approach, two avalanches swept each woman and her guide down the mountain. Gutu and Mingmar Sherpa were found dead. Rzucidlo and Tenjen “Lama” Sherpa remain somewhere on the mountain to this day, most likely in a deep crevasse.",
       "No one plans to die on a mountain, or at least they shouldn’t. Yet, inconceivably, many have done precisely that. The goal of summiting must include the goal of coming home alive.",
@@ -181,9 +179,9 @@ const EXPEDITIONS = [
     facts: {
       "Type": "Journal note",
       "Companion to": "It's Not About the Plan · Overcoming Adversity · Enough",
-      "Photo": "Lobuche East Peak (6,119 m)"
-},
-    cover: "assets/photos/mountains/lobuche-east-peak.jpg",
+      "Photo": "Lobuche East"
+    },
+    cover: "assets/photos/mountains/lobuche-climbers.jpg",
     photos: [],
     links: [
       [
