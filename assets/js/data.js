@@ -181,7 +181,7 @@ const EXPEDITIONS = [
       "Companion to": "It's Not About the Plan · Overcoming Adversity · Enough",
       "Photo": "Lobuche East"
     },
-    cover: "assets/photos/mountains/lobuche-climbers.jpg",
+    cover: "assets/photos/mountains/lobuche-climbers-cover.jpg",
     photos: [],
     links: [
       [
