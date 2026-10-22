@@ -61,6 +61,34 @@ const JOURNAL = {
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    id: "path",
+    title: "Path in the Trees",
+    category: "journal",
+    status: "logged",
+    location: "Sand Creek, Colorado Springs, CO",
+    date: "2026-10-21",
+    rating: null,
+    crew: "Pat",
+    summary: "Sometimes take a right instead of the usual path.",
+    story: [
+      "*Sometimes take a right instead of the usual path.*",
+      "When I started walking longer distances this spring and into the summer, I mostly stuck to the same route, a predictable out-and-back, because I was measuring time more than distance. I've reached the point where the ankle has endurance, but Cranky McAnkle still swells and tightens like a fresh sprain. It's not shooting pain, but I feel it with every step.",
+      "![The path in the trees](assets/photos/path/path-in-the-trees.jpg)",
+      "Not whining. Still out there walking. This morning it was a warm 57° under a bright blue sky and sparkling sun, and I decided to take a right after the bridge.",
+      "To my surprise, the path looked like what you see in the picture: trees lining both sides. For a moment I felt like I was deep in a stand of trees on a road to nowhere.",
+      "Good talk.",
+      "**80 routes walking this spring and summer.**",
+      "![80 walking routes this spring and summer](assets/photos/path/80-routes.jpg)",
+      "Middle of the picture is the right-hand turn after the new bridge over the creek.",
+      "![The right-hand turn after the new bridge over Sand Creek](assets/photos/path/right-turn-after-bridge.jpg)",
+      "Today's route.",
+      "![Today's route along Sand Creek](assets/photos/path/todays-route.jpg)"
+    ],
+    facts: { "Type": "Journal note", "Weather": "57°, sunny, blue sky", "Routes walked": "80 (spring & summer)" },
+    cover: "assets/photos/path/path-in-the-trees.jpg",
+    photos: []
+  },
+  {
     id: "mountains",
     title: "Mountains",
     category: "journal",
