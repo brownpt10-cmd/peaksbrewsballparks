@@ -22,9 +22,11 @@
   const isJournal = e => e.category === "journal";
   // Story text: escape, then allow **bold**, *italic*; a leading "> " makes a callout
   // [text](https://url) makes a link; a paragraph that is only ![alt](path) shows an inline image
+  // A paragraph starting with "html:" is inserted as-is (trusted HTML, e.g. an embedded report)
   const inline = s => esc(s).replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a class="text-link" href="$2" target="_blank" rel="noopener">$1</a>')
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/(^|[^\w/])\*(.+?)\*/g, "$1<em>$2</em>");
   const storyHtml = paras => paras.map(p => {
+    if (p.startsWith("html:")) return p.slice(5); // trusted embedded HTML block (e.g., a report)
     const img = p.match(/^!\[(.*?)\]\(([^)\s]+)\)$/);
     if (img) return `<figure class="story-img"><img src="${esc(img[2])}" alt="${esc(img[1])}" loading="lazy"></figure>`;
     return /^>\s?/.test(p)

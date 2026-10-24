@@ -574,3 +574,53 @@ a.st-item:hover .st-name { color: var(--orange-dark); }
   .st-name { font-size: 19px; }
   .st-group h3 { font-size: 18px; }
 }
+
+/* --------------------------------------------------------------------------
+   Embedded research reports (journal entries such as Mountains, Part 3)
+   Used by story items that start with "html:". Everything is scoped to .rpt.
+   -------------------------------------------------------------------------- */
+.story .rpt { margin: 36px 0; padding: 28px 30px; background: var(--white); border-radius: 10px; color: #222; }
+.story .rpt p, .story .rpt li, .story .rpt dd { font-size: 16px; line-height: 1.6; color: #333; }
+.story .rpt p { margin: 0 0 14px; }
+.rpt h1 { font-size: 30px; line-height: 1.2; margin: 0 0 12px; }
+.rpt h2 { font-size: 15px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--orange-dark); border-top: 2px solid var(--orange); padding-top: 10px; margin: 36px 0 10px; }
+.rpt h3 { font-size: 18px; margin: 22px 0 6px; }
+.rpt h4 { font-size: 12px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--orange-dark); margin: 0 0 8px; }
+.rpt ul, .rpt ol { padding-left: 22px; margin: 0 0 14px; }
+.rpt .r-kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-dark); margin: 0 0 8px; }
+.story .rpt .r-byline { font-size: 14px; color: var(--grey); border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 22px; }
+.rpt .r-abstract, .rpt .r-tldr { background: var(--paper); border-left: 4px solid var(--orange); padding: 16px 20px; margin: 0 0 14px; }
+.story .rpt .r-abstract p { font-size: 15px; }
+.rpt .r-abstract b { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--orange-dark); }
+.rpt .r-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+.rpt .r-box, .rpt .r-howto, .rpt .r-callout { border: 1px solid var(--line); padding: 14px 18px; margin: 16px 0; }
+.rpt .r-boxes .r-box { margin: 0; }
+.story .rpt .r-box li { font-size: 15px; }
+.rpt .r-howto dt { font-weight: 700; margin-top: 8px; }
+.rpt .r-howto dd { margin: 2px 0 0; }
+.rpt .r-disclaimer { border: 2px solid var(--orange); background: #fff7f1; padding: 16px 20px; margin: 0 0 26px; }
+.story .rpt .r-disclaimer p, .story .rpt .r-disclaimer li { font-size: 15px; }
+.rpt .r-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.rpt .r-stat { border: 1px solid var(--line); padding: 12px 14px; font-size: 14px; color: var(--grey); }
+.rpt .r-big { font-size: 26px; font-weight: 700; color: var(--orange-dark); }
+.rpt .r-tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 18px 0 6px; }
+.rpt table { border-collapse: collapse; width: 100%; min-width: 540px; font-size: 14px; background: var(--white); }
+.rpt caption { caption-side: top; text-align: left; font-weight: 700; font-size: 15px; padding-bottom: 8px; }
+.rpt caption span { font-weight: 400; color: var(--grey); }
+.rpt th, .rpt td { padding: 6px 8px; text-align: right; border-bottom: 1px solid #e6e4dd; vertical-align: top; }
+.rpt th:first-child, .rpt td:first-child { text-align: left; }
+.rpt thead th { border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.rpt tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+.rpt tr.r-sub td { font-weight: 700; background: var(--paper); }
+.rpt td.r-hl { background: #fff1e6; font-weight: 700; }
+.story .rpt .r-note { font-size: 13px; color: var(--grey); margin: 4px 0 20px; }
+.rpt .r-fig { margin: 24px 0; }
+.rpt .r-fig img { display: block; width: 100%; max-width: 680px; height: auto; margin: 0 auto; }
+.rpt figcaption { font-size: 14px; color: var(--grey); margin-top: 6px; }
+.rpt footer { border-top: 1px solid var(--line); margin-top: 30px; padding-top: 12px; font-size: 13px; color: var(--grey); }
+@media (max-width: 600px) {
+  .story .rpt { padding: 18px 16px; margin: 24px -8px; }
+  .rpt h1 { font-size: 23px; }
+  .rpt .r-boxes, .rpt .r-stats { grid-template-columns: 1fr; }
+  .rpt .r-abstract, .rpt .r-tldr, .rpt .r-disclaimer { padding: 14px; }
+}
