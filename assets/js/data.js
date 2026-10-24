@@ -100,7 +100,7 @@ const EXPEDITIONS = [
     "summary": "The Commercial Mountain: Everest went commercial in 1990. The Himalayan Database shows the death rate is way down, the body count isn’t, and more of the dead are Sherpas. With a side bar on K2.",
     "story": [
       "*Everest Base Camp from Kala Patthar. Photo: Goutam1962, CC BY-SA 4.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Everest_Base_Camp_from_Kala_Patther.jpg).*",
-      "*Part 2 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix.*",
+      "*Part 2 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) puts the Sherpas front and center.*",
       "**Where We Left Off**",
       "In Part 1, I worked through the psychology of the summit: why people climb, and why some climb to their death. Along the way I found my enthusiasm for what’s happening on Everest is waning. In Part 2, I dig into that commercialization and its consequences, with a side bar on K2.",
       "**The Question**",
@@ -216,7 +216,7 @@ const EXPEDITIONS = [
     ],
     "facts": {
       "Type": "Journal note",
-      "Series": "Mountains · Part 2 of 4",
+      "Series": "Mountains · Part 2 of 5",
       "Data": "Himalayan Database, 1990–2025",
       "Photo": "Everest Base Camp · Goutam1962, CC BY-SA 4.0"
     },
@@ -238,6 +238,97 @@ const EXPEDITIONS = [
       [
         "Photo source (Wikimedia Commons)",
         "https://commons.wikimedia.org/wiki/File:Everest_Base_Camp_from_Kala_Patther.jpg"
+      ],
+      [
+        "Mountains, Part 5",
+        "expedition.html?id=mountains-part-5"
+      ]
+    ]
+  },
+  {
+    "id": "mountains-part-5",
+    "title": "Mountains, Part 5",
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "date": "2026-10-24",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "The Other End of the Rope: the same numbers, with the Sherpa at the center. Per trip, as safe as a client. Per career, three times the risk, mostly low on the mountain in the Icefall. Plus drones, helicopters, fewer rotations and fair pay.",
+    "story": [
+      "*Part 5 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on the climbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules.*",
+      "> **About this analysis.** This is an independent analysis of the Himalayan Database. It isn’t affiliated with or endorsed by the Himalayan Database, and it hasn’t been peer reviewed. I directed it. The AI model Claude wrote and ran the code and drafted the report.",
+      "**Where We Left Off**",
+      "In Part 2, I asked whether it’s ethical to climb Everest, and I wrote this: “I can take the risk, but you’re putting the Sherpa at more risk than yourself.” More than a third of the people who have died on Everest were hired staff. They make many more trips through the Icefall than any client, they carry the loads, and when something goes wrong above 8,000 m, they’re the ones expected to save you.",
+      "Then in Parts 3 and 4, I put the climber at the center: experience, operators, summit times, and a rule set built around the summit clock. That’s the expedition climber’s story. This part turns it around. Same database, same methods as Part 3, but this time the climbing Sherpas, high-altitude workers and sirdars are the subject, not the support.",
+      "The plain-language analysis comes first, then some ideas about what could change.",
+      "html:<div class=\"rpt\"> <p class=\"r-kicker\">Plain-language analysis · Himalayan Database 1990–2025</p> <h1>The other end of the rope: what 35 years of data say about Sherpas</h1> <p class=\"r-byline\">The same database and methods as Part 3, turned to the guides, climbing Sherpas and high-altitude workers who are hired to make the climbs possible. Prepared October 2026 for Pat Brown.</p> <div class=\"r-tldr\"> <p><b>The short version</b></p> <ol> <li><b>Per trip, a Sherpa is now about as safe as a client.</b> On the 8,000 m peaks, about 5 hired staff died per 1,000 trips in 2015–25, against about 8 per 1,000 clients.</li> <li><b>Per career, a Sherpa is about three times as likely to die.</b> Clients usually come once. Sherpas come back season after season, and the risk adds up: of people whose first expedition was in 1990–2005, 6.6% of Sherpas and hired staff died in the mountains, against 2.1% of clients.</li> <li><b>Sherpas die in different places, from different causes.</b> 59% of Sherpa deaths happened while fixing the route and carrying loads, and about half were caused by avalanches, collapsing ice or rockfall. Clients mostly die high, on the way down from the summit.</li> <li><b>Summit day is the client’s danger, not the Sherpa’s.</b> Even after a late summit, Sherpas die on the descent at about a fifth of the client rate.</li> <li><b>For Sherpas, experience is linked to survival.</b> Sherpas on their 20th expedition or later die at about a quarter of the rate of first-timers. Partly that’s survival and partly a change of job, as senior Sherpas move into leading roles.</li> <li><b>More of the load now falls on Sherpas.</b> On the 8,000 m peaks, more hired staff now reach the summit than clients, and hired staff are about a third of the dead.</li> </ol> </div> <h2>Who this is about</h2> <p>The database lists the hired staff who went above base camp: climbing Sherpas, high-altitude workers, sirdars (lead Sherpas) and rope-fixing teams. About 83% are recorded as Sherpa; the rest are other Nepali, Tibetan and other staff. Since 2000, almost all have a recorded birth year, so each person can be followed from one expedition to the next. The longest career in the data is 71 expeditions. Records before 2000 are thinner and probably list mostly the people who died or stood out, so the 1990s figures are rough. Porters who stayed below base camp are not included.</p> <div class=\"r-stats\"> <div class=\"r-stat\"><div class=\"r-big\">3,177</div>hired staff above base camp, 1990–2025</div> <div class=\"r-stat\"><div class=\"r-big\">20,403</div>trips above base camp between them</div> <div class=\"r-stat\"><div class=\"r-big\">153</div>deaths</div> </div> <h2>1. Per trip, about as safe as a client</h2> <div class=\"r-tablewrap\"><table> <caption>Deaths per 1,000 trips above base camp, 8,000 m peaks</caption> <thead><tr><th></th><th>1990–99</th><th>2000–09</th><th>2010–14</th><th>2015–19</th><th>2020–25</th></tr></thead> <tbody> <tr><td>Sherpas and hired staff</td><td>36</td><td>6</td><td>12</td><td>5</td><td>5</td></tr> <tr><td>Clients</td><td>16</td><td>10</td><td>15</td><td>9</td><td>8</td></tr> </tbody></table></div> <p>The jump in 2010–14 is the Khumbu Icefall avalanche of 18 April 2014, which killed 16 Nepali staff and no clients. Leaving out 2014 and 2015, hired staff on Everest died at about 2–4 per 1,000 trips in 2010–19. The 1990s figure is probably too high, because the records from that decade are incomplete.</p> <h2>2. Per career, about three times the risk</h2> <p>The per-trip numbers hide the real difference. Clients usually climb once or twice. Sherpas go back every season.</p> <div class=\"r-tablewrap\"><table> <caption>People whose first Himalayan expedition was in 1990–2005, followed to 2025</caption> <thead><tr><th></th><th>People</th><th>Typical number of expeditions</th><th>Did 10 or more</th><th>Died in the mountains</th></tr></thead> <tbody> <tr><td>Clients</td><td>11,327</td><td>1</td><td>2%</td><td>2.1%</td></tr> <tr><td>Sherpas and hired staff</td><td>514</td><td>10</td><td>52%</td><td class=\"r-hl\">6.6%</td></tr> </tbody></table></div> <p>At today’s rates, about 1 Sherpa in 20 dies by their 10th expedition, 1 in 11 by their 20th and about 1 in 8 by their 30th. About one in six Sherpas working since 2015 has done 20 or more expeditions. Sherpas who die are also younger: a median age of 33, against 40 for clients.</p> <figure> <img src=\"assets/photos/mountains-part-5/p5fig2.svg\" alt=\"Chance of a Sherpa having died by expedition number in a career\" loading=\"lazy\"> <figcaption><b>Figure A</b> The chance of a Sherpa having died, by how many expeditions they have worked, at 2000–2025 rates.</figcaption> </figure> <h2>3. Different deaths, lower on the mountain</h2> <figure> <img src=\"assets/photos/mountains-part-5/p5fig1.svg\" alt=\"Share of deaths by phase of the climb, Sherpas vs clients\" loading=\"lazy\"> <figcaption><b>Figure B</b> When deaths happened, as a share of all deaths, 8,000 m peaks, 1990–2025.</figcaption> </figure> <div class=\"r-tablewrap\"><table> <caption>How and where they died, 8,000 m peaks, 1990–2025</caption> <thead><tr><th></th><th>Sherpas and hired staff</th><th>Clients</th></tr></thead> <tbody> <tr><td>Killed by avalanche, collapsing ice or rockfall</td><td class=\"r-hl\">about 48%</td><td>15%</td></tr> <tr><td>Typical altitude of death</td><td>6,400 m</td><td>7,700 m</td></tr> <tr><td>Typical age at death</td><td>33</td><td>40</td></tr> </tbody></table></div> <p>On the Nepal side of Everest since 1990, 31 people died at the height of the Khumbu Icefall (5,400–6,100 m). <b>26 of them, 84%, were hired staff.</b> Sixteen were killed by avalanches and six by collapsing ice. Of all hired staff who died on the Nepal side of Everest, almost three-quarters died below 6,500 m. Clients cross the Icefall a handful of times. A high-altitude worker carrying loads crosses it about a dozen times a season, and the Icefall Doctors, who build and maintain the route, about 40 times.</p> <h2>4. Summit day is the client’s danger</h2> <div class=\"r-tablewrap\"><table> <caption>Deaths on the way down per 1,000 summiters, 8,000 m peaks, 2010–2025</caption> <thead><tr><th></th><th>Summited before 11am</th><th>Summited after 11am</th></tr></thead> <tbody> <tr><td>Clients</td><td>3.6</td><td class=\"r-hl\">28.0</td></tr> <tr><td>Sherpas and hired staff</td><td>1.3</td><td>5.5</td></tr> </tbody></table></div> <p>Sherpas summit at the same time as their clients (typically around 7:45am), and on Everest nearly all of them use oxygen. A late summit still raises their risk, but far less than for the people they guide. The summit-day rules in Part 4 (the 11:00 turnaround, the high-camp gate) mostly protect clients. They do little for the person carrying loads through the Icefall in April.</p> <h2>5. For Sherpas, experience counts</h2> <div class=\"r-tablewrap\"><table> <caption>Sherpa and hired-staff deaths per 1,000 trips, 8,000 m peaks, 1990–2025, by expedition number</caption> <thead><tr><th></th><th>1st</th><th>2nd–4th</th><th>5th–9th</th><th>10th–19th</th><th>20th or more</th></tr></thead> <tbody> <tr><td>Deaths per 1,000 trips</td><td>8.5</td><td>5.4</td><td>5.8</td><td>5.3</td><td class=\"r-hl\">2.4</td></tr> </tbody></table></div> <p>Comparing like with like (same peak, year, age and season), each extra expedition lowers a Sherpa’s odds of dying by about 4%. By the 20th expedition the odds are about a quarter of a first-timer’s, and that difference is unlikely to be chance. For clients, Part 3 found no such link. Two cautions: senior Sherpas often become sirdars or lead guides and may carry fewer loads through the Icefall, and only those who survive reach a 20th expedition. The data can’t separate learning from survival and from a change of job.</p> <h2>6. The operator matters for clients, not measurably for Sherpas</h2> <p>In 2010–2025, hired staff working for Nepali-run expeditions died at 5.1 per 1,000 trips, against 6.9 for Western-run expeditions and 8.2 on non-commercial ones. None of these differences is statistically significant. The higher risk Part 3 found for clients of Nepali-run expeditions does not show up for the Nepali staff working on them.</p> <h2>7. More of the load falls on Sherpas</h2> <div class=\"r-tablewrap\"><table> <caption>How the work has shifted</caption> <thead><tr><th></th><th>1990–99</th><th>2020–25</th></tr></thead> <tbody> <tr><td>Hired staff per client, Everest</td><td>0.2</td><td>0.9</td></tr> <tr><td>Hired-staff summits per client summit, 8,000 m peaks</td><td>0.3</td><td class=\"r-hl\">1.2</td></tr> <tr><td>Hired staff’s share of all deaths, Everest</td><td>28%</td><td>36%</td></tr> <tr><td>Hired staff’s share of all deaths, 8,000 m peaks</td><td>23%</td><td>31%</td></tr> <tr><td>Sherpa deaths per 1,000 client summits, Everest</td><td>28</td><td>9</td></tr> </tbody></table></div> <p>Each client summit costs far fewer Sherpa lives than it did in the 1990s. But more Sherpas than clients now stand on the summits, and Sherpas make up about a third of the dead.</p> <h2>What could change these conclusions</h2> <ul> <li><b>Exposure isn’t recorded.</b> The database doesn’t record how many times each person crossed the Icefall or carried a load on an expedition, so the per-trip figures understate how exposed Sherpas really are.</li> <li><b>Early records are incomplete.</b> Hired staff were not consistently recorded before about 2000.</li> <li><b>Linking people relies on names and birth years.</b> Many Sherpas share names, so a few careers may be merged or split.</li> <li><b>Porters below base camp, and staff on peaks outside Nepal, aren’t included.</b></li> </ul> <footer>Data: The Himalayan Database (July 2026 release, through 2025). Independent analysis, not affiliated with or endorsed by the Himalayan Database. Produced with AI (Claude) at Pat Brown’s direction.</footer> </div>",
+      "**So What?**",
+      "The numbers say a Sherpa’s risk is a working risk. It sits lower on the mountain, it adds up over a career, and most of it comes from avalanches and collapsing ice that good judgment can’t see coming. The summit clock in Part 4 won’t fix that. Fewer trips through the Icefall would. Here are four ideas, none of them new, with what’s known about each.",
+      "**1. Let Drones Carry the Loads**",
+      "In 2025, Airlift Technology, a Nepali-owned company, flew heavy-lift cargo drones from Base Camp through the Icefall to Camp 1, at 6,130 m. That season they moved 444 kg of rope and ladders for the Icefall Doctors, 900 kg of expedition gear and 150 oxygen cylinders. A Sherpa takes 6 to 7 hours to carry about 12 kg to Camp 1. The drone takes about 10 minutes. The drones also bring garbage down. In spring 2026 the government halted them for five days over security concerns, then allowed them again on May 5.",
+      "Every load a drone carries is one less crossing for a person, and 84% of the people who died at Icefall height on the Nepal side were hired staff. The catch is money. Sherpas are paid per carry, so every load a drone takes is income a Sherpa loses unless the system is set up so they share in it.",
+      "**2. Helicopters Past the Icefall**",
+      "Helicopters above Base Camp are normally allowed only for rescue. Nepal made a “one time” exception in 2024 to fly supplies to Camp 2 when the Icefall route was delayed. In April 2026, with a serac blocking the route, ten helicopters were cleared to fly ropes, oxygen and food straight to Camp 2. As I said in Part 2, if using a helicopter to avoid the Icefall is what it takes, then knock yourself out.",
+      "The trade-offs are cost, the risk of flying at 6,400 m, and the purists who say it isn’t climbing anymore. For the people who would otherwise carry those loads through the Icefall, it’s also a lot fewer crossings.",
+      "**3. Limit Rotations and Exposure**",
+      "Clients can already cut their own Icefall crossings: pre-acclimatizing at home and acclimatizing on Lobuche instead of making extra rotations. But the bigger exposure belongs to the workers. A high-altitude worker carrying loads crosses the Icefall about a dozen times a season, and the Icefall Doctors about 40 times. Some ideas:",
+      "> **Cap the crossings.** Set a maximum number of Icefall crossings per worker per season, and share the load across more people.",
+      "> **Carry less.** Use lighter high camps, and send the heaviest loads, such as oxygen, by drone.",
+      "> **Count it.** The trackers in Part 4 could log every crossing, so the next analysis can measure exposure, not just trips. Right now the database can’t tell one Icefall crossing from twelve.",
+      "**4. Compensation That Matches the Risk**",
+      "After the 2014 avalanche, the government’s first offer to each family was 40,000 rupees, about $400, for funeral costs. The insurance payout was then about $10,000 to $11,000. It rose to 1.5 million rupees for 2015, and in September 2025 to 2 million rupees, about $15,000. Climbing Sherpas have commonly been reported to earn a few thousand dollars a season, plus summit bonuses and tips. The Everest permit alone now costs a foreign climber $15,000.",
+      "So a Sherpa’s life is insured for about the price of one client’s permit, while the numbers show that about 1 Sherpa in 11 dies by their 20th expedition. Some ideas:",
+      "> **Hazard pay per crossing,** so the most dangerous work pays the most.",
+      "> **A share of every permit** into the Mountaineers’ Welfare Fund from Part 4, for families and children’s education.",
+      "> **Insurance that pays automatically,** covers long-term injury, and doesn’t require a trip to Kathmandu with paperwork, which was a problem for families after 2014.",
+      "> **Share in the drone business,** for example through Sherpa-owned drone operators, so safer work doesn’t mean less pay.",
+      "**Back to the Question**",
+      "In Part 2, I held on to Bear Grylls’s question: is any mountain worth a life? And I asked, whose life are we talking about? The numbers answer the second half. For the client, the risk is real but usually taken once. For the Sherpa, it’s a career of smaller risks that add up, most of them taken low on the mountain, for someone else’s summit.",
+      "**Sources**",
+      "*Data*",
+      "> [The Himalayan Database](https://www.himalayandatabase.com/), through 2025. All counts and rates in this part are my tally from it.",
+      "*Drones, helicopters and the Icefall*",
+      "> [What will drone transport on Everest mean for Sherpa mountaineers?](https://www.markhorrell.com/blog/2025/what-will-drone-transport-on-everest-mean-for-sherpa-mountaineers/) — Mark Horrell, 2025.",
+      "> [Everest drone ban lifted after five days](https://kathmandupost.com/money/2026/05/05/everest-drone-ban-which-supposedly-exposed-geopolitical-fault-lines-lifted-after-five-days) — Kathmandu Post, May 2026.",
+      "> [Nepal government makes historic “one time” decision on Everest](https://everestchronicle.com/nepal-government-makes-historic-one-time-decision-on-everest-choppers-to-fly-supplies-up-to-camp-ii) — Everest Chronicle, 2024.",
+      "> [Everest braces for first helicopter-assisted climbing season](https://everestchronicle.com/helicopters-cleared-to-supply-higher-camps-on-everest-amid-route-blockage) — Everest Chronicle, April 2026.",
+      "> [The Icefall Doctors of Mount Everest](https://www.outsideonline.com/outdoor-adventure/everest/mount-everest-icefall-doctors/) — Outside.",
+      "*Pay, insurance and compensation*",
+      "> [2014 Mount Everest ice avalanche](https://en.wikipedia.org/wiki/2014_Mount_Everest_ice_avalanche) — Wikipedia.",
+      "> [Nepalis demand safeguards a decade after deadly Everest disaster](https://www.philstar.com/world/2024/04/15/2347925/nepalis-demand-safeguards-decade-after-deadly-everest-disaster) — AFP, 2024.",
+      "> [NMA raises accidental insurance fee for mountain guides](https://www.b360nepal.com/detail/26353/nma-raises-accidental-insurance-fee-to-rs-9500-for-mountain-guides) — B360 Nepal, September 2025.",
+      "> [How much do Sherpas get paid? Not enough!](https://www.staeudtner.com/allgemein/sherpa-salary-needs-to-increase-tenfold/) — Jürgen Stäudtner, 2018.",
+      "> [Nepal hikes Everest climbing fee to $15,000](https://kathmandupost.com/money/2025/01/21/nepal-hikes-everest-climbing-fee-to-15-000) — Kathmandu Post, 2025."
+    ],
+    "facts": {
+      "Type": "Journal note",
+      "Series": "Mountains · Part 5 of 5",
+      "Data": "Himalayan Database, 1990–2025",
+      "Analysis": "Independent, AI-assisted (Claude)"
+    },
+    "cover": "assets/photos/mountains-part-5/sherpa-cover.jpg",
+    "photos": [],
+    "links": [
+      [
+        "Mountains, Part 1",
+        "expedition.html?id=mountains"
+      ],
+      [
+        "Mountains, Part 2",
+        "expedition.html?id=mountains-part-2"
+      ],
+      [
+        "Mountains, Part 3",
+        "expedition.html?id=mountains-part-3"
+      ],
+      [
+        "Mountains, Part 4",
+        "expedition.html?id=mountains-part-4"
+      ],
+      [
+        "The Himalayan Database",
+        "https://www.himalayandatabase.com/"
       ]
     ]
   },
@@ -253,7 +344,7 @@ const EXPEDITIONS = [
     "summary": "The 14 Peaks Access Rules, updated with the numbers: a qualification ladder to gate access, two lotteries, a hard summit clock, and five reasons it won’t happen by 2031.",
     "story": [
       "*K2, the Savage Mountain. Photo: Muhammadbinmasood, CC BY-SA 4.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Last_Light_on_the_King.jpg).*",
-      "*Part 4 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers.*",
+      "*Part 4 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns to the Sherpas.*",
       "**Where We Left Off**",
       "In Part 1, I explored the psychology of summiting the highest mountains and the commercialization of these conquests. In Part 2, I explored that commercialization and its consequences, with a side bar on K2. In Part 3, I extended a 2012 study of Himalayan survival through 2025. The number of expeditions didn’t lower a climber’s odds of dying. Having summited above 7,000 m before may, and an early summit clearly does.",
       "In Part 4, I propose changes to the permitting and prerequisites to summit these peaks, updated with what the numbers showed.",
@@ -339,7 +430,7 @@ const EXPEDITIONS = [
     ],
     "facts": {
       "Type": "Journal note",
-      "Series": "Mountains · Part 4 of 4",
+      "Series": "Mountains · Part 4 of 5",
       "Version": "Access Rules v3.1 (24 Oct 2026)",
       "Photo": "K2 · Muhammadbinmasood, CC BY-SA 4.0"
     },
@@ -365,6 +456,10 @@ const EXPEDITIONS = [
       [
         "Photo source (Wikimedia Commons)",
         "https://commons.wikimedia.org/wiki/File:Last_Light_on_the_King.jpg"
+      ],
+      [
+        "Mountains, Part 5",
+        "expedition.html?id=mountains-part-5"
       ]
     ]
   },
@@ -380,7 +475,7 @@ const EXPEDITIONS = [
     "crew": "Pat",
     "summary": "The Numbers: an independent, AI-assisted extension of a 2012 study of Himalayan survival, through 2025. Piling up expeditions doesn’t lower your odds of dying. Having been high before may, and commercial support and an early summit do.",
     "story": [
-      "*Part 3 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules, updated with these numbers.*",
+      "*Part 3 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules, updated with these numbers. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns the numbers on the Sherpas.*",
       "> **About this analysis.** This is an independent analysis. It isn’t affiliated with or endorsed by the authors of the 2012 study, the BMJ or the Himalayan Database, and it hasn’t been peer reviewed. I directed it. The AI model Claude wrote and ran the code and drafted both reports. The full disclaimer is at the start of the technical report below.",
       "**Where We Left Off**",
       "In Part 2, I pointed to a 2012 study in the BMJ that found more experience didn’t change a climber’s odds of dying, and that guided climbs weren’t more dangerous. That cuts against part of my case for experience requirements. Before putting my proposal on the table, I wanted to know whether it still holds with fifteen more years of data, and what actually made the mountains safer.",
@@ -393,7 +488,7 @@ const EXPEDITIONS = [
     ],
     "facts": {
       "Type": "Journal note",
-      "Series": "Mountains · Part 3 of 4",
+      "Series": "Mountains · Part 3 of 5",
       "Data": "Himalayan Database, 1970–2025",
       "Analysis": "Independent, AI-assisted (Claude)"
     },
@@ -423,6 +518,10 @@ const EXPEDITIONS = [
       [
         "The Himalayan Database",
         "https://www.himalayandatabase.com/"
+      ],
+      [
+        "Mountains, Part 5",
+        "expedition.html?id=mountains-part-5"
       ]
     ]
   },
@@ -436,10 +535,10 @@ const EXPEDITIONS = [
     date: "2026-10-20",
     rating: null,
     crew: "Pat",
-    summary: "Part 1 of 4. The psychology of the summit: Shishapangma, Nims, Everest's queues and a pilot's root-cause lens, then my own turnaround rules for the 14ers and Lobuche East.",
+    summary: "Part 1 of 5. The psychology of the summit: Shishapangma, Nims, Everest's queues and a pilot's root-cause lens, then my own turnaround rules for the 14ers and Lobuche East.",
     story: [
       "*Lobuche East*",
-      "*Part 1 of a four-part series. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) follows the money: the commercialization of the 8,000 m peaks and its consequences, with a side bar on K2. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on what keeps climbers alive. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules.*",
+      "*Part 1 of a five-part series. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) follows the money: the commercialization of the 8,000 m peaks and its consequences, with a side bar on K2. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on what keeps climbers alive. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns to the Sherpas who make the climbs possible.*",
       "**Prologue**",
       "Himalayan treks are very accessible. Even summiting an “easy” 6,000 m mountain can be done with very little alpine mountaineering experience. Moderate fitness and the ability to carry at least 15 pounds for 15 days, with 5- to 8-hour days, probably matter more. A typical trek and summit starts in Kathmandu. An 11-hour flight from Denver to Istanbul with a connection to Kathmandu will get you there. Meet up with the expedition company, do a gear check, and rent what you don’t have or buy it from the plentiful shops. Then a helicopter or plane to Lukla to start the trek.",
       "From there it’s 5- to 7-hour days of trekking, with a day at Namche Bazaar for a 3-hour acclimatization climb to 3,880 m, then more 5- to 7-hour days. Nights are in tea houses, sometimes with a hot shower. Rest days and skills training follow, and by day 10 you’re at the precipice of summit day. Summit Lobuche Peak at 6,118 m (20,072 feet), descend to the helicopter meeting point, and fly back to Lukla or Kathmandu. One more day in Kathmandu before the trip home. ([Namas Adventures](https://www.namasadventure.com/climb-lobuche-peak))",
@@ -544,11 +643,11 @@ const EXPEDITIONS = [
       "The mountain doesn’t care whether you came for the view, the challenge or the followers. It only answers the decisions you made before you got there. Set the turnaround time in the planning, heed the forecast and conditions, and keep it. It’s not about the destination; it’s about coming home to tell the story of the journey.",
       "**Epilogue**",
       "Boarding in Kathmandu for the long flight home. I have all ten fingers and toes. No frostbite. The ankle is sore, but with the right gear, lots of Aleve and daily care, I made it. If you feel bad for me in economy, please donate to my first-class ticket! See you on the summit.",
-      "*Next in the series: [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2), the commercialization of the summit and the cost of the crowds, with a side bar on K2. After that, [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers, and [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) lays out my proposal for fixing it.*"
+      "*Next in the series: [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2), the commercialization of the summit and the cost of the crowds, with a side bar on K2. After that, [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers, [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) lays out my proposal for fixing it, and [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns to the Sherpas.*"
 ],
     facts: {
       "Type": "Journal note",
-      "Series": "Mountains · Part 1 of 4",
+      "Series": "Mountains · Part 1 of 5",
       "Companion to": "It's Not About the Plan · Overcoming Adversity · Enough",
       "Photo": "Lobuche East"
     },
