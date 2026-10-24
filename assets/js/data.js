@@ -256,6 +256,7 @@ const EXPEDITIONS = [
     "crew": "Pat",
     "summary": "The Other End of the Rope: the same numbers, with the Sherpa at the center. Per trip, as safe as a client. Per career, three times the risk, mostly low on the mountain in the Icefall. Plus drones, helicopters, fewer rotations and fair pay.",
     "story": [
+      "*Sherpas carrying loads on the trail near Lobuche. Photo: Niklassletteland, CC BY-SA 3.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sherpas_on_the_Trail_Nearing_Lobuche,_Nepal.jpg).*",
       "*Part 5 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on the climbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules.*",
       "> **About this analysis.** This is an independent analysis of the Himalayan Database. It isn’t affiliated with or endorsed by the Himalayan Database, and it hasn’t been peer reviewed. I directed it. The AI model Claude wrote and ran the code and drafted the report.",
       "**Where We Left Off**",
@@ -305,9 +306,10 @@ const EXPEDITIONS = [
       "Type": "Journal note",
       "Series": "Mountains · Part 5 of 5",
       "Data": "Himalayan Database, 1990–2025",
-      "Analysis": "Independent, AI-assisted (Claude)"
+      "Analysis": "Independent, AI-assisted (Claude)",
+      "Photo": "Sherpas near Lobuche · Niklassletteland, CC BY-SA 3.0"
     },
-    "cover": "assets/photos/mountains-part-5/sherpa-cover.jpg",
+    "cover": "assets/photos/mountains-part-5/sherpas-lobuche-cover.jpg",
     "photos": [],
     "links": [
       [
@@ -329,9 +331,14 @@ const EXPEDITIONS = [
       [
         "The Himalayan Database",
         "https://www.himalayandatabase.com/"
+      ],
+      [
+        "Photo source (Wikimedia Commons)",
+        "https://commons.wikimedia.org/wiki/File:Sherpas_on_the_Trail_Nearing_Lobuche,_Nepal.jpg"
       ]
     ]
   },
+
   {
     "id": "mountains-part-4",
     "title": "Mountains, Part 4",
