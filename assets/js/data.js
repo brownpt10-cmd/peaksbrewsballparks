@@ -70,7 +70,7 @@ const EIGHT_K = [
   { rank: 7,  name: "Dhaulagiri I",  m: 8167, country: "Nepal",            report: "assets/docs/peak-reports/dha1-dhaulagiri-i.html", note: "dhaulagiri-autumn-2026" },
   { rank: 8,  name: "Manaslu",       m: 8163, country: "Nepal",            report: "" },
   { rank: 9,  name: "Nanga Parbat",  m: 8126, country: "Pakistan",         report: "", noData: true },
-  { rank: 10, name: "Annapurna I",   m: 8091, country: "Nepal",            report: "assets/docs/peak-reports/ann1-annapurna-i.html" },
+  { rank: 10, name: "Annapurna I",   m: 8091, country: "Nepal",            report: "assets/docs/peak-reports/ann1-annapurna-i.html", note: "taming-of-annapurna" },
   { rank: 11, name: "Gasherbrum I",  m: 8080, country: "Pakistan / China", report: "", noData: true },
   { rank: 12, name: "Broad Peak",    m: 8051, country: "Pakistan / China", report: "", noData: true },
   { rank: 13, name: "Gasherbrum II", m: 8035, country: "Pakistan / China", report: "", noData: true },
@@ -79,6 +79,63 @@ const EIGHT_K = [
 
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
+  {
+    "id": "taming-of-annapurna",
+    "title": "The Taming of Annapurna",
+    "category": "journal",
+    "status": "logged",
+    "location": "Annapurna I, Nepal",
+    "date": "2026-10-25",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "Annapurna used to do a lot more taking than giving. Fixed ropes, oxygen, Sherpas and a forecast changed that. The West wrote the playbook, but Nepali companies brought it to Annapurna.",
+    "story": [
+      "*The Modi Khola running out of the Annapurna Himal. Photo: Saroj Pandey, CC BY-SA 3.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Modi_River_flowing_from_Annapurna.jpg).*",
+      "> **“The mountains give, and the mountains take away. But what they take, they take forever.”** — Mountaineering proverb",
+      "Annapurna I (8,091 m) used to do a lot more taking than giving. From 1990 to 2009, 706 people went, 98 summited and 22 died. That’s 22 deaths for every 100 summits, the kind of math that makes your mother hide your passport.",
+      "Then came 2020–25: 389 climbers, 259 summits, 3 deaths. That’s 1.2 per 100. Same mountain. Same avalanches. So what changed?",
+      "**A Change for the Better**",
+      "Four things showed up together:",
+      "• **Fixed ropes.** Sherpa crews string line up the route, and clients clip in and follow. In 2021 a helicopter dropped 800 m of rope at Camp 4.",
+      "• **Oxygen.** 4% of member summiters used it before 2010. Now it’s 82%.",
+      "• **Sherpas.** Teams doubled in size. Hired staff per member went from about 1 in 10 to 6 in 10.",
+      "• **A forecast.** 93% of teams now go in spring. Weather turnbacks fell from about 1 in 4 summit bids to 1 in 100.",
+      "Small alpine teams out. Big guided expeditions in.",
+      "**The Playbook**",
+      "The Western expedition companies mostly changed the playbook. The French in 1950 and the British on Everest in 1953 invented the siege: oxygen, a chain of camps, Sherpas carrying the loads. Dick Bass proved a rich amateur could get up in 1985. Todd Burleson ran what may be the first ad for a guided Everest climb in 1989. Rob Hall and Gary Ball had paying clients on top by the early ’90s.",
+      "**The Nepalis Brought It to Annapurna**",
+      "The Western guiding companies took one look at Annapurna’s record and stayed on Everest. Seven Summit Treks, started around 2010 by Sherpa brothers Mingma, Chhang Dawa and Tashi Lakpa, moved in. By 2012 SST was handling 13 of the 16 spring teams. In 2019 its 38-person team put 30 on top, 28 of them on oxygen.",
+      "Others followed, but SST is still the big dog, with 36% of all Annapurna summits since 1990.",
+      "**Give and Take**",
+      "The proverb still holds. Annapurna gives a lot more now: 259 summits in five spring seasons. But somebody still pays. 12 of its 35 deaths since 1990 were hired staff, most of them in avalanches while fixing the route everyone else clips into. The clients get the giving. The Sherpas stand closest to the taking.",
+      "**Bottom Line**",
+      "Annapurna didn’t get easier. It got fixed ropes, bottled oxygen and a weather report, put there by Nepali crews. Western guides proved the model on Everest, so give them an assist. But if you stand on top of Annapurna today, it’s because a Sherpa got there first, tied off the rope, and took the risk so you could take the summit.",
+      "Full numbers: the [Annapurna I Peak Report](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/peak-reports/ann1-annapurna-i.html).",
+      "**Sources**",
+      "• [The Himalayan Database (1990 through Winter 2025–26)](https://www.himalayandatabase.com/)",
+      "• [ExplorersWeb: How Annapurna Was Tamed and Lost the ‘Most Dangerous’ Record (Apr 3, 2024)](https://explorersweb.com/how-annapurna-was-tamed-and-lost-the-most-dangerous-record/)",
+      "• [ExplorersWeb: Annapurna Update: More Rope Helo’d to 7,000m (Apr 15, 2021)](https://explorersweb.com/2021/04/15/annapurna-update-more-rope-helod-to-7000m/)",
+      "• [Mark Horrell: review of Will Cockrell’s Everest, Inc. (2024)](https://www.markhorrell.com/blog/2024/a-long-awaited-history-of-everest-in-the-commercial-era/)",
+      "• [Wikipedia: Seven Summit Treks](https://en.wikipedia.org/wiki/Seven_Summit_Treks)"
+    ],
+    "facts": {
+      "Type": "Journal note",
+      "Peak": "Annapurna I · 8,091 m",
+      "Data": "Himalayan Database, 1990 – Winter 2025–26"
+    },
+    "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Modi_River_flowing_from_Annapurna.jpg/1280px-Modi_River_flowing_from_Annapurna.jpg",
+    "photos": [],
+    "links": [
+      [
+        "Annapurna I Peak Report",
+        "assets/docs/peak-reports/ann1-annapurna-i.html"
+      ],
+      [
+        "8,000 m Peaks",
+        "peaks.html#eight-thousanders"
+      ]
+    ]
+  },
   {
     "id": "dhaulagiri-autumn-2026",
     "title": "A Convenient or Inconvenient Truth",
