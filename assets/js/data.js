@@ -70,7 +70,7 @@ const EIGHT_K = [
   { rank: 7,  name: "Dhaulagiri I",  m: 8167, country: "Nepal",            report: "assets/docs/peak-reports/dha1-dhaulagiri-i.html", note: "dhaulagiri-autumn-2026" },
   { rank: 8,  name: "Manaslu",       m: 8163, country: "Nepal",            report: "" },
   { rank: 9,  name: "Nanga Parbat",  m: 8126, country: "Pakistan",         report: "", noData: true },
-  { rank: 10, name: "Annapurna I",   m: 8091, country: "Nepal",            report: "" },
+  { rank: 10, name: "Annapurna I",   m: 8091, country: "Nepal",            report: "assets/docs/peak-reports/ann1-annapurna-i.html" },
   { rank: 11, name: "Gasherbrum I",  m: 8080, country: "Pakistan / China", report: "", noData: true },
   { rank: 12, name: "Broad Peak",    m: 8051, country: "Pakistan / China", report: "", noData: true },
   { rank: 13, name: "Gasherbrum II", m: 8035, country: "Pakistan / China", report: "", noData: true },
