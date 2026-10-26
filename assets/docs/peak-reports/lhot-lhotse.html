@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lhotse Peak Report</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; Section I narrative + tables, Section II numbered findings, Section III short list. Light-first. */
+:root{
+  --bg:#f7f8f9; --panel:#ffffff; --fg:#17202a; --muted:#5b6672; --rule:#d9dee3;
+  --accent:#1f5f8b; --accent-soft:#e3eef6; --warn:#a4471c; --warn-soft:#f8e9e1; --ok:#2f6b3a;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171c;--panel:#1a2128;--fg:#e6eaee;--muted:#9aa6b2;--rule:#2c3640;--accent:#7fb6dc;--accent-soft:#1d3142;--warn:#e79a74;--warn-soft:#3a251c;--ok:#86c493;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12171c;--panel:#1a2128;--fg:#e6eaee;--muted:#9aa6b2;--rule:#2c3640;--accent:#7fb6dc;--accent-soft:#1d3142;--warn:#e79a74;--warn-soft:#3a251c;--ok:#86c493;color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:920px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:44px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,44px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:24px;font-weight:700;padding-bottom:8px;border-bottom:2px solid var(--fg);display:flex;gap:12px;align-items:baseline}
+h2 .sn{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:500}
+h3{font-size:17px;font-weight:700}
+p{margin:0;max-width:68ch}
+.prose{display:grid;gap:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+section{display:grid;gap:18px;min-width:0}
+.lede{color:var(--muted);font-size:18px}
+.meta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.stat{background:var(--panel);padding:14px 16px;display:grid;gap:2px}
+.stat b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted);font-family:var(--display)}
+.stat.w b{color:var(--warn)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-family:var(--display);font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule)}
+th{font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:var(--bg)}
+th:first-child,td:first-child,.l{text-align:left}
+tr:last-child td{border-bottom:0}
+.hi{color:var(--warn);font-weight:700}
+.bar{display:inline-block;height:9px;vertical-align:middle;margin-right:6px;background:var(--accent)}
+.bar.w{background:var(--warn)}
+.note{font-size:14.5px;color:var(--muted)}
+.callout{background:var(--accent-soft);padding:14px 16px;border-left:3px solid var(--accent);font-size:16.5px;max-width:none}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.two>*{min-width:0}
+.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.chart{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;display:grid;gap:6px;min-width:0}
+.chart h3{font-size:14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+.chart .v{fill:var(--fg);font-size:10.5px;font-weight:500}
+.find{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:16px 0;border-top:1px solid var(--rule)}
+.find .n{font-family:var(--mono);font-size:22px;color:var(--accent);line-height:1}
+.find h3{font-size:18px}
+.find .why{font-size:14.5px;color:var(--muted);font-family:var(--display)}
+.find .why b{color:var(--fg);font-weight:700}
+.find>div{display:grid;gap:6px;min-width:0}
+.weak{display:grid;gap:0;border:1px solid var(--warn);background:var(--warn-soft)}
+.weak div{display:grid;grid-template-columns:200px 1fr;gap:12px;padding:10px 14px;border-top:1px solid var(--rule)}
+.weak div:first-child{border-top:0}
+.weak b{font-family:var(--display);font-size:15px}
+.weak span{font-size:15.5px}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.charts{grid-template-columns:1fr}.weak div{grid-template-columns:1fr;gap:2px}.find{grid-template-columns:30px 1fr}body{font-size:16px}th,td{padding:6px 8px}}
+footer{font-size:13px;color:var(--muted);font-family:var(--mono);border-top:1px solid var(--rule);padding-top:12px}
+/* ---- The Mountain (profile) ---- */
+.hero{position:relative;min-height:clamp(320px,52vw,520px);display:flex;align-items:flex-end;background:#1d2a36 center/cover no-repeat;color:#fff}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,26,.05) 30%,rgba(10,18,26,.78) 100%)}
+.hero-in{position:relative;z-index:1;width:100%;max-width:920px;margin:0 auto;padding-block:28px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:8px}
+.hero .eyebrow{color:#cfe3f2}
+.hero h1{font-size:clamp(40px,8vw,72px);color:#fff;letter-spacing:-.02em}
+.hero .tag{font-family:var(--display);font-size:clamp(16px,2.4vw,20px);font-weight:500;color:#e8eef3}
+.hero .hm{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:13px;color:#dbe6ee}
+.hero .credit{position:absolute;right:max(10px,env(safe-area-inset-right,0px));bottom:6px;z-index:1;font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.7)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.pgrid div{background:var(--panel);padding:12px 14px;display:grid;gap:3px;min-width:0}
+.pgrid span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pgrid b{font-family:var(--display);font-size:16px;font-weight:700}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.fact{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--accent);padding:12px 14px;font-size:15.5px}
+.fact b{display:block;font-family:var(--display);font-size:15px;margin-bottom:2px}
+.route-main{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;display:grid;gap:8px}
+.route-main h3{font-size:19px}
+.rlist{display:grid;gap:0;border-top:1px solid var(--rule)}
+.rlist div{display:grid;grid-template-columns:210px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15.5px}
+.rlist b{font-family:var(--display);font-size:15px}
+.rlist small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);font-weight:400}
+.diagram{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:560px;height:auto}
+.diagram text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.diagram .lab{fill:var(--fg);font-family:var(--display);font-size:12.5px;font-weight:700}
+.diagram .warnt{fill:var(--warn)}
+@media(max-width:560px){.rlist div{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<div class="hero" id="hero" hidden>
+  <div class="hero-in">
+    <div class="eyebrow">Mountains · Peak Report</div>
+    <h1 id="h_name"></h1>
+    <div class="tag" id="h_tag"></div>
+    <div class="hm" id="h_meta"></div>
+  </div>
+  <div class="credit" id="h_credit"></div>
+</div>
+<div class="wrap">
+
+<section id="mountain" hidden>
+  <p class="lede" id="p_dek"></p>
+  <p class="meta" id="p_meta"></p>
+  <h2><span class="sn">0</span>The mountain</h2>
+  <div class="pgrid" id="p_grid"></div>
+  <div class="prose" id="p_history"></div>
+  <h3>Where it ranks</h3>
+  <div class="diagram" id="p_rank"></div>
+  <h3>Worth knowing</h3>
+  <div class="facts" id="p_facts"></div>
+  <h3>Routes</h3>
+  <div class="route-main" id="p_route"></div>
+  <div class="diagram" id="p_profile"></div>
+  <div class="rlist" id="p_others"></div>
+  <div class="tbl"><table><thead><tr><th>Route (Himalayan Database name)</th><th>Years</th><th>Exps</th><th>Exp success %</th><th>Summiters</th><th>Deaths</th></tr></thead><tbody id="t_routes"></tbody></table></div>
+  <p class="note" id="p_routenote"></p>
+</section>
+
+<header style="display:grid;gap:10px" id="plainhead">
+  <div class="eyebrow">Mountains · Peak Report</div>
+  <h1 id="title"></h1>
+  <p class="lede" id="dek"></p>
+  <p class="meta" id="meta"></p>
+</header>
+
+<section>
+  <h2><span class="sn">I</span>The big picture</h2>
+  <div class="stats" id="kpis"></div>
+  <div class="prose" id="s1_overview"></div>
+
+  <h3>Seasons</h3>
+  <div class="prose" id="s1_seasons"></div>
+  <div class="tbl"><table><thead><tr><th>Season</th><th>Exps</th><th>Exp success %</th><th>Climbers</th><th>Summits</th><th>Deaths</th><th>Death %</th><th>Deaths / 100 summits</th><th>Ended: weather %</th><th>Ended: conditions %</th><th>Avalanche deaths</th></tr></thead><tbody id="t_season"></tbody></table></div>
+
+  <h3>When people summit and when they die</h3>
+  <div class="prose" id="s1_when"></div>
+  <div class="tbl"><table><thead><tr><th>Half-month</th><th class="l">Summits</th><th class="l">Deaths</th><th>Deaths / 100 summits</th></tr></thead><tbody id="t_cal"></tbody></table></div>
+
+  <h3>Expedition companies</h3>
+  <div class="prose" id="s1_companies"></div>
+  <div class="tbl"><table><thead><tr><th>Agency</th><th>Years</th><th>Exps</th><th>Exp success %</th><th>Climbers</th><th>Summits</th><th>Deaths</th></tr></thead><tbody id="t_ag"></tbody></table></div>
+
+  <h3>Deaths: why and where</h3>
+  <div class="prose" id="s1_deaths"></div>
+  <div class="two">
+    <div class="tbl"><table><thead><tr><th>Cause</th><th class="l">Deaths</th><th>Hired</th></tr></thead><tbody id="t_cause"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>When it happened</th><th class="l">Deaths</th></tr></thead><tbody id="t_phase"></tbody></table></div>
+  </div>
+  <p class="callout" id="s1_bottomline"></p>
+</section>
+
+<section>
+  <h2><span class="sn">II</span>Finer detail: trends and drivers</h2>
+  <div class="prose" id="s2_intro"></div>
+  <div class="charts" id="charts"></div>
+  <div class="tbl"><table><thead><tr><th>Period</th><th>Exps</th><th>Exp success %</th><th>Member summit %</th><th>Deaths</th><th>Death %</th><th>Deaths / 100 summits</th><th>O2, member summiters %</th><th>Spring share %</th><th>Hired per member</th><th>Median summit time</th></tr></thead><tbody id="t_trend"></tbody></table></div>
+  <div id="findings"></div>
+  <div class="two">
+    <div class="tbl"><table><thead><tr><th>Summit time</th><th>Summiters</th><th>Died</th></tr></thead><tbody id="t_stime"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>Since 2010 (8,000ers)</th><th class="l">Death % per climber</th><th>Summit %</th></tr></thead><tbody id="t_bench"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>Member age</th><th>Members</th><th>Summit %</th><th>Death %</th></tr></thead><tbody id="t_age"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>Multi-death days</th><th>Deaths</th><th class="l">Cause</th><th>Height m</th></tr></thead><tbody id="t_multi"></tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="sn">III</span>Where the data is weak</h2>
+  <div class="weak" id="weak"></div>
+  <div class="tbl"><table><thead><tr><th>Field (this peak, since <span id="since2"></span>)</th><th class="l">% filled</th></tr></thead><tbody id="t_comp"></tbody></table></div>
+</section>
+
+<footer id="foot"></footer>
+</div>
+
+<script>
+const D={"meta": {"peakid": "LHOT", "name": "Lhotse", "height_m": 8516, "since": 1990, "data_through": "Winter 2025–26", "first_ascent": "1956", "generated": "2026-10-26"}, "macro": {"expeditions": 480, "exp_success_pct": 64.6, "members": 3107, "clients": 2339, "hired": 768, "summits": 1414, "client_summits": 805, "hired_summits": 609, "client_summit_pct": 34.4, "hired_summit_pct": 79.3, "deaths": 18, "client_deaths": 14, "hired_deaths": 4, "death_pct": 0.58, "client_death_pct": 0.6, "hired_death_pct": 0.52, "deaths_per_100_summits": 1.3, "years_with_exps": 34, "routes": {"W Face": 382, "S Col-W Face": 72, "S Face": 13, "S Face (central part)": 1, "S Face (new line)": 1}, "host": {"Nepal": 480}}, "seasons": [{"season": "Spring", "exps": 434, "exp_success_pct": 67.5, "members": 2741, "summits": 1357, "client_summit_pct": 37.5, "deaths": 16, "death_pct": 0.58, "deaths_per_100_summits": 1.2, "ended_weather_pct": 3.2, "ended_conditions_pct": 3.5, "avalanche_deaths": 3, "fall_deaths": 4}, {"season": "Autumn", "exps": 42, "exp_success_pct": 40.5, "members": 336, "summits": 57, "client_summit_pct": 15.8, "deaths": 2, "death_pct": 0.6, "deaths_per_100_summits": 3.5, "ended_weather_pct": 40.5, "ended_conditions_pct": 9.5, "avalanche_deaths": 1, "fall_deaths": 1}, {"season": "Winter", "exps": 4, "exp_success_pct": 0.0, "members": 30, "summits": 0, "client_summit_pct": 0.0, "deaths": 0, "death_pct": 0.0, "deaths_per_100_summits": null, "ended_weather_pct": 75.0, "ended_conditions_pct": 0.0, "avalanche_deaths": 0, "fall_deaths": 0}], "calendar": [{"label": "Late Apr", "summits": 11, "deaths": 2, "deaths_per_100_summits": 18.2}, {"label": "Early May", "summits": 299, "deaths": 3, "deaths_per_100_summits": 1.0}, {"label": "Late May", "summits": 1047, "deaths": 11, "deaths_per_100_summits": 1.1}, {"label": "Late Sep", "summits": 10, "deaths": 1, "deaths_per_100_summits": 10.0}, {"label": "Early Oct", "summits": 40, "deaths": 0, "deaths_per_100_summits": 0.0}, {"label": "Late Oct", "summits": 7, "deaths": 1, "deaths_per_100_summits": 14.3}], "calendar_undated": {"summits": 0, "deaths": 0}, "agencies": [{"agency": "Asian Trekking", "exps": 47, "exp_success_pct": 66.0, "climbers": 200, "summits": 105, "deaths": 2, "years": "1994–2025"}, {"agency": "Seven Summit Treks", "exps": 40, "exp_success_pct": 57.5, "climbers": 419, "summits": 203, "deaths": 3, "years": "2012–2025"}, {"agency": "Himalayan Guides", "exps": 39, "exp_success_pct": 69.2, "climbers": 251, "summits": 118, "deaths": 1, "years": "2000–2025"}, {"agency": "Everest Parivar", "exps": 21, "exp_success_pct": 66.7, "climbers": 203, "summits": 53, "deaths": 0, "years": "1996–2023"}, {"agency": "Thamserku Trekking", "exps": 20, "exp_success_pct": 50.0, "climbers": 81, "summits": 38, "deaths": 0, "years": "2002–2013"}, {"agency": "Prestige Adventure", "exps": 16, "exp_success_pct": 68.8, "climbers": 47, "summits": 21, "deaths": 0, "years": "2008–2019"}, {"agency": "Cho Oyu Trekking", "exps": 13, "exp_success_pct": 61.5, "climbers": 74, "summits": 19, "deaths": 1, "years": "1994–2013"}, {"agency": "Beyul Adventure", "exps": 12, "exp_success_pct": 75.0, "climbers": 76, "summits": 32, "deaths": 0, "years": "2009–2022"}, {"agency": "Trekking Camp Nepal", "exps": 11, "exp_success_pct": 27.3, "climbers": 108, "summits": 10, "deaths": 0, "years": "2006–2019"}, {"agency": "Arun Treks", "exps": 10, "exp_success_pct": 60.0, "climbers": 69, "summits": 20, "deaths": 1, "years": "1997–2016"}, {"agency": "Cosmo Treks", "exps": 9, "exp_success_pct": 77.8, "climbers": 65, "summits": 33, "deaths": 0, "years": "1997–2018"}, {"agency": "Monterosa Treks", "exps": 8, "exp_success_pct": 50.0, "climbers": 21, "summits": 6, "deaths": 0, "years": "1997–2014"}], "agency_recent": {"window": "2016–2025", "exps": 176, "top": {"Himalayan Guides": 22, "Seven Summit Treks": 21, "Satori Adventures": 7, "Everest Parivar": 7, "TAGnepal Trekking": 6}}, "client_nations": {"USA": 343, "S Korea": 259, "UK": 145, "India": 134, "Japan": 114, "China": 111, "Russia": 110, "Italy": 85}, "death_causes": [{"cause": "AMS", "n": 6, "hired": 0}, {"cause": "Fall", "n": 5, "hired": 2}, {"cause": "Avalanche", "n": 4, "hired": 2}, {"cause": "Exhaustion", "n": 2, "hired": 0}, {"cause": "Exposure / frostbite", "n": 1, "hired": 0}], "death_phase": [{"phase": "Summit bid, coming down", "n": 11}, {"phase": "Route work / load carrying", "n": 3}, {"phase": "Summit bid, going up", "n": 3}, {"phase": "At base camp", "n": 1}], "death_height": {"bands": {"<5,000 m": 0, "5,000–5,999": 2, "6,000–6,999": 3, "7,000–7,999": 10, "8,000 m+": 3}, "median_m": 7790.0, "unrecorded": 0}, "multi_death_days": [{"date": "2025-05-18", "deaths": 2, "cause": "Exhaustion", "height_m": 7800.0, "hired": 0}], "deaths_in_multi_days": 2, "death_list": [{"date": "1997-05-27", "season": "Spring", "citizen": "Russia", "role": "Member", "cause": "AMS", "phase": "Summit bid, coming down", "height_m": 7900, "summited": true}, {"date": "2000-09-17", "season": "Autumn", "citizen": "Russia", "role": "Member", "cause": "Avalanche", "phase": "Route work / load carrying", "height_m": 6500, "summited": false}, {"date": "2006-05-09", "season": "Spring", "citizen": "Czech Republic", "role": "Member", "cause": "Fall", "phase": "Summit bid, coming down", "height_m": 7800, "summited": false}, {"date": "2007-05-21", "season": "Spring", "citizen": "Nepal", "role": "Member", "cause": "Fall", "phase": "Summit bid, coming down", "height_m": 8400, "summited": true}, {"date": "2009-05-25", "season": "Spring", "citizen": "Kazakhstan", "role": "Member", "cause": "Fall", "phase": "Summit bid, coming down", "height_m": 7600, "summited": false}, {"date": "2010-05-07", "season": "Spring", "citizen": "Russia", "role": "Member", "cause": "AMS", "phase": "Summit bid, coming down", "height_m": 7800, "summited": false}, {"date": "2012-05-19", "season": "Spring", "citizen": "Czech Republic", "role": "Member", "cause": "Exposure / frostbite", "phase": "Summit bid, coming down", "height_m": 8450, "summited": true}, {"date": "2012-10-16", "season": "Autumn", "citizen": "Nepal", "role": "Hired", "cause": "Fall", "phase": "Summit bid, coming down", "height_m": 7900, "summited": false}, {"date": "2013-05-20", "season": "Spring", "citizen": "Taiwan", "role": "Member", "cause": "AMS", "phase": "Summit bid, coming down", "height_m": 7800, "summited": true}, {"date": "2014-04-18", "season": "Spring", "citizen": "Nepal", "role": "Hired", "cause": "Avalanche", "phase": "Route work / load carrying", "height_m": 5800, "summited": false}, {"date": "2015-04-25", "season": "Spring", "citizen": "China", "role": "Member", "cause": "Avalanche", "phase": "At base camp", "height_m": 5350, "summited": false}, {"date": "2016-05-19", "season": "Spring", "citizen": "Nepal", "role": "Hired", "cause": "Fall", "phase": "Summit bid, going up", "height_m": 8500, "summited": false}, {"date": "2018-05-16", "season": "Spring", "citizen": "Russia", "role": "Member", "cause": "AMS", "phase": "Summit bid, coming down", "height_m": 7000, "summited": false}, {"date": "2019-05-17", "season": "Spring", "citizen": "Bulgaria", "role": "Member", "cause": "AMS", "phase": "Summit bid, coming down", "height_m": 7780, "summited": true}, {"date": "2022-05-08", "season": "Spring", "citizen": "Nepal", "role": "Hired", "cause": "Avalanche", "phase": "Route work / load carrying", "height_m": 6100, "summited": false}, {"date": "2024-05-20", "season": "Spring", "citizen": "Romania", "role": "Member", "cause": "AMS", "phase": "Summit bid, going up", "height_m": 7470, "summited": false}, {"date": "2025-05-18", "season": "Spring", "citizen": "India", "role": "Member", "cause": "Exhaustion", "phase": "Summit bid, coming down", "height_m": 7600, "summited": true}, {"date": "2025-05-18", "season": "Spring", "citizen": "Romania", "role": "Member", "cause": "Exhaustion", "phase": "Summit bid, going up", "height_m": 8000, "summited": false}], "trend": [{"block": "1990–94", "exps": 12, "exp_success_pct": 66.7, "members": 77, "client_summit_pct": 20.3, "summits": 16, "deaths": 0, "death_pct": 0.0, "deaths_per_100_summits": 0.0, "o2_client_summiters_pct": 47.0, "spring_share_pct": 25.0, "hired_per_client": 0.04, "ended_weather_or_conditions_pct": 17.0, "median_summit_hour": 11.6, "summit_times_n": 16, "median_bc_to_summit_days": 36.0, "agency_pct": 100.0}, {"block": "1995–99", "exps": 26, "exp_success_pct": 73.1, "members": 185, "client_summit_pct": 33.5, "summits": 65, "deaths": 1, "death_pct": 0.54, "deaths_per_100_summits": 1.5, "o2_client_summiters_pct": 25.0, "spring_share_pct": 65.0, "hired_per_client": 0.09, "ended_weather_or_conditions_pct": 12.0, "median_summit_hour": 13.5, "summit_times_n": 53, "median_bc_to_summit_days": 35.0, "agency_pct": 100.0}, {"block": "2000–04", "exps": 53, "exp_success_pct": 69.8, "members": 327, "client_summit_pct": 40.2, "summits": 151, "deaths": 1, "death_pct": 0.31, "deaths_per_100_summits": 0.7, "o2_client_summiters_pct": 77.0, "spring_share_pct": 83.0, "hired_per_client": 0.14, "ended_weather_or_conditions_pct": 13.0, "median_summit_hour": 11.8, "summit_times_n": 146, "median_bc_to_summit_days": 37.0, "agency_pct": 100.0}, {"block": "2005–09", "exps": 70, "exp_success_pct": 58.6, "members": 352, "client_summit_pct": 25.0, "summits": 117, "deaths": 3, "death_pct": 0.85, "deaths_per_100_summits": 2.6, "o2_client_summiters_pct": 67.0, "spring_share_pct": 91.0, "hired_per_client": 0.22, "ended_weather_or_conditions_pct": 14.0, "median_summit_hour": 10.5, "summit_times_n": 115, "median_bc_to_summit_days": 33.0, "agency_pct": 100.0}, {"block": "2010–14", "exps": 122, "exp_success_pct": 57.4, "members": 486, "client_summit_pct": 33.0, "summits": 205, "deaths": 5, "death_pct": 1.03, "deaths_per_100_summits": 2.4, "o2_client_summiters_pct": 70.0, "spring_share_pct": 93.0, "hired_per_client": 0.29, "ended_weather_or_conditions_pct": 16.0, "median_summit_hour": 8.8, "summit_times_n": 201, "median_bc_to_summit_days": 35.0, "agency_pct": 99.0}, {"block": "2015–19", "exps": 106, "exp_success_pct": 54.7, "members": 686, "client_summit_pct": 29.6, "summits": 258, "deaths": 4, "death_pct": 0.58, "deaths_per_100_summits": 1.6, "o2_client_summiters_pct": 88.0, "spring_share_pct": 96.0, "hired_per_client": 0.4, "ended_weather_or_conditions_pct": 5.0, "median_summit_hour": 10.0, "summit_times_n": 235, "median_bc_to_summit_days": 34.0, "agency_pct": 100.0}, {"block": "2020–25", "exps": 91, "exp_success_pct": 84.6, "members": 994, "client_summit_pct": 42.3, "summits": 602, "deaths": 4, "death_pct": 0.4, "deaths_per_100_summits": 0.7, "o2_client_summiters_pct": 95.0, "spring_share_pct": 100.0, "hired_per_client": 0.52, "ended_weather_or_conditions_pct": 7.0, "median_summit_hour": 8.0, "summit_times_n": 389, "median_bc_to_summit_days": 34.0, "agency_pct": 95.0}], "summit_time": [{"band": "Before 10:00", "summiters": 619, "died": 0}, {"band": "10:00–11:59", "summiters": 199, "died": 1}, {"band": "12:00–13:59", "summiters": 163, "died": 1}, {"band": "14:00 or later", "summiters": 174, "died": 3}], "summit_time_meta": {"with_time": 1155, "summiters": 1414, "median_hour": 9.5}, "oxygen_bidders": [{"o2": "No O2", "bidders": 356, "summit_pct": 47.5, "death_pct": 1.7}, {"o2": "Used O2", "bidders": 736, "summit_pct": 86.4, "death_pct": 0.8}], "age": [{"band": "Under 31", "clients": 394, "summit_pct": 35.0, "death_pct": 0.0}, {"band": "31–40", "clients": 833, "summit_pct": 38.7, "death_pct": 0.7}, {"band": "41–50", "clients": 714, "summit_pct": 34.0, "death_pct": 0.8}, {"band": "Over 50", "clients": 394, "summit_pct": 25.6, "death_pct": 0.5}], "sex": [{"sex": "Women", "clients": 352, "summit_pct": 47.2, "death_pct": 0.3}, {"sex": "Men", "clients": 1987, "summit_pct": 32.2, "death_pct": 0.7}], "roles": [{"role": "Members / clients", "n": 2339, "summit_pct": 34.4, "death_pct": 0.6, "top_cause": "AMS"}, {"role": "Hired staff", "n": 768, "summit_pct": 79.3, "death_pct": 0.52, "top_cause": "Fall"}], "bid_weather_abort_pct": {"1990–94": 19.0, "1995–99": 9.0, "2000–04": 1.0, "2005–09": 7.0, "2010–14": 5.0, "2015–19": 4.0, "2020–25": 2.0}, "termination": [{"reason": "Success (main summit)", "n": 310}, {"reason": "Other", "n": 46}, {"reason": "Bad weather", "n": 34}, {"reason": "Illness / AMS / exhaustion / frostbite", "n": 25}, {"reason": "Bad conditions (snow, avalanche risk)", "n": 19}, {"reason": "Accident", "n": 15}, {"reason": "Lack of supplies or support", "n": 8}, {"reason": "Did not attempt climb", "n": 8}, {"reason": "Route too difficult / lack of strength", "n": 4}, {"reason": "Success (sub-peak)", "n": 4}, {"reason": "Lack of time", "n": 3}, {"reason": "Did not reach base camp", "n": 2}, {"reason": "Success claimed", "n": 1}, {"reason": "Unknown", "n": 1}], "benchmark_2010": [{"peak": "Dhaulagiri I", "peakid": "DHA1", "members": 1021, "death_pct": 2.64, "summit_pct": 31.6}, {"peak": "Annapurna I", "peakid": "ANN1", "members": 736, "death_pct": 1.77, "summit_pct": 54.3}, {"peak": "Kangchenjunga", "peakid": "KANG", "members": 730, "death_pct": 1.51, "summit_pct": 61.5}, {"peak": "Makalu", "peakid": "MAKA", "members": 1189, "death_pct": 1.35, "summit_pct": 48.2}, {"peak": "Everest", "peakid": "EVER", "members": 13333, "death_pct": 0.91, "summit_pct": 67.7}, {"peak": "Lhotse", "peakid": "LHOT", "members": 2166, "death_pct": 0.6, "summit_pct": 49.2}, {"peak": "Manaslu", "peakid": "MANA", "members": 5770, "death_pct": 0.54, "summit_pct": 60.4}, {"peak": "Cho Oyu", "peakid": "CHOY", "members": 2280, "death_pct": 0.31, "summit_pct": 49.0}], "completeness": {"Summit time (summiters)": 82.0, "Summit date (summiters)": 100.0, "Age (members)": 99.0, "Personal high point": 66.0, "Death height": 100.0, "Base camp date": 80.0, "BC→summit days (successful exps)": 81.0, "Agency (exps)": 99.0, "Fixed rope metres": 15.0}, "alltime": {"first_year": 1955, "expeditions": 524, "members": 3477, "summits": 1465, "deaths": 25, "first_ascent_date": "May 18 1956", "first_ascent_party": "Fritz Luchsinger, Ernst Reiss", "first_ascent_nations": "Switzerland", "himal": "Khumbu Himal"}, "routes_all": [{"route": "W Face", "exps": 407, "exp_success_pct": 62.0, "summits": 1080, "deaths": 17, "years": "1955–2025"}, {"route": "S Col-W Face", "exps": 72, "exp_success_pct": 93.0, "summits": 377, "deaths": 2, "years": "2010–2025"}, {"route": "S Face", "exps": 22, "exp_success_pct": 5.0, "summits": 2, "deaths": 3, "years": "1976–2022"}, {"route": "S Ridge-W Ridge", "exps": 2, "exp_success_pct": 0.0, "summits": 0, "deaths": 0, "years": "1973–1975"}, {"route": "E section of S Face of Lhotse & Lhotse Shar", "exps": 1, "exp_success_pct": 0.0, "summits": 0, "deaths": 1, "years": "2000–2000"}, {"route": "W Face variation to ridge W of Smt", "exps": 1, "exp_success_pct": 0.0, "summits": 0, "deaths": 0, "years": "2024–2024"}, {"route": "W Face Couloir", "exps": 1, "exp_success_pct": 0.0, "summits": 0, "deaths": 0, "years": "1998–1998"}, {"route": "W Face (variant)", "exps": 1, "exp_success_pct": 0.0, "summits": 0, "deaths": 0, "years": "2025–2025"}, {"route": "South Face", "exps": 1, "exp_success_pct": 0.0, "summits": 0, "deaths": 0, "years": "2006–2006"}, {"route": "SE side of Lhotse Shar", "exps": 1, "exp_success_pct": 0.0, "summits": 0, "deaths": 0, "years": "1981–1981"}], "routes_other_count": 15};
+const T={"title": "Lhotse", "dek": "Everest’s South Peak: same Base Camp, same Icefall, same Lhotse Face, a smaller crowd, and one of the lowest death rates of the big eight.", "profile": {"photo": {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Lhotse.jpg/1280px-Lhotse.jpg", "credit": "Photo: Mark Horrell, CC BY-SA 3.0, via Wikimedia Commons", "position": "center 35%"}, "tagline": "South Peak. Everest’s neighbour, and the biggest wall in the Khumbu.", "rank_short": "4th highest in the world", "where": "Mahalangur Himal, Nepal–Tibet border", "stats": [["Height", "8,516 m · 27,940 ft"], ["World rank", "4th of 14 eight-thousanders"], ["Prominence", "610 m, the lowest of the 8,000ers"], ["Location", "Nepal–China (Tibet) border, joined to Everest by the South Col"], ["Coordinates", "27°57′42″N 86°56′00″E"], ["Name", "Tibetan, “South Peak”"], ["First ascent", "18 May 1956 · Ernst Reiss and Fritz Luchsinger (Switzerland)"], ["First winter ascent", "31 Dec 1988 · Krzysztof Wielicki (Poland), solo"]], "history": ["Lhotse was named for where it sits: the South Peak of the Everest massif, joined to it by the South Col. Climbers on both mountains share the route from Base Camp through the Khumbu Icefall, the Western Cwm and up the Lhotse Face. At the Yellow Band, Everest climbers go left over the Geneva Spur and Lhotse climbers go right, up the Reiss Couloir.", "A Swiss expedition made the first ascent on 18 May 1956, when Ernst Reiss and Fritz Luchsinger climbed the couloir now named for Reiss. The ridge has four named tops. Lhotse Shar fell in 1970, and Lhotse Middle, long the highest unclimbed named point on Earth, was finally climbed by a Russian team in 2001.", "The South Face is one of the great walls of the Himalaya. Jerzy Kukuczka died on it in October 1989 when a secondhand rope broke. Tomo Česen claimed a solo ascent in April 1990 that was later questioned, and a Soviet team completed the face in October 1990."], "facts": [["The least prominent 8,000er", "The South Col sits so high that Lhotse rises only 610 m above it."], ["The Lhotse Face", "A wall of blue ice about 1,125 m high that Everest and Lhotse climbers both cross."], ["The Double Crown", "Everest and Lhotse in under 24 hours. Michael Horst did it first, in 2011."], ["First woman", "Chantal Mauduit (France), 1996. Soňa Vomáčková was the first woman without oxygen, in 1999."], ["Skied from the top", "Hilaree Nelson and Jim Morrison made the first ski descent from the summit on 30 September 2018."], ["Winter, alone", "Krzysztof Wielicki’s first winter ascent on 31 December 1988 was a solo climb."]], "routes": {"primary": {"name": "West Face via the Reiss Couloir (normal route)", "desc": "The 1956 route, used by 382 of the 480 expeditions since 1990, plus 72 more that started from the South Col side. It follows the Everest route through the Khumbu Icefall and the Western Cwm to Camp 3 on the Lhotse Face. Above the Yellow Band, Lhotse climbers branch right to their own Camp 4, then climb the narrow, rock-walled Reiss Couloir to a small summit."}, "camps": [{"name": "Base Camp", "m": 5364, "note": "shared with Everest"}, {"name": "Camp 1", "m": 6100, "note": "top of the Khumbu Icefall"}, {"name": "Camp 2", "m": 6400, "note": "Western Cwm"}, {"name": "Camp 3", "m": 7160, "note": "on the Lhotse Face"}, {"name": "Camp 4", "m": 7800, "note": "above the Yellow Band"}, {"name": "Summit", "m": 8516, "note": "top of the Reiss Couloir"}], "others": [{"name": "South Face", "first": "1990 · USSR", "desc": "The wall that killed Kukuczka in 1989. The database records 22 expeditions on it since 1976 and only 2 summits."}, {"name": "Lhotse Shar", "first": "1970 · Mayerl, Walter (Austria)", "desc": "The eastern summit of the massif, at 8,383 m."}, {"name": "Lhotse Middle", "first": "2001 · Russia", "desc": "Lhotse Middle (8,414 m) was the last unclimbed named point above 8,000 m until a Russian team reached it on 23 May 2001."}]}}, "s1_overview": "<p>Since 1990, <b>480 expeditions<\/b> have gone to Lhotse, all permitted from Nepal. 382 took the West Face and 72 more approached from the South Col side. They brought <b>3,107 people<\/b>: 2,339 members and 768 hired staff.<\/p><p>Those people recorded <b>1,414 summits<\/b>. 65% of expeditions succeeded, but only 34% of members summited, against 79% of hired staff. <b>18 people died<\/b>. That is 0.58% of everyone who went, or <b>1.3 deaths for every 100 summits<\/b>.<\/p>", "s1_seasons": "<p>Lhotse is a spring mountain, tied to the Everest season. <b>Spring holds 1,357 of the 1,414 summits<\/b> and 434 of the 480 expeditions, at 1.2 deaths per 100 summits. Autumn saw 42 expeditions, 57 summits and 2 deaths, and 41% of autumn expeditions were stopped by bad weather. Four winter expeditions, no summits.<\/p>", "s1_when": "<p><b>Late May holds 1,047 summits<\/b>, three quarters of the total, with 11 deaths (1.1 per 100). Early May is the safest well-used window: 299 summits and 3 deaths (1.0 per 100). Late April was costly: 2 deaths and 11 summits.<\/p>", "s1_companies": "<p>Asian Trekking has the most Lhotse expeditions since 1990 (47). <b>Seven Summit Treks<\/b> arrived in 2012 and has put the most people on top: 40 expeditions, 419 climbers, 203 summits (14% of all) and 3 deaths. Since 2016 it accounts for 186 of 860 summits (22%), while Himalayan Guides ran the most expeditions (22 of 176). As on Everest, the agency field is the permit holder, not necessarily the brand that sold the trip.<\/p><p>The members are led by the USA (343), South Korea (259), the UK (145), India (134) and Japan (114).<\/p>", "s1_deaths": "<p>Altitude illness is the leading cause (6 deaths, all members), followed by falls (5), avalanches (4), exhaustion (2) and exposure (1). The median death height is 7,790 m: 10 of the 18 deaths came between 7,000 and 8,000 m, on the Lhotse Face and above Camp 4. <b>11 people died coming down from a summit bid<\/b>.<\/p><p>Hired staff died at about the same rate as members (0.5% vs 0.6%). Only one day since 1990 has had two deaths: 18 May 2025, when two members died of exhaustion at 7,800 m.<\/p>", "s1_bottomline": "Go in May with the Everest crowd. Lhotse is one of the safer big peaks, and its risk is altitude illness and exhaustion high on the mountain, so the turnaround and the descent matter most.", "s2_intro": "<p>These findings come from cross-tabulating the 1990+ records. They are associations, not proof of cause. The \"Why it matters\" lines say how much weight each one can carry.<\/p>", "s2_findings": [{"head": "Summit before 10:00", "body": "Of 619 summiters who topped out before 10:00, none died. Of 818 before noon, 1 died. Of 337 at noon or later, 4 died (1.2%), 3 of them after 14:00.", "why": "Same pattern as every peak so far. Small death counts here, and early summits are mostly recent and fully supported."}, {"head": "Sixth of eight for deaths", "body": "Since 2010, Lhotse’s death rate per climber is 0.60%, below Everest (0.91%) and above only Manaslu (0.54%) and Cho Oyu (0.31%). Its summit rate since 2010 is 49%.", "why": "Same definitions on every peak, 2,166 climbers since 2010. Solid."}, {"head": "The 2020s boom", "body": "Summits per five years went from 16 in 1990–94 to 602 in 2020–25, and expedition success jumped to 85%. Members using oxygen on their summit went from 47% to 95%, and hired staff per member rose from 0.04 to 0.52.", "why": "Solid trends. It points to the same fixed-rope, oxygen and Sherpa model as Everest, sharing the same ropes to Camp 3."}, {"head": "Low and steady death rate", "body": "The death rate per climber was 0.38% in the 1990s, 0.59% in the 2000s, 0.77% in the 2010s and 0.40% in 2020–25. Deaths per 100 summits peaked at 2.6 in 2005–09 and fell to 0.7.", "why": "Only 18 deaths, so each one moves a decade by a tenth of a point."}, {"head": "Altitude illness kills members", "body": "All 6 altitude-illness deaths were members, and most deaths came on the way down from 7,000–8,500 m. None of the hired deaths was from altitude illness.", "why": "Small numbers. Matches the Everest picture of members dying high and late."}, {"head": "Oxygen and survival", "body": "Members on a summit bid with oxygen summited 86% of the time and died at 0.8%. The 356 without oxygen summited 48% of the time and died at 1.7%.", "why": "Era and support confound it, and the death counts are small."}, {"head": "Base camp to summit hasn’t sped up", "body": "Median days from base camp to summit stayed around 33–37 in every period, unlike Everest’s drop. Lhotse climbers acclimatize on the same Everest rotations and wait for the same window.", "why": "Moderate. 19% of successful expeditions lack the dates."}, {"head": "Women and older climbers", "body": "Women summited at 47% against 32% for men, with fewer deaths (0.3% vs 0.7%). Members over 50 summited at 26% against 34–39% for younger groups.", "why": "Era likely explains much of the women’s edge. The over-50 gap is consistent across peaks."}], "s3_weaknesses": [{"head": "Small numbers", "body": "18 deaths in 35 years. Any single death moves the rates visibly."}, {"head": "Everest overlap", "body": "Lhotse and Everest share the route to Camp 3 and many climbers hold both permits. Deaths low on the route may be logged under either peak."}, {"head": "Two routes that are really one", "body": "‘W Face’ and ‘S Col–W Face’ describe the same upper route from different starting points, mostly Everest–Lhotse doubles. Treat them as one."}, {"head": "High points are thin", "body": "34% of members have no recorded high point and 18% of summiters no summit time."}, {"head": "Agency isn’t the operator", "body": "The agency is the Nepali permit holder; Western brands hide under local partners."}, {"head": "No weather and no person ID", "body": "No measured weather, and no way to tell whether a Lhotse climber had already done Everest that week."}]};
+const $=id=>document.getElementById(id), f=n=>n==null?'–':Number(n).toLocaleString('en-US'), p=(n,d=1)=>n==null?'–':Number(n).toFixed(d);
+const hhmm=h=>{if(h==null)return'–';const H=Math.floor(h),M=Math.round((h-H)*60);return String(H).padStart(2,'0')+':'+String(M).padStart(2,'0')};
+const M=D.macro;
+$('title').textContent=T.title; $('dek').textContent=T.dek;
+$('meta').textContent=`${D.meta.name} · ${f(D.meta.height_m)} m · records ${D.meta.since} through ${D.meta.data_through} · Himalayan Database · built ${D.meta.generated}`;
+// ---------- Section 0: The mountain (only when the narrative has a profile) ----------
+const PR=T.profile;
+if(PR){
+  $('plainhead').hidden=true; $('mountain').hidden=false; $('hero').hidden=false;
+  if(PR.photo&&PR.photo.src) $('hero').style.backgroundImage=`url("${PR.photo.src}")`;
+  if(PR.photo&&PR.photo.position) $('hero').style.backgroundPosition=PR.photo.position;
+  $('h_credit').textContent=(PR.photo&&PR.photo.credit)||'';
+  $('h_name').textContent=T.title; $('h_tag').textContent=PR.tagline||'';
+  $('h_meta').innerHTML=[`${f(D.meta.height_m)} m · ${f(Math.round(D.meta.height_m*3.28084))} ft`,PR.rank_short||'',PR.where||''].filter(Boolean).map(x=>`<span>${x}</span>`).join('');
+  $('p_dek').textContent=T.dek; $('p_meta').textContent=$('meta').textContent;
+  $('p_grid').innerHTML=(PR.stats||[]).map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
+  $('p_history').innerHTML=(PR.history||[]).map(x=>`<p>${x}</p>`).join('');
+  const A=D.alltime;
+  const facts=(PR.facts||[]).slice(); if(A) facts.push(['In the Himalayan Database',`${f(A.expeditions)} expeditions since ${A.first_year}, ${f(A.summits)} summits and ${f(A.deaths)} deaths, through ${D.meta.data_through}.`]);
+  $('p_facts').innerHTML=facts.map(([h,b])=>`<div class="fact"><b>${h}</b>${b}</div>`).join('');
+  // rank: the 14 eight-thousanders as a dot plot
+  const E14=[['Everest',8849],['K2',8611],['Kangchenjunga',8586],['Lhotse',8516],['Makalu',8485],['Cho Oyu',8188],['Dhaulagiri I',8167],['Manaslu',8163],['Nanga Parbat',8126],['Annapurna I',8091],['Gasherbrum I',8080],['Broad Peak',8051],['Gasherbrum II',8035],['Shishapangma',8027]];
+  {const W=640,rh=22,top=10,H=top+E14.length*rh+26,x0=130,x1=W-60,lo=8000,hi=8900,X=v=>x0+(v-lo)/(hi-lo)*(x1-x0);
+   let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Height of the 14 eight-thousanders">`;
+   [8000,8200,8400,8600,8800].forEach(t=>{s+=`<line x1="${X(t)}" x2="${X(t)}" y1="${top}" y2="${H-22}" stroke="var(--rule)"/><text x="${X(t)}" y="${H-6}" text-anchor="middle">${f(t)}</text>`});
+   E14.forEach(([n,m],i)=>{const y=top+i*rh+rh/2,me=n===T.title||n===D.meta.name,c=me?'var(--warn)':'var(--accent)';
+     s+=`<text x="${x0-10}" y="${y+4}" text-anchor="end" class="${me?'lab warnt':''}" style="${me?'':'fill:var(--fg)'}">${i+1}. ${n}</text><line x1="${x0}" x2="${X(m)}" y1="${y}" y2="${y}" stroke="${c}" stroke-width="${me?3:1.5}" opacity="${me?1:.55}"/><circle cx="${X(m)}" cy="${y}" r="${me?6:4}" fill="${c}"/><text x="${X(m)+10}" y="${y+4}" style="fill:var(--fg)" class="${me?'lab warnt':''}">${f(m)} m</text>`});
+   $('p_rank').innerHTML=s+'</svg>';}
+  // routes
+  const R=PR.routes||{};
+  if(R.primary) $('p_route').innerHTML=`<span class="eyebrow">Primary route</span><h3>${R.primary.name}</h3><p>${R.primary.desc}</p>`;
+  $('p_others').innerHTML=(R.others||[]).map(o=>`<div><b>${o.name}<small>${o.first||''}</small></b><span>${o.desc}</span></div>`).join('');
+  if(R.others&&R.others.length) $('p_others').insertAdjacentHTML('beforebegin','<h3>Other routes worth knowing</h3>');
+  $('t_routes').innerHTML=(D.routes_all||[]).map(r=>`<tr><td>${r.route}</td><td>${r.years}</td><td>${r.exps}</td><td>${p(r.exp_success_pct,0)}</td><td>${r.summits}</td><td>${r.deaths}</td></tr>`).join('');
+  $('p_routenote').textContent=`All years since ${A?A.first_year:''}. Top ${(D.routes_all||[]).length} routes by expedition count${D.routes_other_count?`; ${D.routes_other_count} more routes have one or two attempts each`:''}. Summiters counts everyone on those expeditions who summited, by any route.`;
+  // route profile: camps on the primary route + deaths since 1990 by altitude band
+  const C=R.camps||[];
+  if(C.length){
+    const W=720,H=380,top=18,bot=H-30,lo=4400,hi=8300,Y=a=>bot-(a-lo)/(hi-lo)*(bot-top),x0=90,x1=470,X=i=>x0+i*(x1-x0)/(C.length-1);
+    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Camps on the primary route and deaths by altitude">`;
+    for(let a=5000;a<=8000;a+=1000) s+=`<line x1="40" x2="${W-10}" y1="${Y(a)}" y2="${Y(a)}" stroke="var(--rule)"/><text x="36" y="${Y(a)+4}" text-anchor="end">${f(a)}</text>`;
+    s+=`<path d="${C.map((c,i)=>(i?'L':'M')+X(i)+' '+Y(c.m)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>`;
+    C.forEach((c,i)=>{const x=X(i),y=Y(c.m),last=i===C.length-1,anchor=i===0?'start':'end',dx=i===0?10:-12;
+      s+=`<circle cx="${x}" cy="${y}" r="${last?7:5}" fill="${last?'var(--warn)':'var(--accent)'}"/><text class="lab" x="${x+dx}" y="${y-8}" text-anchor="${anchor}">${c.name} · ${f(c.m)} m</text>${c.note?`<text x="${x+dx}" y="${y+8}" text-anchor="${anchor}">${c.note}</text>`:''}`});
+    const B={'<5,000 m':[lo,5000],'5,000–5,999':[5000,6000],'6,000–6,999':[6000,7000],'7,000–7,999':[7000,8000],'8,000 m+':[8000,hi]};
+    const bands=(D.death_height&&D.death_height.bands)||{}, bm=Math.max(1,...Object.values(bands)), bx=540, bw=140;
+    s+=`<text class="lab" x="${W-10}" y="${top-2}" text-anchor="end">Deaths since ${D.meta.since}, by altitude</text>`;
+    Object.entries(B).forEach(([k,[a,b]])=>{const n=bands[k]||0,y1=Y(b)+3,y2=Y(a)-3,w=n/bm*bw;
+      s+=`<rect x="${bx}" y="${y1}" width="${Math.max(w,1)}" height="${y2-y1}" fill="var(--warn)" opacity=".75"/><text x="${bx+w+6}" y="${(y1+y2)/2+4}" style="fill:var(--fg)">${n}</text>`});
+    $('p_profile').innerHTML=s+'</svg>';
+  } else $('p_profile').hidden=true;
+}
+$('kpis').innerHTML=[[f(M.expeditions),'expeditions'],[f(M.members),'climbers ('+f(M.hired)+' hired)'],[f(M.summits),'summits'],[p(M.exp_success_pct,0)+'%','expedition success'],[p(M.client_summit_pct,0)+'%','member summit rate'],[f(M.deaths),'deaths',1],[p(M.death_pct,1)+'%','death rate per climber',1],[p(M.deaths_per_100_summits,1),'deaths per 100 summits',1]].map(k=>`<div class="stat${k[2]?' w':''}"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('');
+for(const k of ['s1_overview','s1_seasons','s1_when','s1_companies','s1_deaths','s2_intro']) $(k).innerHTML=T[k]||'';
+$('s1_bottomline').innerHTML='<b>Bottom line.</b> '+(T.s1_bottomline||'');
+$('t_season').innerHTML=D.seasons.map(s=>`<tr><td>${s.season}</td><td>${s.exps}</td><td>${p(s.exp_success_pct,0)}</td><td>${f(s.members)}</td><td>${s.summits}</td><td>${s.deaths}</td><td>${p(s.death_pct,2)}</td><td>${p(s.deaths_per_100_summits)}</td><td>${p(s.ended_weather_pct,0)}</td><td>${p(s.ended_conditions_pct,0)}</td><td>${s.avalanche_deaths}</td></tr>`).join('');
+const cmax=Math.max(...D.calendar.map(c=>c.summits)), dmax=Math.max(...D.calendar.map(c=>c.deaths));
+$('t_cal').innerHTML=D.calendar.map(c=>`<tr><td>${c.label}</td><td class="l"><span class="bar" style="width:${c.summits/cmax*110}px"></span>${c.summits}</td><td class="l"><span class="bar w" style="width:${c.deaths/dmax*70}px"></span>${c.deaths}</td><td class="${c.deaths_per_100_summits>=10&&c.summits>=20?'hi':''}">${c.summits?p(c.deaths_per_100_summits):'–'}</td></tr>`).join('');
+$('t_ag').innerHTML=D.agencies.map(a=>`<tr><td>${a.agency}</td><td>${a.years}</td><td>${a.exps}</td><td>${p(a.exp_success_pct,0)}</td><td>${a.climbers}</td><td>${a.summits}</td><td>${a.deaths}</td></tr>`).join('');
+const cm=Math.max(...D.death_causes.map(c=>c.n));
+$('t_cause').innerHTML=D.death_causes.map(c=>`<tr><td>${c.cause}</td><td class="l"><span class="bar w" style="width:${c.n/cm*90}px"></span>${c.n}</td><td>${c.hired}</td></tr>`).join('');
+const pm=Math.max(...D.death_phase.map(c=>c.n));
+$('t_phase').innerHTML=D.death_phase.map(c=>`<tr><td>${c.phase}</td><td class="l"><span class="bar w" style="width:${c.n/pm*90}px"></span>${c.n}</td></tr>`).join('');
+$('t_trend').innerHTML=D.trend.map(t=>`<tr><td>${t.block}</td><td>${t.exps}</td><td>${p(t.exp_success_pct,0)}</td><td>${p(t.client_summit_pct,0)}</td><td>${t.deaths}</td><td>${p(t.death_pct,2)}</td><td>${p(t.deaths_per_100_summits)}</td><td>${p(t.o2_client_summiters_pct,0)}</td><td>${p(t.spring_share_pct,0)}</td><td>${p(t.hired_per_client,2)}</td><td>${hhmm(t.median_summit_hour)}</td></tr>`).join('');
+// small-multiple line charts
+function line(title,key,fmt,color){
+  const v=D.trend.map(t=>t[key]), L=D.trend.map(t=>t.block);
+  const W=300,H=150,l=8,r=8,top=22,b=24, max=Math.max(...v.filter(x=>x!=null))*1.15||1;
+  const x=i=>l+i*(W-l-r)/(v.length-1), y=val=>top+(H-top-b)*(1-val/max);
+  let pts=v.map((val,i)=>val==null?null:[x(i),y(val)]).filter(Boolean);
+  const path=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ');
+  const grid=[0,.5,1].map(g=>`<line x1="${l}" x2="${W-r}" y1="${top+(H-top-b)*g}" y2="${top+(H-top-b)*g}" stroke="var(--rule)" stroke-width="1"/>`).join('');
+  const labs=L.map((s,i)=>`<text x="${x(i)}" y="${H-6}" text-anchor="${i==0?'start':i==L.length-1?'end':'middle'}">${s.slice(2,4)}</text>`).join('');
+  const vals=pts.map((q,i)=>`<circle cx="${q[0]}" cy="${q[1]}" r="${i==pts.length-1?3.5:2.2}" fill="${color}"/><text class="v" x="${q[0]}" y="${q[1]-7}" text-anchor="${i==0?'start':i==pts.length-1?'end':'middle'}">${fmt(v[i])}</text>`).join('');
+  return `<div class="chart"><h3>${title}</h3><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${title}">${grid}<path d="${path}" fill="none" stroke="${color}" stroke-width="2"/>${vals}${labs}</svg></div>`;
+}
+$('charts').innerHTML=line('Expedition success %','exp_success_pct',v=>p(v,0),'var(--accent)')+line('Deaths per 100 summits','deaths_per_100_summits',v=>p(v,0),'var(--warn)')+line('Member summiters on O2 %','o2_client_summiters_pct',v=>p(v,0),'var(--accent)')+line('Median summit time','median_summit_hour',hhmm,'var(--accent)');
+$('findings').innerHTML=(T.s2_findings||[]).map((x,i)=>`<div class="find"><div class="n">${i+1}</div><div><h3>${x.head}</h3><p>${x.body}</p><p class="why"><b>Why it matters:</b> ${x.why}</p></div></div>`).join('');
+$('t_stime').innerHTML=D.summit_time.map(s=>`<tr><td>${s.band}</td><td>${s.summiters}</td><td class="${s.died?'hi':''}">${s.died}</td></tr>`).join('')+`<tr><td class="note">No time recorded</td><td class="note">${D.summit_time_meta.summiters-D.summit_time_meta.with_time}</td><td></td></tr>`;
+const bm=Math.max(...D.benchmark_2010.map(b=>b.death_pct));
+$('t_bench').innerHTML=D.benchmark_2010.map(b=>`<tr><td style="${b.peakid==D.meta.peakid?'font-weight:700':''}">${b.peak}</td><td class="l"><span class="bar ${b.peakid==D.meta.peakid?'w':''}" style="width:${b.death_pct/bm*90}px"></span>${p(b.death_pct,2)}</td><td>${p(b.summit_pct,0)}</td></tr>`).join('');
+$('t_age').innerHTML=D.age.map(a=>`<tr><td>${a.band}</td><td>${a.clients}</td><td>${p(a.summit_pct)}</td><td>${p(a.death_pct)}</td></tr>`).join('')+D.sex.map(a=>`<tr><td>${a.sex}</td><td>${a.clients}</td><td>${p(a.summit_pct)}</td><td>${p(a.death_pct)}</td></tr>`).join('');
+$('t_multi').innerHTML=D.multi_death_days.map(e=>`<tr><td>${e.date}</td><td class="${e.deaths>=4?'hi':''}">${e.deaths}</td><td class="l">${e.cause}</td><td>${e.height_m?f(e.height_m):'–'}</td></tr>`).join('');
+$('weak').innerHTML=(T.s3_weaknesses||[]).map(w=>`<div><b>${w.head}</b><span>${w.body}</span></div>`).join('');
+$('since2').textContent=D.meta.since;
+$('t_comp').innerHTML=Object.entries(D.completeness).map(([k,v])=>`<tr><td>${k}</td><td class="l ${v<75?'hi':''}"><span class="bar ${v<75?'w':''}" style="width:${v*1.1}px"></span>${v}</td></tr>`).join('');
+$('foot').textContent=`Source: Himalayan Database (local HIMDATA). Built with peak_report.py ${D.meta.peakid} --since ${D.meta.since}. Rates use every member record (members + hired) unless labeled "member". Hired = staff flagged HIRED.`;
+</script>
+</body>
+</html>

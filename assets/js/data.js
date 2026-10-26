@@ -61,12 +61,12 @@ const JOURNAL = {
 // 8,000 m PEAKS = placeholder tracker for the 14 eight-thousanders (peaks.html#eight-thousanders).
 // report: link to a Himalayan Database Peak Report (assets/docs/peak-reports/...) once built. Nepal peaks only are in the database.
 const EIGHT_K = [
-  { rank: 1,  name: "Everest",       m: 8849, country: "Nepal / China",    report: "" },
+  { rank: 1,  name: "Everest",       m: 8849, country: "Nepal / China",    report: "assets/docs/peak-reports/ever-everest.html" },
   { rank: 2,  name: "K2",            m: 8611, country: "Pakistan / China", report: "", noData: true },
   { rank: 3,  name: "Kangchenjunga", m: 8586, country: "Nepal / India",    report: "assets/docs/peak-reports/kang-kangchenjunga.html" },
-  { rank: 4,  name: "Lhotse",        m: 8516, country: "Nepal / China",    report: "" },
+  { rank: 4,  name: "Lhotse",        m: 8516, country: "Nepal / China",    report: "assets/docs/peak-reports/lhot-lhotse.html" },
   { rank: 5,  name: "Makalu",        m: 8485, country: "Nepal / China",    report: "" },
-  { rank: 6,  name: "Cho Oyu",       m: 8188, country: "Nepal / China",    report: "" },
+  { rank: 6,  name: "Cho Oyu",       m: 8188, country: "Nepal / China",    report: "assets/docs/peak-reports/choy-cho-oyu.html" },
   { rank: 7,  name: "Dhaulagiri I",  m: 8167, country: "Nepal",            report: "assets/docs/peak-reports/dha1-dhaulagiri-i.html", note: "dhaulagiri-autumn-2026" },
   { rank: 8,  name: "Manaslu",       m: 8163, country: "Nepal",            report: "" },
   { rank: 9,  name: "Nanga Parbat",  m: 8126, country: "Pakistan",         report: "", noData: true },
