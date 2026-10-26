@@ -62,7 +62,7 @@ const JOURNAL = {
 // report: link to a Himalayan Database Peak Report (assets/docs/peak-reports/...) once built. Nepal peaks only are in the database.
 const EIGHT_K = [
   { rank: 1,  name: "Everest",       m: 8849, country: "Nepal / China",    report: "assets/docs/peak-reports/ever-everest.html" },
-  { rank: 2,  name: "K2",            m: 8611, country: "Pakistan / China", report: "", noData: true },
+  { rank: 2,  name: "K2",            m: 8611, country: "Pakistan / China", report: "assets/docs/peak-reports/k2.html" },
   { rank: 3,  name: "Kangchenjunga", m: 8586, country: "Nepal / India",    report: "assets/docs/peak-reports/kang-kangchenjunga.html" },
   { rank: 4,  name: "Lhotse",        m: 8516, country: "Nepal / China",    report: "assets/docs/peak-reports/lhot-lhotse.html" },
   { rank: 5,  name: "Makalu",        m: 8485, country: "Nepal / China",    report: "" },
