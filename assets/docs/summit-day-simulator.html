@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Summit Day Simulator</title>
+<style>
+:root{
+  --bg:#f5f7f8; --panel:#ffffff; --ink:#15212b; --ink2:#4b5966; --muted:#7d8994; --rule:#dfe4e8; --axis:#c4ccd3;
+  --rope:#c4471a; --up:#e0a400; --wait:#d03b3b; --down:#1f9d5a; --turn:#8a96a1; --band:#eaf0f4; --snow:#ffffff; --rock:#c9d1d9;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Segoe UI",system-ui,sans-serif;
+  padding:20px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:28px;margin:0 0 2px;letter-spacing:-.01em}
+.sub{color:var(--ink2);margin:0 0 16px;max-width:80ch}
+.grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
+.grid>*{min-width:0}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 16px}
+.ctl{margin-bottom:14px}
+.ctl label{display:flex;justify-content:space-between;font-weight:600;font-size:14px;margin-bottom:4px}
+.ctl label span{font-family:var(--mono);font-weight:500;color:var(--rope)}
+.ctl input[type=range]{width:100%;accent-color:var(--rope)}
+.note{font-size:12.5px;color:var(--muted);margin:3px 0 0;line-height:1.4}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font:13px inherit;font-family:inherit;border:1px solid var(--axis);background:var(--panel);color:var(--ink2);padding:5px 9px;border-radius:4px;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--ink);background:var(--band);color:var(--ink);font-weight:600}
+button:focus-visible,input:focus-visible{outline:2px solid var(--rope);outline-offset:2px}
+.derived{font-size:13px;background:var(--band);border-radius:6px;padding:8px 10px;margin:-4px 0 14px;font-family:var(--mono);line-height:1.6}
+.warn{color:var(--wait);font-weight:600}
+.stage{position:relative}
+canvas{display:block;width:100%;background:var(--panel);border-radius:6px}
+#route{height:380px}
+#strip{height:90px;margin-top:6px}
+@media (max-width:600px){#route{height:300px}}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:10px 0 6px}
+.clock{font:600 28px var(--mono);min-width:5.5ch}
+.bar .seg button{padding:5px 10px}
+#scrub{flex:1 1 220px;accent-color:var(--rope)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink2);margin:4px 0 0}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:-1px;margin-right:5px}
+.now{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:12px 0}
+.now .dead{background:#fdecec}.now .dead b{color:var(--wait)}
+@media (max-width:600px){.now{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.now div{background:var(--band);border-radius:6px;padding:8px 10px;min-width:0}
+.now b{display:block;font:600 22px var(--mono)}
+.now span{font-size:12px;color:var(--ink2)}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12.5px;color:var(--ink2);font-weight:600}
+td.hl{font-weight:700}
+.foot{font-size:12.5px;color:var(--muted);margin-top:16px;max-width:95ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Summit Day Simulator</h1>
+<p class="sub">Everest, South Col route. Every dot is a person on the summit push from Camp 4 (7,900 m) to the top (8,849 m) and back. The summit section from the South Summit to the top is one fixed rope used in both directions. The model is the one in <a href="summit-clock.html" style="color:var(--rope)">The Summit Clock</a>, tuned to the 2016 and 2019 record days. Written up in <a href="../../expedition.html?id=mountains-part-6" style="color:var(--rope)">Mountains, Part 6</a>.</p>
+
+<div class="grid">
+<div class="card" id="controls">
+  <div class="ctl"><label for="clients">Clients <span id="clientsV">100</span></label>
+    <input type="range" id="clients" min="0" max="400" step="5" value="100"></div>
+  <div class="ctl"><label for="ratio">Total on the rope <span id="ratioV">227 (2.27×)</span></label>
+    <input type="range" id="ratio" min="1.5" max="3" step="0.01" value="2.27">
+    <p class="note">The slider sets people on the rope per client. 2.27× is the historical ratio: clients were 44% of everyone on the South Col rope on days with 150+ people (Himalayan Database, 1990–2025).</p></div>
+  <div class="ctl"><label>Departures from Camp 4</label>
+    <div class="seg" role="group" aria-label="Departure mode"><button type="button" id="dm-b" data-v="booked" aria-pressed="true">Booked slots</button><button type="button" id="dm-f" data-v="free" aria-pressed="false">Today’s free-for-all</button></div></div>
+  <div class="ctl" id="startCtl"><label for="start">First team leaves <span id="startV">19:30</span></label>
+    <input type="range" id="start" min="19.5" max="25" step="0.25" value="19.5"></div>
+  <div class="ctl" id="gapCtl"><label for="gap">Minutes between departures, per person <span id="gapV">2.0 (auto)</span></label>
+    <input type="range" id="gap" min="0.5" max="6" step="0.1" value="2.0">
+    <p class="note">Auto is 2.0 minutes a person (about 30 an hour), the rate the summit took on the busiest recorded days. A team of one client and its staff leaves together.</p>
+    <div class="seg" style="margin-top:4px"><button type="button" id="gapAuto" aria-pressed="true">Auto</button></div></div>
+  <div class="ctl"><label>Turnaround enforced</label>
+    <div class="seg" role="group" aria-label="Turnaround" id="cutSeg"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="13" aria-pressed="false">13:00</button><button type="button" data-v="12" aria-pressed="false">12:00</button><button type="button" data-v="11" aria-pressed="false">11:00</button></div></div>
+  <div class="ctl"><label>Summit section</label>
+    <div class="seg" role="group" aria-label="Rope" id="ropeSeg"><button type="button" data-v="one" aria-pressed="true">One two-way rope</button><button type="button" data-v="two" aria-pressed="false">Separate up &amp; down</button></div></div>
+  <div class="ctl"><label>Rope speed</label>
+    <div class="seg" role="group" aria-label="Calibration" id="calSeg"><button type="button" data-v="base" aria-pressed="true">2019 fit</button><button type="button" data-v="cong" aria-pressed="false">Congested</button></div></div>
+  <div class="derived" id="derived"></div>
+  <div class="seg"><button type="button" id="rerun">New run (reshuffle pace)</button></div>
+</div>
+
+<div>
+  <div class="card stage">
+    <div class="bar">
+      <div class="clock" id="clock">19:00</div>
+      <div class="seg"><button type="button" id="play" aria-pressed="false">▶ Play</button><button type="button" id="reset">Reset</button></div>
+      <div class="seg" role="group" aria-label="Speed" id="spdSeg"><button type="button" data-v="30" aria-pressed="false">30×</button><button type="button" data-v="60" aria-pressed="false">60×</button><button type="button" data-v="120" aria-pressed="false">120×</button><button type="button" data-v="300" aria-pressed="true">300×</button><button type="button" data-v="600" aria-pressed="false">600×</button></div>
+      <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Time of day">
+    </div>
+    <canvas id="route" aria-label="Climbers on the route"></canvas>
+    <canvas id="strip" aria-label="People waiting over the day"></canvas>
+    <div class="legend"><span><i style="background:var(--up)"></i>Going up</span><span><i style="background:var(--wait)"></i>Waiting at the summit section</span><span><i style="background:var(--down)"></i>Coming down</span><span><i style="border:2px solid var(--turn);background:transparent"></i>Turned back</span><span style="color:var(--muted)">Strip: people waiting, whole day (blue = dark, orange = first light to sunrise)</span></div>
+    <div class="now" id="now"></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <div class="tw"><table id="cmp"></table></div>
+    <p class="note" id="cmpNote"></p>
+    <div class="tw" style="margin-top:12px"><table id="hist"></table></div>
+    <p class="note">The model counts only deaths on the way down linked to the summit hour. The record also holds what no model predicts: the 2014 Icefall avalanche killed 15 people on this route and the 2015 earthquake avalanche at Base Camp killed 14, and a bad season can bring a cluster of altitude illness. Those are in the “any cause” line, and they can happen on any day.</p>
+  </div>
+</div>
+</div>
+<p class="foot">Model: people climb from Camp 4 to the South Summit in about 9 hours at their own pace, then pass one at a time through the summit section (0.8 min each going up, 0.64 going down, plus 1 min each time traffic changes direction; congested fit 1.0 / 0.8 / 1 min and 8.5 h). 20 minutes on top, about 5 hours back to Camp 4. Risk of dying on the way down comes from the summit hour (each hour later multiplies the odds by 1.37) for a 40-year-old client on oxygen; hired staff carry about a quarter of a client’s odds; anyone turned back carries 4.6 per 1,000. No weather, rescues or oxygen failures. A comparison tool, not a forecast of a real day.</p>
+</div>
+
+<script>
+/* ---------- model constants (from The Summit Clock) ---------- */
+const B={c:-5.428147,hr:0.316290,yr:-0.182572,o2:-0.120385,age:0.377577,hired:-1.365613};
+const TURNBACK=0.00461;
+// Everest South Col, Himalayan Database 1990-2025, per 1,000 who started a summit bid (members + hired)
+const HIST={desc:4.69,sday:6.02,any:9.5};
+const CAL={base:{hu:0.8,hd:0.64,sw:1.0,T1:9.0},cong:{hu:1.0,hd:0.8,sw:1.0,T1:8.5}};
+const T2=0.5,STAY=1/3,T3=0.35,T4=4.8;
+// Light on the summit (8,849 m), 19 May, Nepal time: civil dawn (first light) 04:24, sunrise 04:52; sunset the evening before about 18:55
+const DAWN=4.4,SUNRISE=4.867,SUNSET=18.92-24;
+// South Col departures recorded 2010-2025 (hours from midnight; evening negative), trimmed to 18:00-03:00
+const DEP=[-6,-6,-6,-6,-6,-6,-5,-5,-5,-5,-5,-5,-5,-5,-5,-5,-5,-5,-4.75,-4.667,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.5,-4.25,-4.25,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-4,-3.833,-3.75,-3.633,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.5,-3.333,-3.25,-3.25,-3.25,-3.167,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-2.75,-2.75,-2.667,-2.667,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.5,-2.25,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1.75,-1.75,-1.5,-1.5,-1.5,-1.5,-1.25,-1.25,-1.25,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-0.817,-0.6,-0.5,-0.5,-0.5,-0.5,-0.5,-0.25,-0.25,0,0,0,0,0.333,1,1,1,1,1,1.417,1.5,1.5,2,2,2,2,2,2,2.167];
+const pDeath=(h,hired)=>1/(1+Math.exp(-(B.c+B.hr*(h-12)+B.yr*1.5+B.o2+B.age*4+(hired?B.hired:0))));
+const pTurn=hired=>hired?TURNBACK*Math.exp(B.hired):TURNBACK;
+function rng(seed){let s=seed>>>0;return()=>{s=(s+0x6D2B79F5)>>>0;let t=s;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function gauss(r){let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+const clk=h=>{h=((h%24)+24)%24;let H=Math.floor(h),M=Math.round((h-H)*60);if(M===60){H=(H+1)%24;M=0}return String(H).padStart(2,"0")+":"+String(M).padStart(2,"0")};
+
+/* ---------- state ---------- */
+const S={clients:100,ratio:2.27,mode:"booked",start:19.5,gap:2.0,gapAuto:true,cut:null,rope:"one",cal:"base",seed:7,speed:300,t:-5,playing:false};
+let RUN=null,EXP=null,REF=null;
+
+/* ---------- simulation ---------- */
+function simulate(o,seed,det){
+  const r=rng(seed),C=CAL[o.cal],N=Math.round(o.clients*o.ratio);
+  if(o.clients===0||N===0)return {N:0,p:[],tEnd:12};
+  // teams: one client + staff, spread so total = N
+  const teams=o.clients, P=[];
+  for(let i=0;i<N;i++){const team=i%teams;P.push({team,hired:i>=teams})}
+  const sizes=new Array(teams).fill(0);P.forEach(p=>sizes[p.team]++);
+  // departures
+  const tdep=new Array(teams);
+  if(o.mode==="booked"){let t=o.start-24;for(let k=0;k<teams;k++){tdep[k]=t;t+=sizes[k]*o.gap/60}}
+  else{for(let k=0;k<teams;k++)tdep[k]=det?DEP[Math.floor((k+0.5)/teams*DEP.length)]:DEP[Math.floor(r()*DEP.length)]}
+  P.forEach(p=>{p.dep=tdep[p.team]+(det?0:gauss(r)*0.03);p.t1=C.T1*(det?1:Math.exp(gauss(r)*0.15));p.aF=p.dep+p.t1;p.t4=T4*(det?1:Math.exp(gauss(r)*0.2))});
+  const hu=C.hu/60,hd=C.hd/60,sw=C.sw/60,lim=o.cut==null?1e9:o.cut-T2-hu;
+  // event loop
+  const ev=P.map((p,i)=>[p.aF,i,"U"]).sort((a,b)=>a[0]-b[0]);
+  const heap=new MinHeap(ev);
+  let qU=[],qD=[],free=-99,last=null,freeU=-99,freeD=-99;
+  const up=(i,t,st)=>{const p=P[i];p.st=st;p.summit=st+hu+T2;p.dReq=p.summit+STAY+T3;heap.push([p.dReq,i,"D"])};
+  const turn=(i,t)=>{const p=P[i];p.turned=true;p.tTurn=Math.max(t,Math.min(Math.max(t,lim),1e8));p.home=p.tTurn+p.t4*0.85};
+  const down=(i,st)=>{const p=P[i];p.dSt=st;p.dEnd=st+hd;p.home=p.dEnd+p.t4};
+  if(o.rope==="two"){
+    while(heap.size()){const [t,i,d]=heap.pop();
+      if(d==="U"){const st=Math.max(t,freeU);if(st>lim){turn(i,t);continue}freeU=st+hu;up(i,t,st)}
+      else{const st=Math.max(t,freeD);freeD=st+hd;down(i,st)}}
+  } else {
+    while(heap.size()||qU.length||qD.length){
+      if(!qU.length&&!qD.length){const [t,i,d]=heap.pop();(d==="U"?qU:qD).push([t,i]);continue}
+      const tn=Math.max(free,Math.min(qU.length?qU[0][0]:1e9,qD.length?qD[0][0]:1e9));
+      while(heap.size()&&heap.peek()[0]<=tn){const [t,i,d]=heap.pop();(d==="U"?qU:qD).push([t,i])}
+      if(qU.length&&o.cut!=null){const keep=[];for(const [t,i] of qU){if(Math.max(free,t)>lim)turn(i,t);else keep.push([t,i])}qU=keep;if(!qU.length&&!qD.length)continue}
+      let dir;if(qU.length&&qD.length)dir=qU[0][0]<=qD[0][0]?"U":"D";else dir=qU.length?"U":"D";
+      const q=dir==="U"?qU:qD;const [t,i]=q.shift();
+      let st=Math.max(free,t)+(last&&dir!==last?sw:0);last=dir;
+      if(dir==="U"){if(st>lim){turn(i,t);continue}free=st+hu;up(i,t,st)}else{free=st+hd;down(i,st)}
+    }
+  }
+  P.forEach(p=>{p.waitU=p.turned?Math.max(0,p.tTurn-p.aF):(p.st-p.aF);p.waitD=p.turned?0:(p.dSt-p.dReq);
+    p.risk=p.turned?pTurn(p.hired):pDeath(p.summit,p.hired)});
+  const tEnd=Math.max(...P.map(p=>p.home));
+  return {N,P,tEnd,lastDep:Math.max(...tdep),teams};
+}
+class MinHeap{constructor(a){this.a=[];a.forEach(x=>this.push(x))}size(){return this.a.length}peek(){return this.a[0]}
+ push(x){const a=this.a;a.push(x);let i=a.length-1;while(i>0){const p=(i-1)>>1;if(a[p][0]<=a[i][0])break;[a[p],a[i]]=[a[i],a[p]];i=p}}
+ pop(){const a=this.a,top=a[0],l=a.pop();if(a.length){a[0]=l;let i=0;for(;;){let m=i;const L=2*i+1,R=L+1;if(L<a.length&&a[L][0]<a[m][0])m=L;if(R<a.length&&a[R][0]<a[m][0])m=R;if(m===i)break;[a[m],a[i]]=[a[i],a[m]];i=m}}return top}}
+
+function summary(R,tNow){
+  const P=R.P||[],n=P.length,o={};
+  const fin=tNow==null?P:P.filter(p=>(p.turned?p.tTurn:p.st)<=tNow);
+  const waits=fin.map(p=>p.waitU*60).sort((a,b)=>a-b);
+  o.p90=waits.length?waits[Math.min(waits.length-1,Math.floor(0.9*waits.length))]:null;
+  o.max=waits.length?waits[waits.length-1]:null;
+  const sm=P.filter(p=>!p.turned&&(tNow==null||p.summit<=tNow));
+  o.summits=sm.length;o.last=sm.length?Math.max(...sm.map(p=>p.summit)):null;
+  o.late=sm.filter(p=>p.summit>=11).length;o.dark=sm.filter(p=>p.summit<DAWN).length;o.twi=sm.filter(p=>p.summit>=DAWN&&p.summit<SUNRISE).length;
+  o.turned=P.filter(p=>p.turned&&(tNow==null||p.tTurn<=tNow)).length;
+  const done=P.filter(p=>tNow==null||(p.turned?p.tTurn:p.summit)<=tNow);
+  o.deaths=done.reduce((s,p)=>s+p.risk,0);o.per1000=n?P.reduce((s,p)=>s+p.risk,0)/n*1000:0;
+  o.per1000so=done.length?o.deaths/done.length*1000:null;
+  return o;
+}
+
+/* ---------- geometry ---------- */
+const WP=[[0,7900,"Camp 4"],[1.7,8400,"Balcony"],[2.6,8750,"South Summit"],[2.85,8790,"Hillary Step"],[3.1,8849,"Summit"]];
+const FOOT=2.6,TOPD=3.1,QSP=0.004;
+function altAt(d){for(let i=1;i<WP.length;i++){if(d<=WP[i][0]){const a=WP[i-1],b=WP[i];return a[1]+(b[1]-a[1])*(d-a[0])/(b[0]-a[0])}}return WP[WP.length-1][1]}
+function state(p,t){ // returns [dist, kind] kind: 0 hidden at camp,1 up,2 waitU,3 section up,4 summit,5 down to foot,6 waitD,7 down,8 turned,9 home
+  if(t<p.dep)return null;
+  if(p.turned){if(t<p.aF)return[(t-p.dep)/p.t1*FOOT,1];if(t<p.tTurn)return[FOOT,2,"U"];if(t<p.home)return[FOOT*(1-(t-p.tTurn)/(p.home-p.tTurn)),8];return null}
+  if(t<p.aF)return[(t-p.dep)/p.t1*FOOT,1];
+  if(t<p.st)return[FOOT,2,"U"];
+  if(t<p.summit)return[FOOT+(TOPD-FOOT)*(t-p.st)/(p.summit-p.st),1];
+  if(t<p.summit+STAY)return[TOPD,4];
+  if(t<p.dReq)return[TOPD-(TOPD-FOOT)*(t-p.summit-STAY)/T3,7];
+  if(t<p.dSt)return[FOOT,2,"D"];
+  if(t<p.home)return[FOOT*(1-(t-p.dEnd)/(p.home-p.dEnd)),7];
+  return null;
+}
+
+/* ---------- drawing ---------- */
+const cv=document.getElementById("route"),cx=cv.getContext("2d"),sv=document.getElementById("strip"),sx=sv.getContext("2d");
+const col=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function fit(c){const r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;c.getContext("2d").setTransform(d,0,0,d,0,0);return[r.width,r.height]}
+let RW,RH,SW,SH;
+function resize(){[RW,RH]=fit(cv);[SW,SH]=fit(sv);drawAll()}
+function X(d){return 40+(d/TOPD)*(RW-90)}function Y(a){return RH-34-(a-7850)/(8900-7850)*(RH-(RW<560?115:100))}
+function lane(d,side){ // offset perpendicular to slope
+  const x=X(d),y=Y(altAt(d)),d2=Math.min(TOPD,d+0.02),x2=X(d2),y2=Y(altAt(d2));const L=Math.hypot(x2-x,y2-y)||1;return[x+side*(-(y2-y)/L)*6,y+side*((x2-x)/L)*6]}
+function skyCol(t){const n=[205,214,229],d=[251,226,200],day=[255,255,255];const mix=(a,b,f)=>`rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*f)).join(",")})`;
+  if(t<SUNSET+0.5&&t>=SUNSET)return mix(day,n,(t-SUNSET)/0.5);if(t<DAWN-0.5&&t>=SUNSET+0.5)return mix(n,n,0);if(t<DAWN)return mix(n,d,(t-(DAWN-0.5))/0.5);if(t<SUNRISE)return mix(d,d,0);if(t<SUNRISE+0.5)return mix(d,day,(t-SUNRISE)/0.5);if(t<SUNSET)return mix(n,n,0);return mix(day,day,0)}
+function drawSun(t){const x=RW-26,y=24,r=11;
+  const night=t<DAWN||t>=SUNSET+24-24&&t<SUNSET+1,phase=t<DAWN?"night":t<SUNRISE?"dawn":"day";
+  cx.save();
+  if(phase==="night"){cx.fillStyle="#6b7a90";cx.beginPath();cx.arc(x,y,r,0,7);cx.fill();cx.fillStyle=skyCol(t);cx.beginPath();cx.arc(x+6,y-4,r,0,7);cx.fill()}
+  else if(phase==="dawn"){const g=cx.createRadialGradient(x,y+r,2,x,y+r,34);g.addColorStop(0,"rgba(247,127,60,.55)");g.addColorStop(1,"rgba(247,127,60,0)");cx.fillStyle=g;cx.fillRect(x-40,y-30,80,60);
+    cx.fillStyle="#f29a3a";cx.beginPath();cx.arc(x,y+r*0.6,r,Math.PI,0);cx.fill();cx.strokeStyle="#c97a2a";cx.lineWidth=1.5;cx.beginPath();cx.moveTo(x-20,y+r*0.6);cx.lineTo(x+20,y+r*0.6);cx.stroke()}
+  else{cx.fillStyle="#f2b705";cx.beginPath();cx.arc(x,y,r,0,7);cx.fill();cx.strokeStyle="#f2b705";cx.lineWidth=2;for(let k=0;k<8;k++){const a=k*Math.PI/4;cx.beginPath();cx.moveTo(x+Math.cos(a)*(r+3),y+Math.sin(a)*(r+3));cx.lineTo(x+Math.cos(a)*(r+8),y+Math.sin(a)*(r+8));cx.stroke()}}
+  cx.fillStyle=col("--ink2");cx.font="600 12px system-ui";cx.textAlign="right";
+  cx.fillText(phase==="night"?(RW<560?"Dark":"Dark on top · first light 04:24 · sunrise 04:52"):phase==="dawn"?"First light on top (04:24)":(t<SUNRISE+1?"Sunrise on top 04:52":"Daylight"),x-22,y+4);
+  
+  cx.textAlign="left";cx.restore()}
+function drawRoute(){
+  cx.clearRect(0,0,RW,RH);cx.fillStyle=skyCol(S.t);cx.fillRect(0,0,RW,RH);
+  // mountain fill
+  cx.beginPath();cx.moveTo(X(0),RH);WP.forEach(w=>cx.lineTo(X(w[0]),Y(w[1])));cx.lineTo(X(TOPD)+30,Y(8700));cx.lineTo(RW,RH);cx.closePath();cx.fillStyle=col("--rock");cx.fill();
+  // altitude grid
+  cx.font="11px "+col("--mono");cx.fillStyle=col("--muted");cx.strokeStyle=col("--rule");cx.lineWidth=1;
+  for(let a=8000;a<=8800;a+=200){const y=Y(a);cx.beginPath();cx.moveTo(30,y);cx.lineTo(RW-10,y);cx.stroke();cx.fillText(a.toLocaleString()+" m",2,y-3)}
+  // route line
+  cx.beginPath();WP.forEach((w,i)=>{const x=X(w[0]),y=Y(w[1]);i?cx.lineTo(x,y):cx.moveTo(x,y)});cx.strokeStyle=col("--ink2");cx.lineWidth=1.5;cx.setLineDash([4,4]);cx.stroke();cx.setLineDash([]);
+  // summit section highlight
+  cx.beginPath();cx.moveTo(X(FOOT),Y(altAt(FOOT)));cx.lineTo(X(2.85),Y(8790));cx.lineTo(X(TOPD),Y(8849));cx.strokeStyle=col("--rope");cx.lineWidth=3;cx.stroke();
+  cx.fillStyle=col("--ink");cx.font="600 12px system-ui";
+  WP.forEach((w,i)=>{const x=X(w[0]),y=Y(w[1]);cx.beginPath();cx.arc(x,y,3,0,7);cx.fill();
+    const lx=i===0?x+6:i===WP.length-1?x-6:x;cx.textAlign=i===0?"left":i===WP.length-1?"right":"center";cx.fillText(w[2],lx,i===3?y+22:y-12)});
+  drawSun(S.t);
+  cx.textAlign="left";cx.strokeStyle=col("--rope");cx.lineWidth=3;cx.beginPath();cx.moveTo(44,18);cx.lineTo(66,18);cx.stroke();cx.fillStyle=col("--ink2");cx.font="12px system-ui";cx.fillText(RW<560?"Summit section: one at a time":"Summit section: one person at a time on the fixed rope",72,22);
+}
+function drawDots(t){
+  if(!RUN||!RUN.P)return {};
+  const P=RUN.P,qU=[],qD=[],cnt={camp:0,up:0,wait:0,down:0,top:0,turned:0,home:0};
+  const pts=[];
+  for(const p of P){const s=state(p,t);
+    if(!s){if(t<p.dep)cnt.camp++;else cnt.home++;continue}
+    if(s[1]===2){(s[2]==="U"?qU:qD).push(p);cnt.wait++;continue}
+    pts.push([s[0],s[1],p]);
+    if(s[1]===1)cnt.up++;else if(s[1]===7)cnt.down++;else if(s[1]===4)cnt.top++;else if(s[1]===8)cnt.turned++}
+  const draw=(x,y,c,hollow,r=3.3)=>{cx.beginPath();cx.arc(x,y,r,0,7);if(hollow){cx.strokeStyle=c;cx.lineWidth=1.6;cx.stroke()}else{cx.fillStyle=c;cx.fill()}};
+  const cUp=col("--up"),cW=col("--wait"),cD=col("--down"),cT=col("--turn");
+  for(const [d,k,p] of pts){
+    if(k===4){const a=(p.team*2.4+(p.hired?1:0))%6.28,rr=4+(p.team%5)*1.6;draw(X(TOPD)+Math.cos(a)*rr,Y(8849)+Math.sin(a)*rr-4,cD);continue}
+    const side=(k===1)?1:-1,[x,y]=lane(d,side);draw(x,y,k===1?cUp:k===8?cT:cD,k===8)}
+  qU.sort((a,b)=>a.aF-b.aF).forEach((p,k)=>{const d=Math.max(0,FOOT-k*QSP),[x,y]=lane(d,1);draw(x,y,cW)});
+  qD.sort((a,b)=>a.dReq-b.dReq).forEach((p,k)=>{const d=Math.min(TOPD-0.05,FOOT+0.03+k*QSP),[x,y]=lane(d,-1);draw(x,y,cW)});
+  cx.fillStyle=cW;cx.font="600 13px system-ui";cx.textAlign="left";cx.fillText(RW<560?`Up queue ${qU.length} · Down queue ${qD.length}`:`Queue going up: ${qU.length}   ·   Queue coming down: ${qD.length}`,44,42);
+  return cnt;
+}
+let STRIP=null;
+function buildStrip(){
+  if(!RUN||!RUN.P){STRIP=null;return}
+  const t0=-5,t1=Math.max(RUN.tEnd,16),n=400,arr=new Float32Array(n);let mx=1;
+  for(let i=0;i<n;i++){const t=t0+(t1-t0)*i/(n-1);let w=0;for(const p of RUN.P){if(t>=p.aF&&t<(p.turned?p.tTurn:p.st))w++;else if(!p.turned&&t>=p.dReq&&t<p.dSt)w++}arr[i]=w;mx=Math.max(mx,w)}
+  STRIP={t0,t1,arr,mx};
+}
+function drawStrip(t){
+  sx.clearRect(0,0,SW,SH);if(!STRIP)return;const {t0,t1,arr,mx}=STRIP,x=tt=>40+(tt-t0)/(t1-t0)*(SW-50),y=v=>SH-18-v/mx*(SH-30);
+  sx.fillStyle=col("--muted");sx.font="10px "+col("--mono");
+  const stp=SW<560?4:2;for(let h=Math.ceil(t0/stp)*stp;h<=t1;h+=stp){sx.fillText(clk(h),x(h)-14,SH-4);sx.fillStyle=col("--rule");sx.fillRect(x(h),6,1,SH-24);sx.fillStyle=col("--muted")}
+  sx.fillStyle="rgba(60,80,110,.10)";sx.fillRect(x(Math.max(t0,SUNSET)),6,x(DAWN)-x(Math.max(t0,SUNSET)),SH-24);
+  sx.fillStyle="rgba(247,127,60,.18)";sx.fillRect(x(DAWN),6,x(SUNRISE)-x(DAWN),SH-24);
+  sx.fillStyle=col("--muted");sx.fillText("dark",x(Math.max(t0,SUNSET))+3,16);sx.fillText("sunrise",x(SUNRISE)+3,16);
+  sx.fillText(Math.round(mx),4,y(mx)+4);sx.fillText("0",4,y(0));
+  sx.beginPath();sx.moveTo(x(t0),y(0));for(let i=0;i<arr.length;i++)sx.lineTo(x(t0+(t1-t0)*i/(arr.length-1)),y(arr[i]));sx.lineTo(x(t1),y(0));sx.closePath();
+  sx.fillStyle=col("--wait");sx.globalAlpha=.25;sx.fill();sx.globalAlpha=1;sx.strokeStyle=col("--wait");sx.lineWidth=1.5;sx.stroke();
+  if(S.cut!=null){sx.fillStyle=col("--ink2");sx.fillRect(x(S.cut),6,1.5,SH-24);sx.fillText("turnaround",x(S.cut)+3,14)}
+  sx.fillStyle=col("--ink");sx.fillRect(x(t)-1,4,2,SH-20);
+}
+
+/* ---------- panels ---------- */
+const fmtMin=v=>v==null?"—":v<90?Math.round(v)+" min":(v/60).toFixed(1)+" h";
+function drawAll(){
+  if(!RW)return;drawRoute();const cnt=drawDots(S.t)||{};drawStrip(S.t);
+  document.getElementById("clock").textContent=clk(S.t);
+  const N=RUN?RUN.N:0;
+
+  const tEnd=RUN?RUN.tEnd:0, lo=-5, hi=Math.max(tEnd,16);document.getElementById("scrub").value=Math.round((S.t-lo)/(hi-lo)*1000);
+  // comparison table
+  const e=EXP?summary(EXP):{},a=RUN&&RUN.P?summary(RUN,S.t>=tEnd?null:S.t):{},af=RUN&&RUN.P?summary(RUN):{};
+  const dSo=a.deaths||0,dDay=af.deaths||0;
+  document.getElementById("now").innerHTML=[["At Camp 4, not yet left",cnt.camp||0],["Going up",cnt.up||0],["Waiting now",cnt.wait||0],["On top or coming down",(cnt.down||0)+(cnt.top||0)],["Turned back",cnt.turned||0]].map(([l,v])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")
+    +(()=>{const n=RUN&&RUN.N||0,h=n*HIST.desc/1000,diff=h>0?(dDay/h-1)*100:0,tag=n?(Math.abs(diff)<5?"about average":diff>0?`▲ ${Math.round(diff)}% worse`:`▼ ${Math.round(-diff)}% better`):"";
+      return `<div class="dead"><b>${dSo.toFixed(2)}</b><span>Deaths today, expected${S.t>=tEnd?"":` so far (${dDay.toFixed(2)} by end)`}${n?`<br>1990–2025 average: ${h.toFixed(2)} · <b style="display:inline;font:600 12px system-ui;color:inherit">${tag}</b>`:""}</span></div>`})();
+  const done=S.t>=tEnd;
+  const rows=[
+   ["Slowest tenth waited (90th pct)",fmtMin(e.p90),fmtMin(a.p90)],
+   ["Longest wait",fmtMin(e.max),fmtMin(a.max)],
+   ["Summits",e.summits??"—",a.summits??"—"],
+   ["Summits in the dark (before 04:24) / at first light (04:24–04:52)",e.summits!=null?`${e.dark} / ${e.twi}`:"—",a.summits!=null?`${a.dark} / ${a.twi}`:"—"],
+   ["Summits after 11:00",e.summits?`${e.late} (${Math.round(e.late/Math.max(1,e.summits)*100)}%)`:"—",a.summits!=null?`${a.late}`:"—"],
+   ["Turned back",e.turned??"—",a.turned??"—"],
+   ["Last summit = turnaround needed for everyone to summit",e.last!=null?clk(e.last):"—",a.last!=null?clk(a.last):"—"],
+   ["Expected deaths on the way down that day (total)",e.deaths!=null?e.deaths.toFixed(2):"—",a.deaths!=null?a.deaths.toFixed(2):"—"],
+   ["Risk per climber: deaths per 1,000 who start up",e.per1000!=null?e.per1000.toFixed(1):"—",done&&af.per1000!=null?af.per1000.toFixed(1):(a.per1000so!=null?a.per1000so.toFixed(1)+" so far":"—")],
+   ["Compared with a quiet day (10 clients, typical departure times)",REF&&e.per1000?"×"+(e.per1000/REF).toFixed(2):"—",REF&&done&&af.per1000?"×"+(af.per1000/REF).toFixed(2):"—"]];
+  document.getElementById("cmp").innerHTML=`<thead><tr><th></th><th>Expected (before the day)</th><th>This run${done?"":" (so far, "+clk(S.t)+")"}</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${r[0]}</td><td class="${i>=6&&i<=8?"hl":""}">${r[1]}</td><td class="${i>=6&&i<=8?"hl":""}">${r[2]}</td></tr>`).join("")}</tbody>`;
+  {const n=RUN&&RUN.N||0,mm=e.per1000||0;
+   document.getElementById("hist").innerHTML=`<thead><tr><th>History check, Everest South Col 1990–2025</th><th>Per 1,000</th><th>For ${n} people</th><th>This day’s model</th></tr></thead><tbody>
+   <tr><td>Died on the way down after a summit bid (what the model counts)</td><td>${HIST.desc.toFixed(1)}</td><td>${(n*HIST.desc/1000).toFixed(2)}</td><td class="hl">${mm.toFixed(1)} per 1,000 · ${(e.deaths||0).toFixed(2)}</td></tr>
+   <tr><td>Died on summit day, going up or coming down</td><td>${HIST.sday.toFixed(1)}</td><td>${(n*HIST.sday/1000).toFixed(2)}</td><td>—</td></tr>
+   <tr><td>Died of any cause on the expedition (avalanche, icefall, illness, falls…)</td><td>${HIST.any.toFixed(1)}</td><td>${(n*HIST.any/1000).toFixed(2)}</td><td>—</td></tr></tbody>`;}
+  document.getElementById("cmpNote").textContent="Expected: the same day with every climber at the typical pace and no randomness. This run: climbers move at their own pace (it changes with “New run”). Each climber’s risk comes from their own summit hour (later is riskier) and role, so the per-1,000 rate already rewards early, uncrowded days. The total is that rate times the number of people. Both are modeled expectations from the study’s risk model, not a prediction for any person. The model gives no extra risk for summiting in the dark: on Everest since 2010, none of the 839 climbers who summited before sunrise died on the way down.";
+}
+function derived(){
+  const N=Math.round(S.clients*S.ratio),staff=N-S.clients;
+  let h=`<div>${S.clients} clients + ${staff} staff = <b>${N} on the rope</b></div>`;
+  if(RUN&&RUN.P&&S.mode==="booked")h+=`<div>Departures ${clk(S.start)} to ${clk(RUN.lastDep)} (${((RUN.lastDep-(S.start-24))).toFixed(1)} h)</div>`;
+  if(S.mode==="free")h+=`<div>Teams leave at times drawn from 246 recorded South Col departures (18:00–03:00)</div>`;
+  if(N>250)h+=`<div class="warn">Beyond the busiest recorded day (241 on the rope, 23 May 2019). Results are an extrapolation.</div>`;
+  document.getElementById("derived").innerHTML=h;
+}
+function recompute(){
+  const o={...S};RUN=simulate(o,S.seed,false);EXP=simulate(o,S.seed,true);
+  const r=simulate({...o,clients:10,ratio:2.27,mode:"free",cut:null},S.seed,true);REF=r.P?summary(r).per1000:null;
+  buildStrip();derived();S.t=Math.min(S.t,RUN.tEnd||16);drawAll();
+}
+
+/* ---------- controls ---------- */
+const $=id=>document.getElementById(id);
+function segBind(id,fn){$(id).querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{$(id).querySelectorAll("button").forEach(o=>o.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");fn(b.dataset.v)}))}
+$("clients").addEventListener("input",e=>{S.clients=+e.target.value;$("clientsV").textContent=S.clients;ratioLabel();recompute()});
+function ratioLabel(){$("ratioV").textContent=`${Math.round(S.clients*S.ratio)} (${S.ratio.toFixed(2)}×${Math.abs(S.ratio-2.27)<0.005?", historical":""})`}
+$("ratio").addEventListener("input",e=>{S.ratio=+e.target.value;ratioLabel();recompute()});
+$("start").addEventListener("input",e=>{S.start=+e.target.value;$("startV").textContent=clk(S.start);recompute()});
+$("gap").addEventListener("input",e=>{S.gap=+e.target.value;S.gapAuto=Math.abs(S.gap-2)<0.05;$("gapAuto").setAttribute("aria-pressed",String(S.gapAuto));$("gapV").textContent=S.gap.toFixed(1)+(S.gapAuto?" (auto)":"");recompute()});
+$("gapAuto").addEventListener("click",()=>{S.gap=2;$("gap").value=2;S.gapAuto=true;$("gapAuto").setAttribute("aria-pressed","true");$("gapV").textContent="2.0 (auto)";recompute()});
+[["dm-b","booked"],["dm-f","free"]].forEach(([id,v])=>$(id).addEventListener("click",()=>{S.mode=v;$("dm-b").setAttribute("aria-pressed",String(v==="booked"));$("dm-f").setAttribute("aria-pressed",String(v==="free"));$("startCtl").style.opacity=$("gapCtl").style.opacity=v==="booked"?1:.4;recompute()}));
+segBind("cutSeg",v=>{S.cut=v==="none"?null:+v;recompute()});
+segBind("ropeSeg",v=>{S.rope=v;recompute()});
+segBind("calSeg",v=>{S.cal=v;recompute()});
+segBind("spdSeg",v=>{S.speed=+v});
+$("rerun").addEventListener("click",()=>{S.seed=(S.seed*7919+13)%100000;recompute()});
+$("reset").addEventListener("click",()=>{S.t=-5;S.playing=false;$("play").textContent="▶ Play";$("play").setAttribute("aria-pressed","false");drawAll()});
+$("play").addEventListener("click",()=>{if(RUN&&S.t>=RUN.tEnd)S.t=-5;S.playing=!S.playing;$("play").textContent=S.playing?"❚❚ Pause":"▶ Play";$("play").setAttribute("aria-pressed",String(S.playing));last=performance.now()});
+$("scrub").addEventListener("input",e=>{const hi=Math.max(RUN?RUN.tEnd:16,16);S.t=-5+(hi+5)*e.target.value/1000;drawAll()});
+let last=performance.now();
+function tick(now){const dt=(now-last)/1000;last=now;
+  if(S.playing&&RUN){S.t+=dt*S.speed/3600;if(S.t>=RUN.tEnd){S.t=RUN.tEnd;S.playing=false;$("play").textContent="▶ Play";$("play").setAttribute("aria-pressed","false")}drawAll()}
+  requestAnimationFrame(tick)}
+window.addEventListener("resize",resize);
+ratioLabel();resize();recompute();requestAnimationFrame(tick);
+</script>
+</body>
+</html>

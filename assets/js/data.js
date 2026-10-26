@@ -264,7 +264,7 @@ const EXPEDITIONS = [
     "summary": "The Commercial Mountain: Everest went commercial in 1990. The Himalayan Database shows the death rate is way down, the body count isn’t, and more of the dead are Sherpas. With a side bar on K2.",
     "story": [
       "*Everest Base Camp from Kala Patthar. Photo: Goutam1962, CC BY-SA 4.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Everest_Base_Camp_from_Kala_Patther.jpg).*",
-      "*Part 2 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) puts the Sherpas front and center.*",
+      "*Part 2 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) puts the Sherpas front and center. [Part 6](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-6) tests the daily cap: how many climbers a day one rope can carry.*",
       "**Where We Left Off**",
       "In Part 1, I worked through the psychology of the summit: why people climb, and why some climb to their death. Along the way I found my enthusiasm for what’s happening on Everest is waning. In Part 2, I dig into that commercialization and its consequences, with a side bar on K2.",
       "**The Question**",
@@ -380,7 +380,7 @@ const EXPEDITIONS = [
     ],
     "facts": {
       "Type": "Journal note",
-      "Series": "Mountains · Part 2 of 5",
+      "Series": "Mountains · Part 2 of 6",
       "Data": "Himalayan Database, 1990–2025",
       "Photo": "Everest Base Camp · Goutam1962, CC BY-SA 4.0"
     },
@@ -406,6 +406,77 @@ const EXPEDITIONS = [
       [
         "Mountains, Part 5",
         "expedition.html?id=mountains-part-5"
+      ],
+      ["Mountains, Part 6", "expedition.html?id=mountains-part-6"]
+    ]
+  },
+  {
+    "id": "mountains-part-6",
+    "title": "Mountains, Part 6",
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "date": "2026-10-26",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "The Summit Clock: how many climbers a day one rope can carry. Late summits double the risk about every two hours, crowds are absorbed by earlier starts until about 200 on the rope, and the bottom line is about 150 people a day on Everest’s South Col (66–77 clients) with booked starts and an 11:00 turnaround. Part 4’s 75 a day holds up.",
+    "facts": {
+      "Type": "Journal note",
+      "Series": "Mountains · Part 6 of 6",
+      "Data": "Himalayan Database, 1990–2025",
+      "Analysis": "Independent, AI-assisted (Claude)",
+      "Graphic": "Summit Day Simulator (author)"
+    },
+    "cover": "assets/photos/mountains-part-6/summit-day-cover.jpg",
+    "photos": [],
+    "story": [
+      "*The Summit Day Simulator at 6:19am on a crowded day: about 300 people on Everest’s South Col rope, with the queues in red. Graphic: the author’s simulation.*",
+      "*Part 6 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on the climbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) puts the Sherpas front and center.*",
+      "> **About this analysis.** This is an independent analysis of the Himalayan Database. It isn’t affiliated with or endorsed by the Himalayan Database, and it hasn’t been peer reviewed. I directed it. The AI model Claude wrote and ran the code and drafted the report.",
+      "**Where We Left Off**",
+      "In Part 4, I proposed the Summit Slot with a cap of 75 climbers a day on Everest South. That number was a judgment call. Part 6 tests that number in analysis and a simulation.",
+      "The question for this analysis is how many people a specific mountain can handle without long waits at the bottlenecks, if they exist, and without late summits. Since late summits carry a greater risk of death on descent, I also wanted to know how departure times from high camp influence summits and turnarounds.",
+      "The full analysis, [The Summit Clock](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/summit-clock.html), and the interactive [Summit Day Simulator](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/summit-day-simulator.html) are linked here and below. This is the short version.",
+      "html:<div class=\"rpt\"> <p class=\"r-kicker\">Plain-language analysis · Himalayan Database 1990–2025</p> <h1>The Summit Clock: trafficability analysis on the rope</h1> <p class=\"r-byline\">How many climbers a day one fixed rope can carry, and what the summit clock does to the odds of getting down. Full study: <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"assets/docs/summit-clock.html\">The Summit Clock</a>. Interactive: <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"assets/docs/summit-day-simulator.html\">Summit Day Simulator</a>.</p> <div class=\"r-tldr\"><p><b>The short version</b></p><ol> <li><b>Bottom line: about 150 people a day on Everest’s South Col rope, 175 at most.</b> That is 66–77 clients a day, with booked start times and a hard 11:00 turnaround. Part 4 proposed 75 climbers a day (about 165 people with staff); that number holds up.</li> <li><b>The summit clock is the biggest risk you control.</b> Each hour later on top raises the odds of dying on the way down by about 37%, so the risk doubles roughly every two hours. Climbers who got down alive summited at a median of 8:30am; those who died descending, at 12:40pm.</li> <li><b>“Be on top by 1pm” is too late.</b> On the South Col, 95% of clients are already on top by 11:40. The few who summit after 1pm die on the descent about seven times as often as those on top before 11.</li> <li><b>Crowds haven’t made summits later yet. Teams pay for them by leaving earlier.</b> On days with more than 150 people on the rope, teams leave the South Col about an hour earlier and climb longer in the dark and cold to reach the top at the same time.</li> <li><b>The rope has a speed limit.</b> On the busiest well-recorded days, the summit took about 29 people an hour with traffic going both ways. Above about 200 people on one rope, the line backs up fast.</li> <li><b>Enforcing the turnaround roughly halves the modeled deaths.</b> Booked start times keep 99% of climbers summiting. A second, one-way rope on the summit ridge more than doubles capacity.</li> <li><b>How people die depends on the mountain.</b> Altitude illness and exhaustion lead on Everest, Lhotse and Makalu. Falls lead on Kangchenjunga, Cho Oyu and Dhaulagiri. Avalanches lead on Annapurna and kill mostly lower down, away from summit day.</li> </ol></div> <h2>The data</h2> <div class=\"r-stats\"><div class=\"r-stat\"><div class=\"r-big\">25,502</div>summits of the eight Nepal 8,000ers, 1990–2025</div><div class=\"r-stat\"><div class=\"r-big\">19,155</div>with a recorded summit time</div><div class=\"r-stat\"><div class=\"r-big\">152</div>climbers who died on the way down after summiting</div></div> <p>The source is the Himalayan Database (Autumn–Winter 2025 update), covering the eight Nepal 8,000 m peaks from 1990 through 2025. Times are Nepal time.</p> <p>The database has no field for when a team left high camp. Elizabeth Hawley’s expedition notes often record it, though (“left C4 at 9:00 pm on 20 May”). Those times were pulled from the notes for 1,431 expeditions and checked by hand; about 97% read correctly.</p> <h2>The simulation</h2> <p>Based on this data, I had Claude create a simulation. By changing the number of clients, the ratio of staff per climber, departure times, the turnaround time, the ropes on the summit section and the rope speed, it calculates the death rate and how many people summit and how many turn around. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"assets/docs/summit-day-simulator.html\">Open the Summit Day Simulator</a>.</p> <figure class=\"r-fig\"><img src=\"assets/photos/mountains-part-6/p6-simulator.png\" alt=\"Summit Day Simulator controls and route view\" loading=\"lazy\"><figcaption>The Summit Day Simulator: 100 clients (227 on the rope) leaving Camp 4 from 7:30pm, shown at 6:03am. Yellow going up, red waiting at the summit section, green coming down.</figcaption></figure> <figure class=\"r-fig\"><img src=\"assets/photos/mountains-part-6/p6-sim-results.png\" alt=\"Summit Day Simulator results table\" loading=\"lazy\"><figcaption>The results for the same day: expected waits, late summits, the turnaround needed for everyone to summit, expected deaths, and a check against the 1990–2025 record.</figcaption></figure> <h2>1. The later the summit, the deadlier the descent</h2> <div class=\"r-tablewrap\"><table> <caption>Deaths on the way down per 1,000 summits, by summit time <span>· eight 8,000 m peaks, 1990–2025, everyone included</span></caption> <thead><tr><th>Reached the summit</th><th>Summits</th><th>Died descending</th><th>Per 1,000</th></tr></thead> <tbody><tr><td>Before 6am</td><td>2,872</td><td>1</td><td>0.3</td></tr><tr><td>6–8am</td><td>5,185</td><td>8</td><td>1.5</td></tr><tr><td>8–10am</td><td>4,703</td><td>15</td><td>3.2</td></tr><tr><td>10am–noon</td><td>3,259</td><td>30</td><td>9.2</td></tr><tr><td>Noon–2pm</td><td>1,620</td><td>25</td><td>15.4</td></tr><tr><td>After 2pm</td><td class=\"r-hl\">1,530</td><td class=\"r-hl\">50</td><td class=\"r-hl\">32.7</td></tr></tbody></table></div> <p>There is no cliff at noon. The risk climbs steadily from first light on. Comparing like with like (same peak, year, age, sex, oxygen use and role), each hour later raises the odds by about 37%. That holds before and after 2010, for clients alone, on Everest alone and on every peak; no mountain is more forgiving of a late summit than another. A 2008 study of Everest deaths found the same pattern: survivors summited around 9 to 10am, those who died around 1 to 2pm.</p> <p>A late summit is partly a sign of a climber already in trouble: slow, cold, short of oxygen or getting sick. That is exactly why a fixed turnaround works. It catches the climber whose pace is already the warning.</p> <h2>2. When teams leave, and when to be on top</h2> <div class=\"r-tablewrap\"><table> <caption>The summit day by route <span>· “Be on top by” is the earlier of a daylight limit and a risk limit</span></caption> <thead><tr><th>Route</th><th>Leave high camp</th><th>Push</th><th>Typical summit since 2010</th><th>Be on top by</th><th>Leading cause, summit-day deaths</th></tr></thead> <tbody><tr><td>Everest, South Col</td><td class=\"r-hl\">9:20pm</td><td class=\"r-hl\">10.5&nbsp;h</td><td class=\"r-hl\">7:30am</td><td class=\"r-hl\">10:45am</td><td class=\"r-hl\">Altitude/exhaustion (44 of 70)</td></tr><tr><td>Everest, North Ridge</td><td>11:00pm</td><td>8.5&nbsp;h</td><td>6:30am</td><td>9:15am</td><td>Altitude/exhaustion (31 of 56)</td></tr><tr><td>Kangchenjunga</td><td>8:45pm</td><td>12&nbsp;h</td><td>8:00am</td><td>9:15am</td><td>Fall (13 of 23)</td></tr><tr><td>Lhotse</td><td>1:15am</td><td>8.5&nbsp;h</td><td>8:40am</td><td>12:45pm</td><td>Altitude/exhaustion (9 of 14)</td></tr><tr><td>Makalu</td><td>12:45am</td><td>11.3&nbsp;h</td><td>8:45am</td><td>9:30am</td><td>Altitude/exhaustion (10 of 24)</td></tr><tr><td>Cho Oyu</td><td>1:45am</td><td>8&nbsp;h</td><td>9:00am</td><td>10:45am</td><td>Fall (10 of 20)</td></tr><tr><td>Dhaulagiri I</td><td>3:00am</td><td>11.3&nbsp;h</td><td>11:30am</td><td>10:00am</td><td>Fall (19 of 27)</td></tr><tr><td>Manaslu</td><td>2:25am</td><td>6.5&nbsp;h</td><td>8:00am</td><td>12:45pm</td><td>Fall (11 of 25)</td></tr><tr><td>Annapurna I</td><td>1:30am</td><td>10.8&nbsp;h</td><td>11:40am</td><td>10:45am</td><td>Fall (5 of 13)</td></tr></tbody></table></div> <p class=\"r-note\">Daylight limit: sunset at high camp on a typical summit date, minus the slow (75th-percentile) descent time back to high camp, minus an hour of margin. Risk limit: the hour when the modeled risk for a typical 40-year-old client on oxygen reaches 10 deaths per 1,000. Leading cause counts deaths on summit day only, going up or coming down, since 1990.</p> <p>Leaving earlier gets you to the top earlier on almost every route; it is the one lever a team fully controls. Dhaulagiri and Annapurna stand out: their typical summit since 2010 is still close to noon, later than their be-on-top-by time.</p> <figure class=\"r-fig\"><img src=\"assets/photos/mountains-part-6/p6-camp-profile.png\" alt=\"Everest South Col camp profile with departure times and deaths by altitude\" loading=\"lazy\"><figcaption><b>Figure 1</b> Everest South Col, camp by camp: when teams leave each camp, when they top out, and where people have died since 1990, with the leading recorded causes in each stretch. The interactive version in <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"assets/docs/summit-clock.html\">The Summit Clock</a> covers all nine routes.</figcaption></figure> <h2>3. The 1pm rule, and the turnaround climbers actually use</h2> <p>“Be on top by 1pm” is the rule most often quoted. On the South Col since 2010, clients beat it easily: 90% summit by 11:00 and 95% by 11:40. In practice, most teams turn around at about 11:30 to noon. A small tail ignores any rule: 3.4% of clients summit after 1pm.</p> <div class=\"r-tablewrap\"><table> <caption>Everest South Col, 2010–2025 <span>· deaths on the way down after summiting</span></caption> <thead><tr><th>Reached the summit</th><th>Summits</th><th>Died descending</th><th>Per 1,000</th></tr></thead> <tbody><tr><td>Before 11am</td><td>4,450</td><td>12</td><td>2.7</td></tr><tr><td>11am–noon</td><td>305</td><td>5</td><td>16</td></tr><tr><td>After noon</td><td class=\"r-hl\">332</td><td class=\"r-hl\">6</td><td class=\"r-hl\">18</td></tr></tbody></table></div> <p>The 6.5% of South Col summits made after noon account for about a quarter of the deaths on the way down. Turning back costs far less: across all eight peaks, climbers who turned back for weather, conditions or the clock died on the descent at 4.6 per 1,000, and on the South Col none of 617 did. In May 2026, one of the two climbers who died descending reached the top at about 5:30pm, nearly seven hours past the South Col’s be-on-top-by time. He died near the Hillary Step on the way down.</p> <h2>4. What a crowded day does to the clock</h2> <p>A simple look says crowds don’t matter: the busiest Everest days have summit times as early as quiet ones, and daily crowd size shows no clear link to deaths. That matches a 2020 study that counted 396 summit bids on Everest on 23 May 2019 and found no crowding effect on deaths. But the busiest days are also the best-weather days with full support, and the quietest days are small teams, climbers without oxygen and pushes in poor windows. That hides the effect.</p> <p>The departure times show what is really happening. On days with more than 150 people on the South Col rope, teams leave about an hour earlier (8:23pm against 9:25pm) and climb about half an hour longer, reaching the top at the same time. On the North Ridge, every extra 100 people adds about an hour and a half to the climb. The queue is paid for in hours spent in the dark and cold, burning oxygen, not in a later summit. So far, the busiest days have stayed just below the point where leaving earlier stops working.</p> <h2>5. The rope’s speed limit</h2> <p>The summit ridge on the South Col route is one fixed rope used in both directions, with one person at a time over the steep step below the top. On the busiest well-recorded days (2016 and 2019), the summit took about 29 people an hour on average and about 60 in the peak hour. That gives a simple rule:</p> <div class=\"r-callout\"><p style=\"margin:0\"><b>People a day ≈ people per hour the rope can pass × hours in the summit window.</b> About 29 an hour, over a window from roughly 3:30am to the 11:00 turnaround, is about 220 people.</p></div> <p>A simulation of the summit day, tuned to the 2016 and 2019 record days, shows what happens as more people go up. It uses today’s mix of departure times and no enforced turnaround. Clients are about 44% of everyone on the rope on busy days.</p> <div class=\"r-tablewrap\"><table> <caption>One two-way rope, today’s departures, no enforced turnaround <span>· simulated, range across two calibrations</span></caption> <thead><tr><th>People on the rope</th><th>Clients (44%)</th><th>Slowest tenth waits</th><th>Summit after 11am</th><th>Risk on the way down</th></tr></thead> <tbody><tr><td>150</td><td>66</td><td>10–26 min</td><td>7–9%</td><td>about normal</td></tr><tr><td>200</td><td>88</td><td>43–73 min</td><td>about 10%</td><td>+6–9%</td></tr><tr><td>250</td><td>110</td><td>1.5–2.2 h</td><td>15–17%</td><td>+14–36%</td></tr><tr><td>300</td><td class=\"r-hl\">132</td><td class=\"r-hl\">2.3–3.2 h</td><td class=\"r-hl\">22–24%</td><td class=\"r-hl\">+30–69%</td></tr><tr><td>350</td><td class=\"r-hl\">154</td><td class=\"r-hl\">3.2–4.2 h</td><td class=\"r-hl\">27–30%</td><td class=\"r-hl\">+61–117%</td></tr></tbody></table></div> <p>Below about 150 people the rope barely notices. Between 200 and 250 the waits turn from minutes to hours. The risk column counts only the effect of later summits; the cold, exhaustion and oxygen burned while standing in line would add to it. Two record days fit the pattern: 19 May 2012 (199 on the South Col rope, four deaths and waits of up to two hours at the Hillary Step) and 20 May 2026 (about 270 summits, so roughly 300 on the rope).</p> <figure class=\"r-fig\"><img src=\"assets/photos/mountains-part-6/p6-sim-frame.png\" alt=\"Simulator frame with about 300 people on the rope\" loading=\"lazy\"><figcaption><b>Figure 2</b> One frame from the Summit Day Simulator: about 300 people on the rope with today’s free-for-all departures, 6:19am. Yellow going up, red waiting at the summit section, green coming down. The strip below shows how many people are waiting across the whole day.</figcaption></figure> <h2>6. A cap, a clock and booked start times</h2> <p>The simulation was then run with three changes: a turnaround that is actually enforced (anyone who can’t make the top in time turns back), booked start times spread evenly from 7pm to 11pm, and a limit that the slowest tenth of climbers waits no more than an hour at the summit section, about a quarter bottle of oxygen.</p> <div class=\"r-tablewrap\"><table> <caption>Most people a day on the Everest South Col rope <span>· simulated</span></caption> <thead><tr><th>Setup</th><th>People on the rope</th><th>Clients</th><th>Deaths on the way down per 1,000 who start up</th><th>Reach the summit</th></tr></thead> <tbody><tr><td>Today: free starts, no enforced turnaround, same numbers</td><td>150–175</td><td>66–77</td><td>3.0–3.6</td><td>100%</td></tr><tr><td>1pm turnaround, free starts</td><td>175–200</td><td>77–88</td><td>1.9–2.2</td><td>96%</td></tr><tr><td>11:00 turnaround, booked starts 7–11pm</td><td class=\"r-hl\">150–175</td><td class=\"r-hl\">66–77</td><td class=\"r-hl\">1.7–1.9</td><td class=\"r-hl\">99%</td></tr><tr><td>Same, slowest tenth waits 30 min at most</td><td>125–150</td><td>55–66</td><td>1.5–1.8</td><td>99%</td></tr><tr><td>Separate up and down ropes, 11:00 turnaround</td><td>425–450+</td><td>187–198+</td><td>1.6–2.0</td><td>99%</td></tr></tbody></table></div> <p>Enforcing the turnaround does most of the work: it roughly halves the modeled deaths. Booked start times keep almost everyone summiting, because nobody starts late. A second rope is the only change that raises the number of people the day can safely carry.</p> <figure class=\"r-fig\"><img src=\"assets/photos/mountains-part-6/p6-turnaround.png\" alt=\"Turnaround rules against daily load\" loading=\"lazy\"><figcaption><b>Figure 3</b> Turnaround rules against the daily load on one two-way rope with today’s departures. Left: deaths on the way down per 1,000 who start up. Middle: share who reach the summit. Right: how long the slowest tenth waits. Numbers in brackets on the axis are clients.</figcaption></figure> <h2>7. From a daily cap to a season</h2> <p>A daily cap turns the summit push into a fixed number of seats per weather window instead of a rush on the first good day. Since 2010, normal Everest seasons have had 4 to 9 days with at least 20 summits on the South Col, 7 in a typical year.</p> <div class=\"r-tablewrap\"><table> <caption>Clients a season the South Col can carry at 66–77 a day</caption> <thead><tr><th>Season</th><th>Usable summit days</th><th>One rope</th><th>Separate up and down ropes</th></tr></thead> <tbody><tr><td>Poor</td><td>5</td><td>330–385</td><td>825–990</td></tr><tr><td>Typical</td><td class=\"r-hl\">7</td><td class=\"r-hl\">462–539</td><td class=\"r-hl\">1,155–1,386</td></tr><tr><td>Good</td><td>8</td><td>528–616</td><td>1,320–1,584</td></tr></tbody></table></div> <p>Part 4’s 360 tags a season at 75 a day plans for a poor season, which is the safe choice. Nepal issued 495 Everest permits in 2026. That fits a typical season, but only if the climbers are spread out. In an average season since 2010, the three busiest days carried about two-thirds of all summits. In 2026, about 80% of the 1,008 summits from Nepal came in ten days, and 274 people summited on 20 May alone.</p> <div class=\"r-callout\"><p style=\"margin:0\"><b>The bottom line on climbers per day.</b> Plan on 150 people on the South Col rope per summit day, about 66 clients. Go to 175 (77 clients) only with booked start times and an 11:00 turnaround enforced at the high-camp gate. Above about 200 on one rope, the day becomes a queue. A second, one-way rope on the summit ridge is what it takes to go higher.</p></div> </div>",
+      "**What It Means**",
+      "Take all this for what it’s worth. A guide can’t control the client if they refuse to turn around, they can’t control altitude sickness and they can’t stop a person from falling or an avalanche. What can be controlled is the number of people allowed to climb per day and summit time. With all other things being equal, getting off the mountain increases survivability for all. The simulation also doesn’t account for experienced climbers taking more risks against the uncertain certainties of avalanche danger when conditions are right, pushes into non-optimal weather, no O2, and climbs with minimal support, or rescues and other issues with equipment and ropes.",
+      "The number of climbers then is the condition to change, as well as enforcing turnaround times. While Nepal may not wish to limit the number of permits, the mountain can only handle so many people at a time on the same route with one shared rope. Other changes would have to happen to increase traffic safely.",
+      "I’ll also add that the use of helicopters and drones has a role as well. They can reduce the logistical load on the Sherpas and increase the tons of rope on the mountain if that’s the answer. All will need to be ready to accept that change to increase the revenue stream through royalties and fees, and in turn more income for the Nepali people. I’ll leave it there. My arguments just touch on the surface of the issues and can easily be debated.",
+      "html:<div class=\"rpt\"> <h2>What could change these conclusions</h2><ul> <li><b>Lateness is partly a symptom.</b> A late summit often reflects a climber already in trouble, so the 37% per hour is a link, not proof that the clock alone kills.</li> <li><b>A quarter of summits have no recorded time,</b> and times bunch on the hour and half-hour.</li> <li><b>Departure times come from written notes.</b> Hand checks found about 97% read correctly.</li> <li><b>The simulation is simple.</b> It has one bottleneck, no weather and no rescues, and gives night hours and cold no cost beyond the waiting limit. Turned-back climbers are given the all-peak turnback death rate. It is for comparing rules, not forecasting a given day.</li> <li><b>“Usable days”</b> count days with 20 or more summits, which reflects demand as well as weather.</li> <li><b>Spring 2026 is not yet in the database.</b> The 2026 figures come from news reports and will be checked when the database update is released.</li></ul> <h2>Sources</h2><ul> <li>Salisbury R, Hawley E, et al. The Himalayan Database, Autumn–Winter 2025 update. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://himalayandatabase.com\" target=\"_blank\" rel=\"noopener\">himalayandatabase.com</a></li> <li>Firth PG, et al. Mortality on Mount Everest, 1921–2006: descriptive study. BMJ 2008;337:a2654. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://himalayandatabase.org/downloads/Ever-BMJ1208.pdf\" target=\"_blank\" rel=\"noopener\">PDF</a></li> <li>Huey RB, Carroll C, Salisbury R, Wang J-L. Mountaineers on Mount Everest: effects of age, sex, experience, and crowding on rates of success and death. PLOS ONE 2020;15(8):e0236919. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC7449495\" target=\"_blank\" rel=\"noopener\">PMC7449495</a></li> <li>Arnette A. Everest 2019: 3 new deaths. 23 May 2019. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://www.alanarnette.com/2019/05/23/everest-2019-3-new-deaths-now-6-on-everest-15-overall/\" target=\"_blank\" rel=\"noopener\">alanarnette.com</a></li> <li>Arnette A. Everest 2026: season summary. 2 June 2026. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://www.alanarnette.com/2026/06/02/everest-2026-season-summary-records-crowds-trash-winds/\" target=\"_blank\" rel=\"noopener\">alanarnette.com</a></li> <li>Jenkins M. Maxed out on Everest. National Geographic, June 2013. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://www.nationalgeographic.com/magazine/article/maxed-out-everest\" target=\"_blank\" rel=\"noopener\">Link</a></li> <li>Kunwar S. Everest spring climbing season sets new record with 1,008 successful summits. The Kathmandu Post, 29 May 2026. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://kathmandupost.com/national/2026/05/29/everest-spring-climbing-season-sets-new-record-with-1-008-successful-summits\" target=\"_blank\" rel=\"noopener\">Link</a></li> <li>PTI. Two Indians die while descending from Everest summit, says official. ETV Bharat, 22 May 2026. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://www.etvbharat.com/en/international/two-indians-die-while-descending-from-everest-summit-says-official-enn26052202110\" target=\"_blank\" rel=\"noopener\">Link</a></li> <li>Gripped. Two climbers die descending from summit of Everest. 22 May 2026. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://gripped.com/news/two-climbers-die-descending-from-summit-of-everest/\" target=\"_blank\" rel=\"noopener\">Link</a></li> <li>AFP. Nepal court orders limit on Everest climbing permits. Phys.org, May 2024. <a style=\"color:var(--orange-dark);text-decoration:underline\" href=\"https://phys.org/news/2024-05-nepal-court-limit-everest-climbing.html\" target=\"_blank\" rel=\"noopener\">Link</a></li></ul> <footer>Data: The Himalayan Database (Autumn–Winter 2025 update, through 2025), with 2026 figures from news reports. Independent analysis, not affiliated with or endorsed by the Himalayan Database. Produced with AI (Claude) at Pat Brown’s direction.</footer></div>",
+      "*Full technical study: [The Summit Clock](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/summit-clock.html) (methods, models, calibration and all tables). Interactive: [Summit Day Simulator](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/summit-day-simulator.html).*"
+    ],
+    "links": [
+      [
+        "The Summit Clock (full report)",
+        "assets/docs/summit-clock.html"
+      ],
+      [
+        "Summit Day Simulator",
+        "assets/docs/summit-day-simulator.html"
+      ],
+      [
+        "Mountains, Part 1",
+        "expedition.html?id=mountains"
+      ],
+      [
+        "Mountains, Part 2",
+        "expedition.html?id=mountains-part-2"
+      ],
+      [
+        "Mountains, Part 3",
+        "expedition.html?id=mountains-part-3"
+      ],
+      [
+        "Mountains, Part 4",
+        "expedition.html?id=mountains-part-4"
+      ],
+      [
+        "Mountains, Part 5",
+        "expedition.html?id=mountains-part-5"
+      ],
+      [
+        "The Himalayan Database",
+        "https://www.himalayandatabase.com/"
       ]
     ]
   },
@@ -421,7 +492,7 @@ const EXPEDITIONS = [
     "summary": "The Other End of the Rope: the same numbers, with the Sherpa at the center. Per trip, as safe as a client. Per career, three times the risk, mostly low on the mountain in the Icefall. Plus drones, helicopters, fewer rotations and fair pay.",
     "story": [
       "*Sherpas carrying loads on the trail near Lobuche. Photo: Niklassletteland, CC BY-SA 3.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sherpas_on_the_Trail_Nearing_Lobuche,_Nepal.jpg).*",
-      "*Part 5 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on the climbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules.*",
+      "*Part 5 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on the climbers. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules. [Part 6](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-6) tests the daily cap: how many climbers a day one rope can carry.*",
       "> **About this analysis.** This is an independent analysis of the Himalayan Database. It isn’t affiliated with or endorsed by the Himalayan Database, and it hasn’t been peer reviewed. I directed it. The AI model Claude wrote and ran the code and drafted the report.",
       "**Where We Left Off**",
       "In Part 2, I asked whether it’s ethical to climb Everest, and I wrote this: “I can take the risk, but you’re putting the Sherpa at more risk than yourself.” More than a third of the people who have died on Everest were hired staff. They make many more trips through the Icefall than any client, they carry the loads, and when something goes wrong above 8,000 m, they’re the ones expected to save you.",
@@ -468,7 +539,7 @@ const EXPEDITIONS = [
     ],
     "facts": {
       "Type": "Journal note",
-      "Series": "Mountains · Part 5 of 5",
+      "Series": "Mountains · Part 5 of 6",
       "Data": "Himalayan Database, 1990–2025",
       "Analysis": "Independent, AI-assisted (Claude)",
       "Photo": "Sherpas near Lobuche · Niklassletteland, CC BY-SA 3.0"
@@ -499,7 +570,8 @@ const EXPEDITIONS = [
       [
         "Photo source (Wikimedia Commons)",
         "https://commons.wikimedia.org/wiki/File:Sherpas_on_the_Trail_Nearing_Lobuche,_Nepal.jpg"
-      ]
+      ],
+      ["Mountains, Part 6", "expedition.html?id=mountains-part-6"]
     ]
   },
 
@@ -515,7 +587,7 @@ const EXPEDITIONS = [
     "summary": "The 14 Peaks Access Rules, updated with the numbers: a qualification ladder to gate access, two lotteries, a hard summit clock, and five reasons it won’t happen by 2031.",
     "story": [
       "*K2, the Savage Mountain. Photo: Muhammadbinmasood, CC BY-SA 4.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Last_Light_on_the_King.jpg).*",
-      "*Part 4 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns to the Sherpas.*",
+      "*Part 4 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns to the Sherpas. [Part 6](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-6) tests this proposal’s daily cap against the record and a summit-day simulation.*",
       "**Where We Left Off**",
       "In Part 1, I explored the psychology of summiting the highest mountains and the commercialization of these conquests. In Part 2, I explored that commercialization and its consequences, with a side bar on K2. In Part 3, I extended a 2012 study of Himalayan survival through 2025. The number of expeditions didn’t lower a climber’s odds of dying. Having summited above 7,000 m before may, and an early summit clearly does.",
       "In Part 4, I propose changes to the permitting and prerequisites to summit these peaks, updated with what the numbers showed.",
@@ -590,6 +662,7 @@ const EXPEDITIONS = [
       "> **No exemptions for experience:** veterans get the same turnaround as everyone else. Experienced climbers who summit late die on the way down at about half the rate of inexperienced ones, but still at about five times the rate of anyone who summits early.",
       "> **Condition check at the high-camp gate:** anyone who needs help to move, or misses a pace checkpoint on the way up, turns back.",
       "> **Everest South:** 75 climbers a day (about 165 people including staff), 360 tags a season, down from 495 permits this year",
+      "> *Tested in [Part 6](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-6): the record and a summit-day simulation put the safe load on one South Col rope at about 150–175 people a day, 66–77 clients, with booked start times and an 11:00 turnaround. The 75-a-day cap holds up.*",
       "> **K2:** 35 climbers a day, 110 tags",
       "> **Island Peak and Lobuche East:** permits for a specific date against a daily cap. A lottery only kicks in when a date is overbooked by more than 20%.",
       "**Keeping the Himalayan Economy Whole**",
@@ -601,7 +674,7 @@ const EXPEDITIONS = [
     ],
     "facts": {
       "Type": "Journal note",
-      "Series": "Mountains · Part 4 of 5",
+      "Series": "Mountains · Part 4 of 6",
       "Version": "Access Rules v3.1 (24 Oct 2026)",
       "Photo": "K2 · Muhammadbinmasood, CC BY-SA 4.0"
     },
@@ -631,7 +704,8 @@ const EXPEDITIONS = [
       [
         "Mountains, Part 5",
         "expedition.html?id=mountains-part-5"
-      ]
+      ],
+      ["Mountains, Part 6", "expedition.html?id=mountains-part-6"]
     ]
   },
 
@@ -646,7 +720,7 @@ const EXPEDITIONS = [
     "crew": "Pat",
     "summary": "The Numbers: an independent, AI-assisted extension of a 2012 study of Himalayan survival, through 2025. Piling up expeditions doesn’t lower your odds of dying. Having been high before may, and commercial support and an early summit do.",
     "story": [
-      "*Part 3 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules, updated with these numbers. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns the numbers on the Sherpas.*",
+      "*Part 3 of the Mountains series. [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains) explores the psychology of the summit. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) covers the commercialization and its consequences. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules, updated with these numbers. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns the numbers on the Sherpas. [Part 6](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-6) puts the summit clock and the crowds on the rope to the test.*",
       "> **About this analysis.** This is an independent analysis. It isn’t affiliated with or endorsed by the authors of the 2012 study, the BMJ or the Himalayan Database, and it hasn’t been peer reviewed. I directed it. The AI model Claude wrote and ran the code and drafted both reports. The full disclaimer is at the start of the technical report below.",
       "**Where We Left Off**",
       "In Part 2, I pointed to a 2012 study in the BMJ that found more experience didn’t change a climber’s odds of dying, and that guided climbs weren’t more dangerous. That cuts against part of my case for experience requirements. Before putting my proposal on the table, I wanted to know whether it still holds with fifteen more years of data, and what actually made the mountains safer.",
@@ -659,7 +733,7 @@ const EXPEDITIONS = [
     ],
     "facts": {
       "Type": "Journal note",
-      "Series": "Mountains · Part 3 of 5",
+      "Series": "Mountains · Part 3 of 6",
       "Data": "Himalayan Database, 1970–2025",
       "Analysis": "Independent, AI-assisted (Claude)"
     },
@@ -693,7 +767,8 @@ const EXPEDITIONS = [
       [
         "Mountains, Part 5",
         "expedition.html?id=mountains-part-5"
-      ]
+      ],
+      ["Mountains, Part 6", "expedition.html?id=mountains-part-6"]
     ]
   },
 
@@ -706,10 +781,10 @@ const EXPEDITIONS = [
     date: "2026-10-20",
     rating: null,
     crew: "Pat",
-    summary: "Part 1 of 5. The psychology of the summit: Shishapangma, Nims, Everest's queues and a pilot's root-cause lens, then my own turnaround rules for the 14ers and Lobuche East.",
+    summary: "Part 1 of 6. The psychology of the summit: Shishapangma, Nims, Everest's queues and a pilot's root-cause lens, then my own turnaround rules for the 14ers and Lobuche East.",
     story: [
       "*Lobuche East*",
-      "*Part 1 of a five-part series. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) follows the money: the commercialization of the 8,000 m peaks and its consequences, with a side bar on K2. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on what keeps climbers alive. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns to the Sherpas who make the climbs possible.*",
+      "*Part 1 of a six-part series. [Part 2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-2) follows the money: the commercialization of the 8,000 m peaks and its consequences, with a side bar on K2. [Part 3](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-3) runs the numbers on what keeps climbers alive. [Part 4](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-4) proposes a fix: the 14 Peaks Access Rules. [Part 5](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-5) turns to the Sherpas who make the climbs possible. [Part 6](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-6) asks how many climbers a day one rope can carry.*",
       "**Prologue**",
       "Himalayan treks are very accessible. Even summiting an “easy” 6,000 m mountain can be done with very little alpine mountaineering experience. Moderate fitness and the ability to carry at least 15 pounds for 15 days, with 5- to 8-hour days, probably matter more. A typical trek and summit starts in Kathmandu. An 11-hour flight from Denver to Istanbul with a connection to Kathmandu will get you there. Meet up with the expedition company, do a gear check, and rent what you don’t have or buy it from the plentiful shops. Then a helicopter or plane to Lukla to start the trek.",
       "From there it’s 5- to 7-hour days of trekking, with a day at Namche Bazaar for a 3-hour acclimatization climb to 3,880 m, then more 5- to 7-hour days. Nights are in tea houses, sometimes with a hot shower. Rest days and skills training follow, and by day 10 you’re at the precipice of summit day. Summit Lobuche Peak at 6,118 m (20,072 feet), descend to the helicopter meeting point, and fly back to Lukla or Kathmandu. One more day in Kathmandu before the trip home. ([Namas Adventures](https://www.namasadventure.com/climb-lobuche-peak))",
@@ -818,7 +893,7 @@ const EXPEDITIONS = [
 ],
     facts: {
       "Type": "Journal note",
-      "Series": "Mountains · Part 1 of 5",
+      "Series": "Mountains · Part 1 of 6",
       "Companion to": "It's Not About the Plan · Overcoming Adversity · Enough",
       "Photo": "Lobuche East"
     },
@@ -872,7 +947,8 @@ const EXPEDITIONS = [
       [
             "Everest queue video (Facebook)",
             "https://www.facebook.com/watch/?v=1161631609104154"
-    ]
+    ],
+      ["Mountains, Part 6", "expedition.html?id=mountains-part-6"]
 ]
   },
   {
