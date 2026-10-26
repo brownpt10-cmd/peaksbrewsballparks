@@ -109,6 +109,7 @@ const EXPEDITIONS = [
       "Others followed, but SST is still the big dog, with 36% of all Annapurna summits since 1990.",
       "**Give and Take**",
       "The proverb still holds. Annapurna gives a lot more now: 259 summits in five spring seasons. But somebody still pays. 12 of its 35 deaths since 1990 were hired staff, most of them in avalanches while fixing the route everyone else clips into. The clients get the giving. The Sherpas stand closest to the taking.",
+      "In [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains), I called it feeding the mountain people who don’t understand the risks. On Annapurna, the commercial model actually slowed the feeding: 22 deaths in 1990–2009, 3 since 2020. But look at who it’s still taking. Two of those three were Nepali staff, caught in an avalanche while working the route.",
       "**Bottom Line**",
       "Annapurna didn’t get easier. It got fixed ropes, bottled oxygen and a weather report, put there by Nepali crews. Western guides proved the model on Everest, so give them an assist. But if you stand on top of Annapurna today, it’s because a Sherpa got there first, tied off the rope, and took the risk so you could take the summit.",
       "Full numbers: the [Annapurna I Peak Report](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/peak-reports/ann1-annapurna-i.html).",
