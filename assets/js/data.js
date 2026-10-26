@@ -455,6 +455,14 @@ const EXPEDITIONS = [
         "assets/docs/summit-day-simulator.html"
       ],
       [
+        "Ama Dablam Summit Clock (report)",
+        "assets/docs/ama-dablam-summit-clock.html"
+      ],
+      [
+        "Ama Dablam Summit Day Simulator (with 28 Oct forecast)",
+        "assets/docs/ama-dablam-simulator.html"
+      ],
+      [
         "Mountains, Part 1",
         "expedition.html?id=mountains"
       ],

@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ama Dablam Summit Day</title>
+<style>
+:root{
+  --bg:#f5f7f8; --panel:#ffffff; --ink:#15212b; --ink2:#4b5966; --muted:#7d8994; --rule:#dfe4e8; --axis:#c4ccd3;
+  --rope:#c4471a; --up:#e0a400; --wait:#d03b3b; --down:#1f9d5a; --turn:#8a96a1; --band:#eaf0f4; --snow:#ffffff; --rock:#c9d1d9;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,"Segoe UI",system-ui,sans-serif;
+  padding:20px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:28px;margin:0 0 2px;letter-spacing:-.01em}
+.sub{color:var(--ink2);margin:0 0 16px;max-width:80ch}
+.grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
+.grid>*{min-width:0}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:14px 16px}
+.ctl{margin-bottom:14px}
+.ctl label{display:flex;justify-content:space-between;font-weight:600;font-size:14px;margin-bottom:4px}
+.ctl label span{font-family:var(--mono);font-weight:500;color:var(--rope)}
+.ctl input[type=range]{width:100%;accent-color:var(--rope)}
+.note{font-size:12.5px;color:var(--muted);margin:3px 0 0;line-height:1.4}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font:13px inherit;font-family:inherit;border:1px solid var(--axis);background:var(--panel);color:var(--ink2);padding:5px 9px;border-radius:4px;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--ink);background:var(--band);color:var(--ink);font-weight:600}
+button:focus-visible,input:focus-visible{outline:2px solid var(--rope);outline-offset:2px}
+.derived{font-size:13px;background:var(--band);border-radius:6px;padding:8px 10px;margin:-4px 0 14px;font-family:var(--mono);line-height:1.6}
+.warn{color:var(--wait);font-weight:600}
+.stage{position:relative}
+canvas{display:block;width:100%;background:var(--panel);border-radius:6px}
+#route{height:380px}
+#strip{height:90px;margin-top:6px}
+@media (max-width:600px){#route{height:300px}}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:10px 0 6px}
+.clock{font:600 28px var(--mono);min-width:5.5ch}
+.bar .seg button{padding:5px 10px}
+#scrub{flex:1 1 220px;accent-color:var(--rope)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink2);margin:4px 0 0}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;vertical-align:-1px;margin-right:5px}
+.now{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:12px 0}
+.now .dead{background:#fdecec}.now .dead b{color:var(--wait)}
+@media (max-width:600px){.now{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.now div{background:var(--band);border-radius:6px;padding:8px 10px;min-width:0}
+.now b{display:block;font:600 22px var(--mono)}
+.now span{font-size:12px;color:var(--ink2)}
+.wx{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:0 0 10px}
+.wx div{background:#eef4fb;border:1px solid #d6e3f3;border-radius:6px;padding:7px 10px;min-width:0}
+.wx b{display:block;font:600 19px var(--mono);color:#173a66}
+.wx span{font-size:12px;color:var(--ink2);line-height:1.35;display:block}
+.wx .cold b{color:#1d4fa3}
+.wxh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:12.5px;color:var(--ink2);margin:2px 0 4px}
+.wxh b{color:#173a66}
+@media (max-width:700px){.wx{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12.5px;color:var(--ink2);font-weight:600}
+td.hl{font-weight:700}
+.foot{font-size:12.5px;color:var(--muted);margin-top:16px;max-width:95ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Ama Dablam Summit Day Simulator</h1>
+<p class="sub">Ama Dablam, Southwest Ridge. Every dot is a person on the summit push from Camp 2 (about 6,000 m, on top of the Yellow Tower) to the top (6,812 m) and back. The whole route is fixed rope, and the Mushroom Ridge traverse above Camp 2 is one person at a time in both directions. Built from the Himalayan Database the same way as the Everest simulator from The Summit Clock. Companion to the Ama Dablam report.</p>
+
+<div class="grid">
+<div class="card" id="controls">
+  <div class="ctl"><label for="clients">Clients <span id="clientsV">28</span></label>
+    <input type="range" id="clients" min="0" max="180" step="1" value="28"></div>
+  <div class="ctl"><label for="ratio">Total on the rope <span id="ratioV">47 (1.69×)</span></label>
+    <input type="range" id="ratio" min="1.2" max="3" step="0.01" value="1.69">
+    <p class="note">The slider sets people on the rope per client. 1.69× is the historical ratio: clients were 59% of everyone on the rope on Ama Dablam’s busy days (20+ people, Himalayan Database 1990–2025).</p></div>
+  <div class="ctl"><label>Quick days</label><div class="seg" id="preSeg"><button type="button" data-c="28" data-r="1.69">Record to 2025 · 47</button><button type="button" data-c="60" data-r="1.69">2026 wave · ~100</button><button type="button" data-c="178" data-r="1.69">All 178 permits at once</button></div><p class="note">47 on the rope is the busiest day in the Himalayan Database (9 Nov 2024, and again 27 Oct 2025). On the weekend of 24–25 Oct 2026 more than 200 people were reported heading for the summit, roughly 100 a day. 178 is the autumn 2026 permit count on 13 October: a stress test, not a forecast.</p></div>
+  <div class="ctl"><label>Departures from Camp 2</label>
+    <div class="seg" role="group" aria-label="Departure mode"><button type="button" id="dm-b" data-v="booked" aria-pressed="true">Booked slots</button><button type="button" id="dm-f" data-v="free" aria-pressed="false">Today’s free-for-all</button></div></div>
+  <div class="ctl" id="startCtl"><label for="start">First team leaves <span id="startV">00:00</span></label>
+    <input type="range" id="start" min="22" max="28" step="0.25" value="24"></div>
+  <div class="ctl" id="gapCtl"><label for="gap">Minutes between departures, per person <span id="gapV">3.0 (auto)</span></label>
+    <input type="range" id="gap" min="1" max="8" step="0.1" value="3.0">
+    <p class="note">Auto is 3.0 minutes a person (20 an hour), just above the busiest hour ever recorded on top (19 summits in an hour). A team of one client and its staff leaves together.</p>
+    <div class="seg" style="margin-top:4px"><button type="button" id="gapAuto" aria-pressed="true">Auto</button></div></div>
+  <div class="ctl"><label>Turnaround enforced</label>
+    <div class="seg" role="group" aria-label="Turnaround" id="cutSeg"><button type="button" data-v="none" aria-pressed="true">None</button><button type="button" data-v="12" aria-pressed="false">12:00</button><button type="button" data-v="11" aria-pressed="false">11:00</button><button type="button" data-v="10.5" aria-pressed="false">10:30</button></div></div>
+  <div class="ctl"><label>Mushroom Ridge</label>
+    <div class="seg" role="group" aria-label="Rope" id="ropeSeg"><button type="button" data-v="one" aria-pressed="false">One two-way rope</button><button type="button" data-v="two" aria-pressed="true">Separate up &amp; down</button></div>
+    <p class="note">Operators now fix double ropes on much of the route so people can go up and down at the same time (ExplorersWeb, Oct 2026). Each direction is still single file.</p></div>
+  <div class="ctl"><label>Rope speed</label>
+    <div class="seg" role="group" aria-label="Calibration" id="calSeg"><button type="button" data-v="slow" aria-pressed="false">Slow · 17/h</button><button type="button" data-v="base" aria-pressed="true">Estimate · 24/h</button><button type="button" data-v="fast" aria-pressed="false">Fast · 40/h</button></div>
+    <p class="note">Ama Dablam has never been crowded enough to measure its rope speed: the most summits in one hour was 19, and busy days were not slower. These three speeds are assumptions, all above that observed peak.</p></div>
+  <div class="ctl" style="border-top:1px solid var(--rule);padding-top:12px"><label><span style="color:#2563c9;font-family:inherit;font-weight:600">● Paul &amp; Xenia (no Sherpa)</span></label>
+    <div class="seg" id="pairSeg"><button type="button" data-v="on" aria-pressed="true">Show</button><button type="button" data-v="off" aria-pressed="false">Hide</button></div>
+    <p class="note">Their plan from the 26 Oct live stream: Base Camp to Camp 1 on 27 Oct, summit gear cached at Camp 1 or 2, a light, fast push for a sunrise summit on 28 Oct, then rappel and a fast descent. Departure time and pace are estimates until they say.</p></div>
+  <div class="ctl" id="pdCtl"><label for="pairDep">They leave Camp 2 <span id="pairDepV">23:45</span></label>
+    <input type="range" id="pairDep" min="-4" max="2" step="0.25" value="-0.25"></div>
+  <div class="ctl" id="ppCtl"><label for="pairPush">Their push, Camp 2 to top <span id="pairPushV">6.0 h</span></label>
+    <input type="range" id="pairPush" min="4.5" max="8.5" step="0.25" value="6">
+    <p class="note">Fastest tenth from Camp 2 in the record: 5.4 h; fastest quarter 6.5 h; median 8 h. Descent set 30% faster than average (rappelling, no clients).</p></div>
+  <div class="derived" id="derived"></div>
+  <div class="seg"><button type="button" id="rerun">New run (reshuffle pace)</button></div>
+</div>
+
+<div>
+  <div class="card stage">
+    <div class="bar">
+      <div class="clock" id="clock">19:00</div>
+      <div class="seg"><button type="button" id="play" aria-pressed="false">▶ Play</button><button type="button" id="reset">Reset</button></div>
+      <div class="seg" role="group" aria-label="Speed" id="spdSeg"><button type="button" data-v="30" aria-pressed="false">30×</button><button type="button" data-v="60" aria-pressed="false">60×</button><button type="button" data-v="120" aria-pressed="false">120×</button><button type="button" data-v="300" aria-pressed="true">300×</button><button type="button" data-v="600" aria-pressed="false">600×</button></div>
+      <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Time of day">
+    </div>
+    <div class="wxh"><span><b>Forecast weather at this time</b> · <span id="wxDay">Wed 28 Oct</span> · Nepal time</span><span>ECMWF + GFS, issued 27 Oct ~05:30 NPT</span></div>
+    <div class="wx" id="wx"></div>
+    <canvas id="route" aria-label="Climbers on the route"></canvas>
+    <canvas id="strip" aria-label="People waiting over the day"></canvas>
+    <div class="legend"><span><i style="background:var(--up)"></i>Going up</span><span><i style="background:var(--wait)"></i>Waiting at Mushroom Ridge</span><span><i style="background:var(--down)"></i>Coming down</span><span><i style="border:2px solid var(--turn);background:transparent"></i>Turned back</span><span style="color:var(--muted)">Strip: people waiting, whole day (blue = dark, orange = first light to sunrise)</span><span><i style="background:#2563c9;border-radius:1px;height:3px;width:16px;vertical-align:3px"></i>Summit wind, forecast (km/h)</span></div>
+    <div class="now" id="now"></div>
+    <div id="pairBox" style="background:#e8f0fc;border-radius:6px;padding:10px 12px;font-size:14px;margin-top:4px"></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <div class="tw"><table id="cmp"></table></div>
+    <p class="note" id="cmpNote"></p>
+    <div class="tw" style="margin-top:12px"><table id="hist"></table></div>
+    <p class="note">The model counts only deaths on the way down linked to the summit hour. The record also holds what no model predicts: in November 2006 a serac fell from the Dablam onto Camp 3 and killed six people in their tents, and falling rock and ice hit climbers on the ridge (rockfall killed a climber in 2025). Those are in the “any cause” line, and more people on the rope means more people under anything that falls.</p>
+  </div>
+</div>
+</div>
+<p class="foot">Model: people climb from Camp 2 to the start of the Mushroom Ridge in about 2.5 hours at their own pace, then pass one at a time (2.5 min each going up, 2.0 going down, plus 1.5 min each time traffic changes direction; slow 3.5 / 2.8 / 2, fast 1.5 / 1.2 / 1), then about 5 hours to the top. 15 minutes on top, about 4.3 hours back to Camp 2 (the recorded median is 4.5). Risk of dying on the way down comes from the summit hour (each hour later multiplies the odds by 1.37, the 8,000 m slope) with the level set to Ama Dablam’s own record: 2.7 per 1,000 for a client on top at noon. Hired staff carry about a quarter of a client’s odds; anyone turned back carries 2.4 per 1,000. Weather does not change anyone’s pace or risk in the model; it is shown alongside the clock. A comparison tool, not a forecast of a real day.</p>
+<p class="foot"><b>Weather (added 27 Oct 2026, ~05:30 Nepal time):</b> hourly forecast for 27 Oct 18:00 to 28 Oct 23:00 from Open-Meteo. Summit temperature and cloud are from ECMWF IFS 0.25°, scaled to 6,812 m. Summit wind is GFS at 450 hPa (about 6,600 m), nudged 30% toward 400 hPa (about 7,500 m); the gust figure is the 400 hPa wind, a ceiling for exposed ridges. Camp 2 wind is GFS 500 hPa; Camp 2 temperature is the summit value plus 5.3 °C (standard lapse rate). Wind chill uses the North American formula. Wednesday’s cloud is high cirrus over very dry air at summit level (humidity under 20%); no snow is forecast until Thursday. Mountain-Forecast (6,856 m) agrees on a dry, easing day but runs windier on Tuesday night (30 km/h WSW). Forecasts change: check again before they leave Camp 2.</p>
+</div>
+
+<script>
+/* ---------- model constants (from The Summit Clock) ---------- */
+// Ama Dablam: 8,000 m slope (OR 1.37/h) and hired coefficient; intercept calibrated to the AMAD 1990-2025 descent-death rate
+const B={c:-5.927,hr:0.316290,hired:-1.365613};
+const TURNBACK=0.0024;
+// Ama Dablam SW Ridge, Himalayan Database 1990-2025: descent and summit-day deaths per 1,000 summit bidders; any cause per 1,000 climbers
+const HIST={desc:1.35,sday:1.83,any:2.44};
+const CAL={slow:{hu:3.5,hd:2.8,sw:2.0,T1:2.5},base:{hu:2.5,hd:2.0,sw:1.5,T1:2.5},fast:{hu:1.5,hd:1.2,sw:1.0,T1:2.5}};
+const T2=5.0,STAY=0.25,T3=2.8,T4=1.5;
+// Light on the summit (6,812 m), 28 Oct 2026, Nepal time: civil dawn 05:29, sunrise 05:55; sunset 17:26
+const DAWN=5.483,SUNRISE=5.9,SUNSET=17.45-24,DUSK=17.45;
+// Camp 2 departures recorded 2010-2025 (hours from midnight; evening negative), 22:00-06:00, n=77
+const DEP=[-2,-2,-2,-2,-1,-1,-0.75,-0.5,-0.5,-0.5,-0.5,0,0,0,0,0,0,0.25,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1,1,1,1,1,1.333,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,2,2,2.5,2.5,2.5,2.5,2.5,3,3,3,3,3,3,3,3,3,3.5,3.5,3.5,3.5,4,4,4,4,4,4,4,4,4,4.167,4.5,4.75,5,5.333,5.75,6,6];
+// summit hour capped at sunset: past dark the model is out of its data, and on a real day those climbs would be called off
+const pDeath=(h,hired)=>1/(1+Math.exp(-(B.c+B.hr*(Math.min(h,DUSK)-12)+(hired?B.hired:0))));
+const pTurn=hired=>hired?TURNBACK*Math.exp(B.hired):TURNBACK;
+function rng(seed){let s=seed>>>0;return()=>{s=(s+0x6D2B79F5)>>>0;let t=s;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function gauss(r){let u=0,v=0;while(!u)u=r();while(!v)v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+const clkD=h=>h>=24?clk(h)+" next day":clk(h);
+const clk=h=>{h=((h%24)+24)%24;let H=Math.floor(h),M=Math.round((h-H)*60);if(M===60){H=(H+1)%24;M=0}return String(H).padStart(2,"0")+":"+String(M).padStart(2,"0")};
+
+/* ---------- forecast weather, 27-28 Oct 2026 (hourly, Nepal time; t0 = hours from 28 Oct 00:00) ---------- */
+// T: summit 2 m temp (ECMWF IFS 0.25, downscaled to 6,812 m). C: cloud cover %. W: summit-height wind, GFS 450 hPa + 30% toward 400 hPa.
+// G: free-air wind ~7,500 m (GFS 400 hPa) = ridge gust ceiling. D: wind from (deg). W2: Camp 2 wind (GFS 500 hPa, ~5,800 m). RH: humidity at 450 hPa.
+const WX={"t0":-6,"T":[-18.3,-18.9,-19.3,-19.7,-19.9,-20.1,-20.3,-20.5,-20.6,-21.2,-21.7,-21.2,-18.7,-15.2,-12.3,-10.7,-9.8,-9.5,-9.8,-10.7,-11.9,-13.6,-15.6,-17.0,-17.4,-17.1,-17.0,-17.2,-17.6,-17.8],"C":[22,42,55,56,51,44,35,25,23,34,53,69,79,87,92,94,94,94,94,94,94,93,91,91,93,96,98,99,98,98],"W":[23.3,23.1,23.3,23.8,23.4,24.5,24.6,24.4,25.0,24.1,23.6,24.9,22.9,22.2,22.6,22.4,22.6,21.6,21.1,19.6,20.1,18.6,15.6,12.4,10.8,9.5,8.6,8.5,8.9,9.2],"G":[34.0,33.3,34.0,35.6,34.3,35.8,36.0,37.7,37.5,36.6,36.6,37.4,34.9,34.1,33.2,34.9,34.8,34.0,34.0,31.5,31.7,29.3,24.3,21.0,18.3,15.4,16.1,14.4,15.6,16.7],"D":[230,230,230,230,230,232,232,230,232,230,233,227,228,231,233,231,236,234,238,246,252,250,246,254,252,239,243,233,233,233],"W2":[8.5,9.4,9.4,9.4,11.1,10.2,11.1,10.2,11.1,10.3,9.7,9.4,11.1,8.5,10.2,8.5,8.5,7.0,6.8,6.0,4.9,2.4,3.8,2.7,1.2,3.4,0.0,1.2,2.7,2.7],"RH":[6,6,5,5,5,5,5,5,5,5,6,8,9,12,14,15,17,18,18,17,15,12,12,14,15,20,23,26,28,31]};
+const C2_LAPSE=5.3; // Camp 2 (~6,000 m) is ~5 C warmer than the summit (6.5 C/km)
+function wxAt(t){const n=WX.T.length,x=Math.max(0,Math.min(n-1,t-WX.t0)),i=Math.min(n-2,Math.floor(x)),f=x-i,L=k=>WX[k][i]+(WX[k][i+1]-WX[k][i])*f;
+  return {T:L("T"),C:L("C"),W:L("W"),G:L("G"),D:WX.D[Math.round(x)],W2:L("W2"),RH:L("RH")}}
+const chill=(t,v)=>v<5?t:13.12+0.6215*t-11.37*Math.pow(v,0.16)+0.3965*t*Math.pow(v,0.16);
+const compass=d=>["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"][Math.floor(((d+11.25)%360)/22.5)];
+function skyWord(w){return w.C<25?"Clear":w.C<60?"Partly cloudy":w.RH<35?"High cloud, dry":"Cloud on the peak"}
+function wxLine(t){const w=wxAt(t);return `${Math.round(w.T)}°C, wind ${Math.round(w.W)} km/h ${compass(w.D)}, feels like ${Math.round(chill(w.T,w.W))}°C, ${skyWord(w).toLowerCase()}`}
+
+/* ---------- state ---------- */
+const S={clients:28,ratio:1.69,mode:"booked",start:24,gap:3.0,gapAuto:true,cut:null,rope:"two",cal:"base",pair:true,pairDep:-0.25,pairPush:6.0,seed:7,speed:300,t:-3,playing:false};
+let RUN=null,EXP=null,REF=null;
+
+/* ---------- simulation ---------- */
+function simulate(o,seed,det){
+  const r=rng(seed),C=CAL[o.cal],N=Math.round(o.clients*o.ratio);
+  if(o.clients===0||N===0)return {N:0,p:[],tEnd:12};
+  // teams: one client + staff, spread so total = N
+  const teams=o.clients, P=[];
+  for(let i=0;i<N;i++){const team=i%teams;P.push({team,hired:i>=teams})}
+  const sizes=new Array(teams).fill(0);P.forEach(p=>sizes[p.team]++);
+  // departures
+  const tdep=new Array(teams);
+  if(o.mode==="booked"){let t=o.start-24;for(let k=0;k<teams;k++){tdep[k]=t;t+=sizes[k]*o.gap/60}}
+  else{for(let k=0;k<teams;k++)tdep[k]=det?DEP[Math.floor((k+0.5)/teams*DEP.length)]:DEP[Math.floor(r()*DEP.length)]}
+  P.forEach(p=>{p.dep=tdep[p.team]+(det?0:gauss(r)*0.03);p.t1=C.T1*(det?1:Math.exp(gauss(r)*0.15));p.aF=p.dep+p.t1;p.t4=T4*(det?1:Math.exp(gauss(r)*0.2))});
+  if(o.pair){for(const nm of ["Paul","Xenia"]){const k=nm==="Paul"?0:0.01;P.push({team:-1,hired:false,pair:nm,dep:o.pairDep+k,t1:o.pairPush/3,t2:o.pairPush*2/3,t3:T3*0.7,t4:T4*0.7,aF:o.pairDep+k+o.pairPush/3})}}
+  const hu=C.hu/60,hd=C.hd/60,sw=C.sw/60,lim=o.cut==null?1e9:o.cut-T2-hu;
+  // event loop
+  const ev=P.map((p,i)=>[p.aF,i,"U"]).sort((a,b)=>a[0]-b[0]);
+  const heap=new MinHeap(ev);
+  let qU=[],qD=[],free=-99,last=null,freeU=-99,freeD=-99;
+  const up=(i,t,st)=>{const p=P[i];p.st=st;p.summit=st+hu+(p.t2!=null?p.t2-hu:T2);p.dReq=p.summit+STAY+(p.t3??T3);heap.push([p.dReq,i,"D"])};
+  const turn=(i,t)=>{const p=P[i];p.turned=true;p.tTurn=Math.max(t,Math.min(Math.max(t,lim),1e8));p.home=p.tTurn+p.t4*0.85};
+  const down=(i,st)=>{const p=P[i];p.dSt=st;p.dEnd=st+hd;p.home=p.dEnd+p.t4};
+  if(o.rope==="two"){
+    while(heap.size()){const [t,i,d]=heap.pop();
+      if(d==="U"){const st=Math.max(t,freeU);if(st>lim){turn(i,t);continue}freeU=st+hu;up(i,t,st)}
+      else{const st=Math.max(t,freeD);freeD=st+hd;down(i,st)}}
+  } else {
+    while(heap.size()||qU.length||qD.length){
+      if(!qU.length&&!qD.length){const [t,i,d]=heap.pop();(d==="U"?qU:qD).push([t,i]);continue}
+      const tn=Math.max(free,Math.min(qU.length?qU[0][0]:1e9,qD.length?qD[0][0]:1e9));
+      while(heap.size()&&heap.peek()[0]<=tn){const [t,i,d]=heap.pop();(d==="U"?qU:qD).push([t,i])}
+      if(qU.length&&o.cut!=null){const keep=[];for(const [t,i] of qU){if(Math.max(free,t)>lim)turn(i,t);else keep.push([t,i])}qU=keep;if(!qU.length&&!qD.length)continue}
+      let dir;if(qU.length&&qD.length)dir=qU[0][0]<=qD[0][0]?"U":"D";else dir=qU.length?"U":"D";
+      const q=dir==="U"?qU:qD;const [t,i]=q.shift();
+      let st=Math.max(free,t)+(last&&dir!==last?sw:0);last=dir;
+      if(dir==="U"){if(st>lim){turn(i,t);continue}free=st+hu;up(i,t,st)}else{free=st+hd;down(i,st)}
+    }
+  }
+  P.forEach(p=>{p.waitU=p.turned?Math.max(0,p.tTurn-p.aF):(p.st-p.aF);p.waitD=p.turned?0:(p.dSt-p.dReq);
+    p.risk=p.turned?pTurn(p.hired):pDeath(p.summit,p.hired)});
+  const tEnd=Math.max(...P.map(p=>p.home));
+  return {N,P,tEnd,lastDep:Math.max(...tdep),teams};
+}
+class MinHeap{constructor(a){this.a=[];a.forEach(x=>this.push(x))}size(){return this.a.length}peek(){return this.a[0]}
+ push(x){const a=this.a;a.push(x);let i=a.length-1;while(i>0){const p=(i-1)>>1;if(a[p][0]<=a[i][0])break;[a[p],a[i]]=[a[i],a[p]];i=p}}
+ pop(){const a=this.a,top=a[0],l=a.pop();if(a.length){a[0]=l;let i=0;for(;;){let m=i;const L=2*i+1,R=L+1;if(L<a.length&&a[L][0]<a[m][0])m=L;if(R<a.length&&a[R][0]<a[m][0])m=R;if(m===i)break;[a[m],a[i]]=[a[i],a[m]];i=m}}return top}}
+
+function summary(R,tNow){
+  const P=(R.P||[]).filter(p=>!p.pair),n=P.length,o={};
+  const fin=tNow==null?P:P.filter(p=>(p.turned?p.tTurn:p.st)<=tNow);
+  const waits=fin.map(p=>p.waitU*60).sort((a,b)=>a-b);
+  o.p90=waits.length?waits[Math.min(waits.length-1,Math.floor(0.9*waits.length))]:null;
+  o.max=waits.length?waits[waits.length-1]:null;
+  const sm=P.filter(p=>!p.turned&&(tNow==null||p.summit<=tNow));
+  o.summits=sm.length;o.last=sm.length?Math.max(...sm.map(p=>p.summit)):null;
+  o.late=sm.filter(p=>p.summit>=10.5).length;o.dark=sm.filter(p=>p.summit<DAWN).length;o.twi=sm.filter(p=>p.summit>=DAWN&&p.summit<SUNRISE).length;
+  o.turned=P.filter(p=>p.turned&&(tNow==null||p.tTurn<=tNow)).length;
+  const done=P.filter(p=>tNow==null||(p.turned?p.tTurn:p.summit)<=tNow);
+  o.deaths=done.reduce((s,p)=>s+p.risk,0);o.per1000=n?P.reduce((s,p)=>s+p.risk,0)/n*1000:0;
+  o.per1000so=done.length?o.deaths/done.length*1000:null;
+  return o;
+}
+
+/* ---------- geometry ---------- */
+const WP=[[0,6000,"Camp 2"],[0.3,6120,"Grey Tower"],[0.62,6230,"Mushroom Ridge"],[0.85,6300,"Camp 3"],[1.25,6520,"Dablam"],[1.75,6812,"Summit"]];
+const FOOT=0.62,RIDGE_END=0.85,TOPD=1.75,QSP=0.003;
+function altAt(d){for(let i=1;i<WP.length;i++){if(d<=WP[i][0]){const a=WP[i-1],b=WP[i];return a[1]+(b[1]-a[1])*(d-a[0])/(b[0]-a[0])}}return WP[WP.length-1][1]}
+function state(p,t){ // returns [dist, kind] kind: 0 hidden at camp,1 up,2 waitU,3 section up,4 summit,5 down to foot,6 waitD,7 down,8 turned,9 home
+  if(t<p.dep)return null;
+  if(p.turned){if(t<p.aF)return[(t-p.dep)/p.t1*FOOT,1];if(t<p.tTurn)return[FOOT,2,"U"];if(t<p.home)return[FOOT*(1-(t-p.tTurn)/(p.home-p.tTurn)),8];return null}
+  if(t<p.aF)return[(t-p.dep)/p.t1*FOOT,1];
+  if(t<p.st)return[FOOT,2,"U"];
+  if(t<p.summit)return[FOOT+(TOPD-FOOT)*(t-p.st)/(p.summit-p.st),1];
+  if(t<p.summit+STAY)return[TOPD,4];
+  if(t<p.dReq)return[TOPD-(TOPD-FOOT)*(t-p.summit-STAY)/(p.t3??T3),7];
+  if(t<p.dSt)return[FOOT,2,"D"];
+  if(t<p.home)return[FOOT*(1-(t-p.dEnd)/(p.home-p.dEnd)),7];
+  return null;
+}
+
+/* ---------- drawing ---------- */
+const cv=document.getElementById("route"),cx=cv.getContext("2d"),sv=document.getElementById("strip"),sx=sv.getContext("2d");
+const col=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function fit(c){const r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;c.getContext("2d").setTransform(d,0,0,d,0,0);return[r.width,r.height]}
+let RW,RH,SW,SH;
+function resize(){[RW,RH]=fit(cv);[SW,SH]=fit(sv);drawAll()}
+function X(d){return 40+(d/TOPD)*(RW-90)}function Y(a){return RH-34-(a-5950)/(6900-5950)*(RH-(RW<560?115:100))}
+function lane(d,side){ // offset perpendicular to slope
+  const x=X(d),y=Y(altAt(d)),d2=Math.min(TOPD,d+0.02),x2=X(d2),y2=Y(altAt(d2));const L=Math.hypot(x2-x,y2-y)||1;return[x+side*(-(y2-y)/L)*6,y+side*((x2-x)/L)*6]}
+function skyCol(t){const n=[205,214,229],d=[251,226,200],day=[255,255,255];const mix=(a,b,f)=>`rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*f)).join(",")})`;
+  if(t<SUNSET+0.5&&t>=SUNSET)return mix(day,n,(t-SUNSET)/0.5);if(t<DAWN-0.5&&t>=SUNSET+0.5)return mix(n,n,0);if(t<DAWN)return mix(n,d,(t-(DAWN-0.5))/0.5);if(t<SUNRISE)return mix(d,d,0);if(t<SUNRISE+0.5)return mix(d,day,(t-SUNRISE)/0.5);if(t<DUSK-0.3)return mix(day,day,0);if(t<DUSK+0.3)return mix(day,n,(t-(DUSK-0.3))/0.6);return mix(n,n,0)}
+function drawSun(t){const x=RW-26,y=24,r=11;
+  const phase=(t<DAWN||t>=DUSK)?"night":t<SUNRISE?"dawn":"day";
+  cx.save();
+  if(phase==="night"){cx.fillStyle="#6b7a90";cx.beginPath();cx.arc(x,y,r,0,7);cx.fill();cx.fillStyle=skyCol(t);cx.beginPath();cx.arc(x+6,y-4,r,0,7);cx.fill()}
+  else if(phase==="dawn"){const g=cx.createRadialGradient(x,y+r,2,x,y+r,34);g.addColorStop(0,"rgba(247,127,60,.55)");g.addColorStop(1,"rgba(247,127,60,0)");cx.fillStyle=g;cx.fillRect(x-40,y-30,80,60);
+    cx.fillStyle="#f29a3a";cx.beginPath();cx.arc(x,y+r*0.6,r,Math.PI,0);cx.fill();cx.strokeStyle="#c97a2a";cx.lineWidth=1.5;cx.beginPath();cx.moveTo(x-20,y+r*0.6);cx.lineTo(x+20,y+r*0.6);cx.stroke()}
+  else{cx.fillStyle="#f2b705";cx.beginPath();cx.arc(x,y,r,0,7);cx.fill();cx.strokeStyle="#f2b705";cx.lineWidth=2;for(let k=0;k<8;k++){const a=k*Math.PI/4;cx.beginPath();cx.moveTo(x+Math.cos(a)*(r+3),y+Math.sin(a)*(r+3));cx.lineTo(x+Math.cos(a)*(r+8),y+Math.sin(a)*(r+8));cx.stroke()}}
+  cx.fillStyle=col("--ink2");cx.font="600 12px system-ui";cx.textAlign="right";
+  cx.fillText(phase==="night"?(RW<560?"Dark":"Dark on top · first light 05:29 · sunrise 05:54"):phase==="dawn"?"First light on top (05:29)":(t<SUNRISE+1?"Sunrise on top 05:54":t>DUSK-1.5?(t>=DUSK?"Sunset 17:27, dark":"Sunset 17:27"):"Daylight"),x-22,y+4);
+  
+  cx.textAlign="left";cx.restore()}
+function drawWind(t){
+  const w=wxAt(t),xs=X(TOPD),ys=Y(6812),n=Math.round(w.W/3),L=8+w.W*0.9,ph=(t*w.W*6)%1;
+  cx.save();cx.strokeStyle="rgba(37,99,201,"+Math.min(.75,.2+w.W/50)+")";cx.lineWidth=1.4;cx.lineCap="round";
+  for(let k=0;k<n;k++){const r1=((k*0.618)%1),r2=((k*0.377)%1);
+    const x0=xs-230+((r1+ph)%1)*260,y0=ys-12+r2*120+(x0-xs)*0.15;
+    cx.beginPath();cx.moveTo(x0,y0);cx.lineTo(x0+L,y0-L*0.12);cx.stroke()}
+  cx.restore();
+  // weather tags at the summit and at Camp 2
+  const tag=(x,y,txt,align)=>{cx.font="600 11.5px system-ui";cx.textAlign=align;const wd=cx.measureText(txt).width;const bx=align==="right"?x-wd-6:x-6;
+    cx.fillStyle="rgba(255,255,255,.85)";cx.fillRect(bx,y-12,wd+12,17);cx.fillStyle="#173a66";cx.fillText(txt,x,y)};
+  const narrow=RW<560;
+  if(narrow)tag(50,62,`On top: ${Math.round(w.T)}°C · ${Math.round(w.W)} km/h ${compass(w.D)} · feels ${Math.round(chill(w.T,w.W))}°C`,"left");else tag(xs-4,ys+40,`${Math.round(w.T)}°C · ${Math.round(w.W)} km/h ${compass(w.D)} · feels ${Math.round(chill(w.T,w.W))}°C`,"right");
+  tag(X(0)+10,Y(6000)+24,`Camp 2 ${Math.round(w.T+C2_LAPSE)}°C · ${Math.round(w.W2)} km/h`,"left");
+  cx.textAlign="left"}
+function drawRoute(){
+  cx.clearRect(0,0,RW,RH);cx.fillStyle=skyCol(S.t);cx.fillRect(0,0,RW,RH);
+  {const w=wxAt(S.t),a=Math.max(0,(w.C-15)/85)*0.38;if(a>0){const g=cx.createLinearGradient(0,0,0,RH*0.75);g.addColorStop(0,`rgba(120,132,148,${a})`);g.addColorStop(1,"rgba(120,132,148,0)");cx.fillStyle=g;cx.fillRect(0,0,RW,RH)}}
+  // mountain fill
+  cx.beginPath();cx.moveTo(X(0),RH);WP.forEach(w=>cx.lineTo(X(w[0]),Y(w[1])));cx.lineTo(X(TOPD)+30,Y(6650));cx.lineTo(RW,RH);cx.closePath();cx.fillStyle=col("--rock");cx.fill();
+  // altitude grid
+  cx.font="11px "+col("--mono");cx.fillStyle=col("--muted");cx.strokeStyle=col("--rule");cx.lineWidth=1;
+  for(let a=6000;a<=6800;a+=200){const y=Y(a);cx.beginPath();cx.moveTo(30,y);cx.lineTo(RW-10,y);cx.stroke();cx.fillText(a.toLocaleString()+" m",2,y-3)}
+  // route line
+  cx.beginPath();WP.forEach((w,i)=>{const x=X(w[0]),y=Y(w[1]);i?cx.lineTo(x,y):cx.moveTo(x,y)});cx.strokeStyle=col("--ink2");cx.lineWidth=1.5;cx.setLineDash([4,4]);cx.stroke();cx.setLineDash([]);
+  // summit section highlight
+  cx.beginPath();cx.moveTo(X(FOOT),Y(altAt(FOOT)));cx.lineTo(X(RIDGE_END),Y(altAt(RIDGE_END)));cx.strokeStyle=col("--rope");cx.lineWidth=3;cx.stroke();
+  cx.fillStyle=col("--ink");cx.font="600 12px system-ui";
+  WP.forEach((w,i)=>{const x=X(w[0]),y=Y(w[1]);cx.beginPath();cx.arc(x,y,3,0,7);cx.fill();
+    const lx=i===0?x+6:i===WP.length-1?x-6:x;cx.textAlign=i===0?"left":i===WP.length-1?"right":"center";cx.fillText(w[2],lx,(i===2||i===3)?y+20:y-12)});
+  drawSun(S.t);drawWind(S.t);
+  cx.textAlign="left";cx.strokeStyle=col("--rope");cx.lineWidth=3;cx.beginPath();cx.moveTo(44,18);cx.lineTo(66,18);cx.stroke();cx.fillStyle=col("--ink2");cx.font="12px system-ui";cx.fillText(RW<560?"Mushroom Ridge: one at a time":"Mushroom Ridge: one person at a time on the fixed rope",72,22);
+}
+function drawDots(t){
+  if(!RUN||!RUN.P)return {};
+  const P=RUN.P,qU=[],qD=[],cnt={camp:0,up:0,wait:0,down:0,top:0,turned:0,home:0};
+  const pts=[];
+  for(const p of P){const s=state(p,t);
+    if(!s){if(t<p.dep)cnt.camp++;else cnt.home++;continue}
+    if(s[1]===2){(s[2]==="U"?qU:qD).push(p);cnt.wait++;continue}
+    pts.push([s[0],s[1],p]);
+    if(s[1]===1)cnt.up++;else if(s[1]===7)cnt.down++;else if(s[1]===4)cnt.top++;else if(s[1]===8)cnt.turned++}
+  const draw=(x,y,c,hollow,r=3.3)=>{cx.beginPath();cx.arc(x,y,r,0,7);if(hollow){cx.strokeStyle=c;cx.lineWidth=1.6;cx.stroke()}else{cx.fillStyle=c;cx.fill()}};
+  const cUp=col("--up"),cW=col("--wait"),cD=col("--down"),cT=col("--turn");
+  for(const [d,k,p] of pts){
+    if(k===4){const a=(p.team*2.4+(p.hired?1:0))%6.28,rr=4+(p.team%5)*1.6;draw(X(TOPD)+Math.cos(a)*rr,Y(6812)+Math.sin(a)*rr-4,cD);continue}
+    const side=(k===1)?1:-1,[x,y]=lane(d,side);draw(x,y,k===1?cUp:k===8?cT:cD,k===8)}
+  for(const p of P){if(!p.pair)continue;const s=state(p,t);if(!s)continue;let x,y;if(s[1]===2){[x,y]=lane(FOOT-0.01,s[2]==="U"?1:-1)}else if(s[1]===4){x=X(TOPD)+(p.pair==="Paul"?-5:5);y=Y(6812)-10}else{[x,y]=lane(s[0],s[1]===1?1:-1)}cx.beginPath();cx.arc(x+(p.pair==="Paul"?0:4),y,5.2,0,7);cx.fillStyle="#2563c9";cx.fill();cx.strokeStyle="#fff";cx.lineWidth=1.5;cx.stroke()}
+  qU.sort((a,b)=>a.aF-b.aF).forEach((p,k)=>{const d=Math.max(0,FOOT-k*QSP),[x,y]=lane(d,1);draw(x,y,cW)});
+  qD.sort((a,b)=>a.dReq-b.dReq).forEach((p,k)=>{const d=Math.min(TOPD-0.05,FOOT+0.03+k*QSP),[x,y]=lane(d,-1);draw(x,y,cW)});
+  cx.fillStyle=cW;cx.font="600 13px system-ui";cx.textAlign="left";cx.fillText(RW<560?`Up queue ${qU.length} · Down queue ${qD.length}`:`Queue going up: ${qU.length}   ·   Queue coming down: ${qD.length}`,44,42);
+  return cnt;
+}
+let STRIP=null;
+function buildStrip(){
+  if(!RUN||!RUN.P){STRIP=null;return}
+  const t0=-3,t1=Math.max(RUN.tEnd,19),n=400,arr=new Float32Array(n);let mx=1;
+  for(let i=0;i<n;i++){const t=t0+(t1-t0)*i/(n-1);let w=0;for(const p of RUN.P){if(t>=p.aF&&t<(p.turned?p.tTurn:p.st))w++;else if(!p.turned&&t>=p.dReq&&t<p.dSt)w++}arr[i]=w;mx=Math.max(mx,w)}
+  STRIP={t0,t1,arr,mx};
+}
+function drawStrip(t){
+  sx.clearRect(0,0,SW,SH);if(!STRIP)return;const {t0,t1,arr,mx}=STRIP,x=tt=>40+(tt-t0)/(t1-t0)*(SW-50),y=v=>SH-18-v/mx*(SH-30);
+  sx.fillStyle=col("--muted");sx.font="10px "+col("--mono");
+  const stp=SW<560?4:2;for(let h=Math.ceil(t0/stp)*stp;h<=t1;h+=stp){sx.fillText(clk(h),x(h)-14,SH-4);sx.fillStyle=col("--rule");sx.fillRect(x(h),6,1,SH-24);sx.fillStyle=col("--muted")}
+  sx.fillStyle="rgba(60,80,110,.10)";sx.fillRect(x(Math.max(t0,SUNSET)),6,x(DAWN)-x(Math.max(t0,SUNSET)),SH-24);
+  sx.fillStyle="rgba(247,127,60,.18)";sx.fillRect(x(DAWN),6,x(SUNRISE)-x(DAWN),SH-24);
+  sx.fillStyle=col("--muted");sx.fillText("dark",x(Math.max(t0,SUNSET))+3,16);sx.fillStyle="rgba(60,80,110,.10)";sx.fillRect(x(DUSK),6,x(t1)-x(DUSK),SH-24);sx.fillStyle=col("--muted");sx.fillText("sunset",x(DUSK)+3,16);sx.fillText("sunrise",x(SUNRISE)+3,16);
+  sx.fillText(Math.round(mx),4,y(mx)+4);sx.fillText("0",4,y(0));
+  sx.beginPath();sx.moveTo(x(t0),y(0));for(let i=0;i<arr.length;i++)sx.lineTo(x(t0+(t1-t0)*i/(arr.length-1)),y(arr[i]));sx.lineTo(x(t1),y(0));sx.closePath();
+  sx.fillStyle=col("--wait");sx.globalAlpha=.25;sx.fill();sx.globalAlpha=1;sx.strokeStyle=col("--wait");sx.lineWidth=1.5;sx.stroke();
+  {const yw=v=>SH-18-v/40*(SH-30);sx.beginPath();for(let i=0;i<=200;i++){const tt=t0+(t1-t0)*i/200,v=wxAt(tt).W;i?sx.lineTo(x(tt),yw(v)):sx.moveTo(x(tt),yw(v))}
+   sx.strokeStyle="#2563c9";sx.lineWidth=1.6;sx.stroke();const wn=wxAt(t).W;sx.fillStyle="#2563c9";sx.beginPath();sx.arc(x(t),yw(wn),3,0,7);sx.fill();
+   sx.font="600 10px "+col("--mono");sx.fillText(Math.round(wn)+" km/h",x(t)+5,yw(wn)-5)}
+  if(S.cut!=null){sx.fillStyle=col("--ink2");sx.fillRect(x(S.cut),6,1.5,SH-24);sx.fillText("turnaround",x(S.cut)+3,14)}
+  sx.fillStyle=col("--ink");sx.fillRect(x(t)-1,4,2,SH-20);
+}
+
+/* ---------- panels ---------- */
+const fmtMin=v=>v==null?"—":v<90?Math.round(v)+" min":(v/60).toFixed(1)+" h";
+function drawAll(){
+  if(!RW)return;drawRoute();const cnt=drawDots(S.t)||{};drawStrip(S.t);
+  document.getElementById("clock").textContent=clk(S.t);
+  {const w=wxAt(S.t),wc=chill(w.T,w.W);
+   $("wxDay").textContent=S.t<0?"Tue 27 Oct":S.t<24?"Wed 28 Oct":"Thu 29 Oct";
+   $("wx").innerHTML=[["",`${Math.round(w.T)}°C`,"Summit temperature"],["cold",`${Math.round(wc)}°C`,"Feels like on top (wind chill)"],["",`${Math.round(w.W)} <small style="font-size:12px">${compass(w.D)}</small>`,"Summit wind, km/h"],["",`${Math.round(w.G)}`,"Gusts on exposed ridge, km/h (upper bound)"],["",`${Math.round(w.T+C2_LAPSE)}° · ${Math.round(w.W2)}`,"Camp 2: °C · wind km/h"],["",`${Math.round(w.C)}%`,skyWord(w)+" · no snow"]]
+     .map(([c,v,l])=>`<div class="${c}"><b>${v}</b><span>${l}</span></div>`).join("")}
+  const N=RUN?RUN.N:0;
+
+  const tEnd=RUN?RUN.tEnd:0, lo=-3, hi=Math.max(tEnd,19);document.getElementById("scrub").value=Math.round((S.t-lo)/(hi-lo)*1000);
+  // comparison table
+  const e=EXP?summary(EXP):{},a=RUN&&RUN.P?summary(RUN,S.t>=tEnd?null:S.t):{},af=RUN&&RUN.P?summary(RUN):{};
+  const dSo=a.deaths||0,dDay=af.deaths||0;
+  document.getElementById("now").innerHTML=[["At Camp 2, not yet left",cnt.camp||0],["Going up",cnt.up||0],["Waiting now",cnt.wait||0],["On top or coming down",(cnt.down||0)+(cnt.top||0)],["Turned back",cnt.turned||0]].map(([l,v])=>`<div><b>${v}</b><span>${l}</span></div>`).join("")
+    +(()=>{const n=RUN&&RUN.N||0,h=n*HIST.desc/1000,diff=h>0?(dDay/h-1)*100:0,tag=n?(Math.abs(diff)<5?"about average":diff>0?`▲ ${Math.round(diff)}% worse`:`▼ ${Math.round(-diff)}% better`):"";
+      return `<div class="dead"><b>${dSo.toFixed(2)}</b><span>Deaths today, expected${S.t>=tEnd?"":` so far (${dDay.toFixed(2)} by end)`}${n?`<br>1990–2025 average: ${h.toFixed(2)} · <b style="display:inline;font:600 12px system-ui;color:inherit">${tag}</b>`:""}</span></div>`})();
+  const done=S.t>=tEnd;
+  const rows=[
+   ["Slowest tenth waited (90th pct)",fmtMin(e.p90),fmtMin(a.p90)],
+   ["Longest wait",fmtMin(e.max),fmtMin(a.max)],
+   ["Summits",e.summits??"—",a.summits??"—"],
+   ["Summits in the dark (before 05:29) / at first light (05:29–05:54)",e.summits!=null?`${e.dark} / ${e.twi}`:"—",a.summits!=null?`${a.dark} / ${a.twi}`:"—"],
+   ["Summits after 10:30",e.summits?`${e.late} (${Math.round(e.late/Math.max(1,e.summits)*100)}%)`:"—",a.summits!=null?`${a.late}`:"—"],
+   ["Turned back",e.turned??"—",a.turned??"—"],
+   ["Last summit = turnaround needed for everyone to summit",e.last!=null?clkD(e.last):"—",a.last!=null?clkD(a.last):"—"],
+   ["Expected deaths on the way down that day (total)",e.deaths!=null?e.deaths.toFixed(2):"—",a.deaths!=null?a.deaths.toFixed(2):"—"],
+   ["Risk per climber: deaths per 1,000 who start up",e.per1000!=null?e.per1000.toFixed(1):"—",done&&af.per1000!=null?af.per1000.toFixed(1):(a.per1000so!=null?a.per1000so.toFixed(1)+" so far":"—")],
+   ["Compared with a quiet day (6 clients, typical departure times)",REF&&e.per1000?"×"+(e.per1000/REF).toFixed(2):"—",REF&&done&&af.per1000?"×"+(af.per1000/REF).toFixed(2):"—"]];
+  document.getElementById("cmp").innerHTML=`<thead><tr><th></th><th>Expected (before the day)</th><th>This run${done?"":" (so far, "+clk(S.t)+")"}</th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${r[0]}</td><td class="${i>=6&&i<=8?"hl":""}">${r[1]}</td><td class="${i>=6&&i<=8?"hl":""}">${r[2]}</td></tr>`).join("")}</tbody>`;
+  {const n=RUN&&RUN.N||0,mm=e.per1000||0;
+   document.getElementById("hist").innerHTML=`<thead><tr><th>History check, Ama Dablam 1990–2025</th><th>Per 1,000</th><th>For ${n} people</th><th>This day’s model</th></tr></thead><tbody>
+   <tr><td>Died on the way down after a summit bid (what the model counts)</td><td>${HIST.desc.toFixed(1)}</td><td>${(n*HIST.desc/1000).toFixed(2)}</td><td class="hl">${mm.toFixed(1)} per 1,000 · ${(e.deaths||0).toFixed(2)}</td></tr>
+   <tr><td>Died on summit day, going up or coming down</td><td>${HIST.sday.toFixed(1)}</td><td>${(n*HIST.sday/1000).toFixed(2)}</td><td>—</td></tr>
+   <tr><td>Died of any cause on the expedition, per 1,000 climbers (serac and rockfall, falls, illness…)</td><td>${HIST.any.toFixed(1)}</td><td>${(n*HIST.any/1000).toFixed(2)}</td><td>—</td></tr></tbody>`;}
+  document.getElementById("cmpNote").textContent="Expected: the same day with every climber at the typical pace and no randomness. This run: climbers move at their own pace (it changes with “New run”). Each climber’s risk comes from their own summit hour (later is riskier) and role, so the per-1,000 rate already rewards early, uncrowded days. The total is that rate times the number of people. Both are modeled expectations from the study’s risk model, not a prediction for any person. The model gives no extra risk for summiting in the dark: on Ama Dablam since 2010, none of the 44 timed summits before sunrise died on the way down.";
+}
+function pairStats(){const el=$("pairBox");if(!S.pair||!RUN||!RUN.P){el.style.display="none";return}el.style.display="block";
+  const pr=RUN.P.filter(p=>p.pair),p=pr[0];if(!p){el.innerHTML="Set at least 1 client to run the day.";return}
+  const others=RUN.P.filter(q=>!q.pair),leave=p.summit+STAY,back=p.home;
+  const met=others.filter(q=>q.dep<back&&(q.turned?q.tTurn:q.summit)>leave).length;
+  const ahead=others.filter(q=>!q.turned&&q.summit<p.summit).length;
+  const lit=p.summit<DAWN?"in the dark":p.summit<SUNRISE?"at first light":p.summit<SUNRISE+0.25?"at sunrise":"after sunrise";
+  el.innerHTML=`<b style="color:#2563c9">● Paul &amp; Xenia</b> leave Camp 2 ${clk(p.dep)} · reach the ridge ${clk(p.aF)}${p.waitU*60>=1?` (wait ${Math.round(p.waitU*60)} min)`:""} · <b>summit ${clk(p.summit)}</b> (${lit}) · ${ahead===0?"first on top":ahead===1?"1 person on top before them":ahead+" people on top before them"} · back at Camp 2 ${clk(back)}${p.waitD*60>=1?` · wait ${Math.round(p.waitD*60)} min at the ridge going down`:""}.<br><b>Weather on top at ${clk(p.summit)}:</b> ${wxLine(p.summit)}. Leaving Camp 2 at ${clk(p.dep)}: ${Math.round(wxAt(p.dep).T+C2_LAPSE)}°C, wind ${Math.round(wxAt(p.dep).W2)} km/h. Back at Camp 2 at ${clk(back)}: ${Math.round(wxAt(back).T+C2_LAPSE)}°C.<br><b>${met}</b> climbers still on the way up while they descend: they pass every one of them on the ropes between the top and Camp 2.`}
+function derived(){
+  const N=Math.round(S.clients*S.ratio),staff=N-S.clients;
+  let h=`<div>${S.clients} clients + ${staff} staff = <b>${N} on the rope</b></div>`;
+  if(RUN&&RUN.P&&S.mode==="booked")h+=`<div>Departures ${clk(S.start)} to ${clk(RUN.lastDep)} (${((RUN.lastDep-(S.start-24))).toFixed(1)} h)</div>`;
+  if(S.mode==="free")h+=`<div>Teams leave at times drawn from 77 recorded Camp 2 departures, 2010–2025 (22:00–06:00)</div>`;
+  if(N>47)h+=`<div class="warn">Beyond the busiest recorded day (47 on the rope, 9 Nov 2024 and 27 Oct 2025). Rope speed has never been tested at this load; results are an extrapolation.</div>`;
+  if(RUN&&RUN.P){const dk=RUN.P.filter(p=>!p.turned&&p.summit>=DUSK).length;if(dk)h+=`<div class="warn">${dk} would reach the top after sunset. No real team would keep climbing; the model caps their risk at the sunset value, so treat the death numbers as a floor.</div>`}
+  if(RUN&&RUN.P){const lateDown=RUN.P.filter(p=>!p.turned&&p.home>DUSK).length;if(lateDown)h+=`<div class="warn">${lateDown} back at Camp 2 after sunset (17:27).</div>`}
+  document.getElementById("derived").innerHTML=h;
+}
+function recompute(){
+  const o={...S};RUN=simulate(o,S.seed,false);EXP=simulate(o,S.seed,true);
+  const r=simulate({...o,clients:6,ratio:1.69,mode:"free",cut:null},S.seed,true);REF=r.P?summary(r).per1000:null;
+  buildStrip();derived();pairStats();S.t=Math.min(S.t,RUN.tEnd||19);drawAll();
+}
+
+/* ---------- controls ---------- */
+const $=id=>document.getElementById(id);
+function segBind(id,fn){$(id).querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{$(id).querySelectorAll("button").forEach(o=>o.setAttribute("aria-pressed","false"));b.setAttribute("aria-pressed","true");fn(b.dataset.v)}))}
+$("clients").addEventListener("input",e=>{S.clients=+e.target.value;$("clientsV").textContent=S.clients;ratioLabel();recompute()});
+function ratioLabel(){$("ratioV").textContent=`${Math.round(S.clients*S.ratio)} (${S.ratio.toFixed(2)}×${Math.abs(S.ratio-1.69)<0.005?", historical":""})`}
+$("ratio").addEventListener("input",e=>{S.ratio=+e.target.value;ratioLabel();recompute()});
+$("start").addEventListener("input",e=>{S.start=+e.target.value;$("startV").textContent=clk(S.start);recompute()});
+$("gap").addEventListener("input",e=>{S.gap=+e.target.value;S.gapAuto=Math.abs(S.gap-3)<0.05;$("gapAuto").setAttribute("aria-pressed",String(S.gapAuto));$("gapV").textContent=S.gap.toFixed(1)+(S.gapAuto?" (auto)":"");recompute()});
+$("gapAuto").addEventListener("click",()=>{S.gap=3;$("gap").value=3;S.gapAuto=true;$("gapAuto").setAttribute("aria-pressed","true");$("gapV").textContent="3.0 (auto)";recompute()});
+[["dm-b","booked"],["dm-f","free"]].forEach(([id,v])=>$(id).addEventListener("click",()=>{S.mode=v;$("dm-b").setAttribute("aria-pressed",String(v==="booked"));$("dm-f").setAttribute("aria-pressed",String(v==="free"));$("startCtl").style.opacity=$("gapCtl").style.opacity=v==="booked"?1:.4;recompute()}));
+segBind("cutSeg",v=>{S.cut=v==="none"?null:+v;recompute()});
+segBind("ropeSeg",v=>{S.rope=v;recompute()});
+segBind("calSeg",v=>{S.cal=v;recompute()});
+segBind("spdSeg",v=>{S.speed=+v});
+$("preSeg").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{S.clients=+b.dataset.c;S.ratio=+b.dataset.r;$("clients").value=S.clients;$("ratio").value=S.ratio;$("clientsV").textContent=S.clients;ratioLabel();recompute()}));
+segBind("pairSeg",v=>{S.pair=v==="on";$("pdCtl").style.opacity=$("ppCtl").style.opacity=S.pair?1:.4;recompute()});
+$("pairDep").addEventListener("input",e=>{S.pairDep=+e.target.value;$("pairDepV").textContent=clk(S.pairDep);recompute()});
+$("pairPush").addEventListener("input",e=>{S.pairPush=+e.target.value;$("pairPushV").textContent=S.pairPush.toFixed(2).replace(/0$/,"")+" h";recompute()});
+$("rerun").addEventListener("click",()=>{S.seed=(S.seed*7919+13)%100000;recompute()});
+$("reset").addEventListener("click",()=>{S.t=-3;S.playing=false;$("play").textContent="▶ Play";$("play").setAttribute("aria-pressed","false");drawAll()});
+$("play").addEventListener("click",()=>{if(RUN&&S.t>=RUN.tEnd)S.t=-3;S.playing=!S.playing;$("play").textContent=S.playing?"❚❚ Pause":"▶ Play";$("play").setAttribute("aria-pressed",String(S.playing));last=performance.now()});
+$("scrub").addEventListener("input",e=>{const hi=Math.max(RUN?RUN.tEnd:19,19);S.t=-3+(hi+3)*e.target.value/1000;drawAll()});
+let last=performance.now();
+function tick(now){const dt=(now-last)/1000;last=now;
+  if(S.playing&&RUN){S.t+=dt*S.speed/3600;if(S.t>=RUN.tEnd){S.t=RUN.tEnd;S.playing=false;$("play").textContent="▶ Play";$("play").setAttribute("aria-pressed","false")}drawAll()}
+  requestAnimationFrame(tick)}
+window.addEventListener("resize",resize);
+ratioLabel();resize();recompute();requestAnimationFrame(tick);
+</script>
+</body>
+</html>
