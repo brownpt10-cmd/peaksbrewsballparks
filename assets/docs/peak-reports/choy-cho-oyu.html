@@ -225,9 +225,9 @@ if(PR){
   // route profile: camps on the primary route + deaths since 1990 by altitude band
   const C=R.camps||[];
   if(C.length){
-    const W=720,H=380,top=18,bot=H-30,lo=4400,hi=8300,Y=a=>bot-(a-lo)/(hi-lo)*(bot-top),x0=90,x1=470,X=i=>x0+i*(x1-x0)/(C.length-1);
+    const W=720,H=380,top=18,bot=H-30,lo=Math.min(4400,Math.min(...C.map(c=>c.m))-300),hi=8300,Y=a=>bot-(a-lo)/(hi-lo)*(bot-top),x0=90,x1=470,X=i=>x0+i*(x1-x0)/(C.length-1);
     let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Camps on the primary route and deaths by altitude">`;
-    for(let a=5000;a<=8000;a+=1000) s+=`<line x1="40" x2="${W-10}" y1="${Y(a)}" y2="${Y(a)}" stroke="var(--rule)"/><text x="36" y="${Y(a)+4}" text-anchor="end">${f(a)}</text>`;
+    for(let a=Math.ceil(lo/1000)*1000;a<=8000;a+=1000) s+=`<line x1="40" x2="${W-10}" y1="${Y(a)}" y2="${Y(a)}" stroke="var(--rule)"/><text x="36" y="${Y(a)+4}" text-anchor="end">${f(a)}</text>`;
     s+=`<path d="${C.map((c,i)=>(i?'L':'M')+X(i)+' '+Y(c.m)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>`;
     C.forEach((c,i)=>{const x=X(i),y=Y(c.m),last=i===C.length-1,anchor=i===0?'start':'end',dx=i===0?10:-12;
       s+=`<circle cx="${x}" cy="${y}" r="${last?7:5}" fill="${last?'var(--warn)':'var(--accent)'}"/><text class="lab" x="${x+dx}" y="${y-8}" text-anchor="${anchor}">${c.name} · ${f(c.m)} m</text>${c.note?`<text x="${x+dx}" y="${y+8}" text-anchor="${anchor}">${c.note}</text>`:''}`});
