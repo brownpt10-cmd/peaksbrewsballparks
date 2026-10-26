@@ -92,7 +92,8 @@ const EXPEDITIONS = [
     "story": [
       "*The Modi Khola running out of the Annapurna Himal. Photo: Saroj Pandey, CC BY-SA 3.0, via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Modi_River_flowing_from_Annapurna.jpg).*",
       "> **“The mountains give, and the mountains take away. But what they take, they take forever.”** — Mountaineering proverb",
-      "Annapurna I (8,091 m) used to do a lot more taking than giving. From 1990 to 2009, 706 people went, 98 summited and 22 died. That’s 22 deaths for every 100 summits, the kind of math that makes your mother hide your passport.",
+      "Annapurna I (8,091 m) used to do a lot more taking than giving. From 1990 to 2009, 706 people went, 98 summited and 22 died.",
+      "That’s 22 deaths for every 100 summits—the kind of grim arithmetic that demands a cold, honest recalculation of what you’re willing to give to a mountain that won’t show any remorse.",
       "Then came 2020–25: 389 climbers, 259 summits, 3 deaths. That’s 1.2 per 100. Same mountain. Same avalanches. So what changed?",
       "**A Change for the Better**",
       "Four things showed up together:",
