@@ -63,7 +63,7 @@ const JOURNAL = {
 const EIGHT_K = [
   { rank: 1,  name: "Everest",       m: 8849, country: "Nepal / China",    report: "" },
   { rank: 2,  name: "K2",            m: 8611, country: "Pakistan / China", report: "", noData: true },
-  { rank: 3,  name: "Kangchenjunga", m: 8586, country: "Nepal / India",    report: "" },
+  { rank: 3,  name: "Kangchenjunga", m: 8586, country: "Nepal / India",    report: "assets/docs/peak-reports/kang-kangchenjunga.html" },
   { rank: 4,  name: "Lhotse",        m: 8516, country: "Nepal / China",    report: "" },
   { rank: 5,  name: "Makalu",        m: 8485, country: "Nepal / China",    report: "" },
   { rank: 6,  name: "Cho Oyu",       m: 8188, country: "Nepal / China",    report: "" },
