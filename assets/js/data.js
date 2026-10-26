@@ -59,22 +59,22 @@ const JOURNAL = {
 };
 
 // 8,000 m PEAKS = placeholder tracker for the 14 eight-thousanders (peaks.html#eight-thousanders).
-// report: link to a Himalayan Database Peak Report (assets/docs/peak-reports/...) once built. Nepal peaks only are in the database.
+// report: link to the Peak Report (assets/docs/peak-reports/...). Nepal peaks from the Himalayan Database; K2, the Pakistan peaks and Shishapangma from outside sources.
 const EIGHT_K = [
   { rank: 1,  name: "Everest",       m: 8849, country: "Nepal / China",    report: "assets/docs/peak-reports/ever-everest.html" },
   { rank: 2,  name: "K2",            m: 8611, country: "Pakistan / China", report: "assets/docs/peak-reports/k2.html" },
   { rank: 3,  name: "Kangchenjunga", m: 8586, country: "Nepal / India",    report: "assets/docs/peak-reports/kang-kangchenjunga.html" },
   { rank: 4,  name: "Lhotse",        m: 8516, country: "Nepal / China",    report: "assets/docs/peak-reports/lhot-lhotse.html" },
-  { rank: 5,  name: "Makalu",        m: 8485, country: "Nepal / China",    report: "" },
+  { rank: 5,  name: "Makalu",        m: 8485, country: "Nepal / China",    report: "assets/docs/peak-reports/maka-makalu.html" },
   { rank: 6,  name: "Cho Oyu",       m: 8188, country: "Nepal / China",    report: "assets/docs/peak-reports/choy-cho-oyu.html" },
   { rank: 7,  name: "Dhaulagiri I",  m: 8167, country: "Nepal",            report: "assets/docs/peak-reports/dha1-dhaulagiri-i.html", note: "dhaulagiri-autumn-2026" },
-  { rank: 8,  name: "Manaslu",       m: 8163, country: "Nepal",            report: "" },
-  { rank: 9,  name: "Nanga Parbat",  m: 8126, country: "Pakistan",         report: "", noData: true },
+  { rank: 8,  name: "Manaslu",       m: 8163, country: "Nepal",            report: "assets/docs/peak-reports/mana-manaslu.html" },
+  { rank: 9,  name: "Nanga Parbat",  m: 8126, country: "Pakistan",         report: "assets/docs/peak-reports/np-nanga-parbat.html" },
   { rank: 10, name: "Annapurna I",   m: 8091, country: "Nepal",            report: "assets/docs/peak-reports/ann1-annapurna-i.html", note: "taming-of-annapurna" },
-  { rank: 11, name: "Gasherbrum I",  m: 8080, country: "Pakistan / China", report: "", noData: true },
-  { rank: 12, name: "Broad Peak",    m: 8051, country: "Pakistan / China", report: "", noData: true },
-  { rank: 13, name: "Gasherbrum II", m: 8035, country: "Pakistan / China", report: "", noData: true },
-  { rank: 14, name: "Shishapangma",  m: 8027, country: "China (Tibet)",    report: "", noData: true }
+  { rank: 11, name: "Gasherbrum I",  m: 8080, country: "Pakistan / China", report: "assets/docs/peak-reports/gi-gasherbrum-i.html" },
+  { rank: 12, name: "Broad Peak",    m: 8051, country: "Pakistan / China", report: "assets/docs/peak-reports/bp-broad-peak.html" },
+  { rank: 13, name: "Gasherbrum II", m: 8035, country: "Pakistan / China", report: "assets/docs/peak-reports/gii-gasherbrum-ii.html" },
+  { rank: 14, name: "Shishapangma",  m: 8027, country: "China (Tibet)",    report: "assets/docs/peak-reports/shis-shishapangma.html" }
 ];
 
 const EXPEDITIONS = [

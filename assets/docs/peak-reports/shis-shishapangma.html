@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shishapangma Peak Report</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; Section I narrative + tables, Section II numbered findings, Section III short list. Light-first. */
+:root{
+  --bg:#f7f8f9; --panel:#ffffff; --fg:#17202a; --muted:#5b6672; --rule:#d9dee3;
+  --accent:#1f5f8b; --accent-soft:#e3eef6; --warn:#a4471c; --warn-soft:#f8e9e1; --ok:#2f6b3a;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Serif 4",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171c;--panel:#1a2128;--fg:#e6eaee;--muted:#9aa6b2;--rule:#2c3640;--accent:#7fb6dc;--accent-soft:#1d3142;--warn:#e79a74;--warn-soft:#3a251c;--ok:#86c493;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12171c;--panel:#1a2128;--fg:#e6eaee;--muted:#9aa6b2;--rule:#2c3640;--accent:#7fb6dc;--accent-soft:#1d3142;--warn:#e79a74;--warn-soft:#3a251c;--ok:#86c493;color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:920px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:44px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,44px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:24px;font-weight:700;padding-bottom:8px;border-bottom:2px solid var(--fg);display:flex;gap:12px;align-items:baseline}
+h2 .sn{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:500}
+h3{font-size:17px;font-weight:700}
+p{margin:0;max-width:68ch}
+.prose{display:grid;gap:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+section{display:grid;gap:18px;min-width:0}
+.lede{color:var(--muted);font-size:18px}
+.meta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.stat{background:var(--panel);padding:14px 16px;display:grid;gap:2px}
+.stat b{font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--muted);font-family:var(--display)}
+.stat.w b{color:var(--warn)}
+.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-family:var(--display);font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule)}
+th{font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:var(--bg)}
+th:first-child,td:first-child,.l{text-align:left}
+tr:last-child td{border-bottom:0}
+.hi{color:var(--warn);font-weight:700}
+.bar{display:inline-block;height:9px;vertical-align:middle;margin-right:6px;background:var(--accent)}
+.bar.w{background:var(--warn)}
+.note{font-size:14.5px;color:var(--muted)}
+.callout{background:var(--accent-soft);padding:14px 16px;border-left:3px solid var(--accent);font-size:16.5px;max-width:none}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.two>*{min-width:0}
+.charts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.chart{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;display:grid;gap:6px;min-width:0}
+.chart h3{font-size:14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+.chart .v{fill:var(--fg);font-size:10.5px;font-weight:500}
+.find{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:16px 0;border-top:1px solid var(--rule)}
+.find .n{font-family:var(--mono);font-size:22px;color:var(--accent);line-height:1}
+.find h3{font-size:18px}
+.find .why{font-size:14.5px;color:var(--muted);font-family:var(--display)}
+.find .why b{color:var(--fg);font-weight:700}
+.find>div{display:grid;gap:6px;min-width:0}
+.weak{display:grid;gap:0;border:1px solid var(--warn);background:var(--warn-soft)}
+.weak div{display:grid;grid-template-columns:200px 1fr;gap:12px;padding:10px 14px;border-top:1px solid var(--rule)}
+.weak div:first-child{border-top:0}
+.weak b{font-family:var(--display);font-size:15px}
+.weak span{font-size:15.5px}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.charts{grid-template-columns:1fr}.weak div{grid-template-columns:1fr;gap:2px}.find{grid-template-columns:30px 1fr}body{font-size:16px}th,td{padding:6px 8px}}
+footer{font-size:13px;color:var(--muted);font-family:var(--mono);border-top:1px solid var(--rule);padding-top:12px}
+/* ---- The Mountain (profile) ---- */
+.hero{position:relative;min-height:clamp(320px,52vw,520px);display:flex;align-items:flex-end;background:#1d2a36 center/cover no-repeat;color:#fff}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,26,.05) 30%,rgba(10,18,26,.78) 100%)}
+.hero-in{position:relative;z-index:1;width:100%;max-width:920px;margin:0 auto;padding-block:28px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:8px}
+.hero .eyebrow{color:#cfe3f2}
+.hero h1{font-size:clamp(40px,8vw,72px);color:#fff;letter-spacing:-.02em}
+.hero .tag{font-family:var(--display);font-size:clamp(16px,2.4vw,20px);font-weight:500;color:#e8eef3}
+.hero .hm{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--mono);font-size:13px;color:#dbe6ee}
+.hero .credit{position:absolute;right:max(10px,env(safe-area-inset-right,0px));bottom:6px;z-index:1;font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.7)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.pgrid div{background:var(--panel);padding:12px 14px;display:grid;gap:3px;min-width:0}
+.pgrid span{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pgrid b{font-family:var(--display);font-size:16px;font-weight:700}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.fact{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--accent);padding:12px 14px;font-size:15.5px}
+.fact b{display:block;font-family:var(--display);font-size:15px;margin-bottom:2px}
+.route-main{background:var(--panel);border:1px solid var(--rule);padding:14px 16px;display:grid;gap:8px}
+.route-main h3{font-size:19px}
+.rlist{display:grid;gap:0;border-top:1px solid var(--rule)}
+.rlist div{display:grid;grid-template-columns:210px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15.5px}
+.rlist b{font-family:var(--display);font-size:15px}
+.rlist small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);font-weight:400}
+.diagram{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:560px;height:auto}
+.diagram text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.diagram .lab{fill:var(--fg);font-family:var(--display);font-size:12.5px;font-weight:700}
+.diagram .warnt{fill:var(--warn)}
+@media(max-width:560px){.rlist div{grid-template-columns:1fr;gap:2px}}
+</style>
+</head>
+<body>
+<div class="hero" id="hero" hidden>
+  <div class="hero-in">
+    <div class="eyebrow">Mountains · Peak Report</div>
+    <h1 id="h_name"></h1>
+    <div class="tag" id="h_tag"></div>
+    <div class="hm" id="h_meta"></div>
+  </div>
+  <div class="credit" id="h_credit"></div>
+</div>
+<div class="wrap">
+
+<section id="mountain" hidden>
+  <p class="lede" id="p_dek"></p>
+  <p class="meta" id="p_meta"></p>
+  <h2><span class="sn">0</span>The mountain</h2>
+  <div class="pgrid" id="p_grid"></div>
+  <div class="prose" id="p_history"></div>
+  <h3>Where it ranks</h3>
+  <div class="diagram" id="p_rank"></div>
+  <h3>Worth knowing</h3>
+  <div class="facts" id="p_facts"></div>
+  <h3>Routes</h3>
+  <div class="route-main" id="p_route"></div>
+  <div class="diagram" id="p_profile"></div>
+  <div class="rlist" id="p_others"></div>
+  <div class="tbl"><table><thead><tr><th>Route (Himalayan Database name)</th><th>Years</th><th>Exps</th><th>Exp success %</th><th>Summiters</th><th>Deaths</th></tr></thead><tbody id="t_routes"></tbody></table></div>
+  <p class="note" id="p_routenote"></p>
+</section>
+
+<header style="display:grid;gap:10px" id="plainhead">
+  <div class="eyebrow">Mountains · Peak Report</div>
+  <h1 id="title"></h1>
+  <p class="lede" id="dek"></p>
+  <p class="meta" id="meta"></p>
+</header>
+
+<section>
+  <h2><span class="sn">I</span>The big picture</h2>
+  <div class="stats" id="kpis"></div>
+  <div class="prose" id="s1_overview"></div>
+
+  <h3>Seasons</h3>
+  <div class="prose" id="s1_seasons"></div>
+  <div class="tbl"><table><thead><tr><th>Season</th><th>Exps</th><th>Exp success %</th><th>Climbers</th><th>Summits</th><th>Deaths</th><th>Death %</th><th>Deaths / 100 summits</th><th>Ended: weather %</th><th>Ended: conditions %</th><th>Avalanche deaths</th></tr></thead><tbody id="t_season"></tbody></table></div>
+
+  <h3>When people summit and when they die</h3>
+  <div class="prose" id="s1_when"></div>
+  <div class="tbl"><table><thead><tr><th>Half-month</th><th class="l">Summits</th><th class="l">Deaths</th><th>Deaths / 100 summits</th></tr></thead><tbody id="t_cal"></tbody></table></div>
+
+  <h3>Expedition companies</h3>
+  <div class="prose" id="s1_companies"></div>
+  <div class="tbl"><table><thead><tr><th>Agency</th><th>Years</th><th>Exps</th><th>Exp success %</th><th>Climbers</th><th>Summits</th><th>Deaths</th></tr></thead><tbody id="t_ag"></tbody></table></div>
+
+  <h3>Deaths: why and where</h3>
+  <div class="prose" id="s1_deaths"></div>
+  <div class="two">
+    <div class="tbl"><table><thead><tr><th>Cause</th><th class="l">Deaths</th><th>Hired</th></tr></thead><tbody id="t_cause"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>When it happened</th><th class="l">Deaths</th></tr></thead><tbody id="t_phase"></tbody></table></div>
+  </div>
+  <p class="callout" id="s1_bottomline"></p>
+</section>
+
+<section>
+  <h2><span class="sn">II</span>Finer detail: trends and drivers</h2>
+  <div class="prose" id="s2_intro"></div>
+  <div class="charts" id="charts"></div>
+  <div class="tbl"><table><thead><tr><th>Period</th><th>Exps</th><th>Exp success %</th><th>Member summit %</th><th>Deaths</th><th>Death %</th><th>Deaths / 100 summits</th><th>O2, member summiters %</th><th>Spring share %</th><th>Hired per member</th><th>Median summit time</th></tr></thead><tbody id="t_trend"></tbody></table></div>
+  <div id="findings"></div>
+  <div class="two">
+    <div class="tbl"><table><thead><tr><th>Summit time</th><th>Summiters</th><th>Died</th></tr></thead><tbody id="t_stime"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>Since 2010 (8,000ers)</th><th class="l">Death % per climber</th><th>Summit %</th></tr></thead><tbody id="t_bench"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>Member age</th><th>Members</th><th>Summit %</th><th>Death %</th></tr></thead><tbody id="t_age"></tbody></table></div>
+    <div class="tbl"><table><thead><tr><th>Multi-death days</th><th>Deaths</th><th class="l">Cause</th><th>Height m</th></tr></thead><tbody id="t_multi"></tbody></table></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="sn">III</span>Where the data is weak</h2>
+  <div class="weak" id="weak"></div>
+  <div class="tbl"><table><thead><tr><th>Field (this peak, since <span id="since2"></span>)</th><th class="l">% filled</th></tr></thead><tbody id="t_comp"></tbody></table></div>
+</section>
+
+<footer id="foot"></footer>
+</div>
+
+<script>
+const D={"meta": {"name": "Shishapangma", "height_m": 8027, "since": 1990, "data_through": "Autumn 2026", "first_ascent": "1964", "source_label": "Compiled from public records (8000ers.com totals via Wikipedia, Wikipedia death register, ExplorersWeb, Himalayan Times, Imagine Nepal)", "peakid": "SHIS", "source": "external", "mode": "blocks", "generated": "2026-10-26"}, "kpis": [["302", "summits 1950–2011"], ["25", "deaths 1950–2011", 1], ["8.3", "deaths per 100 summits, 1950–2011", 1], ["55+", "summits 2023–26 (seasons with a count)"], ["4", "deaths 2023–26", 1], ["7.3", "deaths per 100 summits, 2023–26*", 1], ["33", "climbing deaths since 1990", 1], ["4", "most deaths on one day", 1]], "macro": {"summits": 357, "deaths": 33, "hired_deaths": 2, "deaths_per_100_summits": null}, "recent_rate": {"label": "2023–26", "summits": 55, "deaths": 4, "per100": 7.3, "deaths_unmatched": 0}, "seasons": [], "calendar": [{"label": "Late Apr", "summits": 14, "deaths": 0, "deaths_per_100_summits": 0.0}, {"label": "Early Oct", "summits": 41, "deaths": 4, "deaths_per_100_summits": 9.8}], "calendar_meta": {"from": 2023, "summits": 55, "deaths": 4}, "agencies": [], "death_causes": [{"cause": "Avalanche", "n": 14, "hired": 2}, {"cause": "Disappearance", "n": 8, "hired": 0}, {"cause": "Fall", "n": 7, "hired": 0}, {"cause": "AMS / HACE", "n": 2, "hired": 0}, {"cause": "Illness (non-AMS)", "n": 1, "hired": 0}, {"cause": "Exposure / storm", "n": 1, "hired": 0}], "death_phase": [{"phase": "Other / not recorded", "n": 33}], "death_height": null, "multi_death_days": [{"date": "1991-05-22", "deaths": 4, "cause": "Disappearance", "height_m": null, "hired": 0}, {"date": "1991-09-20", "deaths": 2, "cause": "Avalanche", "height_m": null, "hired": 0}, {"date": "1996-10-05", "deaths": 2, "cause": "Avalanche", "height_m": null, "hired": 0}, {"date": "1999-10-05", "deaths": 2, "cause": "Avalanche", "height_m": null, "hired": 0}, {"date": "2014-09-24", "deaths": 2, "cause": "Avalanche", "height_m": null, "hired": 0}, {"date": "2016-04-24", "deaths": 2, "cause": "Fall", "height_m": null, "hired": 0}, {"date": "2023-10-07", "deaths": 4, "cause": "Avalanche", "height_m": null, "hired": 2}], "deaths_in_multi_days": 18, "death_list": [{"date": "2023-10-07", "season": "Summer", "citizen": "Nepal", "role": "Hired", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": "guide; ~80 m below summit"}, {"date": "2023-10-07", "season": "Summer", "citizen": "USA", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": "~80 m below summit"}, {"date": "2023-10-07", "season": "Summer", "citizen": "USA", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": "~7,800 m"}, {"date": "2023-10-07", "season": "Summer", "citizen": "Nepal", "role": "Hired", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": "guide; ~7,800 m"}, {"date": "2018-05-03", "season": "Summer", "citizen": "Bulgaria", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2016-09-30", "season": "Summer", "citizen": "Nepal", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2016-04-24", "season": "Summer", "citizen": "Switzerland", "role": "Member / not stated", "cause": "Fall", "phase": "", "height_m": null, "summited": false, "note": "crevasse"}, {"date": "2016-04-24", "season": "Summer", "citizen": "Australia", "role": "Member / not stated", "cause": "Fall", "phase": "", "height_m": null, "summited": false, "note": "crevasse"}, {"date": "2014-09-24", "season": "Summer", "citizen": "Germany", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2014-09-24", "season": "Summer", "citizen": "Italy", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2013-05-11", "season": "Summer", "citizen": "Germany", "role": "Member / not stated", "cause": "AMS / HACE", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2009-10-15", "season": "Summer", "citizen": "Italy", "role": "Member / not stated", "cause": "Fall", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2007-04-24", "season": "Summer", "citizen": "Slovakia", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2006-10-31", "season": "Summer", "citizen": "Portugal", "role": "Member / not stated", "cause": "Fall", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2005-10-03", "season": "Summer", "citizen": "Russia", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "2005-09-28", "season": "Summer", "citizen": "Czech Republic", "role": "Member / not stated", "cause": "AMS / HACE", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1999-10-05", "season": "Summer", "citizen": "USA", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1999-10-05", "season": "Summer", "citizen": "USA", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1998-05-21", "season": "Summer", "citizen": "Italy", "role": "Member / not stated", "cause": "Illness (non-AMS)", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1996-10-05", "season": "Summer", "citizen": "Ukraine", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1996-10-05", "season": "Summer", "citizen": "Ukraine", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1996-05-19", "season": "Summer", "citizen": "Taiwan", "role": "Member / not stated", "cause": "Fall", "phase": "", "height_m": null, "summited": false, "note": "year given as 1996 or 1997"}, {"date": "1996-05-01", "season": "Summer", "citizen": "Slovakia", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": "on descent"}, {"date": "1994-10-01", "season": "Summer", "citizen": "Czech Republic", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1994-09-18", "season": "Summer", "citizen": "USA", "role": "Member / not stated", "cause": "Fall", "phase": "", "height_m": null, "summited": false, "note": "crevasse"}, {"date": "1993-09-29", "season": "Summer", "citizen": "South Korea", "role": "Member / not stated", "cause": "Fall", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1991-09-20", "season": "Summer", "citizen": "Japan", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1991-09-20", "season": "Summer", "citizen": "Japan", "role": "Member / not stated", "cause": "Avalanche", "phase": "", "height_m": null, "summited": false, "note": ""}, {"date": "1991-05-22", "season": "Summer", "citizen": "Germany", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": "probably avalanche"}, {"date": "1991-05-22", "season": "Summer", "citizen": "Germany", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": "probably avalanche"}, {"date": "1991-05-22", "season": "Summer", "citizen": "Germany", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": "probably avalanche"}, {"date": "1991-05-22", "season": "Summer", "citizen": "Germany", "role": "Member / not stated", "cause": "Disappearance", "phase": "", "height_m": null, "summited": false, "note": "probably avalanche"}, {"date": "1990-10-15", "season": "Summer", "citizen": "Spain", "role": "Member / not stated", "cause": "Exposure / storm", "phase": "", "height_m": null, "summited": false, "note": ""}], "excluded_deaths": [], "nationalities_dead": {"Germany": 6, "USA": 5, "Nepal": 3, "Italy": 3, "Slovakia": 2, "Czech Republic": 2, "Ukraine": 2, "Japan": 2}, "trend": [{"block": "1950–2011", "summits": 302, "deaths": 25, "deaths_per_100_summits": 8.3}, {"block": "2012–2022", "summits": null, "deaths": 7, "deaths_per_100_summits": null}, {"block": "2023–26", "summits": 55, "deaths": 4, "deaths_per_100_summits": 7.3}], "trend_note": "1950–2011: 8000ers.com (E. Jurgalski) main-summit ascents and deaths to March 2012, as tabled on Wikipedia 'Eight-thousander'. 2012–2022: no published summit counts; deaths from the register. 2023–26: summits from season reports, lower bounds; the rate uses only seasons with a count (2023, 2024).", "charts": [["Summits per period", "summits", "int", "accent"], ["Deaths per period", "deaths", "int", "warn"], ["Deaths per 100 summits", "deaths_per_100_summits", "1", "warn"]], "year_series": [{"year": 2023, "summits": 14, "deaths": 4}, {"year": 2024, "summits": 41, "deaths": 0}, {"year": 2025, "summits": null, "deaths": 0}, {"year": 2026, "summits": null, "deaths": 0}], "summit_time": [], "summit_time_meta": null, "oxygen_bidders": [], "age": [], "sex": [], "roles": [{"role": "Hired (Sherpa / Pakistani HAP / guide)", "deaths": 2}, {"role": "Members / not stated", "deaths": 31}], "benchmark_2010": [{"peak": "Dhaulagiri I (2010+)", "peakid": "DHA1", "summits": 323, "deaths": 27, "per100": 8.4}, {"peak": "Shishapangma (2023–26)", "peakid": "SHIS", "summits": 55, "deaths": 4, "per100": 7.3}, {"peak": "K2 (2010+)", "peakid": "K2", "summits": 648, "deaths": 23, "per100": 3.5}, {"peak": "Annapurna I (2010+)", "peakid": "ANN1", "summits": 400, "deaths": 13, "per100": 3.2}, {"peak": "Makalu (2010+)", "peakid": "MAKA", "summits": 573, "deaths": 16, "per100": 2.8}, {"peak": "Kangchenjunga (2010+)", "peakid": "KANG", "summits": 449, "deaths": 11, "per100": 2.4}, {"peak": "Broad Peak (2021–26)", "peakid": "BP", "summits": 95, "deaths": 2, "per100": 2.1}, {"peak": "Nanga Parbat (2021–26)", "peakid": "NP", "summits": 126, "deaths": 2, "per100": 1.6}, {"peak": "Everest (2010+)", "peakid": "EVER", "summits": 9025, "deaths": 121, "per100": 1.3}, {"peak": "Lhotse (2010+)", "peakid": "LHOT", "summits": 1065, "deaths": 13, "per100": 1.2}, {"peak": "Manaslu (2010+)", "peakid": "MANA", "summits": 3483, "deaths": 31, "per100": 0.9}, {"peak": "Cho Oyu (2010+)", "peakid": "CHOY", "summits": 1118, "deaths": 7, "per100": 0.6}, {"peak": "Gasherbrum I (2021–26)", "peakid": "GI", "summits": 99, "deaths": 0, "per100": 0.0}, {"peak": "Gasherbrum II (2021–26)", "peakid": "GII", "summits": 138, "deaths": 0, "per100": 0.0}], "benchmark_metric": "per100", "completeness": {"Summit total, 1950–2011": 100, "Summit count by year, 2012–2022": 0, "Summit count by season, 2023–26": 50, "Death date": 100, "Death cause (not 'Unknown')": 100, "Death altitude": 12, "Climbers / permits per season": 0, "Summit times": 0, "Oxygen use": 0}, "coverage_note": "Role is filled only where a source names the person as hired. Counts are main-summit ascents where the source says so; most ascents before 2023 reached only the Central Summit.", "alltime": {"label": "Compiled record", "text": "8000ers.com counted 302 main-summit ascents and 25 deaths to March 2012; German Wikipedia puts Central-Summit ascents above 750. Since 2012 there are no complete counts, and Tibet was closed to foreign teams for most of 2020–22, autumn 2023 and autumn 2026."}, "routes_table": {"cols": ["Route", "First ascent", "By", "Notes"], "rows": [["North side (normal route) to Central Summit, ridge to Main Summit", "1964", "China–Tibet (Xu Jing's team, 10 summiters)", "Vehicle to base camp, yaks to ABC; most parties stop at the Central Summit (8,008 m)"], ["Southwest Face", "1982", "Scott, Baxter-Jones, MacIntyre", "Alpine style; three more lines on the face since"], ["South–north traverse of the Main Summit", "2005", "Dujmovits, Kaltenbrunner, Takeuchi", ""], ["First calendar-winter ascent", "2005", "Moro, Morawski", "14 January 2005"]]}, "sources": [["Wikipedia: Eight-thousander (8000ers.com ascent and death totals to 2012)", "https://en.wikipedia.org/wiki/Eight-thousander"], ["Wikipedia: List of deaths on eight-thousanders", "https://en.wikipedia.org/wiki/List_of_deaths_on_eight-thousanders"], ["de.wikipedia: Shishapangma", "https://de.wikipedia.org/wiki/Shishapangma"], ["ExplorersWeb: Dong Hong Juan climbs Shishapangma (2023)", "https://explorersweb.com/dong-hong-juan-shishapangma-first-woman/"], ["Imagine Nepal: Shishapangma summit 2024", "https://imagine-nepal.com/shishapangma-summit-2024"], ["Wikipedia: Chhang Dawa Sherpa (SST 2024 Shishapangma)", "https://en.wikipedia.org/wiki/Chhang_Dawa_Sherpa"], ["ExplorersWeb: Cho Oyu and Shisha Pangma closed again (2026)", "https://explorersweb.com/cho-oyu-and-shisha-pangma-closed-again/"], ["8000ers.com: Shisha Pangma, 26 April 2023", "https://8000ers.com/cms/news-mainmenu-176/1-latest/364-shisha-pangma-26th-april-2023.html?lang=en"]], "deaths_src": "Wikipedia 'List of deaths on eight-thousanders' (Shishapangma).", "recent": [{"year": 2023, "summits": 14, "half": "Late Apr", "lb": true, "src": "ExplorersWeb / Himalayan Times, 26 Apr 2023: Climbalaya team of about 11 plus Dong Hong Juan and two Tibetan guides; autumn closed after the avalanches", "conf": "low"}, {"year": 2024, "summits": 41, "half": "Early Oct", "lb": true, "src": "Autumn: Imagine Nepal 11 (4 Oct), Seven Summit Treks 29, Purja; spring count not published", "conf": "low"}, {"year": 2025, "summits": null, "src": "no season total found", "conf": "none"}, {"year": 2026, "summits": null, "src": "spring count not found; autumn closed by the CTMA", "conf": "none"}], "anchor": {"label": "1950–2011", "summits": 302, "deaths": 25, "through": "March 2012", "src": "8000ers.com (E. Jurgalski) main-summit ascents and deaths to March 2012, as tabled on Wikipedia 'Eight-thousander'"}};
+const T={"title": "Shishapangma", "dek": "The lowest 8,000er and the only one wholly in Tibet: a central summit most people stop at, avalanches that come only in autumn, and a mountain China opens and closes at will.", "profile": {"photo": {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/8%2C013m_Shishapangma_Tibet_China_%E8%A5%BF%E8%97%8F_%E5%B8%8C%E5%A4%8F%E9%82%A6%E9%A9%AC%E5%B3%B0_-_panoramio.jpg/1280px-8%2C013m_Shishapangma_Tibet_China_%E8%A5%BF%E8%97%8F_%E5%B8%8C%E5%A4%8F%E9%82%A6%E9%A9%AC%E5%B3%B0_-_panoramio.jpg", "credit": "Photo: Hiroki Ogawa, CC BY 3.0, via Wikimedia Commons", "position": "center 50%"}, "tagline": "The last 8,000er climbed, and the one with two tops", "rank_short": "14th highest in the world", "where": "Jugal Himal · Tibet, China", "stats": [["Height", "8,027 m · 26,335 ft (Central Summit 8,008 m)"], ["World rank", "14th of 14 eight-thousanders"], ["Prominence", "2,897 m"], ["Location", "Tibet, about 5 km north of the Nepal border"], ["Coordinates", "28°21′07″N 85°46′47″E"], ["Name", "Tibetan, roughly 'the range above the grassy plains'; old Indian name Gosainthan"], ["First ascent", "2 May 1964 · ten Chinese and Tibetan climbers (Xu Jing's expedition)"], ["First winter ascent", "14 Jan 2005 · Piotr Morawski, Simone Moro"]], "history": ["Shishapangma was the last 8,000er climbed because it lies entirely inside Tibet. A 195-member Chinese expedition put ten climbers on top on 2 May 1964, and foreigners were let in from 1978. The north side is gentle enough for vehicles to reach base camp and yaks to reach advanced base, which made it a popular 'easy' 8,000er.", "The catch is the top. The normal route reaches the Central Summit (8,008 m) first; the true summit is 19 m higher, along a knife-edge ridge that takes one to three hours. German Wikipedia counts more than 750 Central-Summit ascents against fewer than 300 to the main summit. Elizabeth Hawley made Ed Viesturs go back. The 8000ers.com review that rewrote the 14-peak lists in 2022 turned largely on Shishapangma and Manaslu.", "On 7 October 2023 two avalanches high on the mountain killed Tenjen Lama Sherpa and Gina Marie Rzucidlo near the summit, and Anna Gutu and Mingmar Sherpa lower down. The two Americans had been racing to be the first US woman to climb all fourteen. China closed the mountain. It reopened, and in October 2024 dozens reached the true summit on fixed rope, many completing all fourteen. China closed Tibet again for autumn 2026."], "facts": [["Two summits", "Central Summit 8,008 m, main summit 8,027 m. Most historical 'ascents' are of the Central Summit."], ["Autumn avalanches", "All 14 avalanche deaths since 1990 happened in September or October."], ["Wholly in Tibet", "The China Tibet Mountaineering Association decides who climbs, and it closed the mountain for most of 2020–22, autumn 2023 and autumn 2026."], ["Drive-in base camp", "Base camp at about 5,000 m is reached by road."], ["A race that ended badly", "The October 2023 avalanches killed two US climbers racing for a 14-peak record and their two Sherpa guides."]], "routes": {"primary": {"name": "North side (normal route)", "desc": "From the road-head base camp, yaks carry loads to advanced base camp. Camps 1 to 3 climb broad, glaciated slopes on the north side. Summit day climbs to the Central Summit (8,008 m), then either follows the corniced ridge to the main summit or cuts across the upper face below it; the face is where the 2023 avalanches released."}, "camps": [{"name": "Base Camp", "m": 5000, "note": "by road"}, {"name": "ABC", "m": 5650, "note": "yaks to here"}, {"name": "Camp 1", "m": 6300, "note": ""}, {"name": "Camp 2", "m": 6900, "note": ""}, {"name": "Camp 3", "m": 7400, "note": ""}, {"name": "Central Summit", "m": 8008, "note": "most stop here"}, {"name": "Summit", "m": 8027, "note": "along the ridge"}], "others": [{"name": "Southwest Face", "first": "1982 · Scott, Baxter-Jones, MacIntyre", "desc": "Alpine style up the steep Nepal-facing wall; three more lines on the face since."}, {"name": "South–north traverse", "first": "2005 · Dujmovits, Kaltenbrunner, Takeuchi", "desc": "Over the main summit from the southwest face to the north side."}]}}, "s1_overview": "<p>Shishapangma is not in the Himalayan Database. Jurgalski counted <b>302 main-summit ascents and 25 deaths to March 2012: 8.3 deaths per 100 summits<\/b>. Central-Summit ascents, which he didn't count as summits, ran to several hundred more. In 2012–2022 there are no summit totals and 7 deaths.<\/p><p>Since Tibet reopened in 2023 there are rough counts for two seasons: about 14 main-summit ascents in spring 2023 and at least 41 in autumn 2024. Against those, <b>4 deaths<\/b> (October 2023): <b>7.3 per 100<\/b>. This is the weakest recent series of any peak in these reports.<\/p>", "s1_seasons": "<p>Shishapangma is climbed in spring and autumn. Since 1990, <b>21 of 33 deaths came in autumn<\/b>, and <b>all 14 avalanche deaths<\/b> were in September or October.<\/p>", "s1_when": "<p>Spring summits come in late April and May; autumn summits in late September and early October. The October 2024 true-summit wave came on 4–9 October.<\/p>", "s1_companies": "<p>Seven Summit Treks (29 summits in autumn 2024), Imagine Nepal (11 on 4 October 2024), Climbalaya (the April 2023 team) and Elite Exped run most of the recent expeditions. Chinese commercial teams also climb it, mostly unreported in English-language sources.<\/p>", "s1_deaths": "<p>Since 1990, 33 deaths: <b>avalanches (14)<\/b>, disappearances (8), falls (7), altitude illness (2), one illness and one storm. The worst days: four Germans lost in May 1991, and the four killed on 7 October 2023.<\/p>", "s1_bottomline": "Go in spring if you can, insist on the main summit, and take the autumn avalanche record seriously. Whether you can go at all depends on China.", "s2_intro": "<p>No year-by-year summit counts exist for this peak, so the trend is in three blocks. <b>1950–2011<\/b> uses Eberhard Jurgalski's published totals (8000ers.com, to March 2012). <b>2012–2022<\/b> has deaths from the register but no published summit counts, so it has no rate. The <b>recent block<\/b> uses season reports, which are lower bounds, and its rate counts only seasons with a published total and the deaths in those same seasons. Each finding says how solid it is.<\/p>", "s2_findings": [{"head": "Autumn is avalanche season", "body": "All 14 avalanche deaths since 1990 came in September or October; 21 of 33 deaths in all came in autumn.", "why": "Strong for this mountain, though we don't know how many climbers each season had. The October 2023 accidents fit the pattern."}, {"head": "A historic ratio like Makalu's", "body": "1950–2011: 8.3 deaths per 100 main-summit ascents, close to Makalu (8.6) and Gasherbrum I (8.7).", "why": "Strong for the ratio, but leaving out Central-Summit ascents makes the mountain look deadlier per climber than it is."}, {"head": "The summit problem shapes every count", "body": "Hundreds of ascents reached only the Central Summit; since 2023 commercial teams have fixed rope to the main summit.", "why": "Any count that mixes the two summits is not comparable over time."}, {"head": "Access, not the mountain, sets the numbers", "body": "Closed to foreign teams for most of 2020–22, autumn 2023 and autumn 2026.", "why": "Strong. Whole seasons disappear by decision in Lhasa or Beijing."}], "s3_weaknesses": [{"head": "Not in the Himalayan Database", "body": "Tibet is outside its coverage; no climber, oxygen or summit-time data."}, {"head": "Almost no recent summit counts", "body": "Only two seasons since 2012 have even rough totals, both from operator claims."}, {"head": "Two summits", "body": "Historic totals count main-summit ascents; Central-Summit ascents are mostly unrecorded."}, {"head": "Chinese teams under-reported", "body": "Domestic Chinese ascents and any deaths among them may be missing from English sources."}, {"head": "Thin death records", "body": "Heights, roles and summit status are mostly missing."}]};
+const $=id=>document.getElementById(id), f=n=>n==null?'–':Number(n).toLocaleString('en-US'), p=(n,d=1)=>n==null?'–':Number(n).toFixed(d);
+const hhmm=h=>{if(h==null)return'–';const H=Math.floor(h),M=Math.round((h-H)*60);return String(H).padStart(2,'0')+':'+String(M).padStart(2,'0')};
+const M=D.macro, EXT=D.meta.source==='external', SRC=D.meta.source_label||'Himalayan Database';
+// hide a table's columns that are empty ('–' or blank) in every row; hide the whole box if no rows
+function tidy(id){const tb=$(id);if(!tb)return;const box=tb.closest('.tbl');if(!tb.rows.length){if(box)box.hidden=true;return}
+  const th=tb.closest('table').tHead.rows[0],n=th.cells.length;for(let c=n-1;c>=0;c--){if([...tb.rows].every(r=>!r.cells[c]||['–','','undefined','NaN'].includes(r.cells[c].textContent.trim()))){th.cells[c].hidden=true;[...tb.rows].forEach(r=>{if(r.cells[c])r.cells[c].hidden=true})}}}
+// generic table from {cols,rows}
+function gtable(id,G){const tb=$(id),th=tb.closest('table').tHead.rows[0];th.innerHTML=G.cols.map((c,i)=>`<th class="${typeof G.rows[0][i]==='number'?'':'l'}">${c}</th>`).join('');tb.innerHTML=G.rows.map(r=>`<tr>${r.map((v,i)=>`<td class="${typeof v==='number'?'':'l'}" style="${i>=2&&typeof v==='string'?'white-space:normal;min-width:200px':''}">${v==null?'–':typeof v==='number'?f(v):v}</td>`).join('')}</tr>`).join('')}
+$('title').textContent=T.title; $('dek').textContent=T.dek;
+$('meta').textContent=`${D.meta.name} · ${f(D.meta.height_m)} m · records ${D.meta.since} through ${D.meta.data_through} · ${EXT?'outside sources (not in the Himalayan Database)':'Himalayan Database'} · built ${D.meta.generated}`;
+// ---------- Section 0: The mountain (only when the narrative has a profile) ----------
+const PR=T.profile;
+if(PR){
+  $('plainhead').hidden=true; $('plainhead').style.display='none'; $('mountain').hidden=false; $('hero').hidden=false;
+  if(PR.photo&&PR.photo.src) $('hero').style.backgroundImage=`url("${PR.photo.src}")`;
+  if(PR.photo&&PR.photo.position) $('hero').style.backgroundPosition=PR.photo.position;
+  $('h_credit').textContent=(PR.photo&&PR.photo.credit)||'';
+  $('h_name').textContent=T.title; $('h_tag').textContent=PR.tagline||'';
+  $('h_meta').innerHTML=[`${f(D.meta.height_m)} m · ${f(Math.round(D.meta.height_m*3.28084))} ft`,PR.rank_short||'',PR.where||''].filter(Boolean).map(x=>`<span>${x}</span>`).join('');
+  $('p_dek').textContent=T.dek; $('p_meta').textContent=$('meta').textContent;
+  $('p_grid').innerHTML=(PR.stats||[]).map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
+  $('p_history').innerHTML=(PR.history||[]).map(x=>`<p>${x}</p>`).join('');
+  const A=D.alltime;
+  const facts=(PR.facts||[]).slice(); if(A) facts.push(A.text?[A.label||'Record',A.text]:['In the Himalayan Database',`${f(A.expeditions)} expeditions since ${A.first_year}, ${f(A.summits)} summits and ${f(A.deaths)} deaths, through ${D.meta.data_through}.`]);
+  $('p_facts').innerHTML=facts.map(([h,b])=>`<div class="fact"><b>${h}</b>${b}</div>`).join('');
+  // rank: the 14 eight-thousanders as a dot plot
+  const E14=[['Everest',8849],['K2',8611],['Kangchenjunga',8586],['Lhotse',8516],['Makalu',8485],['Cho Oyu',8188],['Dhaulagiri I',8167],['Manaslu',8163],['Nanga Parbat',8126],['Annapurna I',8091],['Gasherbrum I',8080],['Broad Peak',8051],['Gasherbrum II',8035],['Shishapangma',8027]];
+  {const W=640,rh=22,top=10,H=top+E14.length*rh+26,x0=130,x1=W-60,lo=8000,hi=8900,X=v=>x0+(v-lo)/(hi-lo)*(x1-x0);
+   let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Height of the 14 eight-thousanders">`;
+   [8000,8200,8400,8600,8800].forEach(t=>{s+=`<line x1="${X(t)}" x2="${X(t)}" y1="${top}" y2="${H-22}" stroke="var(--rule)"/><text x="${X(t)}" y="${H-6}" text-anchor="middle">${f(t)}</text>`});
+   E14.forEach(([n,m],i)=>{const y=top+i*rh+rh/2,me=n===T.title||n===D.meta.name,c=me?'var(--warn)':'var(--accent)';
+     s+=`<text x="${x0-10}" y="${y+4}" text-anchor="end" class="${me?'lab warnt':''}" style="${me?'':'fill:var(--fg)'}">${i+1}. ${n}</text><line x1="${x0}" x2="${X(m)}" y1="${y}" y2="${y}" stroke="${c}" stroke-width="${me?3:1.5}" opacity="${me?1:.55}"/><circle cx="${X(m)}" cy="${y}" r="${me?6:4}" fill="${c}"/><text x="${X(m)+10}" y="${y+4}" style="fill:var(--fg)" class="${me?'lab warnt':''}">${f(m)} m</text>`});
+   $('p_rank').innerHTML=s+'</svg>';}
+  // routes
+  const R=PR.routes||{};
+  if(R.primary) $('p_route').innerHTML=`<span class="eyebrow">Primary route</span><h3>${R.primary.name}</h3><p>${R.primary.desc}</p>`;
+  $('p_others').innerHTML=(R.others||[]).map(o=>`<div><b>${o.name}<small>${o.first||''}</small></b><span>${o.desc}</span></div>`).join('');
+  if(R.others&&R.others.length) $('p_others').insertAdjacentHTML('beforebegin','<h3>Other routes worth knowing</h3>');
+  if(D.routes_table){gtable('t_routes',D.routes_table);$('p_routenote').textContent='Routes and first ascents from Wikipedia and ExplorersWeb. Per-route summit and death counts are not published for this peak.';} else {$('t_routes').innerHTML=(D.routes_all||[]).map(r=>`<tr><td>${r.route}</td><td>${r.years}</td><td>${r.exps}</td><td>${p(r.exp_success_pct,0)}</td><td>${r.summits}</td><td>${r.deaths}</td></tr>`).join('');
+  $('p_routenote').textContent=`All years since ${A?A.first_year:''}. Top ${(D.routes_all||[]).length} routes by expedition count${D.routes_other_count?`; ${D.routes_other_count} more routes have one or two attempts each`:''}. Summiters counts everyone on those expeditions who summited, by any route.`;}
+  // route profile: camps on the primary route + deaths since 1990 by altitude band
+  const C=R.camps||[];
+  if(C.length){
+    const W=720,H=380,top=18,bot=H-30,lo=Math.min(4400,Math.min(...C.map(c=>c.m))-300),hi=8300,Y=a=>bot-(a-lo)/(hi-lo)*(bot-top),x0=90,x1=470,X=i=>x0+i*(x1-x0)/(C.length-1);
+    let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Camps on the primary route and deaths by altitude">`;
+    for(let a=Math.ceil(lo/1000)*1000;a<=8000;a+=1000) s+=`<line x1="40" x2="${W-10}" y1="${Y(a)}" y2="${Y(a)}" stroke="var(--rule)"/><text x="36" y="${Y(a)+4}" text-anchor="end">${f(a)}</text>`;
+    s+=`<path d="${C.map((c,i)=>(i?'L':'M')+X(i)+' '+Y(c.m)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>`;
+    C.forEach((c,i)=>{const x=X(i),y=Y(c.m),last=i===C.length-1,anchor=i===0?'start':'end',dx=i===0?10:-12;
+      s+=`<circle cx="${x}" cy="${y}" r="${last?7:5}" fill="${last?'var(--warn)':'var(--accent)'}"/><text class="lab" x="${x+dx}" y="${y-8}" text-anchor="${anchor}">${c.name} · ${f(c.m)} m</text>${c.note?`<text x="${x+dx}" y="${y+8}" text-anchor="${anchor}">${c.note}</text>`:''}`});
+    const B={'<5,000 m':[lo,5000],'5,000–5,999':[5000,6000],'6,000–6,999':[6000,7000],'7,000–7,999':[7000,8000],'8,000 m+':[8000,hi]};
+    const bands=(D.death_height&&D.death_height.bands)||{}, bm=Math.max(1,...Object.values(bands)), bx=540, bw=140;
+    if(D.death_height) s+=`<text class="lab" x="${W-10}" y="${top-2}" text-anchor="end">Deaths since ${D.meta.since}, by altitude</text>`;
+    if(D.death_height) Object.entries(B).forEach(([k,[a,b]])=>{const n=bands[k]||0,y1=Y(b)+3,y2=Y(a)-3,w=n/bm*bw;
+      s+=`<rect x="${bx}" y="${y1}" width="${Math.max(w,1)}" height="${y2-y1}" fill="var(--warn)" opacity=".75"/><text x="${bx+w+6}" y="${(y1+y2)/2+4}" style="fill:var(--fg)">${n}</text>`});
+    $('p_profile').innerHTML=s+'</svg>';
+  } else $('p_profile').hidden=true;
+}
+$('kpis').innerHTML=(D.kpis||[[f(M.expeditions),'expeditions'],[f(M.members),'climbers ('+f(M.hired)+' hired)'],[f(M.summits),'summits'],[p(M.exp_success_pct,0)+'%','expedition success'],[p(M.client_summit_pct,0)+'%','member summit rate'],[f(M.deaths),'deaths',1],[p(M.death_pct,1)+'%','death rate per climber',1],[p(M.deaths_per_100_summits,1),'deaths per 100 summits',1]]).map(k=>`<div class="stat${k[2]?' w':''}"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('');
+for(const k of ['s1_overview','s1_seasons','s1_when','s1_companies','s1_deaths','s2_intro']) $(k).innerHTML=T[k]||'';
+$('s1_bottomline').innerHTML='<b>Bottom line.</b> '+(T.s1_bottomline||'');
+$('t_season').innerHTML=D.seasons.map(s=>`<tr><td>${s.season}</td><td>${f(s.exps)}</td><td>${p(s.exp_success_pct,0)}</td><td>${f(s.members)}</td><td>${f(s.summits)}</td><td>${s.deaths}</td><td>${p(s.death_pct,2)}</td><td>${p(s.deaths_per_100_summits)}</td><td>${p(s.ended_weather_pct,0)}</td><td>${p(s.ended_conditions_pct,0)}</td><td>${s.avalanche_deaths}</td></tr>`).join('');tidy('t_season');
+const cmax=Math.max(1,...D.calendar.map(c=>c.summits)), dmax=Math.max(1,...D.calendar.map(c=>c.deaths));
+$('t_cal').innerHTML=D.calendar.map(c=>`<tr><td>${c.label}</td><td class="l"><span class="bar" style="width:${c.summits/cmax*110}px"></span>${c.summits}</td><td class="l"><span class="bar w" style="width:${c.deaths/dmax*70}px"></span>${c.deaths}</td><td class="${c.deaths_per_100_summits>=10&&c.summits>=20?'hi':''}">${c.summits?p(c.deaths_per_100_summits):'–'}</td></tr>`).join('');
+if(D.agency_table) gtable('t_ag',D.agency_table); else $('t_ag').innerHTML=D.agencies.map(a=>`<tr><td>${a.agency}</td><td>${a.years}</td><td>${a.exps}</td><td>${p(a.exp_success_pct,0)}</td><td>${a.climbers}</td><td>${a.summits}</td><td>${a.deaths}</td></tr>`).join('');
+const cm=Math.max(...D.death_causes.map(c=>c.n));
+$('t_cause').innerHTML=D.death_causes.map(c=>`<tr><td>${c.cause}</td><td class="l"><span class="bar w" style="width:${c.n/cm*90}px"></span>${c.n}</td><td>${c.hired}</td></tr>`).join('');
+const pm=Math.max(...D.death_phase.map(c=>c.n));
+$('t_phase').innerHTML=D.death_phase.map(c=>`<tr><td>${c.phase}</td><td class="l"><span class="bar w" style="width:${c.n/pm*90}px"></span>${c.n}</td></tr>`).join('');
+$('t_trend').innerHTML=D.trend.map(t=>`<tr><td>${t.block}${t.est?' (est.)':''}</td><td>${f(t.exps)}</td><td>${p(t.exp_success_pct,0)}</td><td>${p(t.client_summit_pct,0)}</td><td>${t.deaths}</td><td>${p(t.death_pct,2)}</td><td>${p(t.deaths_per_100_summits)}</td><td>${p(t.o2_client_summiters_pct,0)}</td><td>${p(t.spring_share_pct,0)}</td><td>${p(t.hired_per_client,2)}</td><td>${hhmm(t.median_summit_hour)}</td></tr>`).join('');
+if(EXT){const th=$('t_trend').closest('table').tHead.rows[0];th.insertAdjacentHTML('beforeend','<th>Summits</th>');[...$('t_trend').rows].forEach((r,i)=>r.insertAdjacentHTML('beforeend',`<td>${f(D.trend[i].summits)}</td>`))}
+tidy('t_trend');
+// small-multiple line charts
+function line(title,key,fmt,color){
+  const v=D.trend.map(t=>t[key]), L=D.trend.map(t=>t.block);
+  if(!v.some(x=>x!=null)) return '';
+  const W=300,H=150,l=8,r=8,top=22,b=24, max=Math.max(...v.filter(x=>x!=null))*1.15||1;
+  const x=i=>l+i*(W-l-r)/(v.length-1), y=val=>top+(H-top-b)*(1-val/max);
+  let pts=v.map((val,i)=>val==null?null:[x(i),y(val)]).filter(Boolean);
+  const path=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ');
+  const grid=[0,.5,1].map(g=>`<line x1="${l}" x2="${W-r}" y1="${top+(H-top-b)*g}" y2="${top+(H-top-b)*g}" stroke="var(--rule)" stroke-width="1"/>`).join('');
+  const labs=L.map((s,i)=>`<text x="${x(i)}" y="${H-6}" text-anchor="${i==0?'start':i==L.length-1?'end':'middle'}">${EXT?s.replace(/^(\d{4})–(\d{2,4})$/,(m,a,b)=>a.slice(2)+'–'+b.slice(-2)):s.slice(2,4)}</text>`).join('');
+  const vals=pts.map((q,i)=>`<circle cx="${q[0]}" cy="${q[1]}" r="${i==pts.length-1?3.5:2.2}" fill="${color}"/><text class="v" x="${q[0]}" y="${q[1]-7}" text-anchor="${i==0?'start':i==pts.length-1?'end':'middle'}">${fmt(v[i])}</text>`).join('');
+  return `<div class="chart"><h3>${title}</h3><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${title}">${grid}<path d="${path}" fill="none" stroke="${color}" stroke-width="2"/>${vals}${labs}</svg></div>`;
+}
+$('charts').innerHTML=D.charts?D.charts.map(([t,k,fm,c])=>line(t,k,fm==='int'?(v=>f(v)):(v=>p(v,+fm)),`var(--${c})`)).join('')+yearBars():line('Expedition success %','exp_success_pct',v=>p(v,0),'var(--accent)')+line('Deaths per 100 summits','deaths_per_100_summits',v=>p(v,0),'var(--warn)')+line('Member summiters on O2 %','o2_client_summiters_pct',v=>p(v,0),'var(--accent)')+line('Median summit time','median_summit_hour',hhmm,'var(--accent)');
+function yearBars(){const Y=D.year_series;if(!Y||!Y.length)return'';const W=620,H=170,l=6,r=6,top=18,b=22,n=Y.length,bw=(W-l-r)/n,sm=Math.max(...Y.map(y=>y.summits),1),dm=Math.max(...Y.map(y=>y.deaths),1),hh=H-top-b;
+  let s=`<div class="chart" style="grid-column:1/-1"><h3>Summits (blue) and deaths (orange) each year since ${Y[0].year}</h3><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Summits and deaths per year">`;
+  Y.forEach((y,i)=>{const x=l+i*bw,h1=y.summits/sm*hh,h2=y.deaths/dm*hh*.45;s+=`<rect x="${x+2}" y="${top+hh-h1}" width="${bw*.55-2}" height="${h1}" fill="var(--accent)"/><rect x="${x+bw*.55}" y="${top+hh-h2}" width="${bw*.35}" height="${h2}" fill="var(--warn)"/><text class="v" x="${x+bw*.3}" y="${top+hh-h1-4}" text-anchor="middle">${y.summits||''}</text><text x="${x+bw/2}" y="${H-6}" text-anchor="middle">${String(y.year).slice(2)}</text>`+(y.deaths?`<text x="${x+bw*.72}" y="${top+hh-h2-3}" text-anchor="middle" style="fill:var(--warn)">${y.deaths}</text>`:'')});
+  return s+'</svg></div>'}
+$('findings').innerHTML=(T.s2_findings||[]).map((x,i)=>`<div class="find"><div class="n">${i+1}</div><div><h3>${x.head}</h3><p>${x.body}</p><p class="why"><b>Why it matters:</b> ${x.why}</p></div></div>`).join('');
+if(D.summit_time_meta) $('t_stime').innerHTML=D.summit_time.map(s=>`<tr><td>${s.band}</td><td>${s.summiters}</td><td class="${s.died?'hi':''}">${s.died}</td></tr>`).join('')+`<tr><td class="note">No time recorded</td><td class="note">${D.summit_time_meta.summiters-D.summit_time_meta.with_time}</td><td></td></tr>`;
+tidy('t_stime');
+if(D.benchmark_metric==='per100'){const th=$('t_bench').closest('table').tHead.rows[0];th.cells[0].textContent='Since 2010 (8,000ers)';th.cells[1].textContent='Deaths per 100 summits';th.cells[2].textContent='Summits';D.benchmark_2010.forEach(b=>{b.death_pct=b.per100;b.summit_pct=null;b._s=b.summits})}
+const bm=Math.max(...D.benchmark_2010.map(b=>b.death_pct));
+$('t_bench').innerHTML=D.benchmark_2010.map(b=>`<tr><td style="${b.peakid==D.meta.peakid?'font-weight:700':''}">${b.peak}</td><td class="l"><span class="bar ${b.peakid==D.meta.peakid?'w':''}" style="width:${b.death_pct/bm*90}px"></span>${p(b.death_pct,D.benchmark_metric==='per100'?1:2)}</td><td>${b._s!=null?f(b._s):p(b.summit_pct,0)}</td></tr>`).join('');
+$('t_age').innerHTML=(D.age||[]).map(a=>`<tr><td>${a.band}</td><td>${a.clients}</td><td>${p(a.summit_pct)}</td><td>${p(a.death_pct)}</td></tr>`).join('')+(D.sex||[]).map(a=>`<tr><td>${a.sex}</td><td>${a.clients}</td><td>${p(a.summit_pct)}</td><td>${p(a.death_pct)}</td></tr>`).join('');
+tidy('t_age');
+$('t_multi').innerHTML=D.multi_death_days.map(e=>`<tr><td>${e.date}</td><td class="${e.deaths>=4?'hi':''}">${e.deaths}</td><td class="l">${e.cause}</td><td>${e.height_m?f(e.height_m):'–'}</td></tr>`).join('');
+tidy('t_multi');
+$('weak').innerHTML=(T.s3_weaknesses||[]).map(w=>`<div><b>${w.head}</b><span>${w.body}</span></div>`).join('');
+$('since2').textContent=D.meta.since; if(EXT){const th=$('t_comp').closest('table').tHead.rows[0];th.cells[0].innerHTML='Source coverage (since '+D.meta.since+')';th.cells[1].textContent='% covered'}
+$('t_comp').innerHTML=Object.entries(D.completeness).map(([k,v])=>`<tr><td>${k}</td><td class="l ${v<75?'hi':''}"><span class="bar ${v<75?'w':''}" style="width:${v*1.1}px"></span>${v}</td></tr>`).join('');
+if(EXT){$('foot').innerHTML=`<b>Sources.</b> ${D.meta.source_label}. Built with ext_stats.py ${D.meta.peakid} from external/${D.meta.peakid}.json on ${D.meta.generated}. ${D.coverage_note||''}<ul style="margin:8px 0 0;padding-left:18px">${(D.sources||[]).map(([t,u])=>`<li><a href="${u}" style="color:var(--accent)">${t}</a></li>`).join('')}</ul>`} else $('foot').textContent=`Source: Himalayan Database (local HIMDATA). Built with peak_report.py ${D.meta.peakid} --since ${D.meta.since}. Rates use every member record (members + hired) unless labeled "member". Hired = staff flagged HIRED.`;
+</script>
+</body>
+</html>
