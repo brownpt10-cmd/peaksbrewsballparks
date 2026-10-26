@@ -58,8 +58,114 @@ const JOURNAL = {
   blurb: "Notes from between expeditions — planning, mindset and lessons learned."
 };
 
+// 8,000 m PEAKS = placeholder tracker for the 14 eight-thousanders (peaks.html#eight-thousanders).
+// report: link to a Himalayan Database Peak Report (assets/docs/peak-reports/...) once built. Nepal peaks only are in the database.
+const EIGHT_K = [
+  { rank: 1,  name: "Everest",       m: 8849, country: "Nepal / China",    report: "" },
+  { rank: 2,  name: "K2",            m: 8611, country: "Pakistan / China", report: "", noData: true },
+  { rank: 3,  name: "Kangchenjunga", m: 8586, country: "Nepal / India",    report: "" },
+  { rank: 4,  name: "Lhotse",        m: 8516, country: "Nepal / China",    report: "" },
+  { rank: 5,  name: "Makalu",        m: 8485, country: "Nepal / China",    report: "" },
+  { rank: 6,  name: "Cho Oyu",       m: 8188, country: "Nepal / China",    report: "" },
+  { rank: 7,  name: "Dhaulagiri I",  m: 8167, country: "Nepal",            report: "assets/docs/peak-reports/dha1-dhaulagiri-i.html", note: "dhaulagiri-autumn-2026" },
+  { rank: 8,  name: "Manaslu",       m: 8163, country: "Nepal",            report: "" },
+  { rank: 9,  name: "Nanga Parbat",  m: 8126, country: "Pakistan",         report: "", noData: true },
+  { rank: 10, name: "Annapurna I",   m: 8091, country: "Nepal",            report: "" },
+  { rank: 11, name: "Gasherbrum I",  m: 8080, country: "Pakistan / China", report: "", noData: true },
+  { rank: 12, name: "Broad Peak",    m: 8051, country: "Pakistan / China", report: "", noData: true },
+  { rank: 13, name: "Gasherbrum II", m: 8035, country: "Pakistan / China", report: "", noData: true },
+  { rank: 14, name: "Shishapangma",  m: 8027, country: "China (Tibet)",    report: "", noData: true }
+];
+
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
+  {
+    "id": "dhaulagiri-autumn-2026",
+    "title": "A Convenient or Inconvenient Truth",
+    "category": "journal",
+    "status": "logged",
+    "location": "Dhaulagiri I, Nepal",
+    "date": "2026-10-25",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "The end of the 2026 major climbing season. The Sherpas stopped fixing ropes on Dhaulagiri and the season ended with no summits. What 35 years of data say about the call, and who the ropes were really fixed for.",
+    "story": [
+      "*Dhaulagiri I (8,167 m). Photo: Sergey Ashmarin.*",
+      "> **“The last word always belongs to the mountain.”** — Anatoli Boukreev",
+      "Since 1990, 347 expeditions and 2,268 climbers have gone to Dhaulagiri I (8,167 m). 57 of them died. Since 2010 it has been the deadliest of Nepal’s big 8,000 m peaks: 2.6% of climbers died, almost three times Everest’s rate (0.9%). Autumn is the worse season on every measure that matters. Just two autumns ago, on October 6, 2024, five climbers died in falls on the same day at about 7,600 m.",
+      "**Dhaulagiri by the Numbers**",
+      "html:<div class=\"rpt\" style=\"margin:18px 0;padding:18px 20px\"><div class=\"r-tablewrap\" style=\"margin:0\"><table style=\"min-width:420px\"><thead><tr><th>Since 1990</th><th>Spring</th><th>Autumn</th></tr></thead><tbody><tr><td>Expeditions</td><td>194</td><td>148</td></tr><tr><td>Climbers (members + hired staff)</td><td>1,211</td><td>1,041</td></tr><tr><td>Expeditions that reached the summit</td><td>50%</td><td>38%</td></tr><tr><td>Summits</td><td>377</td><td>250</td></tr><tr><td>Deaths</td><td>27</td><td>30</td></tr><tr><td>Death rate (deaths per climber)</td><td>2.2%</td><td>2.9%</td></tr><tr><td>Deaths per 100 summits</td><td>7.2</td><td>12.0</td></tr><tr><td>Avalanche deaths</td><td>3</td><td>14</td></tr><tr><td>Expeditions ended by snow / avalanche conditions</td><td>14%</td><td>27%</td></tr></tbody></table></div></div>",
+      "*Source: Himalayan Database, 1990 through Winter 2025–26. Summer and winter (5 expeditions, no deaths) left out. The 2026 autumn season is not in the database yet.*",
+      "In this note, I’ll cover this month’s controversy on Dhaulagiri and what the mountain’s climbing history since 1990 says about it. On one side, the climbers question the motives of the Sherpas and expedition companies who cancelled the summit attempt. On the other, the Sherpas pulled out based on their read of the avalanche threat and the incoming weather. Frankly, it’s too complicated for one side to be right and the other wrong. The fabric of this story has been woven since these mountains were first summited, and especially since 1990, when the commercialization of Nepal’s mountains began. In the end, the mountain will have the last word, not either side.",
+      "It must be immensely frustrating to spend so much time anticipating a great summit, only to return to Kathmandu empty-handed. Still, for these climbers, maybe it was best it was cancelled. Personally, I would want my support 100% dedicated to the mission. Anything less is potentially fatal. I’ll explain.",
+      "**Dhaulagiri Autumn 2026: The Rope-Fixing Controversy**",
+      "On October 11, 2026, the Sherpa rope-fixing team on Dhaulagiri stopped just above Camp 3 (about 7,100 m), and the big operators ended the season. Independent climbers say the real reason was that the operators’ Ukrainian VVIP* clients quit. No source has named those clients, but the only Ukrainian VVIPs reported on the mountain were Igor and Oksana Kushnir, a wealthy couple guided by the rope-fixing leader, Makalu Lakpa Sherpa. That points strongly to them, but it is not confirmed. The Sherpa leaders say wind-loaded slopes and a two-day weather window made a push unsafe. Nobody summited.",
+      "*VVIP: Very Very Important Person. For what that buys, see [Seven Summit Treks’ VVIP Everest package](https://sevensummittreks.com/page/everest-expedition-ultimate-vvip-884886m.html).*",
+      "> **Bottom line.** Both sides can be right at once. Conditions were genuinely risky, and once the VVIP clients were done, nobody with authority had a reason to take that risk for the independents. At the same time, conditions may have been good enough for experienced climbers to make an attempt. We’ll never know, because the people who controlled the ropes weren’t climbing for them.",
+      "**Open questions**",
+      "• Did the VVIP clients decide to descend before or after the October 10 conditions report?",
+      "• What was the written fixing agreement between SST, 14 Peaks and 8K, if any?",
+      "• What did 14 Peaks guide Benny Lieber’s avalanche assessment actually show? It was posted only as an image.",
+      "**Timeline**",
+      "The season ran about three weeks from restart to shutdown. In mid-September the Kushnirs and Anni Penttilä acclimatized on Thorong Peak (6,150 m) with Makalu Lakpa Sherpa’s team. From September 22 to 29 a Bay of Bengal cyclone dumped up to 3 m of snow while the route reached only Camp 2. Most clients flew out. Paul Clarke and Xenia Santha waited it out at Base Camp, and Paul documented the season on his YouTube channel, [Outdoor Pirate](https://www.youtube.com/watch?v=WK6W-4fX_qo). Climbing resumed October 1, and by October 5 the rope team was fixing above Camp 2. Another 30 cm of snow fell October 7–8, and October 10 brought the strongest winds of the week. On October 11 the rope fixers stopped just above Camp 3, and about 20 climbers at Camp 2 were ordered down. Makalu Lakpa closed the mountain for the season on October 12, Andrzej Bargiel quit from Camp 2 on October 13, and Seven Summit Treks made it official on October 14.",
+      "**Expedition Companies Involved**",
+      "Two Nepali operators ran the show. Seven Summit Treks (SST) and 14 Peaks Expedition fixed the ropes under one climbing leader, Makalu Lakpa Sherpa, with Chhang Dawa Sherpa directing for SST. Pioneer Adventure also had a team. Smaller outfits like 8K Expeditions, which gave Clarke and Santha base-camp services only, depended on those ropes. Clarke summed up the two big operators as “same same.” SST’s hold on Dhaulagiri is not new. It arrived in 2012, ran 31 of the 83 expeditions on the mountain from 2016 to 2025, and accounts for 131 of the 630 summits since 1990, more than any other company. When one company fixes the route, everyone else climbs on its schedule.",
+      "**Weather Delays**",
+      "Weather shaped the whole season. The September cyclone cost more than a week and buried the route. The October 7–8 storm added about 30 cm of fresh snow at Camp 2, and the October 10 winds loaded it onto the slopes. Every team read the same forecast: high winds October 9–10, a lull October 11–13, then the jet stream back on the afternoon of October 14. Forecast-model data shows the lull arrived. Summit-level winds eased to about 25–30 km/h on October 11, ran 40–50 km/h on the morning of October 12, the planned summit day, and topped 100 km/h on October 14. The argument was never about the forecast. It was about whether a two-to-three-day window was enough. Makalu Lakpa said an 8,000 m peak needs at least five days of good weather. The independents believed two was enough to try. Vincere Zeng raised the question nobody has answered: why did 14 Peaks move its team and VIP clients toward Camp 3 on October 10, the windiest day in the forecast, and then cancel based on what they found that day?",
+      "**Climbers**",
+      "About 20 climbers were at Camp 2 when the call came. Paul Clarke (Australia), climbing without oxygen on his second Dhaulagiri attempt with five 8,000 m peaks behind him, and his partner Xenia Santha (Hungary) had carried gear to about 7,000 m. Vincere Zeng (Singapore), with seven 8,000ers including K2 and Annapurna, had planned her summit for the morning of October 12. Anni Penttilä (Finland) was a 14 Peaks client. Andrzej Bargiel (Poland) was there to ski the mountain with his own SST support and film crew. Then there were the Kushnirs, the likely but unconfirmed VVIP clients. Igor is a former deputy defence minister. Makalu Lakpa guided them on Makalu in May and on Thorong Peak in September. Clarke says they climbed with 8 to 10 Sherpas.",
+      "**Fixing the Ropes**",
+      "On commercial 8,000 m peaks, the rope-fixing team sets the pace for everyone. Climbers clip into lines the Sherpas fix ahead of them, and Clarke and Santha had not brought the alpine gear to climb without them. On Dhaulagiri the fixers stopped at about 7,100 m, leaving roughly 1,000 m of unfixed ground to the summit. Makalu Lakpa said the lines already in place were frozen in, the snow was “extremely adverse,” and the risk of slab avalanches was high. SST said the fixing was voluntary and for its own teams. Clarke says the fixers were assigned to the VVIP clients, so when those clients quit, so did the fixing. The data shows why this is the most dangerous job on the mountain. Since 1990, 23 of Dhaulagiri’s 57 deaths came during route work and load carrying, 12 of them in avalanches, and 8 of the 11 hired staff who died were killed by avalanches.",
+      "**Canceling the Expedition**",
+      "The cancellation came in stages. On October 11 the climbers at Camp 2 were told to go down. On October 12 Makalu Lakpa said, “we officially closed Dhaulagiri to climbing for this autumn season.” 8K Expeditions cancelled after SST, 14 Peaks and Pioneer cancelled theirs; three climbers and three Sherpas could not finish the route alone. Bargiel, who had no stake in the VVIP clients, stayed two more days and quit on October 13: “The avalanche risk became too high.” On October 14 SST’s Chhang Dawa Sherpa formally called it off, citing the guides’ decision: “We have come a long way from the time when climbers simply ordered guides up or down the mountain... Today we listen carefully to the people who are actually on the front line.”",
+      "**Two Sides of the Same Coin**",
+      "Both sides are partly correct. Regardless, the expedition was cancelled, and every climber and Sherpa is alive to climb another day.",
+      "The data clearly shows the autumn window on Dhaulagiri is more dangerous than spring. Since 1990, autumn has cost 12.0 deaths per 100 summits against 7.2 in spring, about 1.7 times as many, and an autumn climber is about 30% more likely to die. Avalanches are the big difference. 14 of the mountain’s 17 avalanche deaths came in autumn, which makes an autumn climber more than five times as likely to die in one, and autumn expeditions are almost twice as likely to be turned back by snow and avalanche conditions (27% vs 14%). Early October, exactly when this season’s push was planned, is the mountain’s deadliest half-month: 20 deaths against 158 summits.",
+      "The situation on the mountain, combined with that record, made the call look prescient. If there was a weather window, it was only usable with the Sherpas preparing the route. Paul’s video shows ropes covered in ice and snow that had to be broken out around 7,000 m. Breaking out the lines already fixed, fixing new rope above Camp 3, and climbing through deep snow, all inside a two-day window, point to a good call to cancel. What is not clear is why the Sherpas cancelled: the conditions, or a lack of motivation once the VVIPs were done, whether they couldn’t climb, chose to quit, or were turned around. Either way, the Sherpas bailed, and without their support the climbers were done.",
+      "Paul was clearly disappointed, and others were venting in the background of his video. He said he would go back to Kathmandu, debrief, and decide whether to continue with 8K, ask for a credit toward next year, or lose the money he paid. Not an unusual situation, but not ideal given the money and time climbers put into their goals and dreams.",
+      "This is what I meant by support 100% dedicated to the mission. Paul’s expedition company was 8K, but his summit depended on ropes fixed by a different company, for that company’s own clients, under an arrangement he wasn’t part of. His support was never fully dedicated to his mission. It was dedicated to someone else’s. Anyone relying on fixed ropes should know who is fixing them, for whom, and what happens if those clients quit, or bring the gear and the team to go without them.",
+      "With the shift to mostly Nepali expedition companies, there is very little recourse when they combine their efforts. But alas, Dhaulagiri may not be the right mountain to make an example of. Its record, the deadliest of Nepal’s big 8,000ers and worst in autumn, gave the Sherpas every reason to be cautious. The problem is real; this mountain just isn’t the clean test case for it. This season, the last word belonged to the mountain.",
+      "**One Last Word, Maybe by Another Mountain**",
+      "Anatoli Boukreev had a storied climbing career. He was a legend having summited 10 of the 14 8,000 m peaks without supplemental oxygen, some as solo speed ascents. From 1989 to 1997, he made 18 successful ascents of peaks above 8,000 m. He became even more widely known for saving the lives of three climbers during the 1996 Mount Everest disaster, although not without some controversy which I won’t get into here. Boukreev was then killed by an avalanche on Annapurna in 1997. His body remains somewhere on the mountain. The mountain had the last word.",
+      "**The Full Record**",
+      "[Dhaulagiri Autumn 2026: The Rope-Fixing Controversy (.docx)](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/dhaulagiri-autumn-2026-rope-fixing-controversy.docx) covers who’s who, the full timeline, both sides’ statements, the VVIP client question, the forecast-versus-actual weather analysis, and all sources.",
+      "**The Dhaulagiri Peak Report**",
+      "Using Claude AI, we’ve prepared a peak report on Dhaulagiri. It is the first of peak reports of all the mountains. I’ll build those over time along with a story or two.",
+      "> **[Open the Dhaulagiri I Peak Report](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/peak-reports/dha1-dhaulagiri-i.html)**, the stats since 1990 in three sections: the big picture, trends and drivers, and where the data is weak.",
+      "**Sources**",
+      "• [ExplorersWeb: Rope Fixing Halted For Unclear Reasons (Oct 11)](https://explorersweb.com/dhaulagiri-rope-fixing-halted-for-unclear-reasons/)",
+      "• [ExplorersWeb: Controversy Continues as Expeditions Called Off (Oct 12)](https://explorersweb.com/controversy-on-dhaulagiri-as-expeditions-called-off/)",
+      "• [ExplorersWeb: Bargiel Abandons Ski Attempt (Oct 14)](https://explorersweb.com/bargiel-abandons-dhaulagiri-ski-attempt/)",
+      "• [Alan Arnette: Autumn Himalayan Climbing – Everest and More (Oct 12)](https://www.alanarnette.com/2026/10/12/autumn-himalayan-climbing-everest-and-more/)",
+      "• [The Tourism Times: Seven Summit Treks calls off Dhaulagiri (Oct 14)](https://thetourismtimes.com/news/climbing/seven-summit-treks-calls-off-dhaulagiri-expedition-after-severe-conditions-halt-rope-fixing)",
+      "• [Everest Chronicle: Dhaulagiri expedition abandoned as conditions worsen (Oct 12)](https://everestchronicle.com/dhaulagiri-expedition-abandoned-as-climbing-conditions-worsen?post=683)",
+      "• [Abenteuer Berg: Commercial teams wrap up the season on Dhaulagiri](https://abenteuer-berg.de/en/commercial-teams-wrap-up-the-season-on-dhaulagiri/)",
+      "• [Paul Clarke, Outdoor Pirate (YouTube): I Can’t Believe This Happened On My Dhaulagiri Summit Push (Oct 23)](https://www.youtube.com/watch?v=WK6W-4fX_qo)",
+      "• [Open-Meteo historical forecast API (ECMWF IFS, NOAA GFS)](https://open-meteo.com/en/docs/historical-forecast-api)",
+      "• [The Himalayan Database (stats, 1990 through Winter 2025–26)](https://www.himalayandatabase.com/)"
+    ],
+    "facts": {
+      "Type": "Journal note",
+      "Peak": "Dhaulagiri I · 8,167 m",
+      "Data": "Himalayan Database, 1990 – Winter 2025–26"
+    },
+    "cover": "assets/photos/dhaulagiri-autumn-2026/dhaulagiri_mountain.jpg",
+    "photos": [],
+    "links": [
+      [
+        "Dhaulagiri I Peak Report",
+        "assets/docs/peak-reports/dha1-dhaulagiri-i.html"
+      ],
+      [
+        "Full record: The Rope-Fixing Controversy (.docx)",
+        "assets/docs/dhaulagiri-autumn-2026-rope-fixing-controversy.docx"
+      ],
+      [
+        "8,000 m Peaks",
+        "peaks.html#eight-thousanders"
+      ]
+    ]
+  },
   {
     id: "path",
     title: "Path in the Trees",

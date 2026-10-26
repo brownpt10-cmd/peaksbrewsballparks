@@ -34,6 +34,9 @@
   }).join("").replace(/<\/blockquote><blockquote>/g, "");
   const catHref  = c => (CATEGORIES[c] || {}).page || `expeditions.html?cat=${c}`;
 
+  // 8,000 m peaks (EIGHT_K in data.js)
+  const EIGHTK = typeof EIGHT_K !== "undefined" ? EIGHT_K : [];
+
   // 14ers helpers (fourteeners.js)
   const PEAKS14 = typeof FOURTEENERS !== "undefined" ? FOURTEENERS : [];
   const isSummited = p => !!(p.date || p.done);
@@ -84,6 +87,9 @@
           <a class="hl" href="peaks.html#trails" style="margin-top:14px">${esc(c.trails.label)}</a>
           ${trails().slice(0, 4).map(e => `<a href="expedition.html?id=${e.id}">${esc(e.title)}</a>`).join("")}
           <a class="all" href="expeditions.html?cat=peaks&region=${encodeURIComponent(c.trails.region)}">All Trails</a>
+          <a class="hl" href="peaks.html#eight-thousanders" style="margin-top:14px">8,000 m Peaks</a>
+          ${EIGHTK.filter(p => p.report).map(p => `<a href="${esc(p.report)}">${esc(p.name)} Peak Report</a>`).join("")}
+          <a class="all" href="peaks.html#eight-thousanders">All 14 Peaks</a>
         </div>
         <div class="mega-col mega-col--sub">
           <a href="peaks.html#progress">${done.length} of ${PEAKS14.length} summited</a>
@@ -436,6 +442,18 @@
       const k = th.dataset.sort; asc = sortKey === k ? !asc : true; sortKey = k; draw();
     }));
     draw();
+
+    // 8,000 m Peaks placeholder tracker
+    if ($("#eight-body")) $("#eight-body").innerHTML = EIGHTK.map(p => `
+        <tr class="${p.report ? "done" : ""}">
+          <td class="num">${p.rank}</td>
+          <td><strong>${esc(p.name)}</strong></td>
+          <td class="num">${p.m.toLocaleString()}</td>
+          <td class="num">${Math.round(p.m * 3.28084).toLocaleString()}</td>
+          <td>${esc(p.country)}</td>
+          <td>${p.report ? `<a class="text-link" href="${esc(p.report)}">Peak Report →</a>` : `<span class="muted">${p.noData ? "Not in the Himalayan Database" : "Coming soon"}</span>`}</td>
+          <td>${p.note ? `<a class="text-link" href="expedition.html?id=${esc(p.note)}">Journal note →</a>` : '<span class="muted">—</span>'}</td>
+        </tr>`).join("");
 
     // Peak trip reports (logged expeditions in the Peaks category)
     const trailList = trails();
