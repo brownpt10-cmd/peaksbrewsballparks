@@ -45,3 +45,6 @@ Video/
 
 # Himalayan Database (licensed data, local only)
 Database/
+
+# Working Word docs at the folder root (published copies live in assets/docs/)
+/*.docx
