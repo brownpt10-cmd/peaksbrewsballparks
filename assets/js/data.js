@@ -427,7 +427,7 @@ const EXPEDITIONS = [
       "Analysis": "Independent, AI-assisted (Claude)",
       "Graphic": "Summit Day Simulator (author)"
     },
-    "cover": "assets/photos/mountains-part-6/summit-day-cover.jpg",
+    "cover": "assets/photos/mountains-part-6/summit-day-cover-1010.jpg",
     "photos": [],
     "story": [
       "*The Summit Day Simulator at 6:19am on a crowded day: about 300 people on Everest’s South Col rope, with the queues in red. Graphic: the author’s simulation.*",
