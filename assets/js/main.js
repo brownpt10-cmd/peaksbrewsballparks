@@ -59,8 +59,8 @@
   const DIVS  = typeof DIVISIONS !== "undefined" ? DIVISIONS : [];
   const parksVisited = () => PARKS.filter(p => p.visited);
   const photoPath = (e, p) => `assets/photos/${e.id}/${p}.jpg`;
-  const media = (src, cat, alt) => src
-    ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`
+  const media = (src, cat, alt, pos) => src
+    ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy"${pos ? ` style="object-position:${esc(pos)}"` : ""}>`
     : `<div class="ph ph--${esc(cat)}">${esc(catLabel(cat))}</div>`;
 
   /* ------------------------------------------------------------------ */
@@ -70,7 +70,7 @@
     const two = list.slice(0, 2);
     while (two.length < 2) two.push(null);
     return two.map(e => e
-      ? `<a class="mega-card" href="expedition.html?id=${e.id}">${media(e.cover, e.category, e.title)}
+      ? `<a class="mega-card" href="expedition.html?id=${e.id}">${media(e.cover, e.category, e.title, e.coverPos)}
            <span class="cap"><small>${esc(e.location || catLabel(e.category))}</small><strong>${esc(e.title)}</strong></span></a>`
       : `<div class="mega-card"><div class="ph">Coming soon</div></div>`).join("");
   }
@@ -275,7 +275,7 @@
     const href = isPlanned ? "#" : `expedition.html?id=${e.id}`;
     return `
       <a class="card${isPlanned ? " card--planned" : ""}" href="${href}">
-        <div class="card-media">${media(e.cover, e.category, e.title)}<span class="tag tag--${e.category}">${esc(catLabel(e.category))}</span></div>
+        <div class="card-media">${media(e.cover, e.category, e.title, e.coverPos)}<span class="tag tag--${e.category}">${esc(catLabel(e.category))}</span></div>
         <div class="card-body">
           <div class="card-meta">${esc(e.location || (isJournal(e) ? "Journal" : "Location TBD"))} · ${isPlanned ? "Up next" : esc(when(e))}</div>
           <h3>${esc(e.title)}</h3>
@@ -345,7 +345,7 @@
     const e = logged.find(x => x.id === params.get("id")) || logged[0];
     if (!e) return;
     document.title = `${e.title} · ${SITE.name}`;
-    $("#exp-hero").innerHTML = media(e.cover, e.category, e.title);
+    $("#exp-hero").innerHTML = media(e.cover, e.category, e.title, e.coverPos);
     $("#exp-tag").textContent = e.category === "peaks" && isTrail(e) ? "Trails" : catLabel(e.category);
     $("#exp-tag").className = `tag tag--${e.category}`;
     $("#exp-title").textContent = e.title;

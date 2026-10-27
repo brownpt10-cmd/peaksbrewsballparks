@@ -126,6 +126,7 @@ const EXPEDITIONS = [
       "Summit push": "28 Oct 2026, sunrise (planned)"
     },
     "cover": "assets/photos/ama-dablam-2026/ama-dablam.jpg",
+    "coverPos": "50% 8%",
     "photos": [],
     "links": [
       [
