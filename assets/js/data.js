@@ -80,6 +80,69 @@ const EIGHT_K = [
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    "id": "ama-dablam-2026",
+    "title": "Ama Dablam",
+    "category": "journal",
+    "status": "logged",
+    "location": "Ama Dablam, Nepal",
+    "date": "2026-10-26",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "Xenia Santha is going for the first summit of Ama Dablam by a Hungarian woman, climbing with Paul Clarke and no Sherpas. Their plan, the weather for the 28 October push, and the simulator that runs it hour by hour.",
+    "story": [
+      "*Ama Dablam (6,812 m). Photo: [Vyacheslav Argenberg](https://commons.wikimedia.org/wiki/File:Himalayas,_Ama_Dablam,_Nepal.jpg), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*",
+      "Because of its pyramid shape, Ama Dablam (6,812 m) is known as the Matterhorn of the Himalaya. Sometimes called a benchmark peak for climbing the 8,000 m peaks, the mountain is technical and a true test of alpine fitness. Looking at pictures of the mountain under splendid blue skies, it is indeed majestic.",
+      "In October 2026, Xenia Santha, a Hungarian climber, will attempt to be the first woman from Hungary to summit Ama Dablam. Her climbing partner is Aussie Paul Clarke. Here is [a picture of Paul and Xenia](https://www.instagram.com/p/DcNYs_LMnKr/) from his Instagram account.",
+      "Xenia and Paul leave Base Camp (about 4,600 m) on 27 October, Nepal time, with the goal of pushing past Camp 1, dropping gear at Camp 2 and summiting at sunrise. The weather looks good for the push, with a storm inbound two days from now.",
+      "As reported by Paul, sadly a German climber, Wolfgang Waschiczek, 57, fell to his death from Camp 3. He had summited the day before and was apparently waiting for his guide when he fell over the edge, about 1,700 m. These realities hit hard: the mountain does not care or forgive. My deepest condolences to his family.",
+      "Looking forward to following along on Paul’s YouTube channel, [Outdoor Pirate](https://www.youtube.com/live/ObkjpvygCxU).",
+      "Meanwhile, here is their plan and the weather for the climb. I also built the weather into the simulation below.",
+      "**Their Plan**",
+      "Leave Base Camp early for Camp 1 and Camp 2 in succession. Drop gear, most likely at Camp 2. Leave Camp 2 at 23:45, summit around 05:45 at first light, and be back at Camp 2 around 09:00. That’s a summit on Wednesday morning, 28 October, and down shortly after. All times are Nepal time.",
+      "**The Weather**",
+      "• **On top:** about −19°C with a 23 km/h SW wind, which feels like about −30°C, under high, dry cloud. The ridge could gust up to about 35 km/h.",
+      "• **At Camp 2:** about −15°C when they leave and −5°C when they get back.",
+      "• **Snow:** none during their window. It arrives Thursday afternoon.",
+      "> **[Follow the expedition](https://www.theoutdoorpirate.com/mountains/ama-dablam)** on The Outdoor Pirate.",
+      "**The Ama Dablam Peak Report**",
+      "Using the Himalayan Database, we’ve prepared a peak report on Ama Dablam: the route, when people reach the top, crowds, risk and the clock, where people died, and Paul and Xenia’s plan against the record.",
+      "> **[Open the Ama Dablam Peak Report](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/ama-dablam-summit-clock.html)**",
+      "**The Simulation**",
+      "The Summit Day Simulator puts every climber on the push from Camp 2 to the top and back, with Paul and Xenia as the blue dots. Press play and the forecast changes with the clock: temperature, wind chill, wind and cloud on top and at Camp 2.",
+      "> **[Open the Ama Dablam Summit Day Simulator](https://brownpt10-cmd.github.io/peaksbrewsballparks/assets/docs/ama-dablam-simulator.html)**",
+      "**Sources**",
+      "• [The Outdoor Pirate: Ama Dablam expedition](https://www.theoutdoorpirate.com/mountains/ama-dablam)",
+      "• [Paul Clarke, Outdoor Pirate (YouTube): Can We Do It? Our Solo Strategy for Ama Dablam (Oct 26)](https://www.youtube.com/live/ObkjpvygCxU)",
+      "• [Paul Clarke on Instagram](https://www.instagram.com/p/DcNYs_LMnKr/)",
+      "• [The Himalayan Times: German climber dies on Ama Dablam (Oct 26)](https://thehimalayantimes.com/ampArticle/1040722)",
+      "• [Open-Meteo forecast API (ECMWF IFS, NOAA GFS)](https://open-meteo.com/)",
+      "• [Mountain-Forecast: Ama Dablam](https://mountain-forecast.com/peaks/Ama-Dablam/forecasts/6856)",
+      "• [The Himalayan Database (stats, 1990–2025)](https://www.himalayandatabase.com/)"
+    ],
+    "facts": {
+      "Type": "Journal note",
+      "Peak": "Ama Dablam · 6,812 m",
+      "Climbers": "Xenia Santha & Paul Clarke",
+      "Summit push": "28 Oct 2026, sunrise (planned)"
+    },
+    "cover": "assets/photos/ama-dablam-2026/ama-dablam.jpg",
+    "photos": [],
+    "links": [
+      [
+        "Ama Dablam Peak Report",
+        "assets/docs/ama-dablam-summit-clock.html"
+      ],
+      [
+        "Ama Dablam Summit Day Simulator",
+        "assets/docs/ama-dablam-simulator.html"
+      ],
+      [
+        "Mountains, Part 6: The Summit Clock",
+        "expedition.html?id=mountains-part-6"
+      ]
+    ]
+  },
+  {
     "id": "taming-of-annapurna",
     "title": "The Taming of Annapurna",
     "category": "journal",
