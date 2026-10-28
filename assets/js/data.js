@@ -80,6 +80,44 @@ const EIGHT_K = [
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    "id": "tis-the-season",
+    "title": "Tis the Season",
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "date": "2026-10-27",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "One batch of aged eggnog, two quart jars, two personalities: a balanced classic and a bold, high-proof twist built to rest in the fridge until the holidays.",
+    "story": [
+      "![Two glasses of eggnog in front of two labeled mason jars](assets/photos/tis-the-season/eggnog.jpg)",
+      "Splitting the batch across two quart jars is a great way to experiment. Jar 1 gets the core premium combo. Jar 2 goes bolder: a high-proof variation built on Evan Williams Bottled-in-Bond with an applejack and overproof rum twist.",
+      "Each 1-quart jar takes 1 cup total of alcohol (8 fl oz / 240 ml) along with half of the base (4 yolks, 2/3 cup sugar, 1 1/3 cups milk, 2/3 cup cream).",
+      "**Shared Eggnog Base** *(split evenly across 2 jars)*",
+      "html:<ul><li>8 large egg yolks</li><li>1 1/3 cups sugar</li><li>2 2/3 cups whole milk</li><li>1 1/3 cups heavy cream</li><li>3/4 tsp freshly grated nutmeg + 1/3 tsp salt</li></ul>",
+      "Whisk the yolks and sugar until thick and pale yellow, then blend in the milk, cream, nutmeg and salt. Divide the base evenly between the two 1-quart mason jars (about 22–23 oz of base per jar). Add each jar's alcohol blend directly, seal, and shake.",
+      "**Jar 1: The Balanced Classic**",
+      "Silky, elegant, and vanilla-forward using the current top bottles.",
+      "html:<ul><li>1/3 cup (2.6 fl oz) Buffalo Trace Bourbon (90 proof)</li><li>1/3 cup (2.6 fl oz) Planteray 5-Year Barbados Rum (80 proof)</li><li>1/3 cup (2.6 fl oz) Cognac or Spanish brandy (e.g., Pierre Ferrand 1840 or Torres 10)</li></ul>",
+      "> **Vibe:** Smooth and oaky with light caramel, toasted coconut, and rounded French oak notes.",
+      "**Jar 2: The Bold & Spicy High-Proof Twist**",
+      "100-proof Bottled-in-Bond bourbon gives it a punchy, high-ABV kick that ages exceptionally well over several months.",
+      "html:<ul><li>1/2 cup (4 fl oz) Evan Williams Bottled-in-Bond Bourbon (100 proof)</li><li>1/4 cup (2 fl oz) Laird’s Applejack or Straight Apple Brandy</li><li>1/4 cup (2 fl oz) overproof dark rum (e.g., Planteray O.F.T.D. or Smith &amp; Cross)</li></ul>",
+      "> **Vibe:** Robust and full-bodied. The 100-proof Evan Williams cuts sharply through the rich dairy, the applejack adds a crisp autumn baking-spice note, and the dark overproof rum brings deep molasses and dark chocolate richness.",
+      "**Aging Tip**",
+      "Label the lids with the date and alcohol combination. Jar 2 carries a higher overall alcohol percentage, so it handles long-term aging (3 to 12 months) even more gracefully than Jar 1, becoming extraordinarily silky over time.",
+      "*Tis the season. Shake, label, and let the fridge do the rest.*"
+    ],
+    "facts": {
+      "Type": "Journal note",
+      "Batch": "2 × 1-quart jars",
+      "Alcohol": "1 cup per jar",
+      "Aging": "3–12 months, refrigerated"
+    },
+    "cover": "assets/photos/tis-the-season/eggnog.jpg",
+    "photos": []
+  },
+  {
     "id": "sleeping-giant",
     "title": "Let the Sleeping Giant Rest",
     "category": "journal",
