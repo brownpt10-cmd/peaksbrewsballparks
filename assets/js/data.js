@@ -203,7 +203,7 @@ const EXPEDITIONS = [
       "• **29 Oct, 02:56** · Still in the tent at Camp 2, finally asleep.",
       "**The totals**",
       "• **Base Camp to summit:** 31 h 05 elapsed, with about 18 h of climbing (9 h 30 to Camp 2, then 8 h 35 to the top) and the night at Camp 2 in between.",
-      "• **Base Camp to summit and back to Camp 2:** about 37 h, with about 36 h awake from Camp 2 on 27 Oct to Camp 2 on 28 Oct.",
+      "• **Base Camp to summit and back to Camp 2:** about 37 h, all of it without sleep.",
       "For scale, the fast-ascent track from October 2022 went from Base Camp to the summit in 5 h 50. Xenia and Paul took longer, and they spent the night keeping a stranger alive first.",
       "**The Original Note, 26 October**",
       "Because of its pyramid shape, Ama Dablam (6,812 m) is known as the Matterhorn of the Himalaya. Sometimes called a benchmark peak for climbing the 8,000 m peaks, the mountain is technical and a true test of alpine fitness. Looking at pictures of the mountain under splendid blue skies, it is indeed majestic.",
