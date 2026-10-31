@@ -1211,6 +1211,7 @@ const EXPEDITIONS = [
     "crew": "Pat",
     "summary": "Opening day of Everest: The Other Side, and the question from Part 1 again: why take extraordinary risks when life is precious? Plus a sidebar on the word “failure.”",
     "story": [
+      "*Everest’s North Face from the Tibet side. Photo: Luca Galuzzi, [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/), via [Wikimedia Commons](https://commons.wikimedia.org/w/index.php?curid=60601512).*",
       "*A follow-up to [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains), the psychology of the summit, written after opening day of Everest: The Other Side.*",
       "Life is precious.",
       "Assuming you believe this simple, yet eternal statement, why on this green and snow covered Earth would you take extraordinary risks for extraordinary adventure and ambition?",
@@ -1243,9 +1244,10 @@ const EXPEDITIONS = [
     "facts": {
       "Type": "Journal note",
       "Series": "Mountains · Part 1.2 (follow-up to Part 1)",
-      "Film": "Everest: The Other Side (2026)"
+      "Film": "Everest: The Other Side (2026)",
+      "Photo": "Everest North Face (Luca Galuzzi)"
     },
-    "cover": "assets/photos/mountains/hillary-step-queue.jpg",
+    "cover": "assets/photos/mountains-part-1-2/everest-north-face-cover.jpg",
     "photos": [],
     "links": [
       [
