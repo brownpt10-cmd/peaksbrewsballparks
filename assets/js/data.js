@@ -90,6 +90,7 @@ const EXPEDITIONS = [
     "crew": "Pat",
     "summary": "It was the hottest of times, it was the coldest of times. Mauna Kea and Kilauea — fire and ice on one island, a love story told in lava, legend and plate tectonics.",
     "story": [
+      "html:<img src=\"assets/photos/tale-of-two-volcanoes/circlepeak.png\" alt=\"Circle Peak\" style=\"float:left;width:72px;height:72px;margin:0 16px 8px 0\">",
       "> “Do you have any books by Dickens?”",
       "> “No. No, I'm afraid, um, we're a travel bookshop. We only sell travel books.”",
       "> [Watch: Notting Hill (1999)](https://www.youtube.com/watch?v=A3WjrLG5B6M)",
