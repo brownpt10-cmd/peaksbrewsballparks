@@ -1201,6 +1201,68 @@ const EXPEDITIONS = [
   },
 
   {
+    "id": "mountains-part-1-2",
+    "title": "Mountains, Part 1.2",
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "date": "2026-10-30",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "Opening day of Everest: The Other Side, and the question from Part 1 again: why take extraordinary risks when life is precious? Plus a sidebar on the word “failure.”",
+    "story": [
+      "*A follow-up to [Part 1](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains), the psychology of the summit, written after opening day of Everest: The Other Side.*",
+      "Life is precious.",
+      "Assuming you believe this simple, yet eternal statement, why on this green and snow covered Earth would you take extraordinary risks for extraordinary adventure and ambition?",
+      "Not to rehash Part 1, but I’m not sure I ever answered my own question about the psychology of the summit. It’s so hard to explain properly that no story fully grasps the complexity of why humans take extraordinary risks when they could leave behind the people they hold most dear and precious. Then a movie came along that put the question right back in front of me.",
+      "*Everest: The Other Side* opened in theaters today. I saw it in an IMAX theater. The cinematography and the sound are phenomenal; the story is profound.",
+      "I saw previews and movie promotional interviews, so going in, I knew the story and the tragedy; I wasn’t prepared for how they told it.",
+      "> “Oftentimes in life, people want to play it safe, and we make everything around us—especially in the Western world—to be comfortable and safe,” ski mountaineer Hilaree Nelson once mused. “And so we can make choices where you can see where that road is going to take you, and I’ve always been prone to making a choice that I don’t know where it’s going to take me.”",
+      "I found myself shaking my head listening to their reasons to ski the North Face of Everest. On one hand, it’s ambition: doing great feats in the public eye never done before. On another, it’s a need to take risk, to “feel alive,” as Hilaree says in the film. On yet another, it’s accomplishing lifelong dreams. That sounds a lot like “great feats,” and they’re certainly intertwined, but it’s more of a personal drive to accomplish a goal regardless of the outrageous risk.",
+      "One of them to me feels like an addiction, no different than an alcohol or gambling addiction. Maybe even a chronic mental health or neuropsychiatric condition not unlike OCD, where an intrusive preoccupation with high-risk adventure is the only source of comfort. Or maybe it’s closer to Dean Potter’s issue. In the documentary *Dark Wizard*, he explains that the voices in his head are only quieted by climbing. The risks he took kept increasing, as if his brain had adapted to a degree of risk and needed more to get the dopamine shot.",
+      "So, it really confounds me, someone who would never take this level of risk. Someone who would rationally calculate the danger and fear for my mortality. What confounds me may very well be the answer – these people have habituated to risk unlike me, and while they know dying is a potential outcome, they believe they can succeed. Anything less is failure.",
+      "I really want to understand this need and put it in context.",
+      "I enjoy scuba diving, and I dove a couple of cenotes in the past. Lots of fun and great memories. While not without risk, the degree is controlled and measured compared to high alpine mountaineering. The means of escape is a rapid ascent, or a buddy sharing a tank on a controlled ascent. The risk in diving increases with depth, wall diving, caves, strong currents, and perhaps shark-infested waters. A 40-foot dive with gentle currents and minimal hazards is almost as safe as driving a car. By comparison, the death risk of an Everest summit attempt is 300 to 500 times higher than the risk of dying on a single dive.",
+      "This isn’t to say I don’t feel some anxious anticipation on every dive about what could go wrong and how I’ll perform.",
+      "If we’re talking about the exhilaration of accomplishment, then how or why are individual humans calibrated so differently? Or is it just that, a different calibration? With one level accomplished, the next becomes the goal. With experience and time, what seems risky to one person is ordinary to another. This might be free soloing a rock face, traversing a knife-edge ridge with a 1,000-foot drop on either side, or skiing down a near-vertical slope where one slip or caught edge would mean falling thousands of feet and almost certain death or serious injury.",
+      "The movie is truly heartbreaking. They kept the footage of Hilaree being swept down Manaslu in 2022, the moment the moving sheet of snow and ice cuts out from under her. They kept the moment her body is discovered, and the blood-smeared snow, likely caused by trying to dig out her ice-entombed body. The filmmakers bring you along through Jim’s grief, not only for Hilaree but for his first wife and two young children. They were killed in 2011 when the plane his wife was piloting crashed due to severe air turbulence.",
+      "Then they decide to continue with the project. Same ambition, now justified with “do it for Hilaree.”",
+      "As a subplot, Jimmy Chin and his co-director wife, Chai Vasarhelyi, have a discussion in the movie about whether Jimmy should become Jim’s main climbing partner after Hilaree’s death. She asks how many people who have sat at this table are now dead. They rattle off at least a half dozen names. But Jimmy has this faraway look on his face, which I read as him having already made his decision. She says she thought Jimmy was done with Everest, implying it was out of his system. Jimmy had previously summited Everest in 2004, skied from the summit in 2006, and unsuccessfully attempted the North Face in 2003. Sadly, Jimmy and Chai divorced in early 2025, before the epic climb up the North Face and Jim’s ski descent. Another sad ending, regardless of the reason for the divorce.",
+      "On the first attempt in fall of 2024, three Sherpas walked away. They had reached the level of risk they were willing to take. The mission was cancelled when an avalanche broke the leg of their most prolific rope fixer.",
+      "A year later, they hired different, non-Nepali co-leads for rope fixing, and the Sherpa who broke his leg returned.",
+      "No doubt an epic adventure. No doubt some stunning visuals that I feel blessed to have seen on opening day in an IMAX theater. No doubt I’ll be eager to watch it again in my own movie theater in the highest definition and sound quality. There’s a scene of Jim skiing down the most difficult part. The soundtrack turns grim and tight, and when he emerges into the clear at Camp 1, the music soars again. I know it’s a classic use of a soundtrack, but it’s still epic.",
+      "**Sidebar: On “Failure”**",
+      "One last idea I want to deal with: the use of the word “failure” to describe an unsuccessful attempt to summit a mountain or ski down it. “They attempted to summit the mountain, turned back due to weather, and called it a failed attempt.” All true. What wouldn’t be true is attaching the word to their effort, ambition, and objective. I suppose if they turned back because their fitness level was inadequate and they knew they undertrained, then I think it’s fair to say they failed.",
+      "The word conveys the idea, but I question its motive. First, this is clearly my issue to grapple with, not theirs. If the word expresses how they feel, I’m not going to change their mind.",
+      "If I miss a turn in the road and wreck my car, that’s a personal failure. If the car’s brakes failed, that is not my personal failure, unless I didn’t have them serviced.",
+      "I think the problem with attaching the word to these epic climbing adventures is the misplaced focus on the real objective. The summit isn’t a one-way trip. You don’t get to reach the peak and call it good. You have to descend and arrive back home alive. I’m splitting hairs, I know, for no good reason. If you’re the climber, you’re thinking this is someone else’s issue. They know their goal, they want to come home—they don’t want to die.",
+      "Nonetheless, I’m not dissuaded. I hear them say it, I hear their conviction that what they do is safe and succeeding is possible, but the facts bear out a different story. Yet they’ll say that was the other guy, not me.",
+      "**Conclusion**",
+      "So all my tilting at this windmill is really only for my benefit. It’s for me to reconcile my feelings as I live vicariously through their conquest. What I do know is the things that I hold precious also come with adult decisions to preserve them and me. Buckle up, drive the speed limit, put sunscreen on, don’t play in the traffic, and eat a low-sugar, high-fiber, high-protein diet. Let’s go!"
+    ],
+    "facts": {
+      "Type": "Journal note",
+      "Series": "Mountains · Part 1.2 (follow-up to Part 1)",
+      "Film": "Everest: The Other Side (2026)"
+    },
+    "cover": "assets/photos/mountains/hillary-step-queue.jpg",
+    "photos": [],
+    "links": [
+      [
+        "Mountains, Part 1",
+        "expedition.html?id=mountains"
+      ],
+      [
+        "Hilaree Nelson tribute, National Geographic",
+        "https://www.nationalgeographic.com/adventure/article/hilaree-nelson-notched-many-firsts-life-of-high-altitude-adventures"
+      ],
+      [
+        "Everest: The Other Side, Boston Globe review",
+        "https://www.bostonglobe.com/2026/10/28/arts/everest-the-other-side/"
+      ]
+    ]
+  },
+  {
     id: "mountains",
     title: "Mountains, Part 1",
     category: "journal",
@@ -1376,6 +1438,7 @@ const EXPEDITIONS = [
             "Everest queue video (Facebook)",
             "https://www.facebook.com/watch/?v=1161631609104154"
     ],
+      ["Mountains, Part 1.2", "expedition.html?id=mountains-part-1-2"],
       ["Mountains, Part 6", "expedition.html?id=mountains-part-6"]
 ]
   },
