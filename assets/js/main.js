@@ -345,6 +345,7 @@
     const e = logged.find(x => x.id === params.get("id")) || logged[0];
     if (!e) return;
     document.title = `${e.title} · ${SITE.name}`;
+    if (e.pageBg) document.body.classList.add(`page-${e.pageBg}`); // e.g. pageBg: "white"
     $("#exp-hero").innerHTML = media(e.cover, e.category, e.title, e.coverPos);
     $("#exp-tag").textContent = e.category === "peaks" && isTrail(e) ? "Trails" : catLabel(e.category);
     $("#exp-tag").className = `tag tag--${e.category}`;

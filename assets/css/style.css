@@ -624,3 +624,7 @@ a.st-item:hover .st-name { color: var(--orange-dark); }
   .rpt .r-boxes, .rpt .r-stats { grid-template-columns: 1fr; }
   .rpt .r-abstract, .rpt .r-tldr, .rpt .r-disclaimer { padding: 14px; }
 }
+
+/* Per-note page background (data.js: pageBg: "white") */
+body.page-white, body.page-white .section, body.page-white .section--alt { background: #fff; }
+body.page-white .story blockquote { background: #fafafa; }

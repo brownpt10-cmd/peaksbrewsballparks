@@ -80,6 +80,42 @@ const EIGHT_K = [
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    "id": "circle-peak",
+    "title": "Circle Peak",
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "date": "2026-10-31",
+    "rating": null,
+    "crew": "Pat",
+    "pageBg": "white",
+    "summary": "The story behind my personal mark: a circle for a full life, peaks for the climb, and a descent that leads back to the start.",
+    "story": [
+      "html:<img src=\"assets/photos/circle-peak/circlepeak.png\" alt=\"Circle Peak\" style=\"display:block;width:72px;height:72px;margin:0 0 20px 0\">",
+      "Circle Peak is my personal brand mark. It goes on my work from here on out: notes, documents, this site. Here's what it means.",
+      "html:<div style=\"display:flex;gap:20px;flex-wrap:wrap;margin:28px 0\"><figure style=\"margin:0;flex:1 1 220px;text-align:center\"><img src=\"assets/photos/circle-peak/circlepeak-black-on-white.png\" alt=\"Circle Peak, black on white\" style=\"width:100%;max-width:300px;border:1px solid #e5e5e5;border-radius:10px\"><figcaption style=\"font-size:14px;color:#666;margin-top:8px\">Black on white: documents and light backgrounds</figcaption></figure><figure style=\"margin:0;flex:1 1 220px;text-align:center\"><img src=\"assets/photos/circle-peak/circlepeak-white-on-black.png\" alt=\"Circle Peak, white on black\" style=\"width:100%;max-width:300px;border-radius:10px\"><figcaption style=\"font-size:14px;color:#666;margin-top:8px\">White on black: dark backgrounds and garments</figcaption></figure></div>",
+      "**The circle.** A full life: everything connected, a continuous feedback loop where each experience feeds the next. No start, no finish, only the next lap.",
+      "**The peaks.** Ambition: a goal worth climbing toward, reached one step at a time.",
+      "**Five columns, five pillars.** The mark maps onto The Life Code: Physical, Mental, Strategy, Financial and Learning. Each rises to its own height; together they make one mountain.",
+      "**The forward lean.** Every column leans the same way at the same angle, so the whole mark has momentum.",
+      "**The gaps.** The evenly spaced breaks are the pauses: rest, recovery and time to think. They are part of the climb, not interruptions.",
+      "**The summit isn't the widest part.** Column 4, the first step down, is wider than the peak. The descent and the reflection carry more weight than the summit itself.",
+      "**One line from summit to edge.** Columns 4 and 5 share a single slope. The way down is one deliberate path, not a fall.",
+      "**The descent rejoins the circle.** Column 5 runs out into the ring. Coming down closes the loop and becomes the start of the next climb.",
+      "**Same ground at both ends.** Columns 1 and 5 end on one baseline. You finish on the ground you started from, changed by the trip.",
+      "**The data read.** The columns also read as a bar chart, a nod to the analysis side: measure, learn, adjust.",
+      "**Black and white.** Effort and rest, ambition and contentment. Each defines the other, like light and shadow on a mountain.",
+      "> *Climb with purpose, come down with wisdom, and let the circle carry you to the next peak.*"
+    ],
+    "facts": {
+      "Mark": "Circle Peak",
+      "Columns": "5 · one per Life Code pillar"
+    },
+    "cover": "assets/photos/circle-peak/circlepeak-cover.jpg",
+    "coverPos": "75% center",
+    "photos": []
+  },
+  {
     "id": "tale-of-two-volcanoes",
     "title": "The Tale of Two Volcanoes (and an unnecessary Subplot)",
     "category": "journal",
