@@ -1248,6 +1248,7 @@ const EXPEDITIONS = [
       "Photo": "Everest North Face (Luca Galuzzi)"
     },
     "cover": "assets/photos/mountains-part-1-2/everest-north-face-cover.jpg",
+    "coverPos": "50% 5%",
     "photos": [],
     "links": [
       [
