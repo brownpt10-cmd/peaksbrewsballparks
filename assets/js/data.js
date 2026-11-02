@@ -19,7 +19,7 @@ const SITE = {
   name: "Peaks to Brews to Ballparks",
   tagline: "Summits, taprooms and ballparks — one expedition at a time.",
   crew: "Buster & Crew",
-  heroImage: "assets/photos/oktoberfest/img_3476.jpg"
+  heroImage: "assets/photos/overcoming-adversity/lobuche-east-peak.jpg"
 };
 
 const CATEGORIES = {
@@ -81,7 +81,7 @@ const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
     "id": "art-of-the-descent",
-    "title": "What Mountains Know and What Humans Forget: The Art of the Descent",
+    "title": "What Mountains Know and Humans Forget: The Art of the Descent",
     "category": "journal",
     "status": "logged",
     "location": "",
