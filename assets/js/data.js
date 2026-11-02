@@ -80,6 +80,90 @@ const EIGHT_K = [
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
   {
+    "id": "art-of-the-descent",
+    "title": "What Mountains Know and What Humans Forget: The Art of the Descent",
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "date": "2026-11-01",
+    "rating": null,
+    "crew": "Pat",
+    "summary": "The summit gets the headlines, but the descent is my hero. Hilaree Nelson and Adrian Ballinger in their own words, the serac over K2’s Bottleneck, and what it really means to come home.",
+    "story": [
+      "html:<img src=\"assets/photos/circle-peak/circlepeak.png\" alt=\"Circle Peak\" style=\"display:block;width:72px;height:72px;margin:0 0 20px 0\">",
+      "*K2. Photo: Kuno Lechner, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), via [Wikimedia Commons](https://commons.wikimedia.org/w/index.php?curid=1317960).*",
+      "The Project. The Departure. The Climb. The Summit. Those are the headlines: the high fives and congratulatory pictures at the top, 360-degree views against an azure sky. Images we’ve all seen many times. They are the pinnacle of planning, hard work, sacrifice and the arduous climb.",
+      "Not to take anything away from the ascent, but the descent is my hero. It is less celebrated and less acknowledged, yet to me it’s far more interesting and far more important. Come with me on a journey to explore The Art of the Descent.",
+      "**The Second Half of the Race**",
+      "I was a long-distance runner. I logged thousands of training miles and ran dozens of marathons, half-marathons and 10Ks. I was faster than most of my peers, but not elite. I rarely missed a scheduled run, and two-hour runs on the weekend weren’t unusual.",
+      "Granted, the finish line has its own special place. As I overanalyze this, the end of a road race is the finale of a constant exertion. The training had stages, but the race had a finite number at the end: 10K, 13.1, 26.2. I never thought of the middle of the race as the peak, or much about what came after the finish line. I realize now that the second half of a race was my descent. I’m tired, my pace is slowing, it’s hot, my muscles are cramping and doubt starts to seep in. I will not DNF.",
+      "Ten years and 25 pounds later, I found running again, this time up mountains. The crowning achievements were probably the Pikes Peak Ascent, the 13-mile uphill half of the race on the Barr Trail, and climbing the Manitou Incline (roughly 2,700 steps and 2,000 feet of elevation gain in under a mile) seven days in a row, then running down the Barr Trail switchbacks, each round trip under an hour. I sprained my ankle on one of those descents and ran through it to the bottom. Little did I know that injury would lead to severe degeneration of the joint and a total ankle replacement 13 years later. This kid won’t be *running* up mountains ever again. But I do want to hike them.",
+      "I have to admit, I was an ascent guy. I couldn’t wait to get to the destination. A run or a hike was a blast out of the gate, an attack on the first incline, a relentless push to the turnaround point or summit. I always did these on my own. My wife wasn’t an athlete, so there was no shared conquest in that sense, but she supported my training and races without question. Mostly, it was a quiet satisfaction.",
+      "The descent was, well, the second act. An afterthought, a trivial accompaniment to the high of the pinnacle. I was lucky. I didn’t have many third-act breakdowns beyond the sprained ankle and the usual aches in the feet, shins, hips and knees. No injury set me back on my heels, so to speak, for longer than a little rest after weeks of high mileage. Work and ambition probably got in the way more than anything.",
+      "The older, wiser me now understands that the descent is the real prize.",
+      "**The Mark**",
+      "In recognition of that, I created a personal mark: a circle for a full life, peaks for the climb, and a descent that leads back to the start. In short, the mark stands for climbing with purpose, coming down with wisdom, and letting the circle carry you to the next peak. ([More on the mark](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=circle-peak))",
+      "html:<img src=\"assets/photos/circle-peak/circlepeak.png\" alt=\"Circle Peak\" style=\"display:block;width:144px;height:144px;margin:8px auto 28px\">",
+      "**Two Climbers, Two Approaches**",
+      "High-alpine climbers share that notion of quiet satisfaction. As I mentioned in [Mountains, Part 1.2](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=mountains-part-1-2), I watched the newest Everest documentary on Friday. On Saturday I found a few videos on YouTube: one from The North Face featuring Hilaree Nelson, and one from Eddie Bauer featuring the Alpenglow Expeditions crew led by Adrian Ballinger, with Topo Mena and Carla Pérez.",
+      "The North Face video reaffirmed the Hilaree quote I used in Part 1.2. Listening to her passion and philosophy affirmed her focus. It’s what made her Hilaree, and it’s what put her in risky situations. Here are her words in full, so you can decide for yourself.",
+      "html:<div style=\"margin:28px 0;padding:18px 24px;border-left:4px solid var(--orange);background:var(--white)\"><p style=\"margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase\">Managing Guilt and Sharing Passion</p><p style=\"margin:0 0 10px;font-style:italic\">“Sort of my mantra when I’m away and I have those bouts of guilt or just that desperate feeling of like, what am I doing, is this too dangerous? I just tell myself that, you know, I mean it is what I love, I’m so passionate about it and I just feel that if I can convey that to my kids, then they see me as a person, as a passionate person, not just their mom, but their mom plus.”</p><p style=\"margin:0;text-align:right;font-size:14px;color:#666\">— Hilaree Nelson · <a class=\"text-link\" href=\"https://www.youtube.com/watch?v=wPXSFVruIHI&amp;t=816\" target=\"_blank\" rel=\"noopener\">13:36</a></p></div>",
+      "html:<div style=\"margin:28px 0;padding:18px 24px;border-left:4px solid var(--orange);background:var(--white)\"><p style=\"margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase\">Finding the Present Moment</p><p style=\"margin:0 0 10px;font-style:italic\">“I think that’s what the deeper meaning is for me, it’s really going out there and suffering and getting into a unique environment helps me get to a place where I’m able to fully live in the now.”</p><p style=\"margin:0;text-align:right;font-size:14px;color:#666\">— Hilaree Nelson · <a class=\"text-link\" href=\"https://www.youtube.com/watch?v=wPXSFVruIHI&amp;t=989\" target=\"_blank\" rel=\"noopener\">16:29</a></p></div>",
+      "html:<div style=\"margin:28px 0;padding:18px 24px;border-left:4px solid var(--orange);background:var(--white)\"><p style=\"margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase\">Making the Turns Count</p><p style=\"margin:0 0 10px;font-style:italic\">“I was like, there’s… I’m never going to be in this place in this moment again, I should really make this next turn count. Even though I sort of want to side-slip through here, I’m going to make two more turns because I’m never gonna get this opportunity again and I want—I want these two turns to be with me.”</p><p style=\"margin:0;text-align:right;font-size:14px;color:#666\">— Hilaree Nelson · <a class=\"text-link\" href=\"https://www.youtube.com/watch?v=wPXSFVruIHI&amp;t=1109\" target=\"_blank\" rel=\"noopener\">18:29</a></p></div>",
+      "html:<div style=\"margin:28px 0;padding:18px 24px;border-left:4px solid var(--orange);background:var(--white)\"><p style=\"margin:0 0 8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase\">The Importance of Taking Risks</p><p style=\"margin:0 0 10px;font-style:italic\">“I think it’s important to take risks in life and not just wait for it to come to you… I think there’s so much aversion to risk-taking, I don’t think that’s the right direction we should be going. Like, you have to take risks if you want to learn anything about yourself, want to expand the self-imposed walls we put around ourselves. I think that is what’s interesting to me about us as a species, is that we can do that and that is how we move forward, how we create things, how we have ideas is by taking risks and being a little different or being passionate about something. You don’t have to climb Lhotse to do that.”</p><p style=\"margin:0;text-align:right;font-size:14px;color:#666\">— Hilaree Nelson · <a class=\"text-link\" href=\"https://www.youtube.com/watch?v=wPXSFVruIHI&amp;t=1221\" target=\"_blank\" rel=\"noopener\">20:21</a></p></div>",
+      "*Source:* [The North Face Presents: Lhotse ft. Hilaree Nelson and Jim Morrison](https://www.youtube.com/watch?v=wPXSFVruIHI)",
+      "Hilaree had her own approach to the risk of mountaineering. Please don’t mistake what I’m trying to convey here as criticism. She chose her path. And as much as she wanted to inspire others, we can also learn from her death. In 2022, she fell while skiing down from the summit of Manaslu. On the descent.",
+      "Adrian Ballinger is an interesting dude. I’ve listened to him on multiple podcasts and interviews. He’s married to Emily Harrington, another accomplished climber, and they have a child together. His approach is altogether different, but no less ambitious and not without risk. He has a healthy respect for the mountain, and in the K2 film he lays out the risks plainly: “On these big mountains we’re taking big risks, we need to be aware of those risks and mitigate those risks to the greatest level we can, and we have to know when it’s time to go home.” ([00:22](https://www.youtube.com/watch?v=cvFt2Xcuois&t=22))",
+      "He talks about listening to the mountain, taking “the same approach I’ve taken to every mountain I’ve ever taken, and that’s to go until the mountain tells me I can’t go anymore.” ([15:08](https://www.youtube.com/watch?v=cvFt2Xcuois&t=908)) He admits when it’s scary. After one hard section: “That was full-on scary, hard. I’m gonna try to get around to a safe spot around the corner and reassess.” ([39:27](https://www.youtube.com/watch?v=cvFt2Xcuois&t=2367)) And he’s honest about where his limit was: “Getting to the summit I knew I could do, getting down was really actually pretty scary for me… I needed all of my teammates to keep me awake, to keep me moving. I kind of found that limit, that line.” ([05:34](https://www.youtube.com/watch?v=cvFt2Xcuois&t=334)) That’s the descent talking.",
+      "He leans on his team, too. “I’m at a point in my career where I want to have help making those impossible decisions up high when things go wrong,” ([08:52](https://www.youtube.com/watch?v=cvFt2Xcuois&t=532)) he says, and when he watches his teammates “deal with stress and risk, that decision making is so on point and they’re so focused.” ([42:00](https://www.youtube.com/watch?v=cvFt2Xcuois&t=2520)) What the video doesn’t show is how they arrived at the decision to press ahead despite the danger.",
+      "Underneath it all, his words convey the need to come home: to share the conquest and tell the tale. The old saying is dead men tell no tales. “I know if I disappear on a mountain I’m just gone. It’s those people at home, it’s my family, that it’s going to affect their lives for years and years to come… while that might happen inevitably because of something I didn’t plan—and I accept that risk—I just never wanted it to be because I knew it and I pushed on anyway.” ([00:47](https://www.youtube.com/watch?v=cvFt2Xcuois&t=47))",
+      "Adrian says the mountains are “intoxicating.” Grinning his way up K2, he says, “It’s so damn fun being teammates with Carla and Topo,” ([24:12](https://www.youtube.com/watch?v=cvFt2Xcuois&t=1452)) and “I’d spend every day with them if I could in the mountains, guiding and climbing and just having fun.” ([25:38](https://www.youtube.com/watch?v=cvFt2Xcuois&t=1538)) Through the videos, I can personally relate. The beauty of the mountains, being that close to the power and majesty of a mountain like K2, must be mind-blowing. Intoxicating, indeed.",
+      "But I also see the thought of succeeding at almost any cost seep in. Adrian uses the word *failure* more than any mountaineer I’ve heard. He means any project that doesn’t end in success (mountaineers call their climbs projects). Failure is OK, he says; we all fail and take small steps to succeed. Yet he also acknowledges that “at this level, the consequence is not failure, the consequence is death.” You can see the interesting juxtaposition in his chosen words.",
+      "*Source:* [Breathtaking: K2 – The World’s Most Dangerous Mountain | Eddie Bauer](https://www.youtube.com/watch?v=cvFt2Xcuois)",
+      "**The Mountain Gets a Vote**",
+      "With all that said, as we used to say about our adversary on the battlefield, the mountain gets a vote. The human body has limits that don’t obey weeks, months and years of preparation and training. A rockslide or avalanche is the known unknown. High-altitude illness (HACE and HAPE) doesn’t follow a predictable course and doesn’t respect your training; your best defense is time on the mountain acclimatizing before the summit push. The summit and the descent are too late to find out you’re not ready. The days are long, time above 8,000 meters deteriorates the body, and fatigue on the descent is the enemy. Your brain is working at half speed. Your fingers and hands aren’t working as they should, and foot placement gets harder. One slip while unclipped between anchors on a steep face, and death is almost certain.",
+      "The art of the descent, then, is awareness in every phase of the climb. It isn’t simply the climbing-down portion after the summit. It’s a healthy respect during the ascent: leave gas in the tank, respect the turnaround times, listen to the mountain when it’s telling you the avalanche danger is too high, and be fast and certain if you do continue.",
+      "K2 is a perfect example. Every climber, every video, anything ever written about the mountain talks about the serac hanging over the Bottleneck. I’m listening to *No Way Down*, the account of the most prominent event tied to that serac: the 2008 K2 disaster of August 1–2.",
+      "> **The event:** A massive serac collapse above the Bottleneck sheared off the fixed ropes and swept away multiple climbers, while trapping others in the death zone.",
+      "> **The toll:** Eleven people died during the overall tragedy.",
+      "> **The nuance:** The 11 deaths can’t all be attributed to a single block of falling ice. Some climbers died in falls earlier in the day, others were hit or swept away by the ice, and several succumbed to exhaustion, exposure or injury while stranded overnight above the serac.",
+      "The only real defense you have at that section of the route is speed and time of day. A crowded mountain, as in 2008, is a disaster waiting to happen.",
+      "**Coming Home**",
+      "So what is the art of the descent? I don’t mean it literally, or at least not only literally. It isn’t just the hours of downclimbing after the summit photo. It’s everything that gets you home, and everything you get to do once you’re there.",
+      "It’s falling in love and growing old together. My wife never shared the trail with me, but she supported every mile without question. A summit is a moment; growing old with the people who stood behind you is a lifetime. Adrian has Emily and their child waiting at home, and he says it plainly: he never wanted it to be because he knew and pushed on anyway.",
+      "It’s returning to share the conquest and tell the tale. The best story from any summit is the one told afterward by the person who was there. Hilaree told hers beautifully, and she wanted her kids to see her as “their mom plus.” The hard lesson of Manaslu is that the descent is where the story either gets told or gets cut short.",
+      "It’s sharing the joy. Adrian grinning on K2 because it’s “so damn fun” with Carla and Topo. Hilaree making two more turns because she’d never be in that place again. The joy is what you carry down with you.",
+      "And it’s planning the next one and learning the lessons. The circle in my mark doesn’t end at the bottom of the mountain; it leads back to the start. You come down with wisdom so the circle can carry you to the next peak. I won’t run up mountains again. My ankle settled that. But I can still climb with purpose, come down with wisdom, and start planning the next one.",
+      "> *The mountain gets a vote. The descent is how you keep yours.*"
+    ],
+    "facts": {
+      "Type": "Journal note",
+      "Theme": "The Art of the Descent",
+      "Voices": "Hilaree Nelson · Adrian Ballinger",
+      "Photo": "K2 (Kuno Lechner)"
+    },
+    "cover": "assets/photos/art-of-the-descent/k2.jpg",
+    "photos": [],
+    "links": [
+      [
+        "Mountains, Part 1.2",
+        "expedition.html?id=mountains-part-1-2"
+      ],
+      [
+        "Circle Peak",
+        "expedition.html?id=circle-peak"
+      ],
+      [
+        "The North Face Presents: Lhotse ft. Hilaree Nelson and Jim Morrison",
+        "https://www.youtube.com/watch?v=wPXSFVruIHI"
+      ],
+      [
+        "Breathtaking: K2 – The World’s Most Dangerous Mountain | Eddie Bauer",
+        "https://www.youtube.com/watch?v=cvFt2Xcuois"
+      ]
+    ]
+  },
+  {
     "id": "circle-peak",
     "title": "Circle Peak",
     "category": "journal",
