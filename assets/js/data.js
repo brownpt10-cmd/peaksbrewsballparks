@@ -299,7 +299,9 @@ const EXPEDITIONS = [
       "**Same ground at both ends.** Columns 1 and 5 end on one baseline. You finish on the ground you started from, changed by the trip.",
       "**The data read.** The columns also read as a bar chart, a nod to the analysis side: measure, learn, adjust.",
       "**Black and white.** Effort and rest, ambition and contentment. Each defines the other, like light and shadow on a mountain.",
-      "> *Climb with purpose, come down with wisdom, and let the circle carry you to the next peak.*"
+      "> *Climb with purpose, come down with wisdom, and let the circle carry you to the next peak.*",
+      "And for fun, my logo and saying:",
+      "html:<img src=\"assets/photos/circle-peak/logocp.jpg\" alt=\"The Circle Peak: Never Stop Snoring\" style=\"display:block;width:100%;max-width:900px;margin:12px auto 0;border-radius:10px\">"
     ],
     "facts": {
       "Mark": "Circle Peak",
