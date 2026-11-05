@@ -13,6 +13,7 @@
    rating:   1–5 or null
    crew:     who went (optional — shows in the facts bar)
    facts:    any label/value pairs you want in the dark facts bar on the detail page
+   unlisted: true hides an entry from the Log, menus, stats and pager (reachable by direct link only)
    ========================================================================== */
 
 const SITE = {
@@ -79,6 +80,155 @@ const EIGHT_K = [
 
 const EXPEDITIONS = [
   /* ----------------------------- LOGGED ----------------------------- */
+  {
+    "id": "the-holiday",
+    "title": "The Holiday, Love Actually: On the Architecture of Seasonal Sentiment",
+    "date": "2026-11-05",
+    "summary": "A big-city critic condescends to Love Actually: borrowed chords, two love themes, an evidence board, four stories on Christmas Eve, and one country lane he refuses to believe in.",
+    "story": [
+      "html:<img src=\"assets/photos/the-holiday/circlepeak.png\" alt=\"Circle Peak\" style=\"display:block;width:72px;height:72px;margin:0 0 20px 0\">",
+      "**I. An Unseasonable Beginning**",
+      "The season arrived this year, as it now insists on doing, in October, delivered not by the calendar but by commerce. I hold two parties responsible. The first is Walmart, a retailer of which I am only distantly aware but which, The Irish Times informs me, is now valued at one trillion dollars, a figure that explains a great deal about the inflatable reindeer. The second is the Hallmark Channel, which releases its Christmas premieres with the dependability of a commuter timetable and roughly the same emotional range.",
+      "I have watched them. All of them. I did so in the spirit of the anthropologist who lives among a people in order to understand them, and I have emerged, somewhat diminished, to file this report. I have also revisited *Love Actually*, and I am presently making my way through *The Holiday*, Nancy Meyers's 2006 meditation on the redemptive power of other people's square footage. My intention is to slow down and examine these films as one might examine any object of mass devotion: how they are constructed, what their authors intended, how the performers went about their business, and why, against every reasonable expectation, people return to them year after year. We file them under \"Christmas\" because they come wrapped in tinsel, but the tinsel is incidental. Strip it away and one is left with ordinary films that ordinary people elect to watch again, which is, I concede, a kind of achievement.",
+      "Readers of my recent essays, specifically *[Dissonance](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=dissonance)* and [the piece on the volcanoes](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=tale-of-two-volcanoes), will recall that I have also been spending time with *Notting Hill*, the 1999 romance written by Richard Curtis. It is not, strictly speaking, a Christmas film. It is, rather, a film for all seasons, a claim it makes for itself quite literally when Hugh Grant's William Thacker walks the length of the Portobello Road market as spring turns to summer, summer to autumn, and autumn to winter, in a single unbroken shot set to Bill Withers. It is the sort of device that would be insufferable were it not, irritatingly, rather lovely.",
+      "What, then, is the point of this exercise? I am tempted to say there is none. If a film gives pleasure, the civilized response is to accept the pleasure and say nothing further. I am, however, constitutionally incapable of saying nothing further.",
+      "The formula, for those who have been spared it, has three components: writing clever enough to survive repeated exposure, actors agreeable enough that we will tolerate them annually, and a soundtrack. In *Love Actually*, the true subject of this essay, the soundtrack is not decoration. It is the load-bearing wall. It binds the film's scattered pieces into something resembling a whole, and it performs much of the emotional labor for which the actors, and the director who arranges their sequences, are then given credit.",
+      "**II. On the Love Themes**",
+      "For the benefit of readers who have managed to avoid it, and I suspect that is most of you, *Love Actually* is a 2003 British ensemble comedy, the directorial debut of Richard Curtis, in which a great many attractive people in London fall into and out of love during the five weeks before Christmas. I return to it every December. I will confess, in the strictest confidence, that I have on occasion returned to it in July.",
+      "What follows is an excessive and wholly unnecessary analysis of its construction: the storylines, the threads that bind them, and the music that holds the entire contraption together. I ask for two minutes of your attention. I intend to take considerably more.",
+      "**The Glasgow Love Theme**",
+      "The score is the work of the Scottish composer Craig Armstrong, and its principal motif, the Glasgow Love Theme, recurs throughout the film in several variations, tailored to whatever heartbreak happens to be on screen. I have tried to think of another film whose score has held me quite this captive. Grand scores are common enough. A single love theme that stitches an entire ensemble together is rarer, though I am confident someone will write in with examples.",
+      "Listen: [Glasgow Love Theme on YouTube](https://www.youtube.com/watch?v=1vC6AfPMuDk&list=RD1vC6AfPMuDk&start_radio=1) · Sheet music: [Sheet Music Direct](https://www.sheetmusicdirect.com/se/ID_No/26093/Product.aspx)",
+      "Why does it make one faintly sad? The explanation is a single chord. The theme resides in A major, the key of home, of contentment, of things being broadly fine. It then moves to D minor while the A is sustained in the bass, a sonority the score notates as Dm/A. D minor has no business in A major. It has been borrowed from A minor, the key's melancholy twin, a practice the theorists call modal mixture. I prefer to call it the moment the room goes cold.",
+      "For the musically untutored: the native chords of A major are A, D, E and F-sharp minor. Those of A minor are A minor, D minor and E. When D minor appears, the music gestures toward the minor key without committing to it, the way a dinner guest glances at his watch without actually rising from the table. That glance is the source of the unease.",
+      "F-sharp minor lends a certain shadow as well, but it is a legitimate member of the household, and so it offers only a mild wistfulness. D minor is the interloper, and it is D minor that delivers the ache.",
+      "The sustained A in the bass is what keeps the edifice upright. The foundation remains at home while the harmony darkens above it, so the listener never feels the floor shift. The voices scarcely move to get there: two of them rise by a half step and then fall back, an exhalation rendered in pitch. The fall is where the feeling lands. It is the sound of coming home, and of coming home sad.",
+      "Beneath all of this runs a persistent tug. A note is held over from one chord into the next, chafes briefly against its new surroundings, and then resolves. Tension and release, again and again. The effect is not harshness so much as longing, which, I would argue, is the only emotion this film is genuinely interested in.",
+      "**The Portuguese Love Theme**",
+      "It escapes most viewers, as most things do, that the film contains not one love theme but two. The second, the Portuguese Love Theme, is broader and more expansive than its Scottish sibling, its melody moving in wider intervals. It is set in a different key, C, and its independence is easy to overlook because the two themes are never placed side by side. It receives its final, full-orchestral statement in the restaurant scene near the film's end, of which more shortly.",
+      "Listen: [YouTube 1](https://www.youtube.com/watch?v=h0Zg7TtHyng&list=RDh0Zg7TtHyng&start_radio=1) · [YouTube 2](https://www.youtube.com/watch?v=0XJNmc8tJI0) · [YouTube 3, should the first two fail you](https://www.youtube.com/watch?v=IR7I50LaBUA) · Sheet music: [Sheet Music Direct](https://www.sheetmusicdirect.com/se/ID_No/26095/Product.aspx)",
+      "The melody rises slowly and steps back. Rises slowly and steps back. Then it opens into a longer ascent toward a broad and hopeful conclusion: new love, a kind of rebirth for Colin Firth's Jamie, and for Lúcia Moniz's Aurélia a love she had no reason whatsoever to expect.",
+      "It tells the same story as Glasgow by other means. Glasgow aches because a chord arrives that does not belong. The Portuguese theme aches because it declines, again and again, to resolve. **Glasgow says something is wrong; the Portuguese theme says not yet.** That is precisely right for a romance that withholds its consummation until the final reel.",
+      "I shall note, as we proceed, where the theme resurfaces and how it has been altered for each occasion. Should the harmonic argument have failed to persuade, perhaps the narrative one will succeed.",
+      "**III. The Evidence Board**",
+      "It occurred to me that what this film required was a diagram. More precisely, it required an evidence board, the cork-and-string apparatus familiar from prestige television and from the apartments of men who have stopped returning their families' calls.",
+      "[**Love Actually Evidence Board**](https://claude.ai/artifact/E4EKbngd9m1im9tZBgvgiU): every relationship, every object, every regrettable necklace. Click any card to follow its strings. One is advised to begin with Karen. Everyone else does.",
+      "html:<a href=\"https://claude.ai/artifact/E4EKbngd9m1im9tZBgvgiU\" target=\"_blank\" rel=\"noopener\" style=\"display:block;margin:20px 0 6px\"><img src=\"assets/photos/the-holiday/evidence-board.jpg\" alt=\"Love Actually Evidence Board\" loading=\"lazy\" style=\"display:block;width:100%;border:1px solid #ccc;border-radius:4px\"></a><p style=\"margin:0 0 24px;font-size:14px;color:#666;font-style:italic\">Click the board to open the full interactive version.</p>",
+      "The film contains nine storylines. Four of them, in my estimation, carry the picture: David and Natalie, Harry and Karen, Jamie and Aurélia, and the triangle of Juliet, Peter and Mark. Of the remainder, Daniel and Sam, a widower and his young stepson, is genuinely touching. Sarah and Karl is disquieting. Billy Mack, an aging rock star recording a Christmas cover of a song he openly considers rubbish, introduces the absurd. Colin, who flies to Wisconsin in the conviction that American women will find his accent irresistible, is British comedy in its purest and least defensible form. John and Judy, two film stand-ins making polite conversation between takes of simulated intimacy, are superfluous at best.",
+      "Curtis has reportedly said that the film once had fourteen storylines, pared down to nine, and that he still regrets losing one of them. The picture could have survived further cuts. That it did not make them is, I suspect, the whole of its charm.",
+      "**IV. Four Stories, One Christmas Eve**",
+      "The four principal stories run on a single mechanism, and once it has been pointed out, it cannot be unseen. Someone is unable to say aloud what they feel. An object says it for them. And Christmas Eve, functioning less as a holiday than as a filing deadline, compels the moment of disclosure.",
+      "Consider David and Natalie, who enter the film's web through Karen, his sister. David, played by Hugh Grant with the stammering diffidence that is by now less a performance than a trademark, is the Prime Minister, and he has fallen for a junior member of his own household staff. This is not a thing a Prime Minister can say. Natalie's Christmas card says it for him. On Christmas Eve he goes door to door through Wandsworth, a part of London I am told exists, in search of her, follows her to a school nativity play, and kisses her backstage at the precise moment the curtain rises. We last see them together at Heathrow.",
+      "Harry and Karen are the hub of the entire apparatus; nearly every thread runs through Emma Thompson's Karen. What cannot be said here is \"I know about the necklace,\" the gold necklace Alan Rickman's Harry has purchased for his secretary. A Joni Mitchell CD says it instead. Karen opens the wrong present, withdraws to the bedroom, weeps to \"Both Sides Now,\" then composes her face and returns downstairs for the children. It is the finest few minutes in the film, and Thompson achieves them with almost no dialogue. The marriage survives, visibly damaged.",
+      "Jamie and Aurélia are drawn in through the wedding of Peter and Juliet, which Jamie leaves early. They share no language whatsoever, which means that everything goes unsaid. Their secret lessons speak for them: his in Portuguese, hers in English, undertaken, as she puts it, \"just in case.\" On Christmas Eve he flies to Portugal and proposes at the restaurant where she works, before an audience of townspeople who have trailed him there, as the Portuguese Love Theme swells beneath. They end engaged, at Heathrow.",
+      "Juliet, Peter and Mark are likewise bound to the wedding. Mark's secret is the gravest of the lot: he is in love with his best friend's wife. His wedding video betrays him, since very nearly every frame is of Juliet. The cue cards complete the confession. On Christmas Eve he appears on her doorstep holding them, with carols playing from a boombox so that she may tell her husband it is merely singers at the door. He is rewarded with a kiss and murmurs to himself, \"Enough. Enough now.\" It is closure rather than romance, and it is the most adult moment the film permits itself.",
+      "**Why It Endures**",
+      "Beneath its considerable gloss, the film is making an argument: that love arrives in many forms. New romance. A marriage under strain. A widower's grief. A sister's obligation. A friendship strained by a secret. Nearly every story turns on the moment someone finally says what they feel, and Christmas is merely the deadline that forces the declaration. Not every ending is a happy one. Sarah gives up Karl. Karen and Harry carry on, wounded. Mark walks away. These melancholy threads are, I would contend, the best things in it, which perhaps tells you more about the critic than about the film.",
+      "**A Note on The Holiday**",
+      "I have now completed *The Holiday*. It is a perfectly agreeable film in which Cameron Diaz and Kate Winslet exchange houses, continents and, eventually, men. It seems to have been conceived as a trailer, and one can almost hear the late Don LaFontaine, the baritone behind several thousand of them, intoning: *In a world where two women trade lives for Christmas...*",
+      "I will say only this. Upon Amanda's arrival in the English countryside, her driver declares the lane impassable and deposits her at the far end of it, obliging her to haul her luggage through the snow to the cottage. Upon her departure, a car collects her at the cottage gate without apparent difficulty. One is asked to believe in a great many things at Christmas. I find I cannot believe in that lane.\\ \\ Epilogue:",
+      "html:<p>I hope you enjoyed reading that as much as I did. Here’s <a class=\"text-link\" href=\"expedition.html?id=the-holiday-in-my-voice\">my real journal note, in my voice</a>. What you read above was the pretentious, buttoned-up Big City writer for The Times or some travel magazine, who happens to be from a small, postcard-perfect mountain town and will soon rediscover themselves and start writing like me.</p>",
+      "**Sources**",
+      "• [Wikipedia, \"Love Actually\"](https://en.wikipedia.org/wiki/Love_Actually)",
+      "• [Box Office Mojo, \"Love Actually\"](https://www.boxofficemojo.com/title/tt0314331/)",
+      "• [IMDb, \"Love Actually (2003)\"](https://www.imdb.com/title/tt0314331/)",
+      "• [Wikipedia, \"Don LaFontaine\"](https://en.wikipedia.org/wiki/Don_LaFontaine)",
+      "• [The Irish Times, \"Walmart's market value hits $1tn\"](https://www.irishtimes.com/business/2026/02/03/walmarts-market-value-hits-1tn)"
+    ],
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "rating": null,
+    "crew": "Pat",
+    "facts": {
+      "Type": "Journal note — film",
+      "Films": "Love Actually (2003) · The Holiday (2006)"
+    },
+    "links": [
+      [
+        "Love Actually Evidence Board",
+        "https://claude.ai/artifact/E4EKbngd9m1im9tZBgvgiU"
+      ]
+    ],
+    "cover": "assets/photos/the-holiday/evidence-board.jpg",
+    "photos": []
+  },
+  {
+    "id": "the-holiday-in-my-voice",
+    "title": "The Holiday: Love Actually",
+    "unlisted": true,
+    "date": "2026-11-04",
+    "summary": "My take on Love Actually: the two love themes, the evidence board, and the four stories that land on Christmas Eve.",
+    "story": [
+      "html:<img src=\"assets/photos/the-holiday-in-my-voice/circlepeak.png\" alt=\"Circle Peak\" style=\"display:block;width:72px;height:72px;margin:0 0 20px 0\">",
+      "**Part 1 — The Holiday**",
+      "I officially started the holidays early. October, to be exact. I blame Walmart and Hallmark.",
+      "I've already cranked through Love Actually and all of the Hallmark premieres, and now I'm working on The Holiday. As I work through these movies, I’m going to slow down a bit and try to understand how they're built: what the writer and director were thinking, how the actors approached it, and what makes some of these movies watchable year in and year out. We call them Christmas movies because they're wrapped around the holidays, but they're really no different from any other movie you rewatch all year. They're just good.",
+      "I watched Notting Hill the other day. You probably know that if you've read a couple of my recent journal notes, specifically *[Dissonance](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=dissonance)* and [the one about the volcanoes](https://brownpt10-cmd.github.io/peaksbrewsballparks/expedition.html?id=tale-of-two-volcanoes), where I spliced in Notting Hill. Clearly not a Christmas movie, but an all-seasons movie, as evidenced by Will Thacker walking through the market in all four seasons.",
+      "> **Ain’t No Sunshine**",
+      "> William walks alone through Portobello Market as the seasons change around him, from summer to autumn to winter and back to spring.",
+      "> “Ain’t No Sunshine,” written and performed by Bill Withers (1971).",
+      "> **[WATCH THE SCENE FROM NOTTING HILL (1999)](https://www.youtube.com/watch?v=Ce_BXD_ONQ8)**",
+      "So what exactly is the point here? The point is there is no point. If a movie makes you feel good and you enjoy watching it, just appreciate it for what it is. But allow me to complicate it anyway.",
+      "What makes them good? Clever writing that stands up year in and year out. Likeable actors, ones we're willing to watch again. And a good soundtrack. In Love Actually, which is the heart of this note, Craig Armstrong’s soundtrack is a key component to the movie. It pulls the whole thing together. It helps create the emotion, along with the actors and how the director puts the sequences together and elicits the emotion from them.",
+      "**Part 2 — The Love Themes**",
+      "Don't tell anyone, but I sometimes watch Love Actually in the summer too.",
+      "This is an over-the-top, completely unnecessary analysis of the movie: the linkages, the storylines and the love themes that connect them. Indulge me for two minutes. Probably longer.",
+      "**The Glasgow Love Theme**",
+      "Let's start with Craig Armstrong's Glasgow Love Theme, which runs throughout the movie in a few variations depending on the scene. I'm trying to think of another movie whose score has captivated me this much. There are epic scores in movies, but a connecting love theme? Plenty, I'm sure.",
+      "Listen: [Glasgow Love Theme on YouTube](https://www.youtube.com/watch?v=1vC6AfPMuDk&list=RD1vC6AfPMuDk&start_radio=1) · Sheet music: [Sheet Music Direct](https://www.sheetmusicdirect.com/se/ID_No/26093/Product.aspx)",
+      "So why does it make you a little sad? It comes down to one chord change. The theme lives in A major, which is home base and a happy key. Then it moves from A to D minor, with the A still held in the bass (written Dm/A). D minor doesn't belong in A major. It's borrowed from A minor, the sad version of the same key. Musicians call that modal mixture. I call it the moment something feels off.",
+      "The normal chords in A major are A, D, E and F♯m. In A minor they're Am, Dm and E. So when Dm shows up, the music hints at the minor key for a second without actually going there. That's the \"something's wrong\" feeling.",
+      "F♯m adds a little shade too, but it belongs in A major, so all it does is give you that gentle, wistful color. Dm is the one that delivers the ache.",
+      "Keeping the A in the bass is what holds it together. The bottom stays home while the harmony darkens on top, so it never feels like the song changed keys. And the notes barely move to get there. Two of them step up a half step, then step back down, like a sigh. That step back down is where the emotion lands. It sounds like going home, but going home sad.",
+      "There's also a gentle tug all the way through. A note gets held over from one chord into the next, rubs for a moment, then settles. Pull and release, over and over. It reads as longing, not harshness.",
+      "**The Portuguese Love Theme**",
+      "It's not immediately obvious, but there are two love themes in the movie. The second is the Portuguese Love Theme. It's bigger and more open than Glasgow, with wider jumps between notes. It's in a different key, C, but it's easy to miss that it's a different theme, because the two are never played side by side. It gets its final full-orchestra version in the restaurant scene at the end.",
+      "Listen: [YouTube 1](https://www.youtube.com/watch?v=h0Zg7TtHyng&list=RDh0Zg7TtHyng&start_radio=1) · [YouTube 2](https://www.youtube.com/watch?v=0XJNmc8tJI0) · [YouTube 3, just in case](https://www.youtube.com/watch?v=IR7I50LaBUA) · Sheet music: [Sheet Music Direct](https://www.sheetmusicdirect.com/se/ID_No/26095/Product.aspx)",
+      "The melody is a slow rise, then a step back. A slow rise, then a step back. Then it opens up into a longer climb toward a big, hopeful finish: new love, a sort of rebirth for Jamie, and Aurélia finding love in a way she never expected.",
+      "It tells the same kind of story as Glasgow, just without the borrowed chord. Glasgow aches because a chord shows up that doesn't belong. The Portuguese theme aches because it keeps holding off on resolving. **Glasgow says something's wrong; the Portuguese theme says not yet.** That fits a romance that waits until the final restaurant scene to land.",
+      "As we go on, I'll point out where the Love Theme comes back in other scenes, and the small changes made to fit each one.",
+      "Enough of that. If that didn't land, maybe the storylines and connections will.",
+      "**Part 3 — The Evidence Board**",
+      "Perhaps an evidence board will clear this up. Perhaps not.",
+      "[**Love Actually Evidence Board**](https://claude.ai/artifact/E4EKbngd9m1im9tZBgvgiU): every relationship, every object, every regrettable necklace. Click any card to follow its strings. Karen is a good place to start. Everyone else did.",
+      "html:<a href=\"https://claude.ai/artifact/E4EKbngd9m1im9tZBgvgiU\" target=\"_blank\" rel=\"noopener\" style=\"display:block;margin:20px 0 6px\"><img src=\"assets/photos/the-holiday/evidence-board.jpg\" alt=\"Love Actually Evidence Board\" loading=\"lazy\" style=\"display:block;width:100%;border:1px solid #ccc;border-radius:4px\"></a><p style=\"margin:0 0 24px;font-size:14px;color:#666;font-style:italic\">Click the board to open the full interactive version.</p>",
+      "Of the nine storylines, four, to me, are the strongest: David and Natalie, Harry and Karen, Jamie and Aurélia, and Juliet, Peter and Mark. Daniel and Sam is touching, Sarah and Karl is disturbing, Billy Mack adds an element of the absurd, Colin is pure British comedy, and John and Judy is unnecessary at best.",
+      "I think Richard Curtis said there were originally 14 storylines, cut down to nine, and he apparently regrets cutting one of them. The movie could have cut a few more and been OK, but I guess that's what makes the movie.",
+      "**Part 4 — Four Stories, One Christmas Eve**",
+      "The four strongest stories run on the same engine: someone can't say what they feel out loud, so something else says it for them, and Christmas Eve forces the moment.",
+      "David and Natalie come in through Karen, his sister. He's the Prime Minister and he's falling for someone on his own staff, and that's not something a Prime Minister can say out loud. Natalie's Christmas card says it for him. On Christmas Eve he goes door to door in Wandsworth looking for her, ends up at the school nativity, and they finally kiss backstage, right as the curtain goes up. Last we see of them, they're together at Heathrow.",
+      "Harry and Karen are the hub. Karen is the one everybody connects through. What can't be said here is \"I know about the necklace.\" The Joni Mitchell CD says it instead. She opens the wrong present, goes upstairs and cries to \"Both Sides Now,\" then fixes her face and goes back down for the kids. They stay together, but you can see the damage.",
+      "Jamie and Aurélia start at the wedding, which Jamie leaves early. These two share no language at all, so nothing gets said. The secret Portuguese lessons do the talking for him, and her English does it for her, learned \"just in case.\" On Christmas Eve he flies to Portugal and proposes at her restaurant, with the Portuguese Love Theme playing underneath. They end up engaged, back at Heathrow.",
+      "Juliet, Peter and Mark come in through the wedding too. Mark's secret is the big one: he's in love with his best friend's wife. The wedding video gives him away, since almost every shot is of Juliet, and then the cue cards say the rest. On Christmas Eve he shows up on her doorstep with the cards and carols playing on the boombox. He gets his kiss, says \"Enough. Enough now,\" and walks off. Closure, not romance.",
+      "**Why it sticks**",
+      "Underneath, the movie argues that love comes in a lot of shapes: new romance, a marriage under strain, a widower's grief, a sister's duty, two old friends. Nearly every story turns on someone finally saying how they feel, and Christmas is the deadline that forces it. Not every ending is happy. Sarah gives up Karl, Karen and Harry carry on wounded, and Mark walks away. Those sad threads are probably the best stuff in it.",
+      "I just finished The Holiday. Aside from the fact that the driver couldn’t drop Amanda off at the cottage when she arrived but picked her up at the gate when she was going to leave, great movie.",
+      "**Sources**",
+      "• [Wikipedia, \"Love Actually\"](https://en.wikipedia.org/wiki/Love_Actually)",
+      "• [Box Office Mojo, \"Love Actually\"](https://www.boxofficemojo.com/title/tt0314331/)",
+      "• [IMDb, \"Love Actually (2003)\"](https://www.imdb.com/title/tt0314331/)",
+      "• [Wikipedia, \"Don LaFontaine\"](https://en.wikipedia.org/wiki/Don_LaFontaine)",
+      "• [The Irish Times, \"Walmart's market value hits $1tn\"](https://www.irishtimes.com/business/2026/02/03/walmarts-market-value-hits-1tn)"
+    ],
+    "category": "journal",
+    "status": "logged",
+    "location": "",
+    "rating": null,
+    "crew": "Pat",
+    "facts": {
+      "Type": "Journal note — film",
+      "Films": "Love Actually (2003) · The Holiday (2006)"
+    },
+    "links": [
+      [
+        "Love Actually Evidence Board",
+        "https://claude.ai/artifact/E4EKbngd9m1im9tZBgvgiU"
+      ]
+    ],
+    "cover": "assets/photos/the-holiday/evidence-board.jpg",
+    "photos": []
+  },
   {
     "id": "the-bench-scene",
     "title": "The Bench Scene",

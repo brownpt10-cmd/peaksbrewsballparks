@@ -11,10 +11,12 @@
   const params = new URLSearchParams(location.search);
 
   // Newest first by date; undated trips keep their data.js order after the dated ones
-  const logged  = EXPEDITIONS.filter(e => e.status === "logged")
+  const allLogged = EXPEDITIONS.filter(e => e.status === "logged")
     .map((e, i) => [e, i])
     .sort(([a, i], [b, j]) => (a.date && b.date) ? b.date.localeCompare(a.date) : a.date ? -1 : b.date ? 1 : i - j)
     .map(([e]) => e);
+  // unlisted: true = reachable only by direct link (hidden from the Log, menus, stats and pager)
+  const logged  = allLogged.filter(e => !e.unlisted);
   const planned = EXPEDITIONS.filter(e => e.status === "planned");
   const byCat   = cat => logged.filter(e => e.category === cat);
   const JOURNAL_CAT = typeof JOURNAL !== "undefined" ? JOURNAL : { label: "Journal", blurb: "" };
@@ -342,7 +344,7 @@
   }
 
   function renderExpedition() {
-    const e = logged.find(x => x.id === params.get("id")) || logged[0];
+    const e = allLogged.find(x => x.id === params.get("id")) || logged[0];
     if (!e) return;
     document.title = `${e.title} · ${SITE.name}`;
     if (e.pageBg) document.body.classList.add(`page-${e.pageBg}`); // e.g. pageBg: "white"
@@ -377,7 +379,7 @@
     if (!photos.length) $("#gallery-section").hidden = true;
     lightbox(photos);
 
-    const i = logged.indexOf(e), prev = logged[i - 1], next = logged[i + 1];
+    const i = logged.indexOf(e), prev = i < 0 ? null : logged[i - 1], next = i < 0 ? null : logged[i + 1];
     $("#exp-pager").innerHTML =
       (prev ? `<a href="expedition.html?id=${prev.id}">← ${esc(prev.title)}</a>` : `<a href="expeditions.html">← All expeditions</a>`) +
       (next ? `<a href="expedition.html?id=${next.id}">${esc(next.title)} →</a>` : `<span></span>`);
