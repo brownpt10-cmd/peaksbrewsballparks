@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>The Economy of Nepal and High Adventure</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; an altitude rail runs down the day-by-day log like a trail profile */
+:root{
+  --bg:#f5f6f4; --card:#ffffff; --ink:#1c2228; --mute:#5b6570; --line:#dde1e0;
+  --accent:#a3361f; --sky:#1f5f86; --snow:#e9eef1; --summit:#a3361f; --buffer:#7a5a12; --buffer-bg:#f6ecd4;
+  --kat:#355e3b; --kat-bg:#e3eee2; --transit-bg:#e6ebf0; --logo:none;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14191d; --card:#1b2227; --ink:#e6e9ea; --mute:#9aa4ad; --line:#2c353b;
+  --accent:#e0775d; --sky:#7fb6d9; --snow:#20292f; --summit:#e0775d; --buffer:#e2c27a; --buffer-bg:#2e2817;
+  --kat:#9fcf9f; --kat-bg:#1d2b1f; --transit-bg:#1f2830; --logo:invert(1); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14191d; --card:#1b2227; --ink:#e6e9ea; --mute:#9aa4ad; --line:#2c353b;
+  --accent:#e0775d; --sky:#7fb6d9; --snow:#20292f; --summit:#e0775d; --buffer:#e2c27a; --buffer-bg:#2e2817;
+  --kat:#9fcf9f; --kat-bg:#1d2b1f; --transit-bg:#1f2830; --logo:invert(1); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;gap:16px;align-items:center;margin-bottom:8px}
+header img{width:56px;height:56px;filter:var(--logo);flex:none}
+.eyebrow{font:600 13px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(30px,6vw,46px)/1 var(--display);margin:4px 0 0;letter-spacing:.005em;text-wrap:balance}
+h2{font:700 26px/1.1 var(--display);margin:40px 0 10px;letter-spacing:.01em;text-wrap:balance}
+h3{font:600 19px/1.2 var(--display);margin:22px 0 6px;letter-spacing:.02em}
+p{margin:0 0 12px;max-width:68ch}
+.lede{color:var(--mute);margin:10px 0 18px;max-width:62ch}
+a{color:var(--sky)}
+.glance{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:22px 0 4px}
+.glance div{background:var(--card);padding:12px 14px;min-width:0}
+.glance b{display:block;font:700 24px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.glance span{font:500 11px/1.3 var(--mono);color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:620px){.glance{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.note{border-left:3px solid var(--buffer);background:var(--buffer-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0;font-size:15px;max-width:none}
+.tbl{overflow-x:auto;margin:10px 0 6px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font:600 12px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--mute);background:var(--snow);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:600;background:var(--snow)}
+.mono{font-family:var(--mono);font-size:13px}
+/* Day log */
+.log{list-style:none;margin:12px 0 0;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
+.log li{display:grid;grid-template-columns:92px minmax(0,1fr) 110px;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line);align-items:start}
+.log li:last-child{border-bottom:0}
+.d{font:500 12px/1.35 var(--mono);color:var(--mute);font-variant-numeric:tabular-nums}
+.d b{display:block;color:var(--ink);font-weight:500;font-size:13px}
+.what{min-width:0}
+.what strong{font:600 17px/1.25 var(--display);letter-spacing:.02em;display:block}
+.what small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
+.alt{text-align:right;min-width:0}
+.alt .m{font:500 13px/1.2 var(--mono);font-variant-numeric:tabular-nums}
+.bar{height:5px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sky)}
+.chip{display:inline-block;font:600 10.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;padding:4px 6px;border-radius:4px;margin-top:6px}
+.c-transit{background:var(--transit-bg);color:var(--sky)}
+.c-kat{background:var(--kat-bg);color:var(--kat)}
+.c-trek{background:var(--snow);color:var(--mute)}
+.c-summit{background:var(--summit);color:var(--card)}
+.c-buffer{background:var(--buffer-bg);color:var(--buffer)}
+li.summit .what strong{color:var(--summit)}
+li.summit .bar i{background:var(--summit)}
+@media (max-width:520px){
+  .log li{grid-template-columns:72px minmax(0,1fr);}
+  .alt{grid-column:2;text-align:left}
+  .alt .bar{max-width:160px}
+  th,td{padding:8px 10px}
+  h2{margin-top:32px}
+}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cols>div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+@media (max-width:620px){.cols{grid-template-columns:1fr}}
+ul{margin:6px 0 12px;padding-left:20px}
+li{margin:3px 0}
+.src{font-size:13.5px;color:var(--mute)}
+.src li{margin:4px 0}
+footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+
+h2{border-top:1px solid var(--line);padding-top:24px}
+h2.target{color:var(--accent)}
+.wrap{max-width:760px}
+td,th{min-width:90px}
+blockquote,em{color:inherit}
+ol li,ul li{max-width:68ch}
+.sourcesnote{font-size:13.5px;color:var(--mute)}
+#sources + ol{font-size:13.5px;color:var(--mute)}
+</style>
+</head><body>
+<div class="wrap">
+<header>
+  <img alt="Circle Peak logo" src="data:image/png;base64,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">
+  <div>
+    <div class="eyebrow">Nepal · Notes</div>
+    <h1>The Economy of Nepal and High Adventure</h1>
+  </div>
+</header>
+<p class="lede">What a trek or a 6,000-meter climb really costs, and who is making the money.</p>
+<p>So there I was, sitting in freshman orientation for a Political Science degree. As the two lead professors talked about the program and traded stories with the second-year students, something just didn't feel right. I couldn't place it, but I knew I wasn't in the right department or the right degree. Maybe it was the two professors: their demeanor, what they cared about. A snap judgment on my part, but as I've learned over the years, I trust my instincts about these things.</p>
+<p>So what did I do? I walked straight over to the Business Administration building and got an advisor there. Why? The world revolves around money, and that was my thing. Leadership, management, and money.</p>
+<p>That instinct never left. When I started planning for Nepal, I didn't just look at the mountains. I looked at the money. Who pays, who gets paid, and what happens to a dollar between the time it leaves my credit card in Colorado Springs and the time it lands in a porter's pocket below Lobuche.</p>
+<p>In this note, I'll break down the cost of a trek, the cost of an entry-level climb like Lobuche East or Island Peak, and, for perspective, what the Everest crowd pays. I'm writing for the novice, someone like me, who isn't looking to gamble with Everest-level risk but wants the experience. Along the way, I want to pull back the curtain on the economy underneath the adventure.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Ultimately, what are the costs, time and itinerary for a Lobuche East/Island Peak expedition? If you read nothing else here, <a href="#the-trip-planned-for-someday">skip down to the end</a>.</p>
+<h2 id="two-economies-on-one-trail">Two Economies on One Trail</h2>
+<p>The collision of Western culture and Nepali culture is on full display with a trek to Everest Base Camp.</p>
+<p><strong>The Western economy is wrapped in ambition.</strong> It's sponsorships, expedition packages, personal bucket lists, YouTube channels, and a lot of very expensive gear. The Western dollar is discretionary. Nobody has to climb Lobuche.</p>
+<p><strong>The Nepali economy is wrapped in survival.</strong> It's a circle: the guide, the porter, the teahouse owner, the yak driver, the pilot, the gear-rental shop in Thamel, the permit office, and the family back in the village waiting on a season's wages. For them, two short climbing seasons (spring and autumn) carry the year.</p>
+<p>You’ll be on the same trail, climbing the same mountains with the same ever-changing weather. The difference is what happens after you board the plane home from Kathmandu.</p>
+<h2 id="a-country-that-exports-people-and-mountains">A Country That Exports People and Mountains</h2>
+<p>Nepal is a small, landlocked country of about 30 million people wedged between India and China. It imports far more than it exports. So how does it stay afloat? Two exports keep the lights on, and neither one is a product you can put in a shipping container: its people, and its mountains.</p>
+<h3 id="exporting-people-remittances">Exporting people: remittances</h3>
+<p>When I was deployed to the Middle East, we called them TCNs, Third Country Nationals. They cooked our food, built our facilities, and cleaned our buildings. Some of them must have been Nepali. What I didn't fully appreciate then was that every one of those workers was a pipeline back home.</p>
+<p>In Nepal's last full fiscal year (2024/25), Nepalis working abroad sent home a record $12.6 billion, up 19% over the year before. That works out to roughly $35 million every single day. Against an economy of about $45 billion, remittances equal roughly 28% of GDP. Over 839,000 Nepalis took out or renewed foreign-work permits that same year. (Dollar figures are converted at roughly 136 Nepali rupees to the dollar.)</p>
+<p>Put simply: more than a quarter of the national economy is mailed home from the Gulf, Malaysia, India, and increasingly the West. That money buys the imports, props up the rupee, and pays for the houses going up in the villages.</p>
+<h3 id="exporting-mountains-tourism">Exporting mountains: tourism</h3>
+<p>Tourism is the other export. Nepal welcomed 1,158,459 international visitors in 2025, about 97% of its pre-pandemic peak. Americans were the second-largest group at 112,316, behind only India. Depending on who's counting and whether you include the ripple effects, tourism is usually credited with something like 6% to 8% of GDP.</p>
+<p>Now the number that surprised me. In 2025, all mountaineering royalties combined, every climbing permit in both seasons, brought the government roughly $7.7 million. One day of remittances is worth about four and a half years of climbing royalties.</p>
+<p>So the mountains get the headlines, but the permit fees themselves are a rounding error. The real value of the mountains is everything wrapped around the permit: the lodges, the flights, the guides, the porters, the hotels, the gear shops, the restaurants in Thamel. That's where the circle of the economy turns.</p>
+<div class="tbl"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Indicator</strong></th>
+<th><strong>Figure</strong></th>
+<th><strong>Why it matters</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nominal GDP (FY 2024/25)</td>
+<td>~$45B</td>
+<td>Small economy; one bad season is felt nationally</td>
+</tr>
+<tr class="even">
+<td>Remittances (FY 2024/25)</td>
+<td>~$12.6B, ~28% of GDP</td>
+<td>The single biggest cash engine</td>
+</tr>
+<tr class="odd">
+<td>Foreign work permits</td>
+<td>839,266 in one year</td>
+<td>The TCN pipeline</td>
+</tr>
+<tr class="even">
+<td>International visitors (2025)</td>
+<td>1,158,459</td>
+<td>Back to ~97% of 2019</td>
+</tr>
+<tr class="odd">
+<td>U.S. visitors (2025)</td>
+<td>112,316 (#2 source country)</td>
+<td>Americans are a major market</td>
+</tr>
+<tr class="even">
+<td>Mountaineering royalties (2025)</td>
+<td>~$7.7M</td>
+<td>Small on its own; the value is the spend around it</td>
+</tr>
+<tr class="odd">
+<td>Everest permit (spring, normal route)</td>
+<td>$15,000 (up from $11,000, Sept 2025)</td>
+<td>The headline fee</td>
+</tr>
+<tr class="even">
+<td>Permit, peaks up to 6,500 m</td>
+<td>$350 spring / $175 autumn</td>
+<td>Lobuche East and Island Peak live here</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="how-the-money-moved-from-dick-bass-to-seven-summit-treks">How the Money Moved: From Dick Bass to Seven Summit Treks</h2>
+<p>To understand who makes the money now, it helps to know who made it first. Will Cockrell's book Everest, Inc. tells the story well.</p>
+<p>The turning point was a Texas businessman named Dick Bass. Bass and Disney president Frank Wells dreamed up the Seven Summits in the early 1980s. Bass wasn't an elite mountaineer, so he did what businessmen do: he hired the best guides he could find. In 1985, at 55, he stood on top of Everest. The message to the world was simple. If you can pay for world-class logistics, you don't have to be a world-class climber.</p>
+<p>That opened the gold rush. Western guide companies such as Adventure Consultants and Mountain Madness built the commercial model in the late '80s and '90s. Even the 1996 disaster, made famous by Into Thin Air, didn't slow demand. It increased it.</p>
+<p>Then a shift occurred around the mid-2010s. The Sherpas who had carried the loads, fixed the ropes, and saved the clients learned the business from the inside and built their own companies. Today, Nepali-owned operators like Seven Summit Treks, Elite Exped, Imagine Nepal, and 8K Expeditions run most of the high-altitude logistics in the country. Many Western brands now sell the package and the Western lead guide, then subcontract the base camps, the Sherpa teams, and the heavy lifting to a Nepali operator.</p>
+<p>As a result, more of the money stays in Nepal. But it's worth knowing that when you buy a Western-branded trip, part of what you're paying for is the brand, the marketing, and a Western guide's salary.</p>
+<h2 id="who-runs-the-show-the-expedition-companies">Who Runs the Show: The Expedition Companies</h2>
+<p>When you book Nepal, you're buying from one of three kinds of companies: a Nepali heavyweight, a Western brand, or a smaller boutique outfit. Sometimes you're buying from two of them at once and don't know it. Knowing who you're actually dealing with tells you a lot about where your money goes and who is responsible for you on the mountain.</p>
+<h3 id="the-nepali-heavyweights">The Nepali heavyweights</h3>
+<p>These are the companies that grew out of the Sherpa shift. They started as the people doing the work and became the people running the business.</p>
+<ul>
+<li><p><strong>Seven Summit Treks (SST).</strong> Founded by the Sherpa brothers Mingma, Chhang Dawa, and Tashi Lakpa Sherpa, SST is the largest high-altitude operator in the world. It handles logistics, ground operations, and base camps not only for its own clients but for a long list of other companies. If a Western brand is the storefront, SST is often the warehouse behind it.</p></li>
+<li><p><strong>Elite Exped.</strong> Co-founded by Nirmal "Nims" Purja, the former Gurkha and UK Special Forces soldier made famous by 14 Peaks, along with Mingma David Sherpa and others. Elite Exped built a premium, high-profile brand with global sponsors. Nims was killed in the Broad Peak avalanche in Pakistan in late July 2026, a loss felt across the entire industry.</p></li>
+<li><p><strong>Imagine Nepal.</strong> Founded by Mingma Gyalje Sherpa, known as Mingma G. Imagine Nepal has a reputation for technical skill and rope-fixing on the hardest peaks, and it has built a strong pipeline of clients from China and East Asia.</p></li>
+<li><p><strong>8K Expeditions.</strong> A fast-growing, Sherpa-founded operator that sells directly to climbers rather than through Western middlemen.</p></li>
+</ul>
+<p>Here's why this matters economically. When these companies win, the profit stays in Nepal. Supporters see that as Nepalis finally owning their own mountains. Critics argue the rapid growth has brought crowding and price competition that can squeeze safety margins. Both can be true.</p>
+<h3 id="the-western-brands">The Western brands</h3>
+<p>Western companies fall into two camps, and the difference is worth asking about before you sign anything.</p>
+<ul>
+<li><p><strong>The in-house model.</strong> Some Western companies keep their own staff, Sherpa teams, and base camps in Nepal year after year. International Mountain Guides (IMG), Alpine Ascents International, Madison Mountaineering, Furtenbach Adventures, and Alpenglow Expeditions are in this group. You're paying for Western lead guides, deep safety systems, and a brand with a long track record. That's how a Base Camp trek ends up costing $16,500 with one company and a fraction of that with another.</p></li>
+<li><p><strong>Look at Alpenglow for example.</strong> In fact, the Everest expedition they offer is not in Nepal at all. They exclusively do the Tibet North Face side with Chinese permits, of course. It’s both logistically easier with a 4x4 to Base Camp, but harder and less predictable in paperwork through China. The cost is, well, extravagant. $110,000 for an expedition not including flights. But, the food must be better and no trek from Lukla. Seriously, you’re buying proven guides and experience as well as an American company if that matters to you. Check out Adrian Ballinger, Esteban “Topo” Mena, Carla Pérez and the rest of the team.</p></li>
+<li><p><strong>There’s also a luxury version</strong>. Check out the VVIP experience from Seven Summits. 5-star all the way: heated tents, TV, private chef, 5-star hotels, air, increased number of guides and so on. If you read my note on A Convenient or Inconvenient Truth you’ll see the potential dark side of VVIP when it collides with Nepali expedition company politics.</p></li>
+<li><p><strong>The white-label model.</strong> Other Western brands handle marketing, client care, and the Western guide, then hire a Nepali operator to run the ground game: the base camp, the Sherpa team, the heavy logistics. There's nothing wrong with that, but you should know who is actually running your trip on the ground.</p></li>
+<li><p>When I book, I will ask one simple question. "Who is your ground operator in Nepal?" A good company should answer it without hesitation.</p></li>
+</ul>
+<h3 id="the-boutique-middle">The boutique middle</h3>
+<p>This is where a novice like me lives. Smaller, Nepali-run outfits such as Namas Adventure, Alpinist Climber Expeditions, and Highland Expeditions focus on the 6,000-meter trekking peaks and the classic treks. They run small groups, offer personal attention, and don't come with a six-figure price tag. Namas, for example, uses guides certified by the Nepal National Mountain Guide Association and runs its climbs at one guide for every two climbers.</p>
+<p>The catch is that quality varies a lot in this tier, and the brochures all look the same. Before booking, I'd want answers to these:</p>
+<ul>
+<li><p>Are the guides certified, and what's the guide-to-climber ratio on summit day?</p></li>
+<li><p>Are the guides and porters insured, and what's the porter load limit?</p></li>
+<li><p>What's the evacuation plan, and who makes the call to evacuate?</p></li>
+<li><p>Who holds the permit, and who is the ground operator?</p></li>
+<li><p>What happens to my money if weather cancels the climb?</p></li>
+</ul>
+<p>The answers tell you more about a company than its photos do.</p>
+<h2 id="kathmandu-where-every-trip-starts-and-ends">Kathmandu: Where Every Trip Starts and Ends</h2>
+<p>Every Nepal trip starts and ends in Kathmandu, and most Westerners spend those days in Thamel, the tourist district. It's a maze of narrow streets packed with gear shops, money changers, rooftop restaurants, trekking agencies, and prayer flags. This is where the Western dollar first hits the Nepali economy, before it ever reaches the trail.</p>
+<h3 id="where-to-stay">Where to stay</h3>
+<p>A good strategy is to match the hotel to the rhythm of the trip.</p>
+<ul>
+<li><p><strong>On the way in.</strong> The Kathmandu Guest House, one of Thamel's original guest houses dating back to the late 1960s, is a natural staging base. It has a courtyard garden for meeting your guide and sorting gear, secure storage for the bags you leave behind, and it's a short walk to the rental shops and permit offices.</p></li>
+<li><p><strong>On the way out.</strong> After two or three weeks in teahouses, you'll want hot water that doesn't run out, reliable power, and a real mattress. A modern option like the Aloft Kathmandu Thamel works, or a classic like the Yak &amp; Yeti or the Hotel Shanker if you want some old-palace character.</p></li>
+</ul>
+<p>Many packages include the Kathmandu hotel nights, so check before you book your own.</p>
+<h3 id="gear-real-fake-and-rented">Gear: real, fake, and rented</h3>
+<p>Kathmandu is the best gear market in the Himalaya, as long as you know what you're buying.</p>
+<ul>
+<li><p><strong>Flagship stores.</strong> The genuine stores on Tridevi Marg (The North Face, Mountain Hardwear, Columbia, and others) sell the real thing at full Western prices, sometimes plus import tariffs.</p></li>
+<li><p><strong>Street shops.</strong> Thamel's side streets sell knock-offs at a fraction of the price. They're fine for fleeces, socks, beanies, duffel bags, and trekking poles. They are not fine for anything keeping you alive at 6,000 meters: boots, a hardshell, or a sleeping bag. Look for cheap zippers, sloppy stitching, missing seam tape, and thin down.</p></li>
+<li><p><strong>Rent the big stuff.</strong> For a climb, rent the heavy expedition gear (double boots, a big down jacket, an expedition sleeping bag, and the climbing hardware) in Kathmandu instead of buying it. Bring from home anything that has to fit your body and be broken in: trekking boots, base layers, socks, and your pack.</p></li>
+</ul>
+<p>Renting is more than a money saver. It's another piece of the circle. The rental shop owner, the porter who carries it, and the guide who checks it are all part of the same economy your trip pays into.</p>
+<h2 id="ala-cart-experience">Ala Cart Experience</h2>
+<p>Nepal isn't one trip. It's a menu. The single biggest cost decision you'll make isn't the flight or the gear. It's how much risk, comfort, and hand-holding you want.</p>
+<ul>
+<li><p><strong>The trek.</strong> Everest Base Camp, the Annapurna Circuit, or the Manaslu Circuit. Teahouse to teahouse, no technical climbing, two to three weeks. High altitude, but no ropes.</p></li>
+<li><p><strong>The trek plus a climb.</strong> Lobuche East (6,119 m) or Island Peak (6,189 m). This is where a novice gets a real summit: crampons, fixed lines, an alpine start, and a guide on the same rope. Mera Peak is a reasonable alternative, but I'll stick with Lobuche and Island.</p></li>
+<li><p><strong>The big one.</strong> Everest or Lhotse. Six to eight weeks, six figures, and a level of risk I've written about before and have no intention of taking.</p></li>
+</ul>
+<p>Then decide who you're buying from: a local Nepali agency, a mid-tier boutique outfit, a full-service Western company, or, for the trek only, piecing it together yourself. More on that last one in a minute.</p>
+<h2 id="what-it-actually-costs">What It Actually Costs</h2>
+<p>Here are real advertised prices I pulled while researching, followed by the costs nobody puts in the headline.</p>
+<h3 id="package-prices-per-person-land-cost-only">Package prices (per person, land cost only)</h3>
+<div class="tbl"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Trip</strong></th>
+<th><strong>Operator / tier</strong></th>
+<th><strong>Price</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Manaslu Circuit Trek</td>
+<td>Namas Adventure (Nepali, mid-tier)</td>
+<td>$2,950</td>
+<td>Remote circuit around Manaslu</td>
+</tr>
+<tr class="even">
+<td>Everest Base Camp Trek</td>
+<td>Local agency (typical range)</td>
+<td>~$1,100 – $2,600</td>
+<td>Wide spread; check what's included</td>
+</tr>
+<tr class="odd">
+<td>Everest Base Camp Trek</td>
+<td>Alpine Ascents (Western)</td>
+<td>$6,500</td>
+<td>Western-run, U.S. company</td>
+</tr>
+<tr class="even">
+<td>Everest Base Camp Trek</td>
+<td>Alpenglow Expeditions (Western, premium)</td>
+<td>$16,500</td>
+<td>Top of the market</td>
+</tr>
+<tr class="odd">
+<td>Lobuche East + Island Peak</td>
+<td>Namas Adventure, Classic</td>
+<td>$6,350</td>
+<td>1:2 guide ratio, permits, porters, 5-star KTM hotel</td>
+</tr>
+<tr class="even">
+<td>Lobuche East + Island Peak</td>
+<td>Namas Adventure, Signature</td>
+<td>$7,550</td>
+<td>Adds shared helicopter in and out</td>
+</tr>
+<tr class="odd">
+<td>Everest (for perspective)</td>
+<td>Nepali operator to Western premium</td>
+<td>~$40,000 – $130,000+</td>
+<td>Permit alone is $15,000</td>
+</tr>
+</tbody>
+</table></div>
+<p>Notice the spread on the same Base Camp trek: from about $1,100 to $16,500. Same trail, same view of Everest. The difference is the hotel, the guide's passport, the group size, the food, the safety margins, and the brand.</p>
+<h3 id="the-fine-print-what-the-package-doesnt-cover">The fine print: what the package doesn't cover</h3>
+<p>Every package has an exclusions list, and it's longer than you'd think. From the Namas listing:</p>
+<ul>
+<li><p>International flights to and from Nepal</p></li>
+<li><p>Nepal visa and mandatory travel insurance</p></li>
+<li><p>Summit bonuses and tips for guides, porters, and staff (Namas suggests about $300 for your guide after a successful summit)</p></li>
+<li><p>Personal expenses, drinks, snacks, chocolate, and meals outside the itinerary</p></li>
+<li><p>Emergency evacuation</p></li>
+<li><p>Phone, Wi-Fi, laundry, hot showers, charging, and equipment rental (satellite phone calls run about $3 a minute)</p></li>
+<li><p>Donations and gifts to hotel staff, the community, or the team</p></li>
+<li><p>Extra hotel nights and side trips</p></li>
+<li><p>Extra costs from weather delays or cancellations</p></li>
+<li><p>Supplemental oxygen and extra porters (an extra porter runs about $700 for 22 days)</p></li>
+</ul>
+<h3 id="all-in-budget-lobuche-east-island-peak-climb">All-in budget: Lobuche East / Island Peak climb</h3>
+<p>Here's my realistic all-in number for a novice from Colorado Springs doing the Classic climb.</p>
+<div class="tbl"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Line item</strong></th>
+<th><strong>Low</strong></th>
+<th><strong>High</strong></th>
+<th><strong>Notes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Climb package (Namas Classic)</td>
+<td>$6,350</td>
+<td>$6,350</td>
+<td>Permits, guide, porter, lodging, meals, KTM hotel</td>
+</tr>
+<tr class="even">
+<td>Round-trip airfare (DEN to Kathmandu)</td>
+<td>$1,400</td>
+<td>$2,200</td>
+<td>My estimate; varies by season and routing</td>
+</tr>
+<tr class="odd">
+<td>Nepal visa (30 days)</td>
+<td>$50</td>
+<td>$50</td>
+<td>On arrival</td>
+</tr>
+<tr class="even">
+<td>Travel insurance w/ helicopter evac to 6,500 m</td>
+<td>$300</td>
+<td>$600</td>
+<td>Mandatory; read the altitude limit</td>
+</tr>
+<tr class="odd">
+<td>Gear bought at home</td>
+<td>$500</td>
+<td>$1,500</td>
+<td>Boots, layers, pack, glasses; depends on what you own</td>
+</tr>
+<tr class="even">
+<td>Gear rented in Kathmandu</td>
+<td>$150</td>
+<td>$250</td>
+<td>Double boots, heavy down jacket</td>
+</tr>
+<tr class="odd">
+<td>Tips and summit bonuses</td>
+<td>$500</td>
+<td>$800</td>
+<td>Guide, porter, cook staff</td>
+</tr>
+<tr class="even">
+<td>Trail incidentals (~20 days)</td>
+<td>$300</td>
+<td>$500</td>
+<td>Snacks, Wi-Fi, charging, showers, drinks</td>
+</tr>
+<tr class="odd">
+<td>Kathmandu extras</td>
+<td>$150</td>
+<td>$400</td>
+<td>Meals, souvenirs, an extra night</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>~$9,700</strong></td>
+<td><strong>~$12,650</strong></td>
+<td><strong>Call it $10,000 to $12,500</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>The Gemini overview I started from put a 6,000 m climb at $4,500 to $6,000 all-in. That doesn't survive contact with an actual price list once international airfare is added. Plan on five figures.</em></p>
+<h3 id="all-in-budget-the-trek">All-in budget: the trek</h3>
+<div class="tbl"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Option</strong></th>
+<th><strong>Land cost</strong></th>
+<th><strong>All-in estimate</strong></th>
+<th><strong>Who it fits</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Manaslu with a Nepali mid-tier agency</td>
+<td>$2,950</td>
+<td>~$6,000 – $7,500</td>
+<td>Best value with full support</td>
+</tr>
+<tr class="even">
+<td>EBC with a Western company</td>
+<td>$6,500 – $16,500</td>
+<td>~$9,500 – $20,000+</td>
+<td>Maximum comfort and brand</td>
+</tr>
+<tr class="odd">
+<td>EBC à la carte (licensed guide + porter, no agency)</td>
+<td>~$2,000 in-country</td>
+<td>~$5,000 – $6,000</td>
+<td>Experienced, flexible travelers</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="à-la-carte-torture">À la carte torture</h3>
+<p>Can you skip the expedition company? For the trek, sort of. For the climb, no.</p>
+<p>Here's the à la carte math for Base Camp. A licensed guide runs about $35 to $50 a day in the Everest region and a porter about $20 to $28. Teahouse lodging and food add maybe $35 to $50 a day. The flight to Lukla is $238 each way from Kathmandu, or $198 from Ramechhap (a 4 to 5 hour drive) during the busy seasons when flights get diverted. Add the national park and local municipality fees and you can do the trek for roughly $2,000 in-country.</p>
+<p>But know the rules. Since April 2023, Nepal has required foreign trekkers in its protected areas to hire a licensed guide through a registered agency. The Everest region's own local government pushed back on that rule, so enforcement there has been uneven. That's a pretty good example of how things actually work in Nepal: the national rule says one thing, the local authority says another, and the outcome depends on who you're dealing with.</p>
+<p>For Lobuche or Island Peak, you need a climbing permit, a climbing guide, and a team. Do it with an agency. The savings aren't worth the risk, and I wouldn't recommend it.</p>
+<h2 id="follow-the-dollar">Follow the Dollar</h2>
+<p>So where does my $6,350 actually go? Operators don't publish their margins, so this is my rough back-of-the-envelope estimate using published fees and typical wages, not anything Namas has told me.</p>
+<div class="tbl"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Where it goes</strong></th>
+<th><strong>Rough share</strong></th>
+<th><strong>Who gets it</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Permits and fees (NMA, national park, municipality, garbage)</td>
+<td>~$450</td>
+<td>Government and local authorities</td>
+</tr>
+<tr class="even">
+<td>Domestic flights to and from Lukla</td>
+<td>~$475</td>
+<td>Nepali airlines</td>
+</tr>
+<tr class="odd">
+<td>Kathmandu hotel (3 nights) and transfers</td>
+<td>~$400 – $500</td>
+<td>Hotels, drivers</td>
+</tr>
+<tr class="even">
+<td>Guide wages (half a guide at 1:2, ~20 days)</td>
+<td>~$450 – $500</td>
+<td>The Sherpa guide</td>
+</tr>
+<tr class="odd">
+<td>Porter wages (~20 days)</td>
+<td>~$400 – $550</td>
+<td>The porter</td>
+</tr>
+<tr class="even">
+<td>Teahouse lodging and meals for you and the crew</td>
+<td>~$1,000 – $1,200</td>
+<td>Lodge owners along the trail</td>
+</tr>
+<tr class="odd">
+<td>Climbing gear, cook, base and high camp</td>
+<td>~$400 – $600</td>
+<td>Kitchen staff, equipment</td>
+</tr>
+<tr class="even">
+<td>Overhead, marketing, staff insurance, margin</td>
+<td>~$2,000 – $2,500</td>
+<td>The agency</td>
+</tr>
+</tbody>
+</table></div>
+<p>The point isn't the exact split. It's that your money spreads across a lot of hands, and a meaningful chunk lands with people who have very few other ways to earn it. That's why tips matter so much on the trail. For a porter carrying 30 kilograms up to 5,000 meters, a fair tip can be a significant part of the season.</p>
+<h2 id="the-signature-how-things-get-done">The Signature: How Things Get Done</h2>
+<p>Now for the part people don't put in the brochure.</p>
+<p>In Afghanistan, I learned that corruption wasn't always a crime in the way we think of it at home. Often it was simply the way things got done. A signature. A contract. A permit that moved from the bottom of the stack to the top. It was the grease in a system that didn't run any other way. I'm not judging it. I'm describing it.</p>
+<p>Nepal has its own version, and Nepalis are the first to say so. Transparency International's 2025 Corruption Perceptions Index scored Nepal 34 out of 100, ranked 109th, unchanged from the year before. That's a common score for a developing country with a young democracy and a lot of money flowing through a few chokepoints like permits, licenses, contracts, and aviation.</p>
+<p>The clearest example in the adventure economy is the helicopter rescue racket. In April 2026, Nepali police charged 32 people in an alleged scheme worth about $19.7 million. Investigators said some operators billed insurers several times for a single evacuation, pressured trekkers into helicopter rides for minor ailments, and in some cases allegedly made trekkers sick with contaminated food or baking soda to justify a rescue. A government probe back in 2018 had already identified 15 companies running similar scams, and nothing happened. To be fair, police said they found no evidence that Everest guides were involved, and the government has announced a zero-tolerance task force with audits and licensing checks.</p>
+<p>The bigger story is that Nepalis themselves reached a breaking point. In September 2025, a government ban on social media set off the Gen Z protests, fueled by years of anger over corruption and political insiders. Security forces fired on crowds, 77 people were killed, parliament burned, and Prime Minister KP Sharma Oli resigned. In the March 2026 election, voters handed a landslide (182 of 275 seats) to the Rastriya Swatantra Party, and Balendra "Balen" Shah, a 35-year-old former rapper, structural engineer, and Kathmandu mayor, became prime minister on a promise to investigate the assets of officeholders going back to 1990. Whether that promise holds is a story for another note.</p>
+<p>And before we get too comfortable on our side of the ocean: we have Medicare fraud, defense contracting scandals, and our share of graft. Ours tends to be more lawyered and less visible. Maybe I'm kidding myself that it's much different. Either way, I'm not writing this to point fingers at Nepal. I'm writing it so a Western trekker understands the system they're walking into, and why buying insurance, using a reputable agency, and paying your crew fairly are the decisions that actually matter.</p>
+<h2 id="mountain-and-weather-the-costs-you-cant-negotiate">Mountain and Weather: The Costs You Can't Negotiate</h2>
+<p>There's one more line item that no one can quote you, and no signature can fix: the mountain and the weather.</p>
+<p>Lukla flights are canceled when clouds roll in, sometimes for days. Storms close passes. Altitude doesn't care what you paid. Every package excludes the cost of weather delays, so budget a few contingency days and the money to cover them. And build your turnaround points before you leave home, when you're thinking clearly. I've said it before: it's not about the plan, it's about the planning.</p>
+<h2 id="the-bottom-line">The Bottom Line</h2>
+<ul>
+<li><p><strong>A guided trek:</strong> about $6,000 to $7,500 all-in with a good Nepali agency, or $5,000 to $6,000 if you piece it together yourself.</p></li>
+<li><p><strong>A trek plus Lobuche East or Island Peak:</strong> about $10,000 to $12,500 all-in.</p></li>
+<li><p><strong>Everest:</strong> starts around $40,000 with a Nepali operator, runs well past $100,000 with a Western one, and comes with a risk profile I'm not willing to accept.</p></li>
+</ul>
+<p>For a Westerner, Nepal is an adventure. For Nepal, the Westerner is part of the economy, along with the hundreds of thousands of its own people working abroad to send money home. The mountain is the same for both. The stakes aren't.</p>
+<p>If I make it to Nepal, I want to go knowing exactly where my money is going, and making sure as much of it as possible ends up with the people who carry the load.</p>
+<h2 id="the-trip-planned-for-someday" class="target">The Trip Planned for Someday</h2>
+<p><strong>What it will cost me.</strong> I priced out Namas Adventure’s Classic Lobuche East and Island Peak climb, April 3–25, 2027, flying Denver to Kathmandu on Turkish Airlines through Istanbul, with an extra day in Kathmandu on each end for weather. That’s 27 days door to door, with two summits over 6,000 meters, Everest Base Camp and Kala Patthar along the way. The all-in estimate runs from about $10,100, if I use the 14er gear I already own, to $15,400, if I buy everything new and pay every extra. My planning number is $12,000. The package itself is $6,350; flights, insurance, gear, hotels and tips make up the rest. Full itinerary: <a href="lobuche-island-peak-itinerary.html">Lobuche &amp; Island Peak Expedition itinerary</a></p>
+<h2 id="sources">Sources</h2>
+<ol type="1">
+<li><p>Kathmandu Post, "Remittances hit all-time high as Nepalis send Rs4.72 billion daily" (Aug 28, 2025) — kathmandupost.com/money/2025/08/28/remittances-hit-all-time-high-as-nepalis-send-rs4-72-billion-daily</p></li>
+<li><p>ShareSansar, "Nepal's Economy Shows Notable Growth in FY 2081/82: GDP Size Estimated at Rs 61 Trillion" — sharesansar.com</p></li>
+<li><p>The Himalayan Times, "Nepal's tourism records modest growth in 2025, reaches 96.8% of pre-pandemic levels" — thehimalayantimes.com</p></li>
+<li><p>Nepal Hiking, "Mountaineering Permit Fees in Nepal 2026" — nepalhiking.com/mountaineering-permit-fees-in-nepal-2026</p></li>
+<li><p>The Star (Asia News Network), "Nepal vows action against helicopter rescue scams" (Apr 7, 2026) — thestar.com.my</p></li>
+<li><p>OCCRP, "Former Rapper Officially Declared Victor in Nepal's Post-Uprising Election" — occrp.org</p></li>
+<li><p>B360 Nepal, "Nepal scores 34 in 2025 Corruption Perceptions Index, remains 109th" — b360nepal.com</p></li>
+<li><p>Kathmandu Post, "Everest region, Nepal Tourism Board dispute over solo trek ban heats up" (Apr 3, 2023) — kathmandupost.com</p></li>
+<li><p>Nepal Cheap Flights, "Lukla Flight Booking Guide 2026" — nepalcheapflights.com</p></li>
+<li><p>Hop Nepal, "Guide and Porter Cost in Nepal" — hopnepal.com</p></li>
+<li><p>Namas Adventure, Lobuche East &amp; Island Peak Climbing; Manaslu Circuit Trek — namasadventure.com</p></li>
+<li><p>Alpine Ascents International, Everest Base Camp Trek price schedule — alpineascents.com</p></li>
+<li><p>Alpenglow Expeditions, Everest Base Camp Trek — alpenglowexpeditions.com</p></li>
+<li><p>Will Cockrell, Everest, Inc.: The Renegades and Rogues Who Built an Industry at the Top of the World (2024)</p></li>
+<li><p>NPR, "Avalanche in Pakistan kills famed mountaineer Nirmal Purja and his fellow climbers" (Aug 1, 2026) — npr.org</p></li>
+</ol>
+
+</div>
+</body></html>

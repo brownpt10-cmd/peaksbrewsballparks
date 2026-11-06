@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Lobuche & Island Peak Expedition</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; an altitude rail runs down the day-by-day log like a trail profile */
+:root{
+  --bg:#f5f6f4; --card:#ffffff; --ink:#1c2228; --mute:#5b6570; --line:#dde1e0;
+  --accent:#a3361f; --sky:#1f5f86; --snow:#e9eef1; --summit:#a3361f; --buffer:#7a5a12; --buffer-bg:#f6ecd4;
+  --kat:#355e3b; --kat-bg:#e3eee2; --transit-bg:#e6ebf0; --logo:none;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14191d; --card:#1b2227; --ink:#e6e9ea; --mute:#9aa4ad; --line:#2c353b;
+  --accent:#e0775d; --sky:#7fb6d9; --snow:#20292f; --summit:#e0775d; --buffer:#e2c27a; --buffer-bg:#2e2817;
+  --kat:#9fcf9f; --kat-bg:#1d2b1f; --transit-bg:#1f2830; --logo:invert(1); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14191d; --card:#1b2227; --ink:#e6e9ea; --mute:#9aa4ad; --line:#2c353b;
+  --accent:#e0775d; --sky:#7fb6d9; --snow:#20292f; --summit:#e0775d; --buffer:#e2c27a; --buffer-bg:#2e2817;
+  --kat:#9fcf9f; --kat-bg:#1d2b1f; --transit-bg:#1f2830; --logo:invert(1); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;gap:16px;align-items:center;margin-bottom:8px}
+header img{width:56px;height:56px;filter:var(--logo);flex:none}
+.eyebrow{font:600 13px/1.2 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(30px,6vw,46px)/1 var(--display);margin:4px 0 0;letter-spacing:.005em;text-wrap:balance}
+h2{font:700 26px/1.1 var(--display);margin:40px 0 10px;letter-spacing:.01em;text-wrap:balance}
+h3{font:600 19px/1.2 var(--display);margin:22px 0 6px;letter-spacing:.02em}
+p{margin:0 0 12px;max-width:68ch}
+.lede{color:var(--mute);margin:10px 0 0;max-width:62ch}
+a{color:var(--sky)}
+.glance{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:22px 0 4px}
+.glance div{background:var(--card);padding:12px 14px;min-width:0}
+.glance b{display:block;font:700 24px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.glance span{font:500 11px/1.3 var(--mono);color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:620px){.glance{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.note{border-left:3px solid var(--buffer);background:var(--buffer-bg);padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0;font-size:15px;max-width:none}
+.tbl{overflow-x:auto;margin:10px 0 6px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{font:600 12px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--mute);background:var(--snow);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:600;background:var(--snow)}
+.mono{font-family:var(--mono);font-size:13px}
+/* Day log */
+.log{list-style:none;margin:12px 0 0;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}
+.log li{display:grid;grid-template-columns:92px minmax(0,1fr) 110px;gap:12px;padding:11px 14px;border-bottom:1px solid var(--line);align-items:start}
+.log li:last-child{border-bottom:0}
+.d{font:500 12px/1.35 var(--mono);color:var(--mute);font-variant-numeric:tabular-nums}
+.d b{display:block;color:var(--ink);font-weight:500;font-size:13px}
+.what{min-width:0}
+.what strong{font:600 17px/1.25 var(--display);letter-spacing:.02em;display:block}
+.what small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
+.alt{text-align:right;min-width:0}
+.alt .m{font:500 13px/1.2 var(--mono);font-variant-numeric:tabular-nums}
+.bar{height:5px;border-radius:3px;background:var(--line);margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sky)}
+.chip{display:inline-block;font:600 10.5px/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;padding:4px 6px;border-radius:4px;margin-top:6px}
+.c-transit{background:var(--transit-bg);color:var(--sky)}
+.c-kat{background:var(--kat-bg);color:var(--kat)}
+.c-trek{background:var(--snow);color:var(--mute)}
+.c-summit{background:var(--summit);color:var(--card)}
+.c-buffer{background:var(--buffer-bg);color:var(--buffer)}
+li.summit .what strong{color:var(--summit)}
+li.summit .bar i{background:var(--summit)}
+@media (max-width:520px){
+  .log li{grid-template-columns:72px minmax(0,1fr);}
+  .alt{grid-column:2;text-align:left}
+  .alt .bar{max-width:160px}
+  th,td{padding:8px 10px}
+  h2{margin-top:32px}
+}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cols>div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+@media (max-width:620px){.cols{grid-template-columns:1fr}}
+ul{margin:6px 0 12px;padding-left:20px}
+li{margin:3px 0}
+.src{font-size:13.5px;color:var(--mute)}
+.src li{margin:4px 0}
+footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--mute)}
+</style>
+
+</head><body>
+<div class="wrap">
+<header>
+  <img alt="Circle Peak logo" src="data:image/png;base64,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">
+  <div>
+    <div class="eyebrow">Nepal · Khumbu · Spring 2027</div>
+    <h1>Lobuche East &amp; Island Peak Expedition</h1>
+  </div>
+</header>
+<p class="lede">Namas Adventure Classic climb, 3–25 April 2027 departure, flying Denver to Kathmandu on Turkish Airlines through Istanbul. Built with one extra day in Kathmandu before the climb and one extra day after it for weather. Rough-draft plan: prices are estimates until booked.</p>
+
+<div class="glance">
+  <div><b>Mar 31 – Apr 26</b><span>27 days door to door</span></div>
+  <div><b>6,189 m</b><span>High point · Island Peak</span></div>
+  <div><b>3 days</b><span>Weather slack before flight home</span></div>
+  <div><b>$10.1k – $15.4k</b><span>All-in estimate</span></div>
+</div>
+
+<h2>Flights</h2>
+<p>Turkish Airlines is the only one-stop routing from Denver. The Denver–Istanbul leg is about 11 hours on an A350, under your 14-hour limit.</p>
+<div class="tbl"><table>
+<tr><th>Date</th><th>Flight</th><th>Departs</th><th>Arrives</th></tr>
+<tr><td class="mono">Wed 31 Mar</td><td>Turkish nonstop DEN → IST</td><td>Evening, Denver</td><td>Thu 1 Apr, late afternoon, Istanbul</td></tr>
+<tr><td class="mono">Thu 1 Apr</td><td>TK726 IST → KTM</td><td>20:45 Istanbul</td><td>Fri 2 Apr, 06:35 Kathmandu</td></tr>
+<tr><td class="mono">Mon 26 Apr</td><td>TK727 KTM → IST</td><td>08:00 Kathmandu</td><td>13:25 Istanbul</td></tr>
+<tr><td class="mono">Mon 26 Apr</td><td>Turkish nonstop IST → DEN</td><td>Afternoon, Istanbul</td><td>Same evening, Denver</td></tr>
+</table></div>
+<p class="note">Turkish flies Denver–Istanbul about four to five times a week and Istanbul–Kathmandu about five times a week. Schedule sites disagree on which days, and Expedia returned no Turkish fares for these dates. Price and confirm the exact days on turkishairlines.com before you lock anything. Budget $1,500–$2,200 round trip in economy. Book a changeable return.</p>
+
+<h2>Hotels in Kathmandu</h2>
+<div class="cols">
+  <div>
+    <h3>Going in · Kathmandu Guest House</h3>
+    <p><span class="mono">2–5 Apr · 3 nights</span><br>Thamel's original guest house. Courtyard garden for meeting the team and sorting gear, luggage storage while you're on the mountain, and a short walk to the rental shops. About $40–$65 a night; guest rating 8.5/10.</p>
+    <p>You land at 06:35, so book the night of 1 April too if you want a guaranteed room on arrival.</p>
+  </div>
+  <div>
+    <h3>Coming out · Aloft Kathmandu Thamel</h3>
+    <p><span class="mono">22–26 Apr · up to 4 nights</span><br>Marriott property at the edge of Thamel. Hot water that doesn't run out, reliable power, a real mattress. $115 a night on Expedia for April 2027; guest rating 9.2/10.</p>
+    <p>Book a refundable rate: if the contingency days get used on the mountain, you'll need fewer nights here.</p>
+  </div>
+</div>
+<p class="note">The Namas package includes a 5-star Kathmandu hotel for two nights before and one night after. Ask Namas to put you at KGH and Aloft for those nights instead, or credit them. If they won't, those nights come out of your pocket, which the high estimate assumes.</p>
+
+<h2>Day by day</h2>
+<p>Namas day numbers follow their Classic itinerary. The bar shows sleeping altitude against the 6,189 m high point.</p>
+<ol class="log">
+<li class=""><div class="d"><b>Wed 31 Mar</b></div><div class="what"><strong>Depart Denver</strong><small>Evening Turkish nonstop to Istanbul.</small><span class="chip c-transit">Transit</span></div><div class="alt"><div class="m">—</div></div></li>
+<li class=""><div class="d"><b>Thu 1 Apr</b></div><div class="what"><strong>Istanbul connection</strong><small>Land late afternoon; TK726 departs 20:45.</small><span class="chip c-transit">Transit</span></div><div class="alt"><div class="m">—</div></div></li>
+<li class=""><div class="d"><b>Fri 2 Apr</b>Extra day</div><div class="what"><strong>Arrive Kathmandu · your early buffer day</strong><small>Land 06:35. Visa on arrival. Check in at KGH, walk Thamel, sleep off the jet lag.</small><span class="chip c-buffer">Buffer</span></div><div class="alt"><div class="m">1,400 m</div><div class="bar"><i style="width:23%"></i></div></div></li>
+<li class=""><div class="d"><b>Sat 3 Apr</b>Day 1</div><div class="what"><strong>Namas Day 1 · team meets</strong><small>Briefings and introductions. KGH.</small><span class="chip c-kat">Kathmandu</span></div><div class="alt"><div class="m">1,400 m</div><div class="bar"><i style="width:23%"></i></div></div></li>
+<li class=""><div class="d"><b>Sun 4 Apr</b>Day 2</div><div class="what"><strong>Equipment check and climbing briefing</strong><small>Rent boots, harness and mitts in Thamel. KGH.</small><span class="chip c-kat">Kathmandu</span></div><div class="alt"><div class="m">1,400 m</div><div class="bar"><i style="width:23%"></i></div></div></li>
+<li class=""><div class="d"><b>Mon 5 Apr</b>Day 3</div><div class="what"><strong>Fly to Lukla, trek to Monjo</strong><small>5–7 h. In spring, Lukla flights often leave from Ramechhap, a 4–5 h drive starting before dawn.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">2,800 m</div><div class="bar"><i style="width:45%"></i></div></div></li>
+<li class=""><div class="d"><b>Tue 6 Apr</b>Day 4</div><div class="what"><strong>Monjo to Namche Bazaar</strong><small>Into the Sherpa capital.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">3,440 m</div><div class="bar"><i style="width:56%"></i></div></div></li>
+<li class=""><div class="d"><b>Wed 7 Apr</b>Day 5</div><div class="what"><strong>Acclimatization day, Namche</strong><small>~3 h hike up to ~3,880 m and back down.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">3,440 m</div><div class="bar"><i style="width:56%"></i></div></div></li>
+<li class=""><div class="d"><b>Thu 8 Apr</b>Day 6</div><div class="what"><strong>Namche to Phortse</strong><small>5–6 h on the quieter east side of the valley.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">3,810 m</div><div class="bar"><i style="width:62%"></i></div></div></li>
+<li class=""><div class="d"><b>Fri 9 Apr</b>Day 7</div><div class="what"><strong>Phortse to Pheriche</strong><small>5–6 h.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">4,371 m</div><div class="bar"><i style="width:71%"></i></div></div></li>
+<li class=""><div class="d"><b>Sat 10 Apr</b>Day 8</div><div class="what"><strong>Pheriche to Lobuche / East Base Camp</strong><small>4–5 h.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">4,910 m</div><div class="bar"><i style="width:79%"></i></div></div></li>
+<li class=""><div class="d"><b>Sun 11 Apr</b>Day 9</div><div class="what"><strong>Rest and training day</strong><small>Fixed lines, ascender, crampon work.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">4,910 m</div><div class="bar"><i style="width:79%"></i></div></div></li>
+<li class=""><div class="d"><b>Mon 12 Apr</b>Day 10</div><div class="what"><strong>Move to Lobuche High Camp</strong><small>5–6 h.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">5,600 m</div><div class="bar"><i style="width:90%"></i></div></div></li>
+<li class="summit"><div class="d"><b>Tue 13 Apr</b>Day 11</div><div class="what"><strong>Summit Lobuche East · 6,119 m</strong><small>Alpine start. 10–14 h round trip, back to high camp or Lobuche.</small><span class="chip c-summit">Summit</span></div><div class="alt"><div class="m">6,119 m</div><div class="bar"><i style="width:99%"></i></div></div></li>
+<li class=""><div class="d"><b>Wed 14 Apr</b>Day 12</div><div class="what"><strong>Gorakshep and Everest Base Camp</strong><small>7–8 h.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">5,164 m</div><div class="bar"><i style="width:83%"></i></div></div></li>
+<li class=""><div class="d"><b>Thu 15 Apr</b>Day 13</div><div class="what"><strong>Kala Patthar at sunrise, down to Dingboche</strong><small>Top out at 5,545 m, then 8–10 h total.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">4,410 m</div><div class="bar"><i style="width:71%"></i></div></div></li>
+<li class=""><div class="d"><b>Fri 16 Apr</b>Day 14</div><div class="what"><strong>Dingboche to Chukung</strong><small>5–6 h.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">4,730 m</div><div class="bar"><i style="width:76%"></i></div></div></li>
+<li class=""><div class="d"><b>Sat 17 Apr</b>Day 15</div><div class="what"><strong>Chukung to Island Peak Base Camp</strong><small>3–4 h.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">5,087 m</div><div class="bar"><i style="width:82%"></i></div></div></li>
+<li class="summit"><div class="d"><b>Sun 18 Apr</b>Day 16</div><div class="what"><strong>Summit Island Peak · 6,189 m</strong><small>Headwall of 45–60° on fixed lines. Descend to Dingboche, 8–10 h.</small><span class="chip c-summit">Summit</span></div><div class="alt"><div class="m">6,189 m</div><div class="bar"><i style="width:100%"></i></div></div></li>
+<li class=""><div class="d"><b>Mon 19 Apr</b>Day 17</div><div class="what"><strong>Dingboche to Pangboche or Tengboche</strong><small>Downhill and easier breathing.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">3,900 m</div><div class="bar"><i style="width:63%"></i></div></div></li>
+<li class=""><div class="d"><b>Tue 20 Apr</b>Day 18</div><div class="what"><strong>Back to Namche Bazaar</strong><small>5–6 h. First real coffee in two weeks.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">3,440 m</div><div class="bar"><i style="width:56%"></i></div></div></li>
+<li class=""><div class="d"><b>Wed 21 Apr</b>Day 19</div><div class="what"><strong>Namche to Lukla</strong><small>6–8 h. Last night on the trail.</small><span class="chip c-trek">Trek</span></div><div class="alt"><div class="m">2,800 m</div><div class="bar"><i style="width:45%"></i></div></div></li>
+<li class=""><div class="d"><b>Thu 22 Apr</b>Day 20</div><div class="what"><strong>Fly to Ramechhap, jeep to Kathmandu</strong><small>Weather-dependent. Check in at Aloft.</small><span class="chip c-transit">Transit</span></div><div class="alt"><div class="m">1,400 m</div><div class="bar"><i style="width:23%"></i></div></div></li>
+<li class=""><div class="d"><b>Fri 23 Apr</b>Day 21</div><div class="what"><strong>Namas contingency day</strong><small>Used on the mountain if weather slips. Otherwise a free day in Kathmandu.</small><span class="chip c-buffer">Buffer</span></div><div class="alt"><div class="m">1,400 m</div><div class="bar"><i style="width:23%"></i></div></div></li>
+<li class=""><div class="d"><b>Sat 24 Apr</b>Day 22</div><div class="what"><strong>Namas contingency day</strong><small>Same as above.</small><span class="chip c-buffer">Buffer</span></div><div class="alt"><div class="m">1,400 m</div><div class="bar"><i style="width:23%"></i></div></div></li>
+<li class=""><div class="d"><b>Sun 25 Apr</b>Extra day</div><div class="what"><strong>Package ends · your late buffer day</strong><small>The day you asked for. Covers a late Lukla flight. Aloft.</small><span class="chip c-buffer">Buffer</span></div><div class="alt"><div class="m">1,400 m</div><div class="bar"><i style="width:23%"></i></div></div></li>
+<li class=""><div class="d"><b>Mon 26 Apr</b></div><div class="what"><strong>Fly home</strong><small>TK727 08:00 to Istanbul, then nonstop to Denver, arriving the same evening.</small><span class="chip c-transit">Transit</span></div><div class="alt"><div class="m">—</div></div></li>
+</ol>
+
+<h2>Total cost</h2>
+<p>Low assumes you already own most of a Colorado 14er kit, Namas waives the single supplement, and they honor your hotel choices. High assumes you buy everything new and pay every extra.</p>
+<div class="tbl"><table>
+<tr><th>Line item</th><th class="n">Low</th><th class="n">High</th><th>Notes</th></tr>
+<tr><td>Namas Classic package</td><td class="n">$6,350</td><td class="n">$6,350</td><td>Permits, guides 1:2, porter, lodges, meals, Lukla flights, 5-star KTM nights</td></tr>
+<tr><td>Single supplement</td><td class="n">$0</td><td class="n">$600</td><td>$600 for a solo climber; ask if it applies when you join a group</td></tr>
+<tr><td>Turkish Airlines DEN ⇄ KTM</td><td class="n">$1,500</td><td class="n">$2,200</td><td>Economy, changeable return; not yet priced live</td></tr>
+<tr><td>Nepal visa (30-day)</td><td class="n">$50</td><td class="n">$50</td><td>On arrival</td></tr>
+<tr><td>Climbing + evacuation insurance</td><td class="n">$300</td><td class="n">$600</td><td>Mandatory; covers 6,200 m and helicopter rescue</td></tr>
+<tr><td>Kathmandu Guest House</td><td class="n">$60</td><td class="n">$180</td><td>1 extra night if Namas books KGH, up to 3 if not</td></tr>
+<tr><td>Aloft Kathmandu Thamel</td><td class="n">$345</td><td class="n">$460</td><td>3–4 nights at $115 beyond the 1 Namas covers</td></tr>
+<tr><td>Gear bought at home</td><td class="n">$400</td><td class="n">$3,100</td><td>Gap items only vs. buying the full list new</td></tr>
+<tr><td>Gear rented in Kathmandu</td><td class="n">$150</td><td class="n">$250</td><td>Double boots, harness, summit mitts</td></tr>
+<tr><td>Tips and summit bonuses</td><td class="n">$500</td><td class="n">$800</td><td>Namas suggests ~$300 for your guide; plus porter and cook staff</td></tr>
+<tr><td>Trail incidentals</td><td class="n">$300</td><td class="n">$500</td><td>~20 days of Wi-Fi, charging, hot showers, snacks, drinks</td></tr>
+<tr><td>Kathmandu meals and extras</td><td class="n">$150</td><td class="n">$300</td><td>Up to 8 nights in the city</td></tr>
+<tr class="total"><td>Total</td><td class="n">$10,105</td><td class="n">$15,390</td><td>Plan on about $12,000</td></tr>
+</table></div>
+<p>Plan on about <strong>$12,000</strong>. That covers a realistic gear bill and leaves room for one surprise.</p>
+
+<h2>Gear</h2>
+<div class="cols">
+  <div>
+    <h3>Provided by Namas</h3>
+    <ul>
+      <li>–20 °C sleeping bag</li><li>Climbing helmet</li><li>Crampons</li><li>Ascender and 3 carabiners</li>
+      <li>Duffel bag (porter carries up to 30 kg)</li><li>Branded down jacket, buff and cap</li><li>Tents at base and high camps</li>
+    </ul>
+    <h3>Rent in Kathmandu</h3>
+    <ul>
+      <li>Double mountaineering boots · $120–$180</li>
+      <li>Climbing harness (not listed in the Classic package) · ~$15–$25</li>
+      <li>Down summit mitts · $30–$50</li>
+    </ul>
+    <p class="mono">Rental total ≈ $150–$250 for the trip</p>
+  </div>
+  <div>
+    <h3>Buy and bring</h3>
+    <div class="tbl" style="margin:0"><table>
+    <tr><th>Item</th><th class="n">New</th></tr>
+<tr><td>Trekking boots (broken in)</td><td class="n">$230–260</td></tr>
+<tr><td>Camp / trail shoes</td><td class="n">$60–120</td></tr>
+<tr><td>Merino base layers</td><td class="n">$200–300</td></tr>
+<tr><td>Fleece mid-layer</td><td class="n">$120–200</td></tr>
+<tr><td>Hardshell jacket</td><td class="n">$250–450</td></tr>
+<tr><td>Hardshell pants</td><td class="n">$150–250</td></tr>
+<tr><td>Trekking pants ×2</td><td class="n">$120–180</td></tr>
+<tr><td>Liner + insulated gloves</td><td class="n">$100–150</td></tr>
+<tr><td>Merino socks ×5</td><td class="n">$100–125</td></tr>
+<tr><td>Warm hat and sun hat</td><td class="n">$40–60</td></tr>
+<tr><td>Glacier glasses, Cat 4</td><td class="n">$80–150</td></tr>
+<tr><td>Headlamp</td><td class="n">$50–70</td></tr>
+<tr><td>Daypack, 35–45 L</td><td class="n">$150–220</td></tr>
+<tr><td>Trekking poles</td><td class="n">$80–150</td></tr>
+<tr><td>Sleeping-bag liner</td><td class="n">$40–60</td></tr>
+<tr><td>Two bottles + insulated sleeve</td><td class="n">$40–60</td></tr>
+<tr><td>Water treatment</td><td class="n">$30–100</td></tr>
+<tr><td>Power bank</td><td class="n">$40–60</td></tr>
+<tr><td>Sunscreen, lip balm, toiletries</td><td class="n">$30–50</td></tr>
+<tr><td>First aid and personal meds</td><td class="n">$40–80</td></tr>
+<tr class="total"><td>Buying all of it new</td><td class="n">$1,950–3,100</td></tr>
+    </table></div>
+  </div>
+</div>
+<p class="note">Carry-on only doesn't work for this trip: plan on one checked duffel for boots, shells and layers. Fakes from Thamel are fine for fleeces, socks and poles. Don't trust them for boots, a hardshell or anything you sleep in.</p>
+
+<h2>Before you go</h2>
+<div class="tbl"><table>
+<tr><th>When</th><th>Item</th><th>Notes</th></tr>
+<tr><td class="mono">Now – Dec 2026</td><td>Namas deposit</td><td>$300 ($315 by card). Ask about the $600 single supplement and the hotel swap.</td></tr>
+<tr><td class="mono">By early Jan 2027</td><td>Start 12-week training block</td><td>Namas recommends 12 weeks minimum. Island Peak's headwall is 45–60°.</td></tr>
+<tr><td class="mono">At deposit</td><td>Climbing and evacuation insurance</td><td>Mandatory. Must cover technical climbing to 6,200 m and helicopter rescue.</td></tr>
+<tr><td class="mono">Nov – Jan</td><td>Turkish flights</td><td>Changeable return. Confirm days of operation.</td></tr>
+<tr><td class="mono">Now</td><td>Passport</td><td>6+ months validity past 26 Apr 2027 and blank pages for the visa.</td></tr>
+<tr><td class="mono">On arrival</td><td>Nepal visa</td><td>30-day tourist visa on arrival, about $50. Bring cash.</td></tr>
+<tr><td class="mono">8 weeks out</td><td>Gear gap list</td><td>Break in trekking boots. Weigh the duffel: the porter limit is 30 kg.</td></tr>
+</table></div>
+
+<h2>Kathmandu buffer days</h2>
+<p>If the weather cooperates, you'll have up to four free days in Kathmandu at the end. Boudhanath Stupa, Swayambhunath, Pashupatinath and Patan Durbar Square are the big four. For the summit beer, the Yeti Tap Room is Kathmandu's craft-beer spot; save it until you're off the mountain.</p>
+
+<h2>Sources</h2>
+<ul class="src">
+  <li><a href="https://www.namasadventure.com/lobuche-east-6119m-and-island-peak-6189m-peak-climbing">Namas Adventure — Lobuche East &amp; Island Peak (itinerary, departures, inclusions)</a></li>
+  <li><a href="https://www.airportoverview.com/routes/DEN/IST">Airport Overview — Denver to Istanbul schedules</a></li>
+  <li><a href="https://www.airportoverview.com/routes/IST/KTM">Airport Overview — Istanbul to Kathmandu schedules</a></li>
+  <li><a href="https://www.hotelscombined.ca/Hotel/Kathmandu_Guest_House_by_KGH_Group.htm">HotelsCombined — Kathmandu Guest House rates</a></li>
+  <li>Expedia hotel search, Kathmandu, 2–5 Apr 2027 (Aloft Kathmandu Thamel, $115/night)</li>
+  <li><a href="https://www.nepalcheapflights.com/flight-and-route-information/lukla-flight-booking-guide-2026-airfare-booking-process-trade-best-practices">Nepal Cheap Flights — Lukla flights and Ramechhap diversions</a></li>
+  <li><a href="https://www.hopnepal.com/blog/guide-and-porter-cost-in-nepal-2026">Hop Nepal — guide and porter tipping norms</a></li>
+  <li><a href="https://www.lonelyplanet.com/pois/1598411">Lonely Planet — Yeti Tap Room</a></li>
+</ul>
+<footer>Companion to <a href="nepal-economy-high-adventure.html">The Economy of Nepal and High Adventure</a>. Rough-draft plan, November 2026. Gear prices are typical U.S. retail estimates. All prices move at booking.</footer>
+</div>
+
+</body></html>
