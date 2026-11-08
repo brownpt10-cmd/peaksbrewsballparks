@@ -922,6 +922,7 @@ const EXPEDITIONS = [
     "summary": "Xenia Santha and Paul Clarke summited Ama Dablam just before sunset on 28 October, after a sleepless night keeping a climber with HACE alive at Camp 2. Their plan, the weather, the tracker timeline, and the simulator that runs it hour by hour.",
 
     "story": [
+      "html:<img src=\"assets/photos/circle-peak/circlepeak.png\" alt=\"Circle Peak\" style=\"display:block;width:72px;height:72px;margin:0 0 20px 0\">",
       "*Ama Dablam (6,812 m). Photo: [Vyacheslav Argenberg](https://commons.wikimedia.org/wiki/File:Himalayas,_Ama_Dablam,_Nepal.jpg), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).*",
       "**Update: 28 October (29 October in Nepal)**",
       "Xenia and Paul summited just before sunset on 28 October and have made their way down to Camp 2 for some much-needed rest. Read [Paul’s post](https://www.youtube.com/@OutdoorPirate/posts) for the latest and a photo from the summit.",
