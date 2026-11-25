@@ -13,6 +13,7 @@ if [ ! -d "$GIT_DIR" ]; then
 fi
 git config user.name "Pat Brown"
 git config user.email "289498565+brownpt10-cmd@users.noreply.github.com"
+git config http.postBuffer 524288000   # large pushes (images) fail with HTTP 400 at the 1 MB default
 git -c http.extraHeader="$AUTH" fetch -q "$REPO" main:refs/remotes/origin/main
 git reset -q --soft refs/remotes/origin/main 2>/dev/null || true
 # Cache-bust: stamp a fresh ?v= on every css/js link so browsers load the new data right away
