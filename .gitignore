@@ -48,3 +48,7 @@ Database/
 
 # Working Word docs at the folder root (published copies live in assets/docs/)
 /*.docx
+
+# Private genealogy / Claude scratch (not site content)
+Claude outputs/
+TRee/
